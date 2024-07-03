@@ -1,0 +1,7 @@
+{
+  "name": "fsiplanner-frontend",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor() {}
+  constructor(private menu: MenuController) {}
+
+  async openMenu() {
+    await this.menu.open('start');
+  }
+
+  async closeMenu() {
+    await this.menu.close('start');
+  }
 }

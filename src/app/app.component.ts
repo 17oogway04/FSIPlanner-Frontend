@@ -9,7 +9,6 @@ import { User } from './Models/user';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent implements OnInit{
-
   user?: User;
   isAuthenticated: boolean = false;
   constructor(private menu: MenuController, private myUserService: UserService) {}

@@ -4,6 +4,25 @@
   margin-left: 20px;
   margin-top: 80px;
 }
+
+#header{
+  padding-top: 115px;
+}
+
+@media (max-width: 575px) {
+  #header{
+    padding-top: 10px;
+  }
+  #info{
+    text-align: center;
+  }
+
+  #pic{
+    text-align: center;
+  }
+}
+
+//profile picture file upload 
 .avatar-container {
   position: relative;
   width: fit-content;

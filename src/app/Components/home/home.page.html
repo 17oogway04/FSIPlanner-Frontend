@@ -1,8 +1,10 @@
 <ion-content [fullscreen]="true">
   <ion-grid>
     <ion-row>
-      <ion-col sizeLg="2" sizeXs="12">
-        <img src="../../../assets/img/profileSymbol.png" id="profilePic">
+      <ion-col sizeXl="2" sizeLg="3" sizeMd="4" sizeSm="5" sizeXs="12">
+        <div id="pic">
+          <img src="../../../assets/img/profileSymbol.png" id="profilePic">
+        </div>
         
         <!-- <div class="avatar-container">
           <div class="image-container" 
@@ -17,14 +19,15 @@
           </label>
       </div>  -->
       </ion-col>
-      <ion-col sizeLg="10" sizeXs="12">
+      <ion-col sizeXl="10" sizeLg="9" sizeMd="8" sizeSm="7" sizeXs="12">
         <!--current user information-->
-        <h1 style="padding-top: 115px;">{{presentUser.firstName}} {{presentUser.lastName}}</h1>
-        <h1> </h1>
+        <div id="info">
+          <h1 id="header">{{presentUser.firstName}} {{presentUser.lastName}}</h1>
+        </div>
+        <ion-button fill="clear" routerLink="/demographics">See more about {{presentUser.firstName}}</ion-button>        
       </ion-col>
     </ion-row>
   </ion-grid>
-
   <ion-toolbar style="padding-top: 20px;">
     <ion-segment>
       <ion-segment-button>

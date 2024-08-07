@@ -1,12 +1,14 @@
 <ion-content [fullscreen]="true">
   <ion-grid>
     <ion-row>
-      <ion-col>
+      <ion-col sizeLg="2" sizeXs="12">
           <img src="../../../assets/img/profileSymbol.png" id="profilePic">
 
       </ion-col>
-      <ion-col>
+      <ion-col sizeLg="10" sizeXs="12">
         <!--current user information-->
+        <h1 style="padding-top: 115px;">{{presentUser?.firstName}} {{presentUser?.lastName}}</h1>
+        <h1> </h1>
       </ion-col>
     </ion-row>
   </ion-grid>

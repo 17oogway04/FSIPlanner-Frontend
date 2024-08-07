@@ -15,7 +15,19 @@
             <ion-list>
               <ion-item>
                 <ion-icon slot="start"></ion-icon>
-                <ion-label >Home</ion-label>
+                <ion-button routerLink="/home" >Home</ion-button>
+              </ion-item>
+              <ion-item *ngIf="!isAuthenticated">
+                <ion-icon slot="start"></ion-icon>
+                <ion-button routerLink="/login">Log in</ion-button>
+              </ion-item>
+              <ion-item *ngIf="isAuthenticated">
+                <ion-icon slot="start"></ion-icon>
+                <ion-button (click)="logout()">Log out</ion-button>
+              </ion-item>
+              <ion-item>
+                <ion-icon slot="start"></ion-icon>
+                <ion-button routerLink="/signup">Create new account</ion-button>
               </ion-item>
               <ion-item>
                 <ion-icon slot="start"></ion-icon>

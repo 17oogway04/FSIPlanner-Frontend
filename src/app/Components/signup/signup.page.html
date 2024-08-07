@@ -1,0 +1,42 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>signup</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">signup</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-list>   
+    <form #form="ngForm" (ngSubmit)="signUp()">
+      <ion-item class="formItem">
+        <ion-input type="text" label="First name" labelPlacement="floating" placeholder="Enter first name" name="firstname" [(ngModel)]="newUser.firstName"></ion-input>
+      </ion-item>
+
+      <ion-item class="formItem">
+        <ion-input type="lastName" name="lastname" label="Last name" labelPlacement="floating" placeholder="Enter last name" [(ngModel)]="newUser.lastName"></ion-input>
+      </ion-item>
+
+      <ion-item class="formItem">
+        <ion-input type="text" label="Email" name="userName"labelPlacement="floating" placeholder="Enter Email" [(ngModel)]="newUser.userName"></ion-input>
+      </ion-item>
+
+      <ion-item class="formItem">
+        <ion-input type="text" label="Password" name="password"labelPlacement="floating" placeholder="Enter password" [(ngModel)]="newUser.password"></ion-input>
+      </ion-item>
+      <ion-item class="formItem">
+        <ion-input type="text" label="Profile Picture" name="profilePicture"  labelPlacement="floating" placeholder="Insert a photo of yourself" [(ngModel)]="newUser.profilePicture"></ion-input>
+      </ion-item>
+
+  
+      <div>
+        <ion-button class="formItem" shape="round" type="submit">Sign Up</ion-button>
+        <br>
+        <a routerLink="/login">Login</a>
+      </div>
+    </form>
+  </ion-list>
+</ion-content>

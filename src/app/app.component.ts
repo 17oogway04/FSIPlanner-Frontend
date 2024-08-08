@@ -14,18 +14,18 @@ export class AppComponent implements OnInit{
   constructor(private menu: MenuController, private myUserService: UserService) {}
 
   ngOnInit(): void{
-    this.myUserService.getCurrentUser().subscribe(response => {
-      if(response !== null){
-        this.user = response;
-        this.myUserService.isLoggedInSubj.next(!response.userId)
-      } else{
-        return;
-      }
-    })
+    // this.myUserService.getCurrentUser().subscribe(response => {
+    //   if(response !== null){
+    //     this.user = response;
+    //     this.myUserService.isLoggedInSubj.next(!response.userId)
+    //   } else{
+    //     return;
+    //   }
+    // })
 
-    this.myUserService.isLoggedInSubj.subscribe(isLoggedIn => {
-      this.isAuthenticated = isLoggedIn;
-    })
+    // this.myUserService.isLoggedInSubj.subscribe(isLoggedIn => {
+    //   this.isAuthenticated = isLoggedIn;
+    // })
 
   }
 

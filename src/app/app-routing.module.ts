@@ -20,7 +20,7 @@ const routes: Routes = [
     loadChildren: () => import('./Components/signup/signup.module').then( m => m.SignupPageModule)
   },
   {
-    path: 'demographics',
+    path: 'demographics/:username',
     loadChildren: () => import('./Components/demographics/demographics.module').then( m => m.DemographicsPageModule)
   },
 ];

@@ -11,6 +11,7 @@ import { UserService } from 'src/app/Services/user.service';
 })
 export class HomePage implements OnInit {
   baseUrl: string = "http://localhost:5247/api/user"
+  isAuthenticated: boolean = false;
 
   presentUser: User ={
     firstName: '',
@@ -28,16 +29,26 @@ export class HomePage implements OnInit {
     this.myUserservice.getCurrentUser().subscribe(response => {
       this.loggedInUser = this.presentUser = response;
       this.userName = this.presentUser.userName ?? '';
+      this.myUserservice.isLoggedInSubj.next(!response.userId)
 
       const name = this.actRouter.snapshot.paramMap.get("username") ?? ''
       if(name !== ''){
         this.userName = name;
         this.myUserservice.getUserByUsername(name).subscribe(response => {
           this.presentUser = response;
-        })
-      }
+        }) 
 
-    })
+      }})
+      
+      this.myUserservice.isLoggedInSubj.subscribe(isLoggedIn => {
+        this.isAuthenticated = isLoggedIn;
+        this.isAuthenticated = isLoggedIn;
+      })
+
+    }
+    logout(){
+      this.myUserservice.logout()
+    }
   }
 
 //   onFileChange(event: any) {
@@ -66,7 +77,6 @@ export class HomePage implements OnInit {
 // }
 
   
-}
 
 
 

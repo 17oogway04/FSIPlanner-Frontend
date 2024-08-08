@@ -1,3 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button fill="clear" slot="end" [routerLink]="['/demographics', presentUser.userName]">
+      More about {{presentUser.firstName}}
+    </ion-button>  
+    <ion-button *ngIf="!isAuthenticated" [routerLink]="['/login']" fill="clear" slot="end">
+      Log in 
+    </ion-button>
+    <ion-button *ngIf="isAuthenticated" (click)="logout()" fill="clear" slot="end">
+      Log out 
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content [fullscreen]="true">
   <ion-grid>
     <ion-row>
@@ -22,9 +36,8 @@
       <ion-col sizeXl="10" sizeLg="9" sizeMd="8" sizeSm="7" sizeXs="12">
         <!--current user information-->
         <div id="info">
-          <h1 id="header">{{presentUser.firstName}} {{presentUser.lastName}}</h1>
-        </div>
-        <ion-button fill="clear" routerLink="/demographics">See more about {{presentUser.firstName}}</ion-button>        
+          <h1 id="header">{{presentUser.firstName}} {{presentUser.lastName}}</h1>      
+         </div>
       </ion-col>
     </ion-row>
   </ion-grid>

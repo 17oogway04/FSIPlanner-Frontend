@@ -14,6 +14,7 @@ export class DemographicsPage implements OnInit {
 
   id:number = 0;
   isFormVisible = false;
+  isEditVisible = false;
   userName: string = "";
   presentUser: User = {
     firstName: '',
@@ -33,6 +34,11 @@ export class DemographicsPage implements OnInit {
 
   demographic: Demographics = {
     demographicsId: 0,
+    spouse: '',
+    c1: '',
+    c2: '',
+    c3: '',
+    c4: '',
     socialSecurity: '',
     driversLicense: '',
     issueDate: '',
@@ -50,6 +56,7 @@ export class DemographicsPage implements OnInit {
   }
 
   userDemographics: Demographics[] = [];
+  
 
   constructor(private myUserService: UserService, private myDemoSerivce: DemographicsService, private actRouter: ActivatedRoute, private router: Router) { }
 
@@ -59,7 +66,6 @@ export class DemographicsPage implements OnInit {
       this.userName = this.presentUser.userName ?? '';
 
       const name = this.actRouter.snapshot.paramMap.get("username") ?? '';
-
       if(name!== ''){
         this.userName = name;
         this.myUserService.getUserByUsername(name).subscribe(response => {
@@ -92,7 +98,7 @@ export class DemographicsPage implements OnInit {
   }
 
   updateDemographicOnSubmit(){
-    this.myDemoSerivce.UpdateDemographic(this.id, this.demographic).subscribe(() => {
+    this.myDemoSerivce.UpdateDemographic(this.userName,this.demographic).subscribe(() => {
       window.alert("Updated demographics successfully")
       this.loadUserDemographics();
     }, error => {
@@ -110,6 +116,15 @@ export class DemographicsPage implements OnInit {
   closeForm(){
     this.isFormVisible = false;
   }
+
+  openEditForm(){
+    this.isEditVisible = true;
+  }
+
+  closeEditForm(){
+    this.isEditVisible = false;
+  }
+
 
   
 

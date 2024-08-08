@@ -1,6 +1,8 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Demographics</ion-title>
+    <ion-buttons>
+      <ion-back-button></ion-back-button>
+  </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -15,6 +17,14 @@
   <ion-list>
     <ion-item *ngFor="let d of userDemographics">
       <ion-grid>
+        <ion-row>
+          <ion-col>
+            <p>Spouse: {{d.spouse}}</p>
+          </ion-col>
+          <ion-col>
+            <p>Children: {{d.c1}} | {{d.c2}} | {{d.c3}} | {{d.c4}}</p>
+          </ion-col>
+        </ion-row>
         <ion-row>
           <ion-col>
             <p>Address: {{d.address}}</p>
@@ -60,31 +70,38 @@
     </ion-item>
 
   </ion-list>
+
+  <!--Adding demographics-->
   <ion-button (click)="openForm()">Enter in demographic</ion-button>
   <div *ngIf="isFormVisible" id="inputForm">
     <form #form="ngForm" (ngSubmit)="createDemographic()">
       <input hidden="true" type="text" name="username" [(ngModel)]="demographic.username">
       <input hidden="true" type="text" name="demographicsId" [(ngModel)]="demographic.demographicsId">
-      <input type="text" name="socialSecurity" placeholder="Enter social" [(ngModel)]="demographic.socialSecurity">
-      <input type="text" name="driversLicense" placeholder="Enter drivers license"
+      <input name="spouse" placeholder="Enter spouse, if applicable" [(ngModel)]="demographic.spouse">
+      <input name="c1" placeholder="Enter child, if applicable" [(ngModel)]="demographic.c1">
+      <input name="c2" placeholder="Enter child, if applicable" [(ngModel)]="demographic.c2">
+      <input name="c3" placeholder="Enter child, if applicable" [(ngModel)]="demographic.c3">
+      <input name="c4" placeholder="Enter child, if applicable" [(ngModel)]="demographic.c4">
+      <input name="socialSecurity" placeholder="Enter social" [(ngModel)]="demographic.socialSecurity">
+      <input name="driversLicense" placeholder="Enter drivers license"
         [(ngModel)]="demographic.driversLicense">
-      <input type="text" name="issueDate" placeholder="Drivers license issue date" [(ngModel)]="demographic.issueDate">
-      <input type="text" name="expirationDate" placeholder="Drivers license expiration date"
+      <input name="issueDate" placeholder="Drivers license issue date" [(ngModel)]="demographic.issueDate">
+      <input name="expirationDate" placeholder="Drivers license expiration date"
         [(ngModel)]="demographic.expirationDate">
-      <input type="text" name="gender" placeholder="Enter gender" [(ngModel)]="demographic.gender">
-      <input type="text" name="maritalStatus" placeholder="Enter marital status" [(ngModel)]="demographic.maritalStatus">
-      <input type="text" name="employer" placeholder="Enter employer" [(ngModel)]="demographic.employer">
-      <input type="text" name="occupation" placeholder="Enter occupation" [(ngModel)]="demographic.occupation">
-      <input type="text" name="workPhone" placeholder="Enter work phone" [(ngModel)]="demographic.workPhone">
-      <input type="text" name="address" placeholder="Enter address" [(ngModel)]="demographic.address">
-      <input type="text" name="phoneNumber" placeholder="Enter phone number" [(ngModel)]="demographic.phoneNumber">
-      <input type="text" name="email" placeholder="Enter email" [(ngModel)]="demographic.email">
-      <input type="text" name="birthday" placeholder="Enter birthday" [(ngModel)]="demographic.birthday">
+      <input name="gender" placeholder="Enter gender" [(ngModel)]="demographic.gender">
+      <input name="maritalStatus" placeholder="Enter marital status" [(ngModel)]="demographic.maritalStatus">
+      <input name="employer" placeholder="Enter employer" [(ngModel)]="demographic.employer">
+      <input name="occupation" placeholder="Enter occupation" [(ngModel)]="demographic.occupation">
+      <input name="workPhone" placeholder="Enter work phone" [(ngModel)]="demographic.workPhone">
+      <input name="address" placeholder="Enter address" [(ngModel)]="demographic.address">
+      <input name="phoneNumber" placeholder="Enter phone number" [(ngModel)]="demographic.phoneNumber">
+      <input name="email" placeholder="Enter email" [(ngModel)]="demographic.email">
+      <input name="birthday" placeholder="Enter birthday" [(ngModel)]="demographic.birthday">
       <ion-button type="submit">
         Create demographics
       </ion-button>
       <ion-button (click)="closeForm()">Cancel</ion-button>
-  
     </form>
   </div>
+
 </ion-content>

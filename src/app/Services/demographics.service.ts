@@ -55,12 +55,12 @@ export class DemographicsService {
 
   }
 
-  UpdateDemographic(id: number, newDemographic: Demographics): Observable<Demographics>{
+  UpdateDemographic(username: string, newDemographic: Demographics): Observable<Demographics>{
     let reqHeaders = 
     {
       Authorization: `Bearer ${localStorage.getItem(this.tokenKey)}`
     }
-    return this.http.put<Demographics>(`${this.baseUrl}/${newDemographic.demographicsId}`, newDemographic, {headers: reqHeaders})
+    return this.http.put<Demographics>(`${this.baseUrl}/demographicUsername/${username}`, newDemographic, {headers: reqHeaders})
   }
 
   DeleteDemographic(demographicsId: number): Observable<any>{

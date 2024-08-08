@@ -17,8 +17,9 @@ export class LoginPage implements OnInit {
   }
 
   onSubmit(){
-    this.myUserService.login(this.username, this.password).subscribe(() => {
+    this.myUserService.login(this.username, this.password).subscribe((response) => {
       window.alert("Successfully logged in");
+      this.myUserService.isLoggedInSubj.next(!response.userId)
       this.router.navigate(['/home']);
     }, error => {
       console.log('Error: ', error);

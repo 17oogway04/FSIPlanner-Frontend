@@ -1,5 +1,5 @@
 export class Demographics {
-    demographicsId?: string;
+    demographicsId?: number;
     socialSecurity?: string;
     driversLicense?: string;
     issueDate?: string;
@@ -15,7 +15,7 @@ export class Demographics {
     birthday?: string;
     username?: string;
 
-    constructor(demographicsId: string, socialSecurity: string, driversLicense: string, issueDate: string, expirationDate: string, gender: string, maritalStatus: string, employer: string, occupation: string, workPhone: string, address: string, phoneNumber: string, email: string, birthday: string, username: string)
+    constructor(demographicsId: number, socialSecurity: string, driversLicense: string, issueDate: string, expirationDate: string, gender: string, maritalStatus: string, employer: string, occupation: string, workPhone: string, address: string, phoneNumber: string, email: string, birthday: string, username: string)
     {
         this.demographicsId = demographicsId;
         this.socialSecurity = socialSecurity;
@@ -31,5 +31,6 @@ export class Demographics {
         this.address = address;
         this.birthday = birthday;
         this.username = username;
+        this.phoneNumber = phoneNumber;
     }
 }

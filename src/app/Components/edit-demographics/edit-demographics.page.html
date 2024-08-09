@@ -1,0 +1,48 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>edit-demographics</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form #form="ngForm" style="margin-top: 40px;" (ngSubmit)="onSubmit()">
+    <label>Spouse: {{currentDemographics.spouse}}</label><br>
+    <input type="text" name="spouse" [(ngModel)]="currentDemographics.spouse"><br>
+    <label>Child 1: {{currentDemographics.c1}}</label><br>
+    <input type="text" name="spouse" [(ngModel)]="currentDemographics.c1"><br>
+    <label>Child 2: {{currentDemographics.c2}}</label><br>
+    <input type="text" name="spouse" [(ngModel)]="currentDemographics.c2"><br>
+    <label>Child 3: {{currentDemographics.c3}}</label><br>
+    <input type="text" name="spouse" [(ngModel)]="currentDemographics.c3"><br>
+    <label>Child 4: {{currentDemographics.c4}}</label><br>
+    <input type="text" name="spouse" [(ngModel)]="currentDemographics.c4"><br>
+    <label>Social Security: {{currentDemographics.socialSecurity}}</label><br>
+    <input type="text" name="spouse" [(ngModel)]="currentDemographics.socialSecurity"><br>
+    <label>Driver's License: {{currentDemographics.driversLicense}}</label><br>
+    <input type="text" name="spouse" [(ngModel)]="currentDemographics.driversLicense"><br>
+    <label>Issue date: {{currentDemographics.issueDate}}</label><br>
+    <input type="text" name="spouse" [(ngModel)]="currentDemographics.issueDate"><br>
+    <label>Expiration Date: {{currentDemographics.expirationDate}}</label><br>
+    <input type="text" name="spouse" [(ngModel)]="currentDemographics.expirationDate"><br>
+    <label>Gender: {{currentDemographics.gender}}</label><br>
+    <input type="text" name="spouse" [(ngModel)]="currentDemographics.gender"><br>
+    <label>Marital status: {{currentDemographics.maritalStatus}}</label><br>
+    <input type="text" name="spouse" [(ngModel)]="currentDemographics.maritalStatus"><br>
+    <label>Employer: {{currentDemographics.employer}}</label><br>
+    <input type="text" name="spouse" [(ngModel)]="currentDemographics.employer"><br>
+    <label>Occupation: {{currentDemographics.occupation}}</label><br>
+    <input type="text" name="spouse" [(ngModel)]="currentDemographics.occupation"><br>
+    <label>Work Phone: {{currentDemographics.workPhone}}</label><br>
+    <input type="text" name="spouse" [(ngModel)]="currentDemographics.workPhone"><br>
+    <label>Address: {{currentDemographics.address}}</label><br>
+    <input type="text" name="spouse" [(ngModel)]="currentDemographics.address"><br>
+    <label>Phone number: {{currentDemographics.phoneNumber}}</label><br>
+    <input type="text" name="spouse" [(ngModel)]="currentDemographics.phoneNumber"><br>
+    <label>Email: {{currentDemographics.email}}</label><br>
+    <input type="text" name="spouse" [(ngModel)]="currentDemographics.email"><br>
+    <label>Birthday: {{currentDemographics.birthday}}</label><br>
+    <input type="text" name="spouse" [(ngModel)]="currentDemographics.birthday"><br>
+    <ion-button type="submit">Edit</ion-button>
+    <ion-button [routerLink]="['/demographics', currentDemographics.username]">Cancel</ion-button>
+  </form>
+</ion-content>

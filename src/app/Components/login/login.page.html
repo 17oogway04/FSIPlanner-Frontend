@@ -18,7 +18,9 @@
       </ion-item>
   
       <ion-item class="formItem">
-        <ion-input type="password" label="Password" labelPlacement="floating" placeholder="Enter Password" name="password" [(ngModel)]="password"></ion-input>
+        <ion-input type="password" label="Password" labelPlacement="floating" placeholder="Enter Password" name="password" [(ngModel)]="password">
+          <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+        </ion-input>
       </ion-item>
   
       <div>

@@ -1,48 +1,109 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>edit-demographics</ion-title>
+    <ion-title color="secondary">Editing demographics</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <form #form="ngForm" style="margin-top: 40px;" (ngSubmit)="onSubmit()">
-    <label>Spouse: {{currentDemographics.spouse}}</label><br>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <h1>Family</h1>
+          <label id="label">Spouse/Significant Other: {{currentDemographics.spouse}}</label><br>
+          <input id="input" type="text" name="spouse" [(ngModel)]="currentDemographics.spouse"><br><br>
+          <label id="label">Child 1: {{currentDemographics.c1}}</label><br>
+          <input id="input" type="text" name="c1" [(ngModel)]="currentDemographics.c1"><br><br>
+          <label id="label">Child 2: {{currentDemographics.c2}}</label><br>
+          <input id="input" type="text" name="c2" [(ngModel)]="currentDemographics.c2"><br><br>
+          <label id="label">Child 3: {{currentDemographics.c3}}</label><br>
+          <input id="input" type="text" name="c3" [(ngModel)]="currentDemographics.c3"><br><br>
+          <label id="label">Child 4: {{currentDemographics.c4}}</label><br>
+          <input id="input" type="text" name="c4" [(ngModel)]="currentDemographics.c4"><br><br>
+        </ion-col>
+        <ion-col>
+          <h1>Personal Info</h1>
+          <label id="label">Gender: {{currentDemographics.gender}}</label><br>
+          <input id="input" type="text" name="gender" [(ngModel)]="currentDemographics.gender"><br><br>
+          <label id="label">Marital status: {{currentDemographics.maritalStatus}}</label><br>
+          <input id="input" type="text" name="maritalStatus" [(ngModel)]="currentDemographics.maritalStatus"><br><br>
+          <label id="label">Birthday: {{currentDemographics.birthday}}</label><br>
+          <input id="input" type="text" name="birthday" [(ngModel)]="currentDemographics.birthday"><br>
+        </ion-col>
+        <ion-col>
+          <h1>Identification</h1>
+          <label id="label">Social Security: {{currentDemographics.socialSecurity}}</label><br>
+          <input id="input" type="text" name="socialSecurity" [(ngModel)]="currentDemographics.socialSecurity"><br><br>
+          <label id="label">Driver's License: {{currentDemographics.driversLicense}}</label><br>
+          <input id="input" type="text" name="driversLicense" [(ngModel)]="currentDemographics.driversLicense"><br><br>
+          <label id="label">Issue date: {{currentDemographics.issueDate}}</label><br>
+          <input id="input" type="text" name="issueDate" [(ngModel)]="currentDemographics.issueDate"><br><br>
+          <label id="label">Expiration Date: {{currentDemographics.expirationDate}}</label><br>
+          <input id="input" type="text" name="expirationDate" [(ngModel)]="currentDemographics.expirationDate"><br><br>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <h1>Work</h1>
+          <label id="label">Employer: {{currentDemographics.employer}}</label><br>
+          <input id="input" type="text" name="employer" [(ngModel)]="currentDemographics.employer"><br><br>
+          <label id="label">Occupation: {{currentDemographics.occupation}}</label><br>
+          <input id="input" type="text" name="occupation" [(ngModel)]="currentDemographics.occupation"><br><br>
+          <label id="label">Work Phone: {{currentDemographics.workPhone}}</label><br>
+          <input id="input" type="text" name="workPhone" [(ngModel)]="currentDemographics.workPhone"><br><br>
+        </ion-col>
+        <ion-col>
+          <h1>Contact info</h1>
+          <label id="label">Address: {{currentDemographics.address}}</label><br>
+          <input id="input" type="text" name="address" [(ngModel)]="currentDemographics.address"><br><br>
+          <label id="label">Phone number: {{currentDemographics.phoneNumber}}</label><br>
+          <input id="input" type="text" name="phoneNumber" [(ngModel)]="currentDemographics.phoneNumber"><br><br>
+          <label id="label">Email: {{currentDemographics.email}}</label><br>
+          <input id="input" type="text" name="email" [(ngModel)]="currentDemographics.email"><br>
+        </ion-col>
+        <ion-col>
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <!-- <label>Spouse: {{currentDemographics.spouse}}</label><br>
     <input type="text" name="spouse" [(ngModel)]="currentDemographics.spouse"><br>
     <label>Child 1: {{currentDemographics.c1}}</label><br>
-    <input type="text" name="spouse" [(ngModel)]="currentDemographics.c1"><br>
+    <input type="text" name="c1" [(ngModel)]="currentDemographics.c1"><br>
     <label>Child 2: {{currentDemographics.c2}}</label><br>
-    <input type="text" name="spouse" [(ngModel)]="currentDemographics.c2"><br>
+    <input type="text" name="c2" [(ngModel)]="currentDemographics.c2"><br>
     <label>Child 3: {{currentDemographics.c3}}</label><br>
-    <input type="text" name="spouse" [(ngModel)]="currentDemographics.c3"><br>
+    <input type="text" name="c3" [(ngModel)]="currentDemographics.c3"><br>
     <label>Child 4: {{currentDemographics.c4}}</label><br>
-    <input type="text" name="spouse" [(ngModel)]="currentDemographics.c4"><br>
-    <label>Social Security: {{currentDemographics.socialSecurity}}</label><br>
-    <input type="text" name="spouse" [(ngModel)]="currentDemographics.socialSecurity"><br>
+    <input type="text" name="c4" [(ngModel)]="currentDemographics.c4"><br> -->
+    <!-- <label>Social Security: {{currentDemographics.socialSecurity}}</label><br>
+    <input type="text" name="socialSecurity" [(ngModel)]="currentDemographics.socialSecurity"><br>
     <label>Driver's License: {{currentDemographics.driversLicense}}</label><br>
-    <input type="text" name="spouse" [(ngModel)]="currentDemographics.driversLicense"><br>
+    <input type="text" name="driversLicense" [(ngModel)]="currentDemographics.driversLicense"><br>
     <label>Issue date: {{currentDemographics.issueDate}}</label><br>
-    <input type="text" name="spouse" [(ngModel)]="currentDemographics.issueDate"><br>
+    <input type="text" name="issueDate" [(ngModel)]="currentDemographics.issueDate"><br>
     <label>Expiration Date: {{currentDemographics.expirationDate}}</label><br>
-    <input type="text" name="spouse" [(ngModel)]="currentDemographics.expirationDate"><br>
-    <label>Gender: {{currentDemographics.gender}}</label><br>
-    <input type="text" name="spouse" [(ngModel)]="currentDemographics.gender"><br>
+    <input type="text" name="expirationDate" [(ngModel)]="currentDemographics.expirationDate"><br> -->
+    <!-- <label>Gender: {{currentDemographics.gender}}</label><br>
+    <input type="text" name="gender" [(ngModel)]="currentDemographics.gender"><br>
     <label>Marital status: {{currentDemographics.maritalStatus}}</label><br>
-    <input type="text" name="spouse" [(ngModel)]="currentDemographics.maritalStatus"><br>
-    <label>Employer: {{currentDemographics.employer}}</label><br>
-    <input type="text" name="spouse" [(ngModel)]="currentDemographics.employer"><br>
+    <input type="text" name="maritalStatus" [(ngModel)]="currentDemographics.maritalStatus"><br> -->
+    <!-- <label>Employer: {{currentDemographics.employer}}</label><br>
+    <input type="text" name="employer" [(ngModel)]="currentDemographics.employer"><br>
     <label>Occupation: {{currentDemographics.occupation}}</label><br>
-    <input type="text" name="spouse" [(ngModel)]="currentDemographics.occupation"><br>
+    <input type="text" name="occupation" [(ngModel)]="currentDemographics.occupation"><br>
     <label>Work Phone: {{currentDemographics.workPhone}}</label><br>
-    <input type="text" name="spouse" [(ngModel)]="currentDemographics.workPhone"><br>
-    <label>Address: {{currentDemographics.address}}</label><br>
-    <input type="text" name="spouse" [(ngModel)]="currentDemographics.address"><br>
+    <input type="text" name="workPhone" [(ngModel)]="currentDemographics.workPhone"><br> -->
+    <!-- <label>Address: {{currentDemographics.address}}</label><br>
+    <input type="text" name="address" [(ngModel)]="currentDemographics.address"><br>
     <label>Phone number: {{currentDemographics.phoneNumber}}</label><br>
-    <input type="text" name="spouse" [(ngModel)]="currentDemographics.phoneNumber"><br>
+    <input type="text" name="phoneNumber" [(ngModel)]="currentDemographics.phoneNumber"><br>
     <label>Email: {{currentDemographics.email}}</label><br>
-    <input type="text" name="spouse" [(ngModel)]="currentDemographics.email"><br>
-    <label>Birthday: {{currentDemographics.birthday}}</label><br>
-    <input type="text" name="spouse" [(ngModel)]="currentDemographics.birthday"><br>
+    <input type="text" name="email" [(ngModel)]="currentDemographics.email"><br> -->
+    <!-- <label>Birthday: {{currentDemographics.birthday}}</label><br>
+    <input type="text" name="birthday" [(ngModel)]="currentDemographics.birthday"><br> -->
     <ion-button type="submit" fill="clear" color="secondary">Edit</ion-button>
-    <ion-button [routerLink]="['/demographics', currentDemographics.username]" fill="clear" color="secondary">Cancel</ion-button>
+    <ion-button [routerLink]="['/demographics', currentDemographics.username]" fill="clear"
+      color="secondary">Cancel</ion-button>
   </form>
 </ion-content>

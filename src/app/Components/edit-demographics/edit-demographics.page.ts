@@ -33,8 +33,6 @@ export class EditDemographicsPage implements OnInit {
     email: '',
     birthday: '',
     username: this.actRouter.snapshot.paramMap.get("username") ?? ''
-
-
   }
 
   constructor(private actRouter: ActivatedRoute, private myDemoService: DemographicsService, private router: Router) { }

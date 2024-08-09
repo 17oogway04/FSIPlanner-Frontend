@@ -1,12 +1,13 @@
 <ion-header>
   <ion-toolbar>
-    <ion-button fill="clear" slot="end" [routerLink]="['/demographics', presentUser.userName]">
+    <ion-title slot="start" style="color: black;">Financial Strategies Inc.</ion-title>
+    <ion-button fill="clear" slot="end" [routerLink]="['/demographics', presentUser.userName]" color="secondary">
       More about {{presentUser.firstName}}
     </ion-button>  
-    <ion-button *ngIf="!isAuthenticated" [routerLink]="['/login']" fill="clear" slot="end">
+    <ion-button *ngIf="!isAuthenticated" [routerLink]="['/login']" fill="clear" slot="end" color="secondary">
       Log in 
     </ion-button>
-    <ion-button *ngIf="isAuthenticated" (click)="logout()" fill="clear" slot="end">
+    <ion-button *ngIf="isAuthenticated" (click)="logout()" fill="clear" slot="end" color="secondary">
       Log out 
     </ion-button>
   </ion-toolbar>

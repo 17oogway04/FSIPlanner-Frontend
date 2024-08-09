@@ -42,7 +42,7 @@
     <input type="text" name="spouse" [(ngModel)]="currentDemographics.email"><br>
     <label>Birthday: {{currentDemographics.birthday}}</label><br>
     <input type="text" name="spouse" [(ngModel)]="currentDemographics.birthday"><br>
-    <ion-button type="submit">Edit</ion-button>
-    <ion-button [routerLink]="['/demographics', currentDemographics.username]">Cancel</ion-button>
+    <ion-button type="submit" fill="clear" color="secondary">Edit</ion-button>
+    <ion-button [routerLink]="['/demographics', currentDemographics.username]" fill="clear" color="secondary">Cancel</ion-button>
   </form>
 </ion-content>

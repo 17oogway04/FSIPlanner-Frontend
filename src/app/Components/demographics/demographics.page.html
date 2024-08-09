@@ -1,8 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-buttons>
-      <ion-back-button></ion-back-button>
-  </ion-buttons>
+    <ion-button routerLink="/home" slot="end">Home</ion-button>
   </ion-toolbar>
 </ion-header>
 
@@ -35,7 +33,7 @@
         </ion-row>
         <ion-row>
           <ion-col>
-            <p>Driver's License: {{d.driversLicense}}</p>
+            <p>Driver's License: {{d.driversLicense}} | Social: {{d.socialSecurity}}</p>
           </ion-col>
           <ion-col>
             <p>Issued: {{d.issueDate}} | Expires: {{d.expirationDate}}</p>
@@ -65,14 +63,16 @@
             <p>Personal Phone & Email: {{d.phoneNumber}} | {{d.email}}</p>
           </ion-col>
         </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-button *ngIf="none" [routerLink]="['/edit-demographics', d.demographicsId]">Edit {{presentUser.firstName}}'s demographics</ion-button>
+          </ion-col>
+        </ion-row>
       </ion-grid>
-
     </ion-item>
-
   </ion-list>
-
   <!--Adding demographics-->
-  <ion-button (click)="openForm()">Enter in demographic</ion-button>
+  <ion-button (click)="openForm()" *ngIf="!input">Enter in demographic</ion-button>
   <div *ngIf="isFormVisible" id="inputForm">
     <form #form="ngForm" (ngSubmit)="createDemographic()">
       <input hidden="true" type="text" name="username" [(ngModel)]="demographic.username">

@@ -14,6 +14,8 @@ export class DemographicsPage implements OnInit {
 
   id:number = 0;
   isFormVisible = false;
+  none = false;
+  input = false;
   isEditVisible = false;
   userName: string = "";
   presentUser: User = {
@@ -82,6 +84,10 @@ export class DemographicsPage implements OnInit {
   loadUserDemographics(){
     this.myDemoSerivce.GetDemographicsByUsername(this.userName).subscribe(response => {
       this.userDemographics = response;
+      if(response !==null){
+        this.input = true
+        this.none = true;
+      }
     })
   }
 
@@ -97,17 +103,17 @@ export class DemographicsPage implements OnInit {
     window.location.reload();
   }
 
-  updateDemographicOnSubmit(){
-    this.myDemoSerivce.UpdateDemographic(this.userName,this.demographic).subscribe(() => {
-      window.alert("Updated demographics successfully")
-      this.loadUserDemographics();
-    }, error => {
-      console.log("Error: ", error)
-      if(error.status == 401){
-        this.router.navigate(['/login'])
-      }
-    })
-  }
+  // updateDemographicOnSubmit(){
+  //   this.myDemoSerivce.UpdateDemographic(this.userName,this.demographic).subscribe(() => {
+  //     window.alert("Updated demographics successfully")
+  //     this.loadUserDemographics();
+  //   }, error => {
+  //     console.log("Error: ", error)
+  //     if(error.status == 401){
+  //       this.router.navigate(['/login'])
+  //     }
+  //   })
+  // }
 
   openForm(){
     this.isFormVisible = true;
@@ -116,18 +122,6 @@ export class DemographicsPage implements OnInit {
   closeForm(){
     this.isFormVisible = false;
   }
-
-  openEditForm(){
-    this.isEditVisible = true;
-  }
-
-  closeEditForm(){
-    this.isEditVisible = false;
-  }
-
-
-  
-
 
 }
 

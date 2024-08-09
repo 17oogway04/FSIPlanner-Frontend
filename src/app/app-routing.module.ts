@@ -23,6 +23,10 @@ const routes: Routes = [
     path: 'demographics/:username',
     loadChildren: () => import('./Components/demographics/demographics.module').then( m => m.DemographicsPageModule)
   },
+  {
+    path: 'edit-demographics/:id',
+    loadChildren: () => import('./Components/edit-demographics/edit-demographics.module').then( m => m.EditDemographicsPageModule)
+  },
 ];
 
 @NgModule({

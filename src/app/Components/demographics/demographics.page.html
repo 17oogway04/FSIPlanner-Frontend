@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-button routerLink="/home" slot="end">Home</ion-button>
+    <ion-button routerLink="/home" slot="end" fill="clear" color="secondary">Home</ion-button>
   </ion-toolbar>
 </ion-header>
 
@@ -65,7 +65,7 @@
         </ion-row>
         <ion-row>
           <ion-col>
-            <ion-button *ngIf="none" [routerLink]="['/edit-demographics', d.demographicsId]">Edit {{presentUser.firstName}}'s demographics</ion-button>
+            <ion-button *ngIf="none" [routerLink]="['/edit-demographics', d.demographicsId]" fill="clear" color="secondary" >Edit {{presentUser.firstName}}'s demographics</ion-button>
           </ion-col>
         </ion-row>
       </ion-grid>
@@ -97,7 +97,7 @@
       <input name="phoneNumber" placeholder="Enter phone number" [(ngModel)]="demographic.phoneNumber">
       <input name="email" placeholder="Enter email" [(ngModel)]="demographic.email">
       <input name="birthday" placeholder="Enter birthday" [(ngModel)]="demographic.birthday">
-      <ion-button type="submit">
+      <ion-button type="submit" fill="clear" color="secondary">
         Create demographics
       </ion-button>
       <ion-button (click)="closeForm()">Cancel</ion-button>

@@ -21,6 +21,16 @@
     text-align: center;
   }
 }
+ion-button{
+  --color:white;
+}
+#headerTool {
+  --background: #023e8a;
+  --color: white;
+  --min-height: 80px;
+  --padding-top: 20px;
+  --padding-bottom: 20px;
+}
 
 //profile picture file upload 
 // .avatar-container {

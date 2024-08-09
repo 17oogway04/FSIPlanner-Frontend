@@ -1,4 +1,4 @@
-h1{
+h1 {
     padding: 10px;
     text-decoration: underline;
 }
@@ -15,4 +15,15 @@ h1{
     border: 1px solid #ccc;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     z-index: 1000;
-  }
+}
+
+#home {
+    --color: white;
+}
+
+#headerTool {
+    --background: #023e8a;
+    --min-height: 80px;
+    --padding-top: 8px;
+    --padding-bottom: 8px;
+}

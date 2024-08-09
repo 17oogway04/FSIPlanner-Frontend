@@ -1,14 +1,14 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title slot="start" style="color: black;">Financial Strategies Inc.</ion-title>
-    <ion-button fill="clear" slot="end" [routerLink]="['/demographics', presentUser.userName]" color="secondary">
+  <ion-toolbar id="headerTool">
+    <ion-title slot="start">Financial Strategies Inc.</ion-title>
+    <ion-button fill="clear" slot="end" [routerLink]="['/demographics', presentUser.userName]">
       More about {{presentUser.firstName}}
     </ion-button> 
-    <ion-button *ngIf="presentUser.userName == 'isaacm@mutualmail.com'" fill="clear" color="secondary" slot="end" routerLink="/signup">Create new account</ion-button> 
-    <ion-button *ngIf="!isAuthenticated" [routerLink]="['/login']" fill="clear" slot="end" color="secondary">
+    <ion-button *ngIf="presentUser.userName == 'isaacm@mutualmail.com'" fill="clear" slot="end" routerLink="/signup">Create new account</ion-button> 
+    <ion-button *ngIf="!isAuthenticated" [routerLink]="['/login']" fill="clear" slot="end">
       Log in 
     </ion-button>
-    <ion-button *ngIf="isAuthenticated" (click)="logout()" fill="clear" slot="end" color="secondary">
+    <ion-button *ngIf="isAuthenticated" (click)="logout()" fill="clear" slot="end">
       Log out 
     </ion-button>
   </ion-toolbar>

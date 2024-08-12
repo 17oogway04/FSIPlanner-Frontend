@@ -72,7 +72,7 @@ export class UserService {
     {
       Authorization: `Bearer ${localStorage.getItem(this.tokenKey)}`
     }
-    return this.http.get<User>(`${this.baseUrl}/${username}`, {headers: reqHeaders}
+    return this.http.get<User>(`${this.baseUrl}/by-username/${username}`, {headers: reqHeaders}
     );
   }
 

@@ -17,6 +17,8 @@ export class SearchUsersPage implements OnInit {
     password: '',
     profilePicture: ''
   }
+
+  user: User[] = [];
   constructor(private myUserService: UserService) { }
 
   ngOnInit() {
@@ -32,6 +34,7 @@ export class SearchUsersPage implements OnInit {
       this.users.firstName = response.firstName;
       this.users.lastName = response.lastName;
       this.users.userName = response.userName;
+      this.user.push(response);
     }))
   }
 

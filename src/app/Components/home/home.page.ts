@@ -12,6 +12,7 @@ import { UserService } from 'src/app/Services/user.service';
 export class HomePage implements OnInit {
   baseUrl: string = "http://localhost:5247/api/user"
   isAuthenticated: boolean = false;
+  userName: string = '';
   presentUser: User ={
     firstName: '',
     lastName: '',
@@ -20,7 +21,6 @@ export class HomePage implements OnInit {
     profilePicture: ''
   }
   loggedInUser?: User;
-  userName: string = '';
   file: string = '';
   constructor(private myUserservice: UserService, private actRouter: ActivatedRoute, private http: HttpClient) { }
 

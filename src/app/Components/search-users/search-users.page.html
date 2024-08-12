@@ -7,5 +7,9 @@
 
 <ion-content [fullscreen]="true">
   <ion-searchbar show-clear-button="focus" value="Search Clients" style="margin: 10px; width: auto;" [(ngModel)]="searchStr" (search)="searchUser()"></ion-searchbar>
-  <h1 style="margin-left: 20px;">{{users.firstName}} {{users.lastName}}</h1>
+  <ion-list>
+    <ion-item *ngFor="let u of user">
+      <ion-button routerLink="/fsi-profile/{{u.userName}}">{{u.firstName}} {{u.lastName}}</ion-button>
+    </ion-item>
+  </ion-list>
 </ion-content>

@@ -31,6 +31,10 @@ const routes: Routes = [
     path: 'search-users',
     loadChildren: () => import('./Components/search-users/search-users.module').then( m => m.SearchUsersPageModule)
   },
+  {
+    path: 'fsi-profile/:username',
+    loadChildren: () => import('./Components/fsi-profile/fsi-profile.module').then( m => m.FSIProfilePageModule)
+  },
 ];
 
 @NgModule({

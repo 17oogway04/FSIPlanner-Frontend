@@ -1,0 +1,11 @@
+<ion-header [translucent]="true">
+  <ion-toolbar id="headerTool">
+    <ion-title>Search FSI Clients</ion-title>
+    <ion-button routerLink="/home" slot="end" fill="clear">Home</ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-searchbar show-clear-button="focus" value="Search Clients" style="margin: 10px; width: auto;" [(ngModel)]="searchStr" (search)="searchUser()"></ion-searchbar>
+  <h1 style="margin-left: 20px;">{{users.firstName}} {{users.lastName}}</h1>
+</ion-content>

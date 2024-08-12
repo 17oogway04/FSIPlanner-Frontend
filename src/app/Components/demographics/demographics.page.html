@@ -11,54 +11,59 @@
     </ion-toolbar>
   </ion-header>
 
-  <h1>{{presentUser.firstName}} {{presentUser.lastName}}</h1>
+  <h1>{{loggedInUser.firstName}} {{loggedInUser.lastName}}</h1>
   <ion-list [inset]="true" *ngFor="let d of userDemographics">
     <ion-item>
-      <ion-label><strong>{{presentUser.firstName}}'s Spouse/Significant other:</strong> {{d.spouse}}</ion-label>
+      <ion-label><strong> Spouse/Significant other:</strong> {{d.spouse}}</ion-label>
     </ion-item>
     <ion-item>
       <ion-label><strong>Children:</strong> {{d.c1}} | {{d.c2}} | {{d.c3}} | {{d.c4}}</ion-label>
     </ion-item>
     <ion-item>
-      <ion-label><strong>{{presentUser.firstName}}'s address:</strong> {{d.address}}</ion-label>
+      <ion-label><strong>Address:</strong> {{d.address}}</ion-label>
     </ion-item>
     <ion-item>
-      <ion-label><strong>{{presentUser.firstName}}'s DOB:</strong> {{d.birthday}}</ion-label>
+      <ion-label><strong> DOB:</strong> {{d.birthday}}</ion-label>
     </ion-item>
     <ion-item>
-      <ion-label><strong>{{presentUser.firstName}}'s driver's License:</strong> {{d.driversLicense}} | Social: {{d.socialSecurity}}</ion-label>
+      <ion-label><strong> Driver's License:</strong> {{d.driversLicense}}</ion-label>
     </ion-item>
     <ion-item>
-      <ion-label><strong>{{presentUser.firstName}}'s driver's License issue date:</strong> {{d.issueDate}}</ion-label>
+      <ion-button (click)="showElement()" color="dark" *ngIf="isVisible">Hide social</ion-button>
+      <ion-button (click)="showElement()" color="dark" *ngIf="!isVisible">Show social</ion-button>
+      <ion-label *ngIf="isVisible"><strong>Social: </strong> {{d.socialSecurity}}</ion-label>
     </ion-item>
     <ion-item>
-      <ion-label><strong>{{presentUser.firstName}}'s driver's License expiration date:</strong> {{d.expirationDate}}</ion-label>
+      <ion-label><strong> Driver's License issue date:</strong> {{d.issueDate}}</ion-label>
     </ion-item>
     <ion-item>
-      <ion-label><strong>{{presentUser.firstName}}'s gender:</strong> {{d.gender}}</ion-label>
+      <ion-label><strong> Driver's License expiration date:</strong> {{d.expirationDate}}</ion-label>
     </ion-item>
     <ion-item>
-      <ion-label><strong>{{presentUser.firstName}}'s martial status:</strong> {{d.maritalStatus}}</ion-label>
+      <ion-label><strong> Gender:</strong> {{d.gender}}</ion-label>
     </ion-item>
     <ion-item>
-      <ion-label><strong>{{presentUser.firstName}}'s employer:</strong> {{d.employer}}</ion-label>
+      <ion-label><strong> Martial Status:</strong> {{d.maritalStatus}}</ion-label>
     </ion-item>
     <ion-item>
-      <ion-label><strong>{{presentUser.firstName}}'s occupation:</strong> {{d.occupation}}</ion-label>
+      <ion-label><strong> Employer:</strong> {{d.employer}}</ion-label>
     </ion-item>
     <ion-item>
-      <ion-label><strong>{{presentUser.firstName}}'s work phone:</strong> {{d.workPhone}}</ion-label>
+      <ion-label><strong> Occupation:</strong> {{d.occupation}}</ion-label>
     </ion-item>
     <ion-item>
-      <ion-label><strong>{{presentUser.firstName}}'s personal phone:</strong> {{d.phoneNumber}}</ion-label>
+      <ion-label><strong> Work Phone:</strong> {{d.workPhone}}</ion-label>
     </ion-item>
     <ion-item>
-      <ion-label><strong>{{presentUser.firstName}}'s personal email:</strong> {{d.email}}</ion-label>
+      <ion-label><strong> Personal phone:</strong> {{d.phoneNumber}}</ion-label>
     </ion-item>
-    <ion-button *ngIf="none" [routerLink]="['/edit-demographics', d.demographicsId]" fill="clear" color="secondary" >Edit {{presentUser.firstName}}'s demographics</ion-button>
+    <ion-item>
+      <ion-label><strong> Personal email:</strong> {{d.email}}</ion-label>
+    </ion-item>
+    <ion-button *ngIf="none" [routerLink]="['/edit-demographics', d.demographicsId]" fill="clear" color="secondary" >Edit demographics</ion-button>
   </ion-list>
   <!--Adding demographics-->
-  <ion-button (click)="openForm()" *ngIf="!input">Enter in demographic</ion-button>
+  <ion-button (click)="openForm()" *ngIf="!input" fill="clear" color="secondary">Enter in demographic</ion-button>
   <div *ngIf="isFormVisible" id="inputForm">
     <form #form="ngForm" (ngSubmit)="createDemographic()">
       <input hidden="true" type="text" name="username" [(ngModel)]="demographic.username">
@@ -86,7 +91,7 @@
       <ion-button type="submit" fill="clear" color="secondary">
         Create demographics
       </ion-button>
-      <ion-button (click)="closeForm()">Cancel</ion-button>
+      <ion-button (click)="closeForm()" fill="clear" color="secondary">Cancel</ion-button>
     </form>
   </div>
 

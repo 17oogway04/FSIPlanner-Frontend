@@ -1,0 +1,34 @@
+h1 {
+    padding: 10px;
+    text-decoration: underline;
+}
+
+#inputForm {
+    position: fixed;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 500px;
+    height: auto;
+    padding: 10px;
+    background: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+input{
+    padding: 10px;
+    margin: 5px;
+}
+
+#home {
+    --color: white;
+}
+
+#headerTool {
+    --background: #023e8a;
+    --min-height: 80px;
+    --padding-top: 8px;
+    --padding-bottom: 8px;
+}

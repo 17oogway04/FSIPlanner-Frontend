@@ -1,17 +1,66 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>FSI-profile</ion-title>
-    <ion-button routerLink="/search-users" fill="clear" color="secondary" slot="end">Back to search</ion-button>
-
+  <ion-toolbar id="headerTool">
+    <ion-title>FSI Client Profile</ion-title>
+    <ion-button [routerLink]="['/client-demographics', presentUser.userName]" fill="clear" slot="end">More about {{presentUser.firstName}}</ion-button>
+    <ion-button routerLink="/search-users" fill="clear" slot="end">Back to search</ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">FSI-profile</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <h1>{{presentUser.firstName}} {{presentUser.lastName}}</h1>
-  <ion-button [routerLink]="['/demographics', presentUser.userName]">More about {{presentUser.firstName}}</ion-button>
+  <ion-grid>
+    <ion-row>
+      <ion-col sizeXl="2" sizeLg="3" sizeMd="4" sizeSm="5" sizeXs="12">
+        <div id="pic">
+          <img src="../../../assets/img/profileSymbol.png" id="profilePic">
+        </div>
+        
+        <!-- <div class="avatar-container">
+          <div class="image-container" 
+          [ngStyle]="{backgroundImage: 'url(' + file + ')'}">
+          </div>
+      
+          <label for="avatar-input-file">
+              <div class="icon-wrapper">
+                  <input type="file" id="avatar-input-file" accept="image/*" (change)="onFileChange($event)" [(ngModel)]="presentUser.profilePicture" name="profilePicture"/>
+                  <ion-icon name="create-outline"></ion-icon>
+              </div>
+          </label>
+      </div>  -->
+      </ion-col>
+      <ion-col sizeXl="10" sizeLg="9" sizeMd="8" sizeSm="7" sizeXs="12">
+        <!--current user information-->
+        <div id="info">
+          <h1 id="header">{{presentUser.firstName}} {{presentUser.lastName}}</h1>      
+         </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-toolbar style="padding-top: 20px;">
+    <ion-segment>
+      <ion-segment-button>
+        <ion-label>Balance</ion-label>
+      </ion-segment-button>
+      <ion-segment-button>
+        <ion-label>Buckets</ion-label>
+      </ion-segment-button>
+      <ion-segment-button>
+        <ion-label> Assets</ion-label>
+      </ion-segment-button>
+      <ion-segment-button>
+        <ion-label> Liabilities</ion-label>
+      </ion-segment-button>
+      <ion-segment-button>
+        <ion-label> Life</ion-label>
+      </ion-segment-button>
+      <ion-segment-button>
+        <ion-label> P&C</ion-label>
+      </ion-segment-button>
+      <ion-segment-button>
+        <ion-label> Disability Ins</ion-label>
+      </ion-segment-button>
+      <ion-segment-button>
+        <ion-label> Notes</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
 </ion-content>

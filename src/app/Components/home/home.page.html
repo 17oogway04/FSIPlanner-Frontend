@@ -5,6 +5,8 @@
       More about {{presentUser.firstName}}
     </ion-button> 
     <ion-button *ngIf="presentUser.userName == 'isaacm@mutualmail.com'" fill="clear" slot="end" routerLink="/signup">Create new account</ion-button> 
+    <ion-button *ngIf="presentUser.userName == 'isaacm@mutualmail.com'" fill="clear" slot="end" routerLink="/search-users">Search users</ion-button> 
+
     <ion-button *ngIf="!isAuthenticated" [routerLink]="['/login']" fill="clear" slot="end">
       Log in 
     </ion-button>

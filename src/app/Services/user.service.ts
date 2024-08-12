@@ -58,8 +58,22 @@ export class UserService {
     return this.http.get<User[]>(this.baseUrl, {headers: reqHeaders});
   }
   
+  getUserByName(name: string): Observable<User>{
+    let reqHeaders = 
+    {
+      Authorization: `Bearer ${localStorage.getItem(this.tokenKey)}`
+    }
+    return this.http.get<User>(`${this.baseUrl}/${name}`, {headers: reqHeaders}
+    );
+  }
+
   getUserByUsername(username: string): Observable<User>{
-    return this.http.get<User>(`${this.baseUrl}/${username}`);
+    let reqHeaders = 
+    {
+      Authorization: `Bearer ${localStorage.getItem(this.tokenKey)}`
+    }
+    return this.http.get<User>(`${this.baseUrl}/${username}`, {headers: reqHeaders}
+    );
   }
 
   logout(){

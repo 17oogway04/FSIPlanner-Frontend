@@ -27,6 +27,10 @@ const routes: Routes = [
     path: 'edit-demographics/:id',
     loadChildren: () => import('./Components/edit-demographics/edit-demographics.module').then( m => m.EditDemographicsPageModule)
   },
+  {
+    path: 'search-users',
+    loadChildren: () => import('./Components/search-users/search-users.module').then( m => m.SearchUsersPageModule)
+  },
 ];
 
 @NgModule({

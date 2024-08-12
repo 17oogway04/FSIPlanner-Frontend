@@ -12,6 +12,7 @@ import { UserService } from 'src/app/Services/user.service';
 })
 export class DemographicsPage implements OnInit {
 
+  isVisible: boolean = false;
   id:number = 0;
   isFormVisible = false;
   none = false;
@@ -79,6 +80,10 @@ export class DemographicsPage implements OnInit {
 
     }
   )
+  }
+
+  showElement(): void {
+    this.isVisible = !this.isVisible;
   }
 
   loadUserDemographics(){

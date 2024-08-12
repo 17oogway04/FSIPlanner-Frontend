@@ -36,11 +36,11 @@ const routes: Routes = [
     loadChildren: () => import('./Components/fsi-clients/fsi-profile/fsi-profile.module').then( m => m.FSIProfilePageModule)
   },
   {
-    path: 'client-demographics',
+    path: 'client-demographics/:username',
     loadChildren: () => import('./Components/fsi-clients/client-demographics/client-demographics.module').then( m => m.ClientDemographicsPageModule)
   },
   {
-    path: 'client-edit-demo',
+    path: 'client-edit-demo/:id',
     loadChildren: () => import('./Components/fsi-clients/client-edit-demo/client-edit-demo.module').then( m => m.ClientEditDemoPageModule)
   },
 ];

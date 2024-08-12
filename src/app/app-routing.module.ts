@@ -13,27 +13,35 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: () => import('./Components/login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () => import('./Components/User/login/login.module').then( m => m.LoginPageModule)
   },
   {
     path: 'signup',
-    loadChildren: () => import('./Components/signup/signup.module').then( m => m.SignupPageModule)
+    loadChildren: () => import('./Components/User/signup/signup.module').then( m => m.SignupPageModule)
   },
   {
     path: 'demographics/:username',
-    loadChildren: () => import('./Components/demographics/demographics.module').then( m => m.DemographicsPageModule)
+    loadChildren: () => import('./Components/User/demographics/demographics.module').then( m => m.DemographicsPageModule)
   },
   {
     path: 'edit-demographics/:id',
-    loadChildren: () => import('./Components/edit-demographics/edit-demographics.module').then( m => m.EditDemographicsPageModule)
+    loadChildren: () => import('./Components/User/edit-demographics/edit-demographics.module').then( m => m.EditDemographicsPageModule)
   },
   {
     path: 'search-users',
-    loadChildren: () => import('./Components/search-users/search-users.module').then( m => m.SearchUsersPageModule)
+    loadChildren: () => import('./Components/User/search-users/search-users.module').then( m => m.SearchUsersPageModule)
   },
   {
     path: 'fsi-profile/:username',
-    loadChildren: () => import('./Components/fsi-profile/fsi-profile.module').then( m => m.FSIProfilePageModule)
+    loadChildren: () => import('./Components/fsi-clients/fsi-profile/fsi-profile.module').then( m => m.FSIProfilePageModule)
+  },
+  {
+    path: 'client-demographics',
+    loadChildren: () => import('./Components/fsi-clients/client-demographics/client-demographics.module').then( m => m.ClientDemographicsPageModule)
+  },
+  {
+    path: 'client-edit-demo',
+    loadChildren: () => import('./Components/fsi-clients/client-edit-demo/client-edit-demo.module').then( m => m.ClientEditDemoPageModule)
   },
 ];
 

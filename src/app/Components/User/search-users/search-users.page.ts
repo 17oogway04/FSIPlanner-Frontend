@@ -30,12 +30,12 @@ export class SearchUsersPage implements OnInit {
   }
 
   async searchUserByName(username: string){
-    this.myUserService.getUserByName(username).subscribe((response => {
-      this.users.firstName = response.firstName;
-      this.users.lastName = response.lastName;
-      this.users.userName = response.userName;
-      this.user.push(response);
-    }))
+    this.myUserService.getUserByName(username).subscribe(response => {
+      // this.users.firstName = response.firstName;
+      // this.users.lastName = response.lastName;
+      // this.users.userName = response.userName;
+      this.user = response;
+    })
   }
 
 }

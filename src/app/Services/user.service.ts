@@ -58,12 +58,12 @@ export class UserService {
     return this.http.get<User[]>(this.baseUrl, {headers: reqHeaders});
   }
   
-  getUserByName(name: string): Observable<User>{
+  getUserByName(name: string): Observable<User[]>{
     let reqHeaders = 
     {
       Authorization: `Bearer ${localStorage.getItem(this.tokenKey)}`
     }
-    return this.http.get<User>(`${this.baseUrl}/${name}`, {headers: reqHeaders}
+    return this.http.get<User[]>(`${this.baseUrl}/${name}`, {headers: reqHeaders}
     );
   }
 

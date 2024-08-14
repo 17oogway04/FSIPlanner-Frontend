@@ -9,6 +9,9 @@
       <ion-card-content>
         {{n.description}}
       </ion-card-content>
+      <ion-button  fill="clear" color="secondary" [routerLink]="['/edit-note', n.notesId]">
+        Edit note
+      </ion-button>
       <ion-button (click)="deleteNote(n.notesId!)" fill="clear" color="danger">
         Delete note
       </ion-button>

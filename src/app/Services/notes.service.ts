@@ -63,7 +63,7 @@ export class NotesService {
     {
       Authorization: `Bearer ${localStorage.getItem(this.tokenKey)}`
     }
-    return this.http.put<Notes>(`${this.baseUrl}/${id}`, newNote, {headers: reqHeaders})
+    return this.http.put<Notes>(`${this.baseUrl}/edit-note${id}`, newNote, {headers: reqHeaders})
   }
 
   DeleteNote(notesId: number): Observable<any>{

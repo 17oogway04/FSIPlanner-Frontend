@@ -14,9 +14,6 @@
       Log out 
     </ion-button>
   </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
   <ion-grid>
     <ion-row>
       <ion-col sizeXl="2" sizeLg="3" sizeMd="4" sizeSm="5" sizeXs="12">
@@ -68,10 +65,13 @@
       <ion-segment-button>
         <ion-label> Disability Ins</ion-label>
       </ion-segment-button>
-      <ion-segment-button>
+      <ion-segment-button routerLink="/home/notes/{{presentUser.userName}}">
         <ion-label> Notes</ion-label>
       </ion-segment-button>
     </ion-segment>
   </ion-toolbar>
-  <ion-router-outlet></ion-router-outlet>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <router-outlet></router-outlet>
 </ion-content>

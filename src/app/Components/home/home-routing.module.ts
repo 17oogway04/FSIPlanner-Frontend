@@ -6,6 +6,12 @@ const routes: Routes = [
   {
     path: '',
     component: HomePage,
+    children: [
+      {
+        path: 'notes/:username',
+        loadChildren: () => import('../User/notes/notes.module').then(m => m.NotesPageModule)
+      }
+    ]
   }
 ];
 

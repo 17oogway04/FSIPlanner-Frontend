@@ -1,13 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { Notes } from '../Models/notes';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NotesService {
-  baseUrl: string = "http://localhost:5247/api/Demographics";
+  baseUrl: string = "http://localhost:5247/api/Notes";
   tokenKey: string = "myFSIToken";
 
   constructor(private http: HttpClient) { }
@@ -25,7 +25,12 @@ export class NotesService {
     {
       Authorization: `Bearer ${localStorage.getItem(this.tokenKey)}`
     }
-    return this.http.get<Notes[]>(`${this.baseUrl}/by-username/${username}`, {headers: reqHeaders})
+    return this.http.get<Notes[]>(`${this.baseUrl}/by-username/${username}`, {headers: reqHeaders}).pipe(
+      map(notes => notes.map(note => ({
+        ...note,
+        createdAt: new Date(note.createdAt!)
+      })))
+    )
   }
 
   GetNotesByUserId(userId: string): Observable<Notes[]>{
@@ -49,6 +54,7 @@ export class NotesService {
     {
       Authorization: `Bearer ${localStorage.getItem(this.tokenKey)}`
     }
+    newNote.createdAt?.toISOString();
     return this.http.post<Notes>(this.baseUrl, newNote, {headers: reqHeaders})
   }
 

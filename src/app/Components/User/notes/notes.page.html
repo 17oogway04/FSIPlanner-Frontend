@@ -9,6 +9,9 @@
       <ion-card-content>
         {{n.description}}
       </ion-card-content>
+      <ion-button (click)="deleteNote(n.notesId!)" fill="clear" color="danger">
+        Delete note
+      </ion-button>
     </ion-card>
   </div>
 

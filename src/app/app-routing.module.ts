@@ -47,10 +47,14 @@ const routes: Routes = [
     path: 'edit-note/:id',
     loadChildren: () => import('./Components/User/edit-note/edit-note.module').then( m => m.EditNotePageModule)
   },
-  // {
-  //   path: 'notes',
-  //   loadChildren: () => import('./Components/User/notes/notes.module').then( m => m.NotesPageModule)
-  // },
+  {
+    path: 'client-notes/:username',
+    loadChildren: () => import('./Components/fsi-clients/client-notes/client-notes.module').then(m => m.ClientNotesPageModule)
+  },
+  {
+    path: 'client-edit-note/:id',
+    loadChildren: () => import('./Components/fsi-clients/client-edit-note/client-edit-note.module').then( m => m.ClientEditNotePageModule)
+  }
 ];
 
 @NgModule({

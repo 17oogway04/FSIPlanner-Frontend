@@ -10,14 +10,23 @@ import { UserService } from 'src/app/Services/user.service';
 })
 export class FSIProfilePage implements OnInit {
 
-  presentUser: User = new User("0", "", "", "", "", "");
+  id: number = 0;
+  presentUser: User = new User(0, "","", this.actRouter.snapshot.paramMap.get("username") ??'', "", "");
   userName: string = "";
 
   constructor(private myUserService: UserService, private actRouter: ActivatedRoute) { }
 
   ngOnInit() {
     const name = this.actRouter.snapshot.paramMap.get("username") ?? '';
-    console.log(name);
+    // const routeId = this.actRouter.snapshot.paramMap.get("id") ?? '';
+    // this.id = parseInt(routeId);
+    // if(this.id !== null){
+    //   this.myUserService.getUserByUserId(this.id).subscribe(response => {
+    //     this.presentUser = response;
+    //   }, error => {
+    //     console.log("Error: ", error);
+    //   })
+    // }
     if (name !== '') {
       this.myUserService.getUserByUsername(name).subscribe(response => {
         console.log('User fetched:', response);

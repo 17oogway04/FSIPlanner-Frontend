@@ -48,7 +48,7 @@ export class ClientEditDemoPage implements OnInit {
   onSubmit(){
     this.myDemoService.UpdateDemographic(parseInt(this.id), this.currentDemographics).subscribe(() => {
       window.alert("Demographics updated successfully")
-      this.router.navigate(['/demographics', this.currentDemographics.username])
+      this.router.navigate(['/client-demographics', this.currentDemographics.username])
     }, error => {
       console.log("Error: ", error)
       if(error.status == 401){

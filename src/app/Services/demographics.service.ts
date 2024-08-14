@@ -29,12 +29,12 @@ export class DemographicsService {
     return this.http.get<Demographics[]>(`${this.baseUrl}/by-username/${username}`, {headers: reqHeaders})
   }
 
-  GetDemographicsByUserId(userId: string): Observable<Demographics[]>{
+  GetDemographicsByUserId(userId: number): Observable<Demographics[]>{
     let reqHeaders = 
     {
       Authorization: `Bearer ${localStorage.getItem(this.tokenKey)}`
     }
-    return this.http.get<Demographics[]>(`${this.baseUrl}/${userId}`, {headers: reqHeaders})
+    return this.http.get<Demographics[]>(`${this.baseUrl}/by-userId${userId}`, {headers: reqHeaders})
   }
 
   GetDemographicsById(demographicsId: number): Observable<Demographics>{

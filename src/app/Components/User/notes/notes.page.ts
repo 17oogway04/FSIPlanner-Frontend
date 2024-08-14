@@ -74,18 +74,12 @@ export class NotesPage implements OnInit {
   closeForm(){
     this.isFormVisible = false;
   }
-  cancel() {
-    this.isEditVisible = false;
-  }
-
-  confirm() {
-    this.isEditVisible = false;
-    this.notesService.UpdateNote(this.id!, this.newNote).subscribe(()=>{
-      window.alert("Note updated successfully");
-      window.location.reload();
-    }, error => {
-      console.log("Error: ", error);
+  
+  deleteNote(id: number){
+    this.notesService.DeleteNote(id).subscribe(() => {
+      window.alert("Note has been deleted");
+      this.loadUserNotes()
     })
-    }
+  }
   }
 

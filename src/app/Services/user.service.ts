@@ -76,6 +76,14 @@ export class UserService {
     );
   }
 
+  getUserByUserId(id: number): Observable<User>{
+    let reqHeaders = 
+    {
+      Authorization: `Bearer ${localStorage.getItem(this.tokenKey)}`
+    }
+    return this.http.get<User>(`${this.baseUrl}/by-userId/${id}?userId=${id}`, {headers: reqHeaders})
+  }
+
   logout(){
     this.isLoggedInSubj.next(false);
     localStorage.removeItem('myFSIToken')

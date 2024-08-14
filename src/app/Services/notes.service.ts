@@ -33,7 +33,7 @@ export class NotesService {
     )
   }
 
-  GetNotesByUserId(userId: string): Observable<Notes[]>{
+  GetNotesByUserId(userId: number): Observable<Notes[]>{
     let reqHeaders =
     {
       Authorization: `Bearer ${localStorage.getItem(this.tokenKey)}`

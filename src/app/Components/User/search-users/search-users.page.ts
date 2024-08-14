@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/Models/user';
 import { UserService } from 'src/app/Services/user.service';
 
@@ -9,8 +10,9 @@ import { UserService } from 'src/app/Services/user.service';
 })
 export class SearchUsersPage implements OnInit {
   searchStr!: string;
+  id: string = "0";
   users: User = {
-    userId: "0",
+    userId: 0,
     firstName: '',
     lastName: '',
     userName: '',
@@ -19,7 +21,7 @@ export class SearchUsersPage implements OnInit {
   }
 
   user: User[] = [];
-  constructor(private myUserService: UserService) { }
+  constructor(private myUserService: UserService, private actRouter: ActivatedRoute) { }
 
   ngOnInit() {
  

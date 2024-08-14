@@ -1,16 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { FSIProfilePage } from './fsi-profile.page';
+import { ClientNotesPage } from './client-notes.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: FSIProfilePage,
-  },
-  {
-    path: 'fsi-profile',
-    component: FSIProfilePage
+    component: ClientNotesPage
   }
 ];
 
@@ -18,4 +14,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class FSIProfilePageRoutingModule { }
+export class ClientNotesPageRoutingModule {}

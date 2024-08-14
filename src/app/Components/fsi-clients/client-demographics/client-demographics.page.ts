@@ -12,7 +12,7 @@ export class ClientDemographicsPage implements OnInit {
   userName: string = '';
   isVisible: boolean = false;
   isFormVisible = false;
-
+  id: string = "0"
   userDemographics: Demographics[] = [];
   demographic: Demographics = {
     demographicsId: 0,
@@ -41,10 +41,10 @@ export class ClientDemographicsPage implements OnInit {
   constructor(private demoService: DemographicsService, private actRouter: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    const name = this.actRouter.snapshot.paramMap.get("username") ?? '';
-    if (name !== '') {
+    const name = this.actRouter.snapshot.paramMap.get("username") ??'';
+    if(name !== '')
+    {
       this.userName = name;
-
     }
     this.loadUserDemographics()
   }

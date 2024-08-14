@@ -9,7 +9,7 @@
   <ion-searchbar show-clear-button="focus" value="Search Clients" style="margin: 10px; width: auto;" [(ngModel)]="searchStr" (search)="searchUser()"></ion-searchbar>
   <ion-list lines="full">
     <ion-item *ngFor="let u of user">
-      <ion-button routerLink="/fsi-profile/{{u.userName}}" fill="clear" color="secondary" size="large">{{u.firstName}} {{u.lastName}}</ion-button>
+      <ion-button [routerLink]="['/fsi-profile', u.userName]" fill="clear" color="secondary" size="large">{{u.firstName}} {{u.lastName}}</ion-button>
     </ion-item>
   </ion-list>
 </ion-content>

@@ -12,14 +12,7 @@ import { OverlayEventDetail } from '@ionic/core/components';
 @Component({
   selector: 'app-notes',
   templateUrl: './notes.page.html',
-  styleUrls: ['./notes.page.scss'],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => NotesPage),
-      multi: true
-    }
-  ]
+  styleUrls: ['./notes.page.scss']
 })
 export class NotesPage implements OnInit {
   @ViewChild(IonModal) modal?: IonModal;

@@ -4,9 +4,6 @@
     <ion-button [routerLink]="['/client-demographics', presentUser.userName]" fill="clear" slot="end">More about {{presentUser.firstName}}</ion-button>
     <ion-button routerLink="/search-users" fill="clear" slot="end">Back to search</ion-button>
   </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
   <ion-grid>
     <ion-row>
       <ion-col sizeXl="2" sizeLg="3" sizeMd="4" sizeSm="5" sizeXs="12">
@@ -58,9 +55,18 @@
       <ion-segment-button>
         <ion-label> Disability Ins</ion-label>
       </ion-segment-button>
-      <ion-segment-button>
+      <!-- <ion-segment-button [routerLink]="['client-notes', presentUser.userId]">
+        <ion-label> Notes</ion-label>
+      </ion-segment-button> -->
+      <ion-segment-button [routerLink]="['/client-notes', presentUser.userName]">
         <ion-label> Notes</ion-label>
       </ion-segment-button>
     </ion-segment>
   </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div style="text-align: center;">
+    <img src="../../../../assets/img/FSILogo.jpg" style="width: 840px;">
+  </div>
 </ion-content>

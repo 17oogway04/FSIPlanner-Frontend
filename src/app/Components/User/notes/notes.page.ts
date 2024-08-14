@@ -1,0 +1,91 @@
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit, ViewChild, forwardRef } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, NgModel } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { IonModal } from '@ionic/angular';
+import { Notes } from 'src/app/Models/notes';
+import { User } from 'src/app/Models/user';
+import { NotesService } from 'src/app/Services/notes.service';
+import { UserService } from 'src/app/Services/user.service';
+import { OverlayEventDetail } from '@ionic/core/components';
+
+@Component({
+  selector: 'app-notes',
+  templateUrl: './notes.page.html',
+  styleUrls: ['./notes.page.scss'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => NotesPage),
+      multi: true
+    }
+  ]
+})
+export class NotesPage implements OnInit {
+  @ViewChild(IonModal) modal?: IonModal;
+  
+  username: string = "";
+  name?: string;
+  isFormVisible = false;
+  isEditVisible = false;
+  none = false;
+  input = false;
+  newNote: Notes = new Notes(0,"", this.actRouter.snapshot.paramMap.get("username") ?? '', "", new Date())
+  userNotes: Notes[] = [];
+  id?: number = this.newNote.notesId;
+
+  constructor(private notesService: NotesService, private actRouter: ActivatedRoute, private http: HttpClient) { }
+
+  ngOnInit() {
+    const name = this.actRouter.snapshot.paramMap.get("username") ?? '';
+    if(name !== ''){
+      this.username = name;
+    }
+    this.loadUserNotes()
+  }
+
+  loadUserNotes(){
+    this.notesService.GetNotesByUsername(this.username).subscribe(response => {
+      let sortedArray = response.reverse();
+      this.userNotes = sortedArray;
+      if(response !==null){
+        this.input = true
+        this.none = true;
+      }
+    })
+  }
+
+  createNote(): void{
+    if (!this.newNote.createdAt) {
+      this.newNote.createdAt = new Date();
+    }
+    this.notesService.CreateNote(this.newNote).subscribe(() => {
+
+    }, error => {
+      console.log("Error: ", error)
+    })
+    window.location.reload();
+  }
+
+  openForm(){
+    this.isFormVisible = true;
+  }
+
+  closeForm(){
+    this.isFormVisible = false;
+  }
+  cancel() {
+    this.isEditVisible = false;
+  }
+
+  confirm() {
+    this.isEditVisible = false;
+    this.notesService.UpdateNote(this.id!, this.newNote).subscribe(()=>{
+      window.alert("Note updated successfully");
+      window.location.reload();
+    }, error => {
+      console.log("Error: ", error);
+    })
+    }
+  }
+

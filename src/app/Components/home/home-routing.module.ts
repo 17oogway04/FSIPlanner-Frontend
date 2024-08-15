@@ -10,6 +10,10 @@ const routes: Routes = [
       {
         path: 'notes/:username',
         loadChildren: () => import('../User/notes/notes.module').then(m => m.NotesPageModule)
+      },
+      {
+        path: 'pc/:username',
+        loadChildren: () => import('../User/pc/pc.module').then(m => m.PcPageModule)
       }
     ]
   }

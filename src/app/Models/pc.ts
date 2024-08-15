@@ -1,5 +1,5 @@
 export class PC {
-    pcId?: string;
+    pcId?: number;
     companyName?: string;
     policyType?: string;
     premium?: string;
@@ -8,7 +8,7 @@ export class PC {
     liabilityLimit?: string;
     username?: string;
 
-    constructor(pcId: string, companyName: string, policyType: string, premium: string, expirationDate: string, deductible: string, liabilityLimit: string, username: string){
+    constructor(pcId: number, companyName: string, policyType: string, premium: string, expirationDate: string, deductible: string, liabilityLimit: string, username: string){
         this.pcId = pcId;
         this.companyName = companyName;
         this.policyType = policyType;

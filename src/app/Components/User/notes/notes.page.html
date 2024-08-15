@@ -1,6 +1,10 @@
 <ion-content [fullscreen]="true">
-  <div *ngFor="let n of userNotes">
-    <ion-card>
+    <ion-toolbar>
+      <ion-button (click)="openForm()" fill="clear" color="secondary" slot="end">Add a note</ion-button>
+
+    </ion-toolbar>
+  <div *ngFor="let n of userNotes" style="display: inline-flex;">
+    <ion-card style="width:500px">
       <ion-card-header>
         <ion-card-title>{{n.subject}}</ion-card-title>
         <ion-card-subtitle>{{n.createdAt | date: 'MM/dd/yyyy h:mm a' : 'America/Chicago'}}</ion-card-subtitle>
@@ -19,7 +23,6 @@
   </div>
 
   <!--Adding notes-->
-  <ion-button (click)="openForm()" fill="clear" color="secondary">Add a note</ion-button>
   <div *ngIf="isFormVisible" id="inputForm">
     <form #form="ngForm" (ngSubmit)="createNote()">
       <input type="text" value="Subject" name="subject" [(ngModel)]="newNote.subject">

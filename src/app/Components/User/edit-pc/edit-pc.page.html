@@ -1,0 +1,27 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Edit insurance policy</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form #form="ngForm" (ngSubmit)="onSubmit()">
+    <label>Company name: {{currentPC.companyName}}</label><br>
+    <input type="text" name="companyName" [(ngModel)]="currentPC.companyName"><br><br>
+    <label>Policy type: {{currentPC.policyType}}</label><br>
+    <input type="text" name="policyType" [(ngModel)]="currentPC.policyType"><br>
+    <label>Premium: {{currentPC.premium}}</label><br>
+    <input type="text" name="premium" [(ngModel)]="currentPC.premium"><br>
+    <label>Deductible: {{currentPC.deductible}}</label><br>
+    <input type="text" name="deductible" [(ngModel)]="currentPC.deductible"><br>
+    <label>Expiration date: {{currentPC.expirationDate}}</label><br>
+    <input type="text" name="expirationDate" [(ngModel)]="currentPC.expirationDate"><br>
+    <label>Liability limit: {{currentPC.liabilityLimit}}</label><br>
+    <input type="text" name="liabilityLimit" [(ngModel)]="currentPC.liabilityLimit"><br>
+
+
+    <ion-button type="submit" fill="clear" color="secondary">Edit</ion-button>
+    <ion-button routerLink="/home/pc/{{currentPC.username}}" fill="clear"
+      color="secondary">Cancel</ion-button>
+  </form>
+</ion-content>

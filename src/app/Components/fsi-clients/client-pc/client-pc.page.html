@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button slot="end" fill="clear" color="secondary" (click)="openForm()">Add Insurance</ion-button>
+    <ion-button [routerLink]="['/fsi-profile', username]" fill="clear" color="secondary" slot="start">Home</ion-button>
+
+   </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div *ngIf="isFormVisible" id="inputForm">
+    <form #form="ngForm" (ngSubmit)="createPC()">
+      <label>Company name</label><br>
+      <input type="text" value="Company name" name="companyName" [(ngModel)]="newPC.companyName"><br>
+      <label>Policy Type</label><br>
+      <input type="text" value="Policy Type" name="policyType" [(ngModel)]="newPC.policyType"><br>
+      <label>Premium</label><br>
+      <input type="text" value="Premium" name="premium" [(ngModel)]="newPC.premium"><br>
+      <label>Expiration Date</label><br>
+      <input type="text" value="Expiration Date" name="expirationDate" [(ngModel)]="newPC.expirationDate"><br>
+      <label>Deductible</label><br>
+      <input type="text" value="Deductible" name="deductible" [(ngModel)]="newPC.deductible"><br>
+      <label>Liability Limit</label><br>
+      <input type="text" value="Deductible" name="deductible" [(ngModel)]="newPC.liabilityLimit"><br>
+
+      <input hidden="true" type="text" name="username" [(ngModel)]="newPC.username">
+      <input hidden="true" type="text" name="notesId" [(ngModel)]="newPC.pcId">
+
+      <ion-button type="submit" fill="clear" color="secondary">
+        Input insurance
+      </ion-button>
+      <ion-button (click)="closeForm()" fill="clear" color="secondary">Cancel</ion-button>
+    </form>
+  </div>
+   <div *ngFor="let p of userPC" style="display: inline-flex;">
+     <ion-card style="width: 500px;">
+       <ion-card-header>
+         <ion-card-title>{{p.companyName}}</ion-card-title>
+         <ion-card-subtitle>{{p.policyType}}</ion-card-subtitle>
+       </ion-card-header>
+     
+       <ion-card-content>
+         <ion-list>
+           <ion-item>Premium: {{p.premium}}</ion-item>
+           <ion-item>Deductible: {{p.deductible}}</ion-item>
+           <ion-item>Liability Limit: {{p.liabilityLimit}}</ion-item>
+           <ion-item>Expiration date: {{p.expirationDate}}</ion-item>
+         </ion-list>
+         <ion-buttons>
+          <ion-button  fill="clear" color="secondary" [routerLink]="['/client-edit-pc', p.pcId]">
+            Edit insurance policy
+          </ion-button>
+          <ion-button (click)="deletePC(p.pcId!)" fill="clear" color="danger">
+            Delete insurance policy
+          </ion-button>
+         </ion-buttons>
+       </ion-card-content>
+     </ion-card>
+   </div>
+ </ion-content>
+ 

@@ -1,16 +1,15 @@
-
 <ion-content [fullscreen]="true">
- <ion-toolbar>
-  <ion-button slot="end" fill="clear" color="secondary" (click)="openForm()">Add Insurance</ion-button>
- </ion-toolbar>
-  
+  <ion-toolbar>
+    <ion-button slot="end" fill="clear" color="secondary" (click)="openForm()">Add Insurance</ion-button>
+  </ion-toolbar>
+
   <div *ngFor="let p of userPC" style="display: inline-flex;">
     <ion-card style="width: 500px;">
       <ion-card-header>
         <ion-card-title>{{p.companyName}}</ion-card-title>
         <ion-card-subtitle>{{p.policyType}}</ion-card-subtitle>
       </ion-card-header>
-    
+
       <ion-card-content>
         <ion-list>
           <ion-item>Premium: {{p.premium}}</ion-item>
@@ -18,7 +17,7 @@
           <ion-item>Liability Limit: {{p.liabilityLimit}}</ion-item>
           <ion-item>Expiration date: {{p.expirationDate}}</ion-item>
         </ion-list>
-        <ion-button  fill="clear" color="secondary" [routerLink]="['/edit-pc', p.pcId]">
+        <ion-button fill="clear" color="secondary" [routerLink]="['/edit-pc', p.pcId]">
           Edit insurance
         </ion-button>
         <ion-button (click)="deletePC(p.pcId!)" fill="clear" color="danger">
@@ -30,18 +29,40 @@
 
   <div *ngIf="isFormVisible" id="inputForm">
     <form #form="ngForm" (ngSubmit)="createPC()">
-      <label>Company name</label>
-      <input type="text" value="Company name" name="companyName" [(ngModel)]="newPC.companyName">
-      <label>Policy Type</label>
-      <input type="text" value="Policy Type" name="policyType" [(ngModel)]="newPC.policyType">
-      <label>Premium</label>
-      <input type="text" value="Premium" name="premium" [(ngModel)]="newPC.premium">
-      <label>Expiration Date</label>
-      <input type="text" value="Expiration Date" name="expirationDate" [(ngModel)]="newPC.expirationDate">
-      <label>Deductible</label>
-      <input type="text" value="Deductible" name="deductible" [(ngModel)]="newPC.deductible">
-      <label>Liability Limit</label>
-      <input type="text" value="Deductible" name="deductible" [(ngModel)]="newPC.liabilityLimit">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="4">
+            <label>Company name</label><br>
+            <input type="text" value="Company name" name="companyName" [(ngModel)]="newPC.companyName"><br>
+            <label>Policy Type</label><br>
+            <input type="text" value="Policy Type" name="policyType" [(ngModel)]="newPC.policyType"><br>
+          </ion-col>
+          <ion-col size="4">
+            <label>Premium</label><br>
+            <input type="text" value="Premium" name="premium" [(ngModel)]="newPC.premium"><br>
+            <label>Deductible</label><br>
+            <input type="text" value="Deductible" name="deductible" [(ngModel)]="newPC.deductible"><br>
+          </ion-col>
+          <ion-col size="4">
+            <label>Liability Limit</label><br>
+            <input type="text" value="Deductible" name="deductible" [(ngModel)]="newPC.liabilityLimit"><br>
+            <label>Expiration Date</label><br>
+            <input type="text" value="Expiration Date" name="expirationDate" [(ngModel)]="newPC.expirationDate"><br>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <!-- <label>Company name</label><br>
+      <input type="text" value="Company name" name="companyName" [(ngModel)]="newPC.companyName"><br>
+      <label>Policy Type</label><br>
+      <input type="text" value="Policy Type" name="policyType" [(ngModel)]="newPC.policyType"><br>
+      <label>Premium</label><br>
+      <input type="text" value="Premium" name="premium" [(ngModel)]="newPC.premium"><br>
+      <label>Expiration Date</label><br>
+      <input type="text" value="Expiration Date" name="expirationDate" [(ngModel)]="newPC.expirationDate"><br>
+      <label>Deductible</label><br>
+      <input type="text" value="Deductible" name="deductible" [(ngModel)]="newPC.deductible"><br>
+      <label>Liability Limit</label><br>
+      <input type="text" value="Deductible" name="deductible" [(ngModel)]="newPC.liabilityLimit"><br> -->
 
       <input hidden="true" type="text" name="username" [(ngModel)]="newPC.username">
       <input hidden="true" type="text" name="notesId" [(ngModel)]="newPC.pcId">

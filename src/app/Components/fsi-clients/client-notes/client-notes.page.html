@@ -27,8 +27,10 @@
   <ion-button (click)="openForm()" fill="clear" color="secondary">Add a note</ion-button>
   <div *ngIf="isFormVisible" id="inputForm">
     <form #form="ngForm" (ngSubmit)="createNote()">
-      <input type="text" value="Subject" name="subject" [(ngModel)]="newNote.subject">
-      <input type="text" value="Description" name="description" [(ngModel)]="newNote.description">
+      <label>Subject</label><br>
+      <input type="text" value="Subject" name="subject" [(ngModel)]="newNote.subject"><br>
+      <label>Description</label><br>
+      <input type="text" value="Description" name="description" [(ngModel)]="newNote.description"><br>
 
       <input hidden="true" type="text" name="username" [(ngModel)]="newNote.username">
       <input hidden="true" type="text" name="notesId" [(ngModel)]="newNote.notesId">

@@ -1,18 +1,20 @@
-// #inputForm {
-//     position: fixed;
-//     top: 100px;
-//     left: 50%;
-//     transform: translateX(-50%);
-//     width: 500px;
-//     height: auto;
-//     padding: 10px;
-//     background: white;
-//     border: 1px solid #ccc;
-//     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-//     z-index: 1000;
-// }
+#inputForm {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    height: auto;
+    padding: 10px;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 100 !important;
+}
 
-// input{
-//     padding: 10px;
-//     margin: 5px;
-// }
+input{
+    padding: 10px;
+    margin: 5px;
+    width: auto;
+}

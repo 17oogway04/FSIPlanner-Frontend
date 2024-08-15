@@ -54,6 +54,10 @@ const routes: Routes = [
   {
     path: 'client-edit-note/:id',
     loadChildren: () => import('./Components/fsi-clients/client-edit-note/client-edit-note.module').then( m => m.ClientEditNotePageModule)
+  },
+  {
+    path: 'edit-pc/:id',
+    loadChildren: () => import('./Components/User/edit-pc/edit-pc.module').then( m => m.EditPcPageModule)
   }
 ];
 

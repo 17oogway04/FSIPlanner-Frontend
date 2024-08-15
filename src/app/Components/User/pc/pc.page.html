@@ -1,0 +1,55 @@
+
+<ion-content [fullscreen]="true">
+ <ion-toolbar>
+  <ion-button slot="end" fill="clear" color="secondary" (click)="openForm()">Add Insurance</ion-button>
+ </ion-toolbar>
+  
+  <div *ngFor="let p of userPC" style="display: inline-flex;">
+    <ion-card style="width: 500px;">
+      <ion-card-header>
+        <ion-card-title>{{p.companyName}}</ion-card-title>
+        <ion-card-subtitle>{{p.policyType}}</ion-card-subtitle>
+      </ion-card-header>
+    
+      <ion-card-content>
+        <ion-list>
+          <ion-item>Premium: {{p.premium}}</ion-item>
+          <ion-item>Deductible: {{p.deductible}}</ion-item>
+          <ion-item>Liability Limit: {{p.liabilityLimit}}</ion-item>
+          <ion-item>Expiration date: {{p.expirationDate}}</ion-item>
+        </ion-list>
+        <ion-button  fill="clear" color="secondary" [routerLink]="['/edit-pc', p.pcId]">
+          Edit note
+        </ion-button>
+        <ion-button (click)="deletePC(p.pcId!)" fill="clear" color="danger">
+          Delete note
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <div *ngIf="isFormVisible" id="inputForm">
+    <form #form="ngForm" (ngSubmit)="createPC()">
+      <label>Company name</label>
+      <input type="text" value="Company name" name="companyName" [(ngModel)]="newPC.companyName">
+      <label>Policy Type</label>
+      <input type="text" value="Policy Type" name="policyType" [(ngModel)]="newPC.policyType">
+      <label>Premium</label>
+      <input type="text" value="Premium" name="premium" [(ngModel)]="newPC.premium">
+      <label>Expiration Date</label>
+      <input type="text" value="Expiration Date" name="expirationDate" [(ngModel)]="newPC.expirationDate">
+      <label>Deductible</label>
+      <input type="text" value="Deductible" name="deductible" [(ngModel)]="newPC.deductible">
+      <label>Liability Limit</label>
+      <input type="text" value="Deductible" name="deductible" [(ngModel)]="newPC.liabilityLimit">
+
+      <input hidden="true" type="text" name="username" [(ngModel)]="newPC.username">
+      <input hidden="true" type="text" name="notesId" [(ngModel)]="newPC.pcId">
+
+      <ion-button type="submit" fill="clear" color="secondary">
+        Input insurance
+      </ion-button>
+      <ion-button (click)="closeForm()" fill="clear" color="secondary">Cancel</ion-button>
+    </form>
+  </div>
+</ion-content>

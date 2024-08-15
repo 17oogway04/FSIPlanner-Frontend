@@ -59,7 +59,7 @@
       <ion-segment-button>
         <ion-label> Life</ion-label>
       </ion-segment-button>
-      <ion-segment-button>
+      <ion-segment-button routerLink="/home/pc/{{presentUser.userName}}">
         <ion-label> P&C</ion-label>
       </ion-segment-button>
       <ion-segment-button>
@@ -72,6 +72,6 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="false">
   <router-outlet></router-outlet>
 </ion-content>

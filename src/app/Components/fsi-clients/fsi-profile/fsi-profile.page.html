@@ -49,15 +49,12 @@
       <ion-segment-button>
         <ion-label> Life</ion-label>
       </ion-segment-button>
-      <ion-segment-button>
+      <ion-segment-button [routerLink]="['/client-pc', presentUser.userName]">
         <ion-label> P&C</ion-label>
       </ion-segment-button>
       <ion-segment-button>
         <ion-label> Disability Ins</ion-label>
       </ion-segment-button>
-      <!-- <ion-segment-button [routerLink]="['client-notes', presentUser.userId]">
-        <ion-label> Notes</ion-label>
-      </ion-segment-button> -->
       <ion-segment-button [routerLink]="['/client-notes', presentUser.userName]">
         <ion-label> Notes</ion-label>
       </ion-segment-button>

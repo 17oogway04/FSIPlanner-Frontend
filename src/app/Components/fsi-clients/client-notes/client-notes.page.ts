@@ -21,8 +21,6 @@ export class ClientNotesPage implements OnInit {
   constructor(private myNotesService: NotesService, private actRouter: ActivatedRoute, private http: HttpClient, private myUserService: UserService) { }
 
   ngOnInit() {
-    // const routeId = this.actRouter.snapshot.paramMap.get("id") ?? '';
-    // this.userId = routeId;
     const name = this.actRouter.snapshot.paramMap.get("username") ?? '';
     if(name !== ''){
       this.username = name;

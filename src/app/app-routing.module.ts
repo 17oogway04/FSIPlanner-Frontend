@@ -58,6 +58,14 @@ const routes: Routes = [
   {
     path: 'edit-pc/:id',
     loadChildren: () => import('./Components/User/edit-pc/edit-pc.module').then( m => m.EditPcPageModule)
+  },
+  {
+    path: 'client-pc/:username',
+    loadChildren: () => import('./Components/fsi-clients/client-pc/client-pc.module').then( m => m.ClientPcPageModule)
+  },
+  {
+    path: 'client-edit-pc/:id',
+    loadChildren: () => import('./Components/fsi-clients/client-edit-pc/client-edit-pc.module').then( m => m.ClientEditPcPageModule)
   }
 ];
 

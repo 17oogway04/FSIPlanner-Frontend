@@ -7,35 +7,41 @@
 <ion-content [fullscreen]="true">
   <ion-grid>
     <ion-row>
-      <ion-col size="6">
-        <form #form="ngForm" (ngSubmit)="onSubmit()">
-          <label>Custodian: {{currentAsset.custodian}}</label><br>
-          <input type="text" name="custodian" [(ngModel)]="currentAsset.custodian"><br><br>
-          <label>Account #: {{currentAsset.accountNumber}}</label><br>
-          <input type="text" name="accountNumber" [(ngModel)]="currentAsset.accountNumber"><br><br>
-          <label>Rate of Return: {{currentAsset.rateOfReturn}}</label><br>
-          <input type="text" name="rateOfReturn" [(ngModel)]="currentAsset.rateOfReturn"><br><br>
-          <label>Tax Structure: {{currentAsset.taxStructure}}</label><br>
-          <input type="text" name="taxStructure" [(ngModel)]="currentAsset.taxStructure"><br><br>
-          <label>Valuation Date: {{currentAsset.valuationDate}}</label><br>
-          <input type="text" name="valuationDate" [(ngModel)]="currentAsset.valuationDate"><br><br>
-          <label>Maturity Date: {{currentAsset.maturityDate}}</label><br>
-          <input type="text" name="maturityDate" [(ngModel)]="currentAsset.maturityDate"><br><br>
-          <label>Balance: {{currentAsset.balance}}</label><br>
-          <input type="text" name="balance" [(ngModel)]="currentAsset.balance"><br><br>
-          <label>Type: {{currentAsset.type}}</label><br>
-          <input type="text" name="type" [(ngModel)]="currentAsset.type"><br><br>
-          <label>Bucket: {{currentAsset.bucket}}</label><br>
-          <input type="text" name="bucket" [(ngModel)]="currentAsset.bucket"><br><br>
-
-
-
-          <ion-button type="submit" fill="clear" color="secondary">Edit</ion-button>
+      <ion-col size="4">
+        <form #form="ngForm" (ngSubmit)="onSubmit()" id="inputForm">
+          <ion-grid>
+            <ion-row>
+              <ion-col size="6">
+                <label><strong>Custodian: </strong>{{currentAsset.custodian}}</label><br>
+                <input type="text" name="custodian" [(ngModel)]="currentAsset.custodian"><br><br>
+                <label><strong>Account #: </strong>{{currentAsset.accountNumber}}</label><br>
+                <input type="text" name="accountNumber" [(ngModel)]="currentAsset.accountNumber"><br><br>
+                <label><strong>Rate of Return: </strong>{{currentAsset.rateOfReturn}}</label><br>
+                <input type="text" name="rateOfReturn" [(ngModel)]="currentAsset.rateOfReturn"><br><br>
+                <label><strong>Tax Structure: </strong>{{currentAsset.taxStructure}}</label><br>
+                <input type="text" name="taxStructure" [(ngModel)]="currentAsset.taxStructure"><br><br>
+              </ion-col>
+              <ion-col size="6">
+                <label><strong>Valuation Date: </strong>{{currentAsset.valuationDate}}</label><br>
+                <input type="text" name="valuationDate" [(ngModel)]="currentAsset.valuationDate"><br><br>
+                <label><strong>Maturity Date: </strong>{{currentAsset.maturityDate}}</label><br>
+                <input type="text" name="maturityDate" [(ngModel)]="currentAsset.maturityDate"><br><br>
+                <label><strong>Balance: </strong>{{currentAsset.balance}}</label><br>
+                <input type="text" name="balance" [(ngModel)]="currentAsset.balance"><br><br>
+                <label><strong>Type: </strong>{{currentAsset.type}}</label><br>
+                <input type="text" name="type" [(ngModel)]="currentAsset.type"><br><br>
+                <label><strong>Bucket: </strong>{{currentAsset.bucket}}</label><br>
+                <input type="text" name="bucket" [(ngModel)]="currentAsset.bucket"><br><br>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+          <ion-button type="submit" fill="clear" color="secondary" size="large">Edit</ion-button>
           <ion-button routerLink="/home/asset/{{currentAsset.username}}" fill="clear"
-            color="secondary">Cancel</ion-button>
+            color="secondary" size="large">Cancel</ion-button>
         </form>
       </ion-col>
-      <ion-col size="6">
+      <ion-col size="3">
+        <h1>Type</h1>
         <ul>
           <li> Type: 1 | Category: Residence</li>
           <li> Type: 2 | Category: Checking</li>
@@ -54,6 +60,15 @@
           <li> Type: 15 | Category: Other Unsecured</li>
           <li> Type: 16 | Category: Roth IRA</li>
           <li> Type: 17 | Category: H.S.A</li>
+        </ul>
+      </ion-col>
+      <ion-col size="5">
+        <h1>Buckets</h1>
+        <ul>
+          <li>1: Insured Growth</li>
+          <li>2: Insured Income</li>
+          <li>3: Short-Term Cash / "Rainy Days"</li>
+          <li>4: Speculative Growth & Income</li>
         </ul>
       </ion-col>
     </ion-row>

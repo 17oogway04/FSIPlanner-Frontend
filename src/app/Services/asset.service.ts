@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Asset } from '../Models/asset';
+import { Asset, Bucket } from '../Models/asset';
 
 @Injectable({
   providedIn: 'root'
@@ -61,10 +61,10 @@ export class AssetService {
     return this.http.delete<any>(`${this.baseUrl}/${assetId}`, {headers: reqHeaders})
   }
 
-  getBuckets(): Observable<Asset[]>{
+  getBuckets(): Observable<Bucket[]>{
     let reqHeaders = {
       Authorization: `Bearer ${localStorage.getItem(this.tokenKey)}`
     }
-    return this.http.get<Asset[]>(`${this.baseUrl}/buckets`, {headers: reqHeaders})
+    return this.http.get<Bucket[]>(`${this.baseUrl}/buckets`, {headers: reqHeaders})
   }
 }

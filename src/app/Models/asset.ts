@@ -33,12 +33,14 @@ export class Bucket{
     bucketId?: number;
     type?: string;
     bucket?: string;
-    balance?: string;
-    constructor(bucketId: number, type: string, bucket: string, balance: string)
+    balance?: number;
+    username? : string;
+    constructor(bucketId: number, type: string, bucket: string, balance: number, username: string)
     {
         this.bucketId = bucketId;
         this.type = type;
         this.bucket = bucket;
         this.balance = balance;
+        this.username = username;
     }
 }

@@ -1,0 +1,62 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Edit account</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6">
+        <form #form="ngForm" (ngSubmit)="onSubmit()">
+          <label>Custodian: {{currentAsset.custodian}}</label><br>
+          <input type="text" name="custodian" [(ngModel)]="currentAsset.custodian"><br><br>
+          <label>Account #: {{currentAsset.accountNumber}}</label><br>
+          <input type="text" name="accountNumber" [(ngModel)]="currentAsset.accountNumber"><br><br>
+          <label>Rate of Return: {{currentAsset.rateOfReturn}}</label><br>
+          <input type="text" name="rateOfReturn" [(ngModel)]="currentAsset.rateOfReturn"><br><br>
+          <label>Tax Structure: {{currentAsset.taxStructure}}</label><br>
+          <input type="text" name="taxStructure" [(ngModel)]="currentAsset.taxStructure"><br><br>
+          <label>Valuation Date: {{currentAsset.valuationDate}}</label><br>
+          <input type="text" name="valuationDate" [(ngModel)]="currentAsset.valuationDate"><br><br>
+          <label>Maturity Date: {{currentAsset.maturityDate}}</label><br>
+          <input type="text" name="maturityDate" [(ngModel)]="currentAsset.maturityDate"><br><br>
+          <label>Balance: {{currentAsset.balance}}</label><br>
+          <input type="text" name="balance" [(ngModel)]="currentAsset.balance"><br><br>
+          <label>Type: {{currentAsset.type}}</label><br>
+          <input type="text" name="type" [(ngModel)]="currentAsset.type"><br><br>
+          <label>Bucket: {{currentAsset.bucket}}</label><br>
+          <input type="text" name="bucket" [(ngModel)]="currentAsset.bucket"><br><br>
+
+
+
+          <ion-button type="submit" fill="clear" color="secondary">Edit</ion-button>
+          <ion-button routerLink="/home/asset/{{currentAsset.username}}" fill="clear"
+            color="secondary">Cancel</ion-button>
+        </form>
+      </ion-col>
+      <ion-col size="6">
+        <ul>
+          <li> Type: 1 | Category: Residence</li>
+          <li> Type: 2 | Category: Checking</li>
+          <li> Type: 3 | Category: Savings</li>
+          <li> Type: 4 | Category: CDs</li>
+          <li> Type: 5 | Category: Investments</li>
+          <li> Type: 6 | Category: Annuities</li>
+          <li> Type: 7 | Category: Life Insurance</li>
+          <li> Type: 8 | Category: IRAs</li>
+          <li> Type: 9 | Category: 401(k)s</li>
+          <li> Type: 10 | Category: Real Estate</li>
+          <li> Type: 11 | Category: Vehicles</li>
+          <li> Type: 12 | Category: Other Property</li>
+          <li> Type: 13 | Category: Credit Cards</li>
+          <li> Type: 14 | Category: Student Loans</li>
+          <li> Type: 15 | Category: Other Unsecured</li>
+          <li> Type: 16 | Category: Roth IRA</li>
+          <li> Type: 17 | Category: H.S.A</li>
+        </ul>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

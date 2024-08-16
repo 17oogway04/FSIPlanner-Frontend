@@ -14,6 +14,10 @@ const routes: Routes = [
       {
         path: 'pc/:username',
         loadChildren: () => import('../User/pc/pc.module').then(m => m.PcPageModule)
+      },
+      {
+        path: 'asset/:username',
+        loadChildren: () => import('../User/asset/asset.module').then( m => m.AssetPageModule)
       }
     ]
   }

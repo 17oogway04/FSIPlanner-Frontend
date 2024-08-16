@@ -1,6 +1,6 @@
 <ion-content [fullscreen]="true">
   <ion-toolbar>
-    <ion-button (click)="openForm()" fill="clear" color="secondary" slot="end">Add an account</ion-button>
+    <ion-button (click)="openForm()" fill="clear" color="secondary" slot="end" size="large">Add an account</ion-button>
   </ion-toolbar>
 
   <h1>Spend</h1>
@@ -20,8 +20,8 @@
 
         </ul>
 
-        <ion-button fill="clear" color="secondary" [routerLink]="['/edit-asset', a.assetId]">Edit account</ion-button>
-        <ion-button fill="clear" color="danger" (click)="deleteAsset(a.assetId!)">Delete account</ion-button>
+        <ion-button fill="clear" color="secondary" [routerLink]="['/edit-asset', a.assetId]"><strong>Edit account</strong></ion-button>
+        <ion-button fill="clear" color="danger" (click)="deleteAsset(a.assetId!)"><strong>Delete account</strong></ion-button>
 
       </ion-col>
     </ion-row>
@@ -42,8 +42,8 @@
           </li>
 
         </ul>
-        <ion-button fill="clear" color="secondary" [routerLink]="['/edit-asset', a.assetId]">Edit account</ion-button>
-        <ion-button fill="clear" color="danger" (click)="deleteAsset(a.assetId!)">Delete account</ion-button>
+        <ion-button fill="clear" color="secondary" [routerLink]="['/edit-asset', a.assetId]"><strong>Edit account</strong></ion-button>
+        <ion-button fill="clear" color="danger" (click)="deleteAsset(a.assetId!)"><strong>Delete account</strong></ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
@@ -64,8 +64,8 @@
           </li>
 
         </ul>
-        <ion-button fill="clear" color="secondary" [routerLink]="['/edit-asset', a.assetId]">Edit account</ion-button>
-        <ion-button fill="clear" color="danger" (click)="deleteAsset(a.assetId!)">Delete account</ion-button>
+        <ion-button fill="clear" color="secondary" [routerLink]="['/edit-asset', a.assetId]"><strong>Edit account</strong></ion-button>
+        <ion-button fill="clear" color="danger" (click)="deleteAsset(a.assetId!)"><strong>Delete account</strong></ion-button>
 
       </ion-col>
     </ion-row>

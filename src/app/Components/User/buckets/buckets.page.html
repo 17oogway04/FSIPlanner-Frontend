@@ -1,0 +1,64 @@
+<ion-content [fullscreen]="true">
+  <h1 style="text-align: center; font-size: 3em;">Total Capital = ${{totalCapitalAmount}}</h1>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="3" >
+        <ion-card>
+          <img alt="Silhouette of mountains" src="../../../../assets/img/InsuredGrowth.png" style="width: 100%; height: 300px; object-fit: cover;" />
+          <ion-card-header>
+            <ion-card-title >Insured Growth</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            <div *ngFor="let b of bucket">
+              <p *ngIf="b.bucket == '1'" id="insuredG">{{b.balance}}</p>
+            </div>
+          </ion-card-content>
+        </ion-card>
+
+      </ion-col>
+      <ion-col size="3">
+        <ion-card>
+          <img alt="Silhouette of mountains" src="../../../../assets/img/InsuredIncome.png" style="width: 100%; height: 300px; object-fit: cover;" />
+          <ion-card-header>
+            <ion-card-title >Insured Income</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            <div *ngFor="let b of bucket">
+              <p *ngIf="b.bucket == '2'" id="insuredI">{{b.balance}}</p>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col size="3">
+        <ion-card>
+          <img alt="Silhouette of mountains" src="../../../../assets/img/RainyDay.png" style="width: 100%; height: 300px; object-fit: cover;"/>
+          <ion-card-header>
+            <ion-card-title >Short-Term Cash / "Rainy Days"</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            <div *ngFor="let b of bucket">
+              <p *ngIf="b.bucket == '3'" id="shortTerm">{{b.balance}}</p>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col size="3">
+        <ion-card>
+          <img alt="Silhouette of mountains" src="../../../../assets/img/SpeculativeGrowth.png" style="width: 100%; height: 300px; object-fit: cover;"/>
+          <ion-card-header>
+            <ion-card-title >Speculative Growth & Income</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            <div *ngFor="let b of bucket">
+              <p *ngIf="b.bucket == '4'" id="speculative">{{b.balance}}</p>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -20,8 +20,10 @@
 
         </ul>
 
-        <ion-button fill="clear" color="secondary" [routerLink]="['/edit-asset', a.assetId]"><strong>Edit account</strong></ion-button>
-        <ion-button fill="clear" color="danger" (click)="deleteAsset(a.assetId!)"><strong>Delete account</strong></ion-button>
+        <ion-button fill="clear" color="secondary" [routerLink]="['/edit-asset', a.assetId]"><strong>Edit
+            account</strong></ion-button>
+        <ion-button fill="clear" color="danger" (click)="deleteAsset(a.assetId!)"><strong>Delete
+            account</strong></ion-button>
 
       </ion-col>
     </ion-row>
@@ -42,8 +44,10 @@
           </li>
 
         </ul>
-        <ion-button fill="clear" color="secondary" [routerLink]="['/edit-asset', a.assetId]"><strong>Edit account</strong></ion-button>
-        <ion-button fill="clear" color="danger" (click)="deleteAsset(a.assetId!)"><strong>Delete account</strong></ion-button>
+        <ion-button fill="clear" color="secondary" [routerLink]="['/edit-asset', a.assetId]"><strong>Edit
+            account</strong></ion-button>
+        <ion-button fill="clear" color="danger" (click)="deleteAsset(a.assetId!)"><strong>Delete
+            account</strong></ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
@@ -64,12 +68,38 @@
           </li>
 
         </ul>
-        <ion-button fill="clear" color="secondary" [routerLink]="['/edit-asset', a.assetId]"><strong>Edit account</strong></ion-button>
-        <ion-button fill="clear" color="danger" (click)="deleteAsset(a.assetId!)"><strong>Delete account</strong></ion-button>
+        <ion-button fill="clear" color="secondary" [routerLink]="['/edit-asset', a.assetId]"><strong>Edit
+            account</strong></ion-button>
+        <ion-button fill="clear" color="danger" (click)="deleteAsset(a.assetId!)"><strong>Delete
+            account</strong></ion-button>
 
       </ion-col>
     </ion-row>
   </ion-grid>
+
+
+  <ion-list>
+    <ion-reorder-group [disabled]="false" (ionItemReorder)="handleReorder($any($event))">
+      <h1>Spend</h1>
+      <h1>Save</h1>
+      <h1>Invest</h1>
+      <ion-item *ngFor="let a of userAsset">
+        <ion-label> <strong>Custodian: </strong>{{a.custodian}} | <strong>Account #: </strong>{{a.accountNumber}} |
+          <strong>Rate of Return: </strong>{{a.rateOfReturn}} | <strong>Tax Structure: </strong> {{a.taxStructure}}
+          |
+          <strong>Valuation Date: </strong> {{a.valuationDate}} | <strong>Maturity date: </strong>
+          {{a.maturityDate}} |
+          <strong>Balance: </strong> ${{a.balance}} | <strong>Type: </strong> {{types[a.type!] || "invalid key"}}
+          <ion-button fill="clear" color="secondary" [routerLink]="['/edit-asset', a.assetId]"><strong>Edit
+              account</strong></ion-button>
+          <ion-button fill="clear" color="danger" (click)="deleteAsset(a.assetId!)"><strong>Delete
+              account</strong></ion-button>
+
+        </ion-label>
+        <ion-reorder slot="end"></ion-reorder>
+      </ion-item>
+    </ion-reorder-group>
+  </ion-list>
   <!--Adding account-->
   <div *ngIf="isFormVisible" id="inputForm">
     <form #form="ngForm" (ngSubmit)="createAsset()">
@@ -77,11 +107,14 @@
         <ion-row>
           <ion-col size="2">
             <label>Custodian</label><br>
-            <input type="text" name="custodian" placeholder="Required" [(ngModel)]="newAsset.custodian" required="true"><br>
+            <input type="text" name="custodian" placeholder="Required" [(ngModel)]="newAsset.custodian"
+              required="true"><br>
             <label>Account number</label><br>
-            <input type="text" name="accountNumber" placeholder="Required" [(ngModel)]="newAsset.accountNumber" required="true"><br>
+            <input type="text" name="accountNumber" placeholder="Required" [(ngModel)]="newAsset.accountNumber"
+              required="true"><br>
             <label>Name (Spend, Save, or Invest)</label><br>
-            <input type="text" name="assetName" placeholder="Required" [(ngModel)]="newAsset.assetName" required="true"><br>
+            <input type="text" name="assetName" placeholder="Required" [(ngModel)]="newAsset.assetName"
+              required="true"><br>
           </ion-col>
           <ion-col size="2">
             <label>Rate of return </label><br>
@@ -99,7 +132,8 @@
             <label>Balance</label><br>
             <input type="text" name="balance" placeholder="Required" [(ngModel)]="newAsset.balance" required="true"><br>
             <label>Type</label><br>
-            <input type="text" name="type" placeholder="Required" [(ngModel)]="newAsset.type" required="true" (ngModelChange)="getTypeValue()"><br>
+            <input type="text" name="type" placeholder="Required" [(ngModel)]="newAsset.type" required="true"
+              (ngModelChange)="getTypeValue()"><br>
             <label>Bucket</label><br>
             <input type="text" name="bucket" placeholder="Required" [(ngModel)]="newAsset.bucket" required="true"><br>
           </ion-col>

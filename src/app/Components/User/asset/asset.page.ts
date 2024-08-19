@@ -1,6 +1,7 @@
 import { SelectorListContext } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ItemReorderEventDetail } from '@ionic/angular';
 import { Asset } from 'src/app/Models/asset';
 import { AssetService } from 'src/app/Services/asset.service';
 
@@ -12,7 +13,7 @@ import { AssetService } from 'src/app/Services/asset.service';
 export class AssetPage implements OnInit {
 
   username: string = '';
-  types: {[key: string]: string} = {
+  types: { [key: string]: string } = {
     "1": "Residence",
     "2": "Checking",
     "3": "Savings",
@@ -35,7 +36,7 @@ export class AssetPage implements OnInit {
   selectedType: string = '';
   isFormVisible = false;
   userAsset: Asset[] = [];
-  newAsset: Asset = new Asset(0, "", "", "", "", "","", "", "", "", this.actRouter.snapshot.paramMap.get("username") ?? '',"")
+  newAsset: Asset = new Asset(0, "", "", "", "", "", "", "", "", "", this.actRouter.snapshot.paramMap.get("username") ?? '', "")
 
   constructor(private myAssetservice: AssetService, private actRouter: ActivatedRoute) { }
 
@@ -48,22 +49,39 @@ export class AssetPage implements OnInit {
     this.loadUserAsset()
     this.getTypeValue()
   }
+  handleReorder(event: CustomEvent<ItemReorderEventDetail>) {
+    const { from, to } = event.detail;
+    const item = this.userAsset[from];
+    this.userAsset.splice(from, 1);
+    this.userAsset.splice(to, 0, item);
+    this.saveItems()
+    event.detail.complete();
+  }
 
+  saveItems() {
+    localStorage.setItem("items", JSON.stringify(this.userAsset));
+  }
   getTypeValue() {
     if (this.newAsset.type && this.types[this.newAsset.type]) {
       this.selectedType = this.types[this.newAsset.type];
     } else {
       this.selectedType = 'Invalid key';
-    }  
+    }
   }
 
   loadUserAsset() {
-    this.myAssetservice.getAssetsByUsername(this.username).subscribe((response) => {
-      this.userAsset = response
-    })
+    const storedOrder = localStorage.getItem("items");
+    if (storedOrder == "") {
+      this.userAsset = JSON.parse(storedOrder);
+    } else {
+      this.myAssetservice.getAssetsByUsername(this.username).subscribe((response) => {
+        this.userAsset = response
+      })
+    }
+
   }
 
-  createAsset(): void{
+  createAsset(): void {
     this.getTypeValue()
     this.myAssetservice.createAsset(this.newAsset).subscribe((response) => {
       if (response !== null) {

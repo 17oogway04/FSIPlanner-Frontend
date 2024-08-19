@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Edit account</ion-title>
+    <ion-title>client-edit-asset</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -20,9 +20,6 @@
                 <input type="text" name="rateOfReturn" [(ngModel)]="currentAsset.rateOfReturn"><br><br>
                 <label><strong>Tax Structure: </strong>{{currentAsset.taxStructure}}</label><br>
                 <input type="text" name="taxStructure" [(ngModel)]="currentAsset.taxStructure"><br><br>
-                <label><strong>Name: </strong>{{currentAsset.name}}</label><br>
-                <input type="text" name="name" [(ngModel)]="currentAsset.name"><br><br>
-
               </ion-col>
               <ion-col size="6">
                 <label><strong>Valuation Date: </strong>{{currentAsset.valuationDate}}</label><br>
@@ -35,11 +32,14 @@
                 <input type="text" name="type" [(ngModel)]="currentAsset.type"><br><br>
                 <label><strong>Bucket: </strong>{{currentAsset.bucket}}</label><br>
                 <input type="text" name="bucket" [(ngModel)]="currentAsset.bucket"><br><br>
+                <label><strong>Name: </strong>{{currentAsset.name}}</label><br>
+                <input type="text" name="name" [(ngModel)]="currentAsset.name"><br><br>
+
               </ion-col>
             </ion-row>
           </ion-grid>
           <ion-button type="submit" fill="clear" color="secondary" size="large">Edit</ion-button>
-          <ion-button routerLink="/home/asset/{{currentAsset.username}}" fill="clear"
+          <ion-button routerLink="/client-asset/{{currentAsset.username}}" fill="clear"
             color="secondary" size="large">Cancel</ion-button>
         </form>
       </ion-col>
@@ -76,5 +76,4 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-
 </ion-content>

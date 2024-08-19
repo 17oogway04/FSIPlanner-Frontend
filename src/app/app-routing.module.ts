@@ -71,6 +71,14 @@ const routes: Routes = [
     path: 'edit-asset/:id',
     loadChildren: () => import('./Components/User/edit-asset/edit-asset.module').then( m => m.EditAssetPageModule)
   },
+  {
+    path: 'client-asset/:username',
+    loadChildren: () => import('./Components/fsi-clients/client-asset/client-asset.module').then( m => m.ClientAssetPageModule)
+  },
+  {
+    path: 'client-edit-asset/:id',
+    loadChildren: () => import('./Components/fsi-clients/client-edit-asset/client-edit-asset.module').then( m => m.ClientEditAssetPageModule)
+  },
 ];
 
 @NgModule({

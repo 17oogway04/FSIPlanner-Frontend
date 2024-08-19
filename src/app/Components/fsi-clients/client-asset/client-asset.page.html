@@ -1,0 +1,148 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-button (click)="openForm()" fill="clear" color="secondary" slot="end">Add an account</ion-button>
+    <ion-button [routerLink]="['/fsi-profile', username]" fill="clear" color="secondary" slot="start">Home</ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <h1 style="font-size: 2.5em;">Spend</h1>
+  <ion-grid *ngFor="let a of userAsset">
+    <ion-row>
+      <ion-col *ngIf="a.name == 'Spend'">
+        <ul>
+          <li>
+            <h5> <strong>Custodian: </strong>{{a.custodian}} | <strong>Account #: </strong>{{a.accountNumber}} |
+              <strong>Rate of Return: </strong>{{a.rateOfReturn}} | <strong>Tax Structure: </strong> {{a.taxStructure}}
+              |
+              <strong>Valuation Date: </strong> {{a.valuationDate}} | <strong>Maturity date: </strong>
+              {{a.maturityDate}} |
+              <strong>Balance: </strong> ${{a.balance}} | <strong>Type: </strong> {{types[a.type!] || "invalid key"}}
+            </h5>
+          </li>
+
+        </ul>
+
+        <ion-button fill="clear" color="secondary" [routerLink]="['/client-edit-asset', a.assetId]"><strong>Edit account</strong></ion-button>
+        <ion-button fill="clear" color="danger" (click)="deleteAsset(a.assetId!)"><strong>Delete account</strong></ion-button>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <h1 style="font-size: 2.5em;">Save</h1>
+  <ion-grid *ngFor="let a of userAsset">
+    <ion-row>
+      <ion-col *ngIf="a.name == 'Save'">
+        <ul>
+          <li>
+            <h5> <strong>Custodian: </strong>{{a.custodian}} | <strong>Account #: </strong>{{a.accountNumber}} |
+              <strong>Rate of Return: </strong>{{a.rateOfReturn}} | <strong>Tax Structure: </strong> {{a.taxStructure}}
+              |
+              <strong>Valuation Date: </strong> {{a.valuationDate}} | <strong>Maturity date: </strong>
+              {{a.maturityDate}} |
+              <strong>Balance: </strong> ${{a.balance}} | <strong>Type: </strong> {{types[a.type!] || "invalid key"}}
+            </h5>
+          </li>
+
+        </ul>
+        <ion-button fill="clear" color="secondary" [routerLink]="['/client-edit-asset', a.assetId]"><strong>Edit account</strong></ion-button>
+        <ion-button fill="clear" color="danger" (click)="deleteAsset(a.assetId!)"><strong>Delete account</strong></ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <h1 style="font-size: 2.5em;">Invest</h1>
+  <ion-grid *ngFor="let a of userAsset">
+    <ion-row>
+      <ion-col *ngIf="a.name == 'Invest'">
+        <ul>
+          <li>
+            <h5> <strong>Custodian: </strong>{{a.custodian}} | <strong>Account #: </strong>{{a.accountNumber}} |
+              <strong>Rate of Return: </strong>{{a.rateOfReturn}} | <strong>Tax Structure: </strong> {{a.taxStructure}}
+              |
+              <strong>Valuation Date: </strong> {{a.valuationDate}} | <strong>Maturity date: </strong>
+              {{a.maturityDate}} |
+              <strong>Balance: </strong> ${{a.balance}} | <strong>Type: </strong> {{types[a.type!] || "invalid key"}}
+            </h5>
+          </li>
+
+        </ul>
+        <ion-button fill="clear" color="secondary" [routerLink]="['/client-edit-asset', a.assetId]"><strong>Edit account</strong></ion-button>
+        <ion-button fill="clear" color="danger" (click)="deleteAsset(a.assetId!)"><strong>Delete account</strong></ion-button>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <!--Adding account-->
+  <div *ngIf="isFormVisible" id="inputForm">
+    <form #form="ngForm" (ngSubmit)="createAsset()">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="2">
+            <label>Custodian</label><br>
+            <input type="text" name="custodian" placeholder="Required" [(ngModel)]="newAsset.custodian" required="true"><br>
+            <label>Account number</label><br>
+            <input type="text" name="accountNumber" placeholder="Required" [(ngModel)]="newAsset.accountNumber" required="true"><br>
+            <label>Name (Spend, Save, or Invest)</label><br>
+            <input type="text" name="name" placeholder="Required" [(ngModel)]="newAsset.name" required="true"><br>
+          </ion-col>
+          <ion-col size="2">
+            <label>Rate of return </label><br>
+            <input type="text" name="rateOfReturn" [(ngModel)]="newAsset.rateOfReturn"><br>
+            <label>Tax Structure</label><br>
+            <input type="text" name="taxStructure" [(ngModel)]="newAsset.taxStructure"><br>
+          </ion-col>
+          <ion-col size="2">
+            <label>Valuation Date</label><br>
+            <input type="text" name="valuationDate" [(ngModel)]="newAsset.valuationDate"><br>
+            <label>Maturity Date</label><br>
+            <input type="text" name="maturityDate" [(ngModel)]="newAsset.maturityDate"><br>
+          </ion-col>
+          <ion-col size="2">
+            <label>Balance</label><br>
+            <input type="text" name="balance" placeholder="Required" [(ngModel)]="newAsset.balance" required="true"><br>
+            <label>Type</label><br>
+            <input type="text" name="type" placeholder="Required" [(ngModel)]="newAsset.type" required="true" (ngModelChange)="getTypeValue()"><br>
+            <label>Bucket</label><br>
+            <input type="text" name="bucket" placeholder="Required" [(ngModel)]="newAsset.bucket" required="true"><br>
+          </ion-col>
+          <ion-col size="2">
+            <h4>Types to categorize your accounts</h4>
+            <ul>
+              <li> Type: 1 | Category: Residence</li>
+              <li> Type: 2 | Category: Checking</li>
+              <li> Type: 3 | Category: Savings</li>
+              <li> Type: 4 | Category: CDs</li>
+              <li> Type: 5 | Category: Investments</li>
+              <li> Type: 6 | Category: Annuities</li>
+              <li> Type: 7 | Category: Life Insurance</li>
+            </ul>
+          </ion-col>
+          <ion-col size="2">
+            <ul>
+              <li> Type: 8 | Category: IRAs</li>
+              <li> Type: 9 | Category: 401(k)s</li>
+              <li> Type: 10 | Category: Real Estate</li>
+              <li> Type: 11 | Category: Vehicles</li>
+              <li> Type: 12 | Category: Other Property</li>
+              <li> Type: 13 | Category: Credit Cards</li>
+              <li> Type: 14 | Category: Student Loans</li>
+              <li> Type: 15 | Category: Other Unsecured</li>
+              <li> Type: 16 | Category: Roth IRA</li>
+              <li> Type: 17 | Category: H.S.A</li>
+            </ul>
+
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <input hidden="true" type="text" name="username" [(ngModel)]="newAsset.username">
+      <input hidden="true" type="text" name="notesId" [(ngModel)]="newAsset.assetId">
+
+      <ion-button type="submit" fill="clear" color="secondary">
+        Create account
+      </ion-button>
+      <ion-button (click)="closeForm()" fill="clear" color="secondary">Cancel</ion-button>
+    </form>
+  </div>
+</ion-content>

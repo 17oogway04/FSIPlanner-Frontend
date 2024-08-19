@@ -6,7 +6,7 @@
   <h1 style="font-size: 2.5em;">Spend</h1>
   <ion-grid *ngFor="let a of userAsset">
     <ion-row>
-      <ion-col *ngIf="a.name == 'Spend'">
+      <ion-col *ngIf="a.assetName == 'Spend'">
         <ul>
           <li>
             <h5> <strong>Custodian: </strong>{{a.custodian}} | <strong>Account #: </strong>{{a.accountNumber}} |
@@ -29,7 +29,7 @@
   <h1 style="font-size: 2.5em;">Save</h1>
   <ion-grid *ngFor="let a of userAsset">
     <ion-row>
-      <ion-col *ngIf="a.name == 'Save'">
+      <ion-col *ngIf="a.assetName == 'Save'">
         <ul>
           <li>
             <h5> <strong>Custodian: </strong>{{a.custodian}} | <strong>Account #: </strong>{{a.accountNumber}} |
@@ -51,7 +51,7 @@
   <h1 style="font-size: 2.5em;">Invest</h1>
   <ion-grid *ngFor="let a of userAsset">
     <ion-row>
-      <ion-col *ngIf="a.name == 'Invest'">
+      <ion-col *ngIf="a.assetName == 'Invest'">
         <ul>
           <li>
             <h5> <strong>Custodian: </strong>{{a.custodian}} | <strong>Account #: </strong>{{a.accountNumber}} |
@@ -81,7 +81,7 @@
             <label>Account number</label><br>
             <input type="text" name="accountNumber" placeholder="Required" [(ngModel)]="newAsset.accountNumber" required="true"><br>
             <label>Name (Spend, Save, or Invest)</label><br>
-            <input type="text" name="name" placeholder="Required" [(ngModel)]="newAsset.name" required="true"><br>
+            <input type="text" name="assetName" placeholder="Required" [(ngModel)]="newAsset.assetName" required="true"><br>
           </ion-col>
           <ion-col size="2">
             <label>Rate of return </label><br>

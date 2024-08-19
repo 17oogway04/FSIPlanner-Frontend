@@ -22,7 +22,7 @@ export class EditAssetPage implements OnInit {
     balance: '',
     type: '',
     bucket: '',
-    name: '',
+    assetName: '',
     username: this.actRouter.snapshot.paramMap.get("username") ??''
   }
   constructor(private actRouter: ActivatedRoute, private myAssetService: AssetService, private router: Router) { }

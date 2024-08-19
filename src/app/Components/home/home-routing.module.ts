@@ -20,7 +20,7 @@ const routes: Routes = [
         loadChildren: () => import('../User/asset/asset.module').then( m => m.AssetPageModule)
       },
       {
-        path: 'buckets',
+        path: 'buckets/:username',
         loadChildren: () => import('../User/buckets/buckets.module').then( m => m.BucketsPageModule)
       },
     ]

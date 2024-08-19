@@ -1,17 +1,17 @@
+import { DecimalPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Bucket } from 'src/app/Models/asset';
 import { AssetService } from 'src/app/Services/asset.service';
-import { DecimalPipe } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-buckets',
-  templateUrl: './buckets.page.html',
-  styleUrls: ['./buckets.page.scss'],
-  providers: [DecimalPipe] 
+  selector: 'app-client-buckets',
+  templateUrl: './client-buckets.page.html',
+  styleUrls: ['./client-buckets.page.scss'],
+  providers: [DecimalPipe]
 
 })
-export class BucketsPage implements OnInit {
+export class ClientBucketsPage implements OnInit {
 
   buckets: Bucket = {
     bucketId: 0,
@@ -20,16 +20,15 @@ export class BucketsPage implements OnInit {
     balance: 0, 
     username: ''
   }
-
   username: string = '';
   bucket: Bucket[] = []
   totalCapitalAmount: number = 0;
   constructor(private myBucketService: AssetService, private decimalPipe: DecimalPipe, private actRouter: ActivatedRoute) { }
 
   ngOnInit() {
-    let user = this.actRouter.snapshot.paramMap.get("username") ?? ''
+    let user = this.actRouter.snapshot.paramMap.get("username") ?? '';
     if(user !== null){
-      this.username = user
+      this.username = user;
     }
     this.getBuckets()
     this.totalCapital()
@@ -45,7 +44,4 @@ export class BucketsPage implements OnInit {
   totalCapital(){
     this.totalCapitalAmount = this.bucket.reduce((accumulator, currentBucket) => accumulator + (currentBucket.balance || 0), 0)
   }
-
- 
-
 }

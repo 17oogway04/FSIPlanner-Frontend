@@ -79,6 +79,10 @@ const routes: Routes = [
     path: 'client-edit-asset/:id',
     loadChildren: () => import('./Components/fsi-clients/client-edit-asset/client-edit-asset.module').then( m => m.ClientEditAssetPageModule)
   },
+  {
+    path: 'client-buckets/:username',
+    loadChildren: () => import('./Components/fsi-clients/client-buckets/client-buckets.module').then( m => m.ClientBucketsPageModule)
+  },
 ];
 
 @NgModule({

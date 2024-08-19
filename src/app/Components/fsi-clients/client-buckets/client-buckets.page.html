@@ -1,3 +1,12 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Client Buckets</ion-title>
+    <ion-button routerLink="/fsi-profile/{{username}}" fill="clear"
+    color="secondary" size="large" slot="end">Home</ion-button>
+
+  </ion-toolbar>
+</ion-header>
+
 <ion-content [fullscreen]="true">
   <h1 style="text-align: center; font-size: 3em;">Total Capital = ${{totalCapitalAmount | number: '1.2-2'}}</h1>
   <ion-grid>

@@ -61,10 +61,10 @@ export class AssetService {
     return this.http.delete<any>(`${this.baseUrl}/${assetId}`, {headers: reqHeaders})
   }
 
-  getBuckets(): Observable<Bucket[]>{
+  getBuckets(username: string): Observable<Bucket[]>{
     let reqHeaders = {
       Authorization: `Bearer ${localStorage.getItem(this.tokenKey)}`
     }
-    return this.http.get<Bucket[]>(`${this.baseUrl}/buckets`, {headers: reqHeaders})
+    return this.http.get<Bucket[]>(`${this.baseUrl}/buckets/${username}`, {headers: reqHeaders})
   }
 }

@@ -1,21 +1,64 @@
-*{
+* {
     font-family: Felix Titling;
-  }
+}
 
-h1{
+h1 {
     margin-left: 10px;
     text-decoration: underline;
+    font-size: 2.3em;
 }
-p{
+
+p {
     margin-left: 10px;
 }
+
+@media print {
+
+    #help{
+        padding-top: 45px;
+    }
+    h1{
+        font-size: 1.5em;
+    }
+    h5{
+        font-size: 1em;
+    }
+    #globalHeader {
+        display: none;
+    }
+    ion-button{
+        display: none;
+    }
+
+    #printerBtn{
+        visibility: hidden;
+    }
+
+    body * {
+        visibility: hidden;
+    }
+
+
+    #printableSection,
+    #printableSection * {
+        visibility: visible;
+    }
+
+    #printableSection {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+}
+
+
 
 #inputForm {
     position: absolute;
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
-    width: 1300px;
+    width: 1350px;
     height: 475px;
     padding: 10px;
     background: white;
@@ -25,7 +68,7 @@ p{
     z-index: 100 !important;
 }
 
-input{
+input {
     padding: 10px;
     margin: 5px;
     width: auto;

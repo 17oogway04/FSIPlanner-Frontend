@@ -1,12 +1,12 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-button (click)="openForm()" fill="clear" color="secondary" slot="end">Add an account</ion-button>
-    <ion-button [routerLink]="['/fsi-profile', username]" fill="clear" color="secondary" slot="start">Home</ion-button>
+    <ion-button (click)="openForm()" fill="clear" color="secondary" slot="end" size="large">Add an account</ion-button>
+    <ion-button [routerLink]="['/fsi-profile', username]" fill="clear" color="secondary" slot="start" size="large">Home</ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <h1 style="font-size: 2.5em;">Spend</h1>
+  <h1 style="font-size: 2.5em; padding-left: 10px;">Spend</h1>
   <ion-grid *ngFor="let a of userAsset">
     <ion-row>
       <ion-col *ngIf="a.assetName == 'Spend'">
@@ -29,7 +29,7 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-  <h1 style="font-size: 2.5em;">Save</h1>
+  <h1 style="font-size: 2.5em; padding-left: 10px;">Save</h1>
   <ion-grid *ngFor="let a of userAsset">
     <ion-row>
       <ion-col *ngIf="a.assetName == 'Save'">
@@ -51,7 +51,7 @@
     </ion-row>
   </ion-grid>
 
-  <h1 style="font-size: 2.5em;">Invest</h1>
+  <h1 style="font-size: 2.5em; padding-left: 10px;">Invest</h1>
   <ion-grid *ngFor="let a of userAsset">
     <ion-row>
       <ion-col *ngIf="a.assetName == 'Invest'">

@@ -49,12 +49,17 @@ export class AssetPage implements OnInit {
     this.loadUserAsset()
     this.getTypeValue()
   }
+
+  printAssets(){
+    window.print()
+  }
+
   handleReorder(event: CustomEvent<ItemReorderEventDetail>) {
     const { from, to } = event.detail;
     const item = this.userAsset[from];
     this.userAsset.splice(from, 1);
     this.userAsset.splice(to, 0, item);
-    this.saveItems()
+    // this.saveItems()
     event.detail.complete();
   }
 
@@ -70,14 +75,14 @@ export class AssetPage implements OnInit {
   }
 
   loadUserAsset() {
-    const storedOrder = localStorage.getItem("items");
-    if (storedOrder == "") {
-      this.userAsset = JSON.parse(storedOrder);
-    } else {
+    // const storedOrder = localStorage.getItem("items");
+    // if (storedOrder == "") {
+    //   this.userAsset = JSON.parse(storedOrder);
+    // } else {
       this.myAssetservice.getAssetsByUsername(this.username).subscribe((response) => {
         this.userAsset = response
       })
-    }
+    
 
   }
 

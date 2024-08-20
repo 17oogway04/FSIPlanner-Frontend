@@ -11,7 +11,11 @@
 #header{
   padding-top: 90px;
 }
-
+@media print{
+  #globalHeader{
+    display: none;
+  }
+}
 @media (max-width: 575px) {
   #header{
     padding-top: 10px;

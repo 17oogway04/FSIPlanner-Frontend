@@ -83,6 +83,10 @@ const routes: Routes = [
     path: 'client-buckets/:username',
     loadChildren: () => import('./Components/fsi-clients/client-buckets/client-buckets.module').then( m => m.ClientBucketsPageModule)
   },
+  {
+    path: 'request-update',
+    loadChildren: () => import('./Components/User/request-update/request-update.module').then( m => m.RequestUpdatePageModule)
+  },
 ];
 
 @NgModule({

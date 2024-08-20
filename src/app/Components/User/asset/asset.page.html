@@ -1,105 +1,89 @@
 <ion-content [fullscreen]="true">
   <ion-toolbar>
-    <ion-button (click)="openForm()" fill="clear" color="secondary" slot="end" size="large">Add an account</ion-button>
+    <ion-button (click)="openForm()" fill="clear" color="secondary" slot="end" size="large" id="printerBtn">Add an account</ion-button>
+    <ion-button fill="clear" color="secondary" slot="end" size="large" routerLink="/request-update" id="printerBtn">Request
+      update</ion-button>
   </ion-toolbar>
+  <div id="printableSection">
+    <h1 id="help">Spend</h1>
+    <ion-grid *ngFor="let a of userAsset">
+      <ion-row>
+        <ion-col *ngIf="a.assetName == 'Spend'">
+          <ul>
+            <li>
+              <h5> <strong>Custodian: </strong>{{a.custodian}} | <strong>Account #: </strong>{{a.accountNumber}} |
+                <strong>Rate of Return: </strong>{{a.rateOfReturn}} | <strong>Tax Structure: </strong>
+                {{a.taxStructure}}
+                |
+                <strong>Valuation Date: </strong> {{a.valuationDate}} | <strong>Maturity date: </strong>
+                {{a.maturityDate}} |
+                <strong>Balance: </strong> ${{a.balance}} | <strong>Type: </strong> {{types[a.type!] || "invalid key"}}
+              </h5>
+            </li>
 
-  <h1 style="font-size: 2.5em;">Spend</h1>
-  <ion-grid *ngFor="let a of userAsset">
-    <ion-row>
-      <ion-col *ngIf="a.assetName == 'Spend'">
-        <ul>
-          <li>
-            <h5> <strong>Custodian: </strong>{{a.custodian}} | <strong>Account #: </strong>{{a.accountNumber}} |
-              <strong>Rate of Return: </strong>{{a.rateOfReturn}} | <strong>Tax Structure: </strong> {{a.taxStructure}}
-              |
-              <strong>Valuation Date: </strong> {{a.valuationDate}} | <strong>Maturity date: </strong>
-              {{a.maturityDate}} |
-              <strong>Balance: </strong> ${{a.balance}} | <strong>Type: </strong> {{types[a.type!] || "invalid key"}}
-            </h5>
-          </li>
+          </ul>
 
-        </ul>
-
-        <ion-button fill="clear" color="secondary" [routerLink]="['/edit-asset', a.assetId]"><strong>Edit
-            account</strong></ion-button>
-        <ion-button fill="clear" color="danger" (click)="deleteAsset(a.assetId!)"><strong>Delete
-            account</strong></ion-button>
-
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-  <h1 style="font-size: 2.5em;">Save</h1>
-  <ion-grid *ngFor="let a of userAsset">
-    <ion-row>
-      <ion-col *ngIf="a.assetName == 'Save'">
-        <ul>
-          <li>
-            <h5> <strong>Custodian: </strong>{{a.custodian}} | <strong>Account #: </strong>{{a.accountNumber}} |
-              <strong>Rate of Return: </strong>{{a.rateOfReturn}} | <strong>Tax Structure: </strong> {{a.taxStructure}}
-              |
-              <strong>Valuation Date: </strong> {{a.valuationDate}} | <strong>Maturity date: </strong>
-              {{a.maturityDate}} |
-              <strong>Balance: </strong> ${{a.balance}} | <strong>Type: </strong> {{types[a.type!] || "invalid key"}}
-            </h5>
-          </li>
-
-        </ul>
-        <ion-button fill="clear" color="secondary" [routerLink]="['/edit-asset', a.assetId]"><strong>Edit
-            account</strong></ion-button>
-        <ion-button fill="clear" color="danger" (click)="deleteAsset(a.assetId!)"><strong>Delete
-            account</strong></ion-button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-
-  <h1 style="font-size: 2.5em;">Invest</h1>
-  <ion-grid *ngFor="let a of userAsset">
-    <ion-row>
-      <ion-col *ngIf="a.assetName == 'Invest'">
-        <ul>
-          <li>
-            <h5> <strong>Custodian: </strong>{{a.custodian}} | <strong>Account #: </strong>{{a.accountNumber}} |
-              <strong>Rate of Return: </strong>{{a.rateOfReturn}} | <strong>Tax Structure: </strong> {{a.taxStructure}}
-              |
-              <strong>Valuation Date: </strong> {{a.valuationDate}} | <strong>Maturity date: </strong>
-              {{a.maturityDate}} |
-              <strong>Balance: </strong> ${{a.balance}} | <strong>Type: </strong> {{types[a.type!] || "invalid key"}}
-            </h5>
-          </li>
-
-        </ul>
-        <ion-button fill="clear" color="secondary" [routerLink]="['/edit-asset', a.assetId]"><strong>Edit
-            account</strong></ion-button>
-        <ion-button fill="clear" color="danger" (click)="deleteAsset(a.assetId!)"><strong>Delete
-            account</strong></ion-button>
-
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-
-
-  <ion-list>
-    <ion-reorder-group [disabled]="false" (ionItemReorder)="handleReorder($any($event))">
-      <h1>Spend</h1>
-      <h1>Save</h1>
-      <h1>Invest</h1>
-      <ion-item *ngFor="let a of userAsset">
-        <ion-label> <strong>Custodian: </strong>{{a.custodian}} | <strong>Account #: </strong>{{a.accountNumber}} |
-          <strong>Rate of Return: </strong>{{a.rateOfReturn}} | <strong>Tax Structure: </strong> {{a.taxStructure}}
-          |
-          <strong>Valuation Date: </strong> {{a.valuationDate}} | <strong>Maturity date: </strong>
-          {{a.maturityDate}} |
-          <strong>Balance: </strong> ${{a.balance}} | <strong>Type: </strong> {{types[a.type!] || "invalid key"}}
           <ion-button fill="clear" color="secondary" [routerLink]="['/edit-asset', a.assetId]"><strong>Edit
               account</strong></ion-button>
           <ion-button fill="clear" color="danger" (click)="deleteAsset(a.assetId!)"><strong>Delete
               account</strong></ion-button>
 
-        </ion-label>
-        <ion-reorder slot="end"></ion-reorder>
-      </ion-item>
-    </ion-reorder-group>
-  </ion-list>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <h1>Save</h1>
+    <ion-grid *ngFor="let a of userAsset">
+      <ion-row>
+        <ion-col *ngIf="a.assetName == 'Save'">
+          <ul>
+            <li>
+              <h5> <strong>Custodian: </strong>{{a.custodian}} | <strong>Account #: </strong>{{a.accountNumber}} |
+                <strong>Rate of Return: </strong>{{a.rateOfReturn}} | <strong>Tax Structure: </strong>
+                {{a.taxStructure}}
+                |
+                <strong>Valuation Date: </strong> {{a.valuationDate}} | <strong>Maturity date: </strong>
+                {{a.maturityDate}} |
+                <strong>Balance: </strong> ${{a.balance}} | <strong>Type: </strong> {{types[a.type!] || "invalid key"}}
+              </h5>
+            </li>
+
+          </ul>
+          <ion-button fill="clear" color="secondary" [routerLink]="['/edit-asset', a.assetId]"><strong>Edit
+              account</strong></ion-button>
+          <ion-button fill="clear" color="danger" (click)="deleteAsset(a.assetId!)"><strong>Delete
+              account</strong></ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <h1>Invest</h1>
+    <ion-grid *ngFor="let a of userAsset">
+      <ion-row>
+        <ion-col *ngIf="a.assetName == 'Invest'">
+          <ul>
+            <li>
+              <h5> <strong>Custodian: </strong>{{a.custodian}} | <strong>Account #: </strong>{{a.accountNumber}} |
+                <strong>Rate of Return: </strong>{{a.rateOfReturn}} | <strong>Tax Structure: </strong>
+                {{a.taxStructure}}
+                |
+                <strong>Valuation Date: </strong> {{a.valuationDate}} | <strong>Maturity date: </strong>
+                {{a.maturityDate}} |
+                <strong>Balance: </strong> ${{a.balance}} | <strong>Type: </strong> {{types[a.type!] || "invalid key"}}
+              </h5>
+            </li>
+
+          </ul>
+          <ion-button fill="clear" color="secondary" [routerLink]="['/edit-asset', a.assetId]"><strong>Edit
+              account</strong></ion-button>
+          <ion-button fill="clear" color="danger" (click)="deleteAsset(a.assetId!)"><strong>Delete
+              account</strong></ion-button>
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+
   <!--Adding account-->
   <div *ngIf="isFormVisible" id="inputForm">
     <form #form="ngForm" (ngSubmit)="createAsset()">
@@ -165,30 +149,6 @@
 
           </ion-col>
         </ion-row>
-        <!-- <ion-row>
-          <ion-col>
-            <h1>Types to categorize your accounts</h1>
-            <ul>
-              <li> Type: 1 Category: Residence</li>
-              <li> Type: 2 Category: Checking</li>
-              <li> Type: 3 Category: Savings</li>
-              <li> Type: 4 Category: CDs</li>
-              <li> Type: 5 Category: Investments</li>
-              <li> Type: 6 Category: Annuities</li>
-              <li> Type: 7 Category: Life Insurance</li>
-              <li> Type: 8 Category: IRAs</li>
-              <li> Type: 9 Category: 401(k)s</li>
-              <li> Type: 10 Category: Real Estate</li>
-              <li> Type: 11 Category: Vehicles</li>
-              <li> Type: 12 Category: Other Property</li>
-              <li> Type: 13 Category: Credit Cards</li>
-              <li> Type: 14 Category: Student Loans</li>
-              <li> Type: 15 Category: Other Unsecured</li>
-              <li> Type: 16 Category: Roth IRA</li>
-              <li> Type: 17 Category: H.S.A</li>
-            </ul>
-          </ion-col>
-        </ion-row> -->
       </ion-grid>
 
       <input hidden="true" type="text" name="username" [(ngModel)]="newAsset.username">
@@ -200,4 +160,6 @@
       <ion-button (click)="closeForm()" fill="clear" color="secondary">Cancel</ion-button>
     </form>
   </div>
+
+  <ion-button (click)="printAssets()" id="printerBtn" color="secondary" style="padding: 10px;">Print</ion-button>
 </ion-content>

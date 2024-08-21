@@ -14,23 +14,28 @@ export class AssetPage implements OnInit {
 
   username: string = '';
   types: { [key: string]: string } = {
-    "1": "Residence",
-    "2": "Checking",
+    "1": "Checking",
+    "2": "Currency",
     "3": "Savings",
     "4": "CDs",
-    "5": "Investments",
-    "6": "Annuities",
-    "7": "Life Insurance",
-    "8": "IRAs",
-    "9": "401(k)s",
-    "10": "Real Estate",
-    "11": "Vehicles",
-    "12": "Other Property",
-    "13": "Credit Cards",
-    "14": "Student Loans",
-    "15": "Other Unsecured",
-    "16": "Roth IRA",
-    "17": "H.S.A"
+    "5": "Health and Medical Savings",
+    "6": "Life Insurance",
+    "7": "Annuities",
+    "8": "Investments",
+    "9": "IRAs",
+    "10": "Roth IRA",
+    "11": "Employer Retirement Plans",
+    "12": "Bullion",
+    "13": "Primary Residence",
+    "14": "Secondary Residence",
+    "15": "Real Estate",
+    "16": "Business",
+    "17": "Trust",
+    "18": "Vehicles",
+    "19": "Personal Property",
+    "20": "Credit Cards",
+    "21": "Student Loans",
+    "22": "Other"
   }
 
   selectedType: string = '';
@@ -82,8 +87,6 @@ export class AssetPage implements OnInit {
       this.myAssetservice.getAssetsByUsername(this.username).subscribe((response) => {
         this.userAsset = response
       })
-    
-
   }
 
   createAsset(): void {
@@ -92,7 +95,6 @@ export class AssetPage implements OnInit {
       if (response !== null) {
         window.alert("Account added");
         window.location.reload()
-
       } else {
         window.alert("Please fill out required fields")
       }

@@ -12,8 +12,14 @@ p {
     margin-left: 10px;
 }
 
-@media print {
+.with-fsi{
+    color: blue;
+}
 
+.without-fsi{
+    color: red;
+}
+@media print {
     #help{
         padding-top: 45px;
     }

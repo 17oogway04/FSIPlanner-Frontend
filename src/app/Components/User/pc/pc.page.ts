@@ -52,7 +52,7 @@ export class PcPage implements OnInit {
 
   deletePC(id: number){
     this.myPCService.deletePC(id).subscribe(() => {
-      window.alert("PC has been deleted");
+      window.alert("Insurance policy deleted");
       this.loadUserPC()
     })
   }

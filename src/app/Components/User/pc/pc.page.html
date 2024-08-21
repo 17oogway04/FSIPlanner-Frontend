@@ -1,10 +1,12 @@
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true">  
+  <div id="printableSection">
+
   <ion-toolbar>
     <ion-button slot="end" fill="clear" color="secondary" (click)="openForm()">Add Insurance</ion-button>
   </ion-toolbar>
 
   <div *ngFor="let p of userPC" style="display: inline-flex;">
-    <ion-card style="width: 500px;">
+    <ion-card id="ins">
       <ion-card-header>
         <ion-card-title>{{p.companyName}}</ion-card-title>
         <ion-card-subtitle>{{p.policyType}}</ion-card-subtitle>
@@ -51,19 +53,6 @@
           </ion-col>
         </ion-row>
       </ion-grid>
-      <!-- <label>Company name</label><br>
-      <input type="text" value="Company name" name="companyName" [(ngModel)]="newPC.companyName"><br>
-      <label>Policy Type</label><br>
-      <input type="text" value="Policy Type" name="policyType" [(ngModel)]="newPC.policyType"><br>
-      <label>Premium</label><br>
-      <input type="text" value="Premium" name="premium" [(ngModel)]="newPC.premium"><br>
-      <label>Expiration Date</label><br>
-      <input type="text" value="Expiration Date" name="expirationDate" [(ngModel)]="newPC.expirationDate"><br>
-      <label>Deductible</label><br>
-      <input type="text" value="Deductible" name="deductible" [(ngModel)]="newPC.deductible"><br>
-      <label>Liability Limit</label><br>
-      <input type="text" value="Deductible" name="deductible" [(ngModel)]="newPC.liabilityLimit"><br> -->
-
       <input hidden="true" type="text" name="username" [(ngModel)]="newPC.username">
       <input hidden="true" type="text" name="notesId" [(ngModel)]="newPC.pcId">
 
@@ -73,4 +62,8 @@
       <ion-button (click)="closeForm()" fill="clear" color="secondary">Cancel</ion-button>
     </form>
   </div>
+</div>
+
+  <ion-button (click)="printAssets()" id="printerBtn" color="secondary" style="padding: 10px;">Print</ion-button>
+
 </ion-content>

@@ -1,11 +1,13 @@
 <ion-content [fullscreen]="true">
   <ion-header>
     <ion-toolbar>
-      <ion-button [routerLink]="['/fsi-profile', username]" fill="clear" color="secondary">Home</ion-button>
+      <ion-button [routerLink]="['/fsi-profile', username]" fill="clear" color="secondary" size="large">Home</ion-button>
+      <ion-button (click)="openForm()" fill="clear" color="secondary" slot="end" size="large">Add a note</ion-button>
+
     </ion-toolbar>
   </ion-header>
-  <div *ngFor="let n of userNotes">
-    <ion-card>
+  <div *ngFor="let n of userNotes" style="display: inline-flex;">
+    <ion-card style="width:500px">
       <ion-card-header>
         <ion-card-title>{{n.subject}}</ion-card-title>
         <ion-card-subtitle>{{n.createdAt | date: 'MM/dd/yyyy h:mm a' : 'America/Chicago'}}</ion-card-subtitle>
@@ -24,7 +26,6 @@
   </div>
 
   <!-- Adding notes--> 
-  <ion-button (click)="openForm()" fill="clear" color="secondary">Add a note</ion-button>
   <div *ngIf="isFormVisible" id="inputForm">
     <form #form="ngForm" (ngSubmit)="createNote()">
       <label>Subject</label><br>

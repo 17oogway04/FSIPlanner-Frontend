@@ -87,6 +87,10 @@ const routes: Routes = [
     path: 'request-update',
     loadChildren: () => import('./Components/User/request-update/request-update.module').then( m => m.RequestUpdatePageModule)
   },
+  {
+    path: 'asset-overview/:username',
+    loadChildren: () => import('./Components/User/asset-overview/asset-overview.module').then( m => m.AssetOverviewPageModule)
+  },
 ];
 
 @NgModule({

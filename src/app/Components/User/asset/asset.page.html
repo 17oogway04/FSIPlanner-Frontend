@@ -8,16 +8,16 @@
     <h1 id="help">Spend</h1>
     <ion-grid *ngFor="let a of userAsset">
       <ion-row>
-        <ion-col *ngIf="a.assetName == 'Spend'">
+        <ion-col *ngIf="a.type === '1' || a.type === '2'" [ngClass]="{'with-fsi': a.assetName === 'Yes', 'without-fsi': a.assetName !== 'Yes'}">
           <ul>
             <li>
-              <h5> <strong>Custodian: </strong>{{a.custodian}} | <strong>Account #: </strong>{{a.accountNumber}} |
-                <strong>Rate of Return: </strong>{{a.rateOfReturn}} | <strong>Tax Structure: </strong>
-                {{a.taxStructure}}
+              <h5 id="actInfo" > Custodian:<strong> {{a.custodian}}</strong> | Account #: <strong>{{a.accountNumber}}</strong> |
+                Rate of Return: <strong>{{a.rateOfReturn}}</strong> | Tax Structure: 
+                <strong>{{a.taxStructure}}</strong>
                 |
-                <strong>Valuation Date: </strong> {{a.valuationDate}} | <strong>Maturity date: </strong>
-                {{a.maturityDate}} |
-                <strong>Balance: </strong> ${{a.balance}} | <strong>Type: </strong> {{types[a.type!] || "invalid key"}}
+                Valuation Date:  <strong>{{a.valuationDate}}</strong> | Maturity date: 
+                <strong>{{a.maturityDate}}</strong> |
+                Balance:  <strong>${{a.balance}}</strong> | Type:  <strong>{{types[a.type!] || "invalid key"}}</strong>
               </h5>
             </li>
 
@@ -34,16 +34,16 @@
     <h1>Save</h1>
     <ion-grid *ngFor="let a of userAsset">
       <ion-row>
-        <ion-col *ngIf="a.assetName == 'Save'">
+        <ion-col *ngIf="a.type === '3' || a.type === '4' || a.type === '5' || a.type === '6'" [ngClass]="{'with-fsi': a.assetName === 'Yes' || a.assetName === 'yes', 'without-fsi': a.assetName !== 'Yes'}">
           <ul>
             <li>
-              <h5> <strong>Custodian: </strong>{{a.custodian}} | <strong>Account #: </strong>{{a.accountNumber}} |
-                <strong>Rate of Return: </strong>{{a.rateOfReturn}} | <strong>Tax Structure: </strong>
-                {{a.taxStructure}}
+              <h5 id="actInfo" > Custodian:<strong> {{a.custodian}}</strong> | Account #: <strong>{{a.accountNumber}}</strong> |
+                Rate of Return: <strong>{{a.rateOfReturn}}</strong> | Tax Structure: 
+                <strong>{{a.taxStructure}}</strong>
                 |
-                <strong>Valuation Date: </strong> {{a.valuationDate}} | <strong>Maturity date: </strong>
-                {{a.maturityDate}} |
-                <strong>Balance: </strong> ${{a.balance}} | <strong>Type: </strong> {{types[a.type!] || "invalid key"}}
+                Valuation Date:  <strong>{{a.valuationDate}}</strong> | Maturity date: 
+                <strong>{{a.maturityDate}}</strong> |
+                Balance:  <strong>${{a.balance}}</strong> | Type:  <strong>{{types[a.type!] || "invalid key"}}</strong>
               </h5>
             </li>
 
@@ -59,16 +59,16 @@
     <h1>Invest</h1>
     <ion-grid *ngFor="let a of userAsset">
       <ion-row>
-        <ion-col *ngIf="a.assetName == 'Invest'">
+        <ion-col *ngIf="a.type === '7' || a.type === '8' || a.type === '9' || a.type === '10' || a.type === '11' || a.type === '12'" [ngClass]="{'with-fsi': a.assetName === 'Yes' || 'yes', 'without-fsi': a.assetName !== 'Yes' || 'yes'}">
           <ul>
             <li>
-              <h5> <strong>Custodian: </strong>{{a.custodian}} | <strong>Account #: </strong>{{a.accountNumber}} |
-                <strong>Rate of Return: </strong>{{a.rateOfReturn}} | <strong>Tax Structure: </strong>
-                {{a.taxStructure}}
+              <h5 id="actInfo" > Custodian:<strong> {{a.custodian}}</strong> | Account #: <strong>{{a.accountNumber}}</strong> |
+                Rate of Return: <strong>{{a.rateOfReturn}}</strong> | Tax Structure: 
+                <strong>{{a.taxStructure}}</strong>
                 |
-                <strong>Valuation Date: </strong> {{a.valuationDate}} | <strong>Maturity date: </strong>
-                {{a.maturityDate}} |
-                <strong>Balance: </strong> ${{a.balance}} | <strong>Type: </strong> {{types[a.type!] || "invalid key"}}
+                Valuation Date:  <strong>{{a.valuationDate}}</strong> | Maturity date: 
+                <strong>{{a.maturityDate}}</strong> |
+                Balance:  <strong>${{a.balance}}</strong> | Type:  <strong>{{types[a.type!] || "invalid key"}}</strong>
               </h5>
             </li>
 
@@ -96,9 +96,8 @@
             <label>Account number</label><br>
             <input type="text" name="accountNumber" placeholder="Required" [(ngModel)]="newAsset.accountNumber"
               required="true"><br>
-            <label>Name (Spend, Save, or Invest)</label><br>
-            <input type="text" name="assetName" placeholder="Required" [(ngModel)]="newAsset.assetName"
-              required="true"><br>
+            <label>With FSI(Yes or No)</label><br>
+            <input type="text" name="assetName" placeholder="Required" [(ngModel)]="newAsset.assetName"><br>
           </ion-col>
           <ion-col size="2">
             <label>Rate of return </label><br>
@@ -124,29 +123,33 @@
           <ion-col size="2">
             <h4>Types to categorize your accounts</h4>
             <ul>
-              <li> Type: 1 | Category: Residence</li>
-              <li> Type: 2 | Category: Checking</li>
+              <li> Type: 1 | Category: Checking</li>
+              <li> Type: 2 | Category: Currency</li>
               <li> Type: 3 | Category: Savings</li>
               <li> Type: 4 | Category: CDs</li>
-              <li> Type: 5 | Category: Investments</li>
-              <li> Type: 6 | Category: Annuities</li>
-              <li> Type: 7 | Category: Life Insurance</li>
+              <li> Type: 5 | Category: Health and Medical Savings</li>
+              <li> Type: 6 | Category: Life Insurance</li>
+              <li> Type: 7 | Category: Annuities</li>
+              <li> Type: 8 | Category: Investments</li>
+              <li> Type: 9 | Category: IRAs</li>
+              <li> Type: 10 | Category: Roth IRA</li>
+              <li> Type: 11 | Category: Employer Retirement Plans</li>
             </ul>
           </ion-col>
           <ion-col size="2">
             <ul>
-              <li> Type: 8 | Category: IRAs</li>
-              <li> Type: 9 | Category: 401(k)s</li>
-              <li> Type: 10 | Category: Real Estate</li>
-              <li> Type: 11 | Category: Vehicles</li>
-              <li> Type: 12 | Category: Other Property</li>
-              <li> Type: 13 | Category: Credit Cards</li>
-              <li> Type: 14 | Category: Student Loans</li>
-              <li> Type: 15 | Category: Other Unsecured</li>
-              <li> Type: 16 | Category: Roth IRA</li>
-              <li> Type: 17 | Category: H.S.A</li>
+              <li> Type: 12 | Category: Bullion</li>
+              <li> Type: 13 | Category: Primary Residence</li>
+              <li> Type: 14 | Category: Secondary Residence</li>
+              <li> Type: 15 | Category: Real Estate</li>
+              <li> Type: 16 | Category: Business</li>
+              <li> Type: 17 | Category: Trust</li>
+              <li> Type: 18 | Category: Vehicles</li>
+              <li> Type: 19 | Category: Personal Property</li>
+              <li> Type: 20 | Category: Credit Cards</li>
+              <li> Type: 21 | Category: Student Loans</li>
+              <li> Type: 22 | Category: Other</li>
             </ul>
-
           </ion-col>
         </ion-row>
       </ion-grid>

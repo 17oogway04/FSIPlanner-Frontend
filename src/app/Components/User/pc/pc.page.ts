@@ -38,6 +38,9 @@ export class PcPage implements OnInit {
     })
     window.location.reload()
   }
+  printAssets(){
+    window.print()
+  }
 
   openForm(){
     this.isFormVisible = true;

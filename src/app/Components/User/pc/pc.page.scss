@@ -12,8 +12,25 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     z-index: 100 !important;
 }
-
+* {
+    font-family: Felix Titling;
+}
 input{
     padding: 10px;
     margin: 5px;
+}
+
+@media print{
+    #printerBtn{
+        visibility: hidden;
+    }
+
+    ion-button{
+        visibility: hidden;
+    }
+
+    #ins{
+        width: 300px;
+        height: 300px;
+    }
 }

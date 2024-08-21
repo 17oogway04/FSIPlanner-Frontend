@@ -59,7 +59,7 @@
     <h1>Invest</h1>
     <ion-grid *ngFor="let a of userAsset">
       <ion-row>
-        <ion-col *ngIf="a.type === '7' || a.type === '8' || a.type === '9' || a.type === '10' || a.type === '11' || a.type === '12'" [ngClass]="{'with-fsi': a.assetName === 'Yes' || 'yes', 'without-fsi': a.assetName !== 'Yes' || 'yes'}">
+        <ion-col *ngIf="a.type === '7' || a.type === '8' || a.type === '9' || a.type === '10' || a.type === '11' || a.type === '12'" [ngClass]="{'with-fsi': a.assetName === 'Yes' || 'yes', 'without-fsi': a.assetName !== 'Yes'}">
           <ul>
             <li>
               <h5 id="actInfo" > Custodian:<strong> {{a.custodian}}</strong> | Account #: <strong>{{a.accountNumber}}</strong> |

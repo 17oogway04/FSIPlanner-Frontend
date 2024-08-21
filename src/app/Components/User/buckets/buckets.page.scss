@@ -8,6 +8,9 @@ ion-card-content, ion-card-title{
 p{
     font-size: 3em;
 }
+#first, #second, #third{
+    width: 450px;
+}
 
 ion-card-title{
     font-size: 2em;
@@ -25,6 +28,13 @@ ion-card-title{
     color: orange;
 }
 
-#speculative{
-    color: orange;
+@media print{
+#first, #second, #third{
+    width: 300px;
+    height: 500px;
+ }
+
+ #printerBtn{
+    display: none;
+ }
 }

@@ -34,6 +34,9 @@ export class BucketsPage implements OnInit {
     this.getBuckets()
     this.totalCapital()
   }
+  printAssets(){
+    window.print()
+  }
 
   getBuckets(){
     this.myBucketService.getBuckets(this.username).subscribe((response) => {

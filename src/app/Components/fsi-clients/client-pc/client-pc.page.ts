@@ -54,5 +54,8 @@ export class ClientPcPage implements OnInit {
       this.loadUserPC()
     })
   }
+  printAssets(){
+    window.print()
+  }
 
 }

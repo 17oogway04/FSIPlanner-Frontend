@@ -21,3 +21,18 @@ input {
 *{
     font-family: Felix Titling;
   }
+
+  @media print{
+    #printerBtn, #pcHeader{
+        visibility: hidden;
+    }
+
+    ion-button{
+        visibility: hidden;
+    }
+
+    #ins{
+        width: 300px;
+        height: 300px;
+    }
+}

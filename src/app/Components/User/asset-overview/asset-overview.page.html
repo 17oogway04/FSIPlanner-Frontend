@@ -1,11 +1,13 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>Asset Overview</ion-title>
-    <ion-button routerLink="/home/asset/{{this.username}}" slot="end" fill="clear" id="home" size="large">Back</ion-button>
+    <ion-button routerLink="/home/asset/{{this.username}}" slot="end" fill="clear" id="home" size="large" color="secondary">Back</ion-button>
 
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div style="display: block; height: 800px;"><canvas id="pie-chart"></canvas></div>
+  <div>
+    <div style="display: block; height: 800px;"><canvas id="pie-chart"></canvas></div>
+  </div>
 </ion-content>

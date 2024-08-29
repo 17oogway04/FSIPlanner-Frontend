@@ -40,6 +40,9 @@ export class ClientBucketsPage implements OnInit {
       this.totalCapital()
     })
   }
+  printAssets(){
+    window.print()
+  }
 
   totalCapital(){
     this.totalCapitalAmount = this.bucket.reduce((accumulator, currentBucket) => accumulator + (currentBucket.balance || 0), 0)

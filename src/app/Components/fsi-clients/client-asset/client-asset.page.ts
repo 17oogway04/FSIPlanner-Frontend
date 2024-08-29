@@ -88,6 +88,10 @@ export class ClientAssetPage implements OnInit {
   closeForm() {
     this.isFormVisible = false;
   }
+  printAssets(){
+    window.print()
+  }
+
 
   deleteAsset(id: number) {
     this.myAssetservice.deleteAsset(id).subscribe(() => {

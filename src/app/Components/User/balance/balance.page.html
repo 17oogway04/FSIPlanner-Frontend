@@ -1,0 +1,175 @@
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <h1>Type</h1>
+      </ion-col>
+      <ion-col>
+        <h1>Category</h1>
+      </ion-col>
+      <ion-col>
+        <h1>Asset</h1>
+      </ion-col>
+      <ion-col>
+        <h1>Liability</h1>
+      </ion-col>
+      <ion-col>
+        <h1>Net Worth</h1>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngFor="let b of userBalance">
+      <ion-col>1</ion-col>
+      <ion-col>Checking</ion-col>
+      <ion-col>${{b.type1}}</ion-col>
+      <ion-col>$ liability value</ion-col>
+      <ion-col>${{b.type1}}</ion-col> <!--for the networth it is b.type1 + l.type1 (liabilities)-->
+    </ion-row>
+    <ion-row *ngFor="let b of userBalance">
+      <ion-col>2</ion-col>
+      <ion-col>Currency</ion-col>
+      <ion-col>${{b.type2}}</ion-col>
+      <ion-col>$ liability value</ion-col>
+      <ion-col>${{b.type2}}</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let b of userBalance">
+      <ion-col>3</ion-col>
+      <ion-col>Savings</ion-col>
+      <ion-col>${{b.type3}}</ion-col>
+      <ion-col>$ liability value</ion-col>
+      <ion-col>${{b.type3}}</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let b of userBalance">
+      <ion-col>4</ion-col>
+      <ion-col>CDs</ion-col>
+      <ion-col>${{b.type4}}</ion-col>
+      <ion-col>$ liability value</ion-col>
+      <ion-col>${{b.type4}}</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let b of userBalance">
+      <ion-col>5</ion-col>
+      <ion-col>Health and Medical Savings</ion-col>
+      <ion-col>${{b.type5}}</ion-col>
+      <ion-col>$ liability value</ion-col>
+      <ion-col>${{b.type5}}</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let b of userBalance">
+      <ion-col>6</ion-col>
+      <ion-col>Life Insurance</ion-col>
+      <ion-col>${{b.type6}}</ion-col>
+      <ion-col>$ liability value</ion-col>
+      <ion-col>${{b.type6}}</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let b of userBalance">
+      <ion-col>7</ion-col>
+      <ion-col>Annuities</ion-col>
+      <ion-col>${{b.type7}}</ion-col>
+      <ion-col>$ liability value</ion-col>
+      <ion-col>${{b.type7}}</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let b of userBalance">
+      <ion-col>8</ion-col>
+      <ion-col>Investments</ion-col>
+      <ion-col>${{b.type8}}</ion-col>
+      <ion-col>$ liability value</ion-col>
+      <ion-col>${{b.type8}}</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let b of userBalance">
+      <ion-col>9</ion-col>
+      <ion-col>IRAs</ion-col>
+      <ion-col>${{b.type9}}</ion-col>
+      <ion-col>$ liability value</ion-col>
+      <ion-col>${{b.type9}}</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let b of userBalance">
+      <ion-col>10</ion-col>
+      <ion-col>Roth IRA</ion-col>
+      <ion-col>${{b.type10}}</ion-col>
+      <ion-col>$ liability value</ion-col>
+      <ion-col>${{b.type10}}</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let b of userBalance">
+      <ion-col>11</ion-col>
+      <ion-col>Employer Retirement Plans</ion-col>
+      <ion-col>${{b.type11}}</ion-col>
+      <ion-col>$ liability value</ion-col>
+      <ion-col>${{b.type11}}</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let b of userBalance">
+      <ion-col>12</ion-col>
+      <ion-col>Bullion</ion-col>
+      <ion-col>${{b.type12}}</ion-col>
+      <ion-col>$ liability value</ion-col>
+      <ion-col>${{b.type12}}</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let b of userBalance">
+      <ion-col>13</ion-col>
+      <ion-col>Primary Residence</ion-col>
+      <ion-col>${{b.type13}}</ion-col>
+      <ion-col>$ liability value</ion-col>
+      <ion-col>${{b.type13}}</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let b of userBalance">
+      <ion-col>14</ion-col>
+      <ion-col>Secondary Residence</ion-col>
+      <ion-col>${{b.type14}}</ion-col>
+      <ion-col>$ liability value</ion-col>
+      <ion-col>${{b.type14}}</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let b of userBalance">
+      <ion-col>15</ion-col>
+      <ion-col>Real Estate</ion-col>
+      <ion-col>${{b.type15}}</ion-col>
+      <ion-col>$ liability value</ion-col>
+      <ion-col>${{b.type15}}</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let b of userBalance">
+      <ion-col>16</ion-col>
+      <ion-col>Business</ion-col>
+      <ion-col>${{b.type16}}</ion-col>
+      <ion-col>$ liability value</ion-col>
+      <ion-col>${{b.type16}}</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let b of userBalance">
+      <ion-col>17</ion-col>
+      <ion-col>Trust</ion-col>
+      <ion-col>${{b.type17}}</ion-col>
+      <ion-col>$ liability value</ion-col>
+      <ion-col>${{b.type17}}</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let b of userBalance">
+      <ion-col>18</ion-col>
+      <ion-col>Vehicles</ion-col>
+      <ion-col>${{b.type18}}</ion-col>
+      <ion-col>$ liability value</ion-col>
+      <ion-col>${{b.type18}}</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let b of userBalance">
+      <ion-col>19</ion-col>
+      <ion-col>Personal Property</ion-col>
+      <ion-col>${{b.type19}}</ion-col>
+      <ion-col>$ liability value</ion-col>
+      <ion-col>${{b.type19}}</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let b of userBalance">
+      <ion-col>20</ion-col>
+      <ion-col>Credit Cards</ion-col>
+      <ion-col>${{b.type20}}</ion-col>
+      <ion-col>$ liability value</ion-col>
+      <ion-col>${{b.type20}}</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let b of userBalance">
+      <ion-col>21</ion-col>
+      <ion-col>Student Loans</ion-col>
+      <ion-col>${{b.type21}}</ion-col>
+      <ion-col>$ liability value</ion-col>
+      <ion-col>${{b.type21}}</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let b of userBalance">
+      <ion-col>22</ion-col>
+      <ion-col>Other</ion-col>
+      <ion-col>${{b.type22}}</ion-col>
+      <ion-col>$ liability value</ion-col>
+      <ion-col>${{b.type22}}</ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

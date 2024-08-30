@@ -23,6 +23,10 @@ const routes: Routes = [
         path: 'buckets/:username',
         loadChildren: () => import('../User/buckets/buckets.module').then( m => m.BucketsPageModule)
       },
+      {
+        path: 'balance/:username',
+        loadChildren: () => import('../User/balance/balance.module').then( m => m.BalancePageModule)
+      },
     ]
   }
 ];

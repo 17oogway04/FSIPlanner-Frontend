@@ -45,7 +45,7 @@ export class UserService {
 
     return this.http.get<User>(`${this.baseUrl}/current`, {headers: reqHeaders})
       .pipe(tap((response: any) => {
-        console.log(response);
+        // console.log(response);
       }))
   }
 

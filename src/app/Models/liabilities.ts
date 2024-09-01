@@ -1,5 +1,5 @@
 export class Liabilities {
-    liabilitiesId?: string;
+    liabilitiesId?: number;
     type?: string;
     description?: string;
     balance?: string;
@@ -9,7 +9,7 @@ export class Liabilities {
     value?: string;
     username?: string;
 
-    constructor(liabilitiesId: string, type: string, description: string, balance: string, rate: string, payment: string, term: string, value: string, username: string)
+    constructor(liabilitiesId: number, type: string, description: string, balance: string, rate: string, payment: string, term: string, value: string, username: string)
     {
         this.liabilitiesId = liabilitiesId;
         this.type = type;

@@ -95,6 +95,10 @@ const routes: Routes = [
     path: 'client-asset-overview/:username',
     loadChildren: () => import('./Components/fsi-clients/client-asset-overview/client-asset-overview.module').then( m => m.ClientAssetOverviewPageModule)
   },
+  {
+    path: 'client-balance/:username',
+    loadChildren: () => import('./Components/fsi-clients/client-balance/client-balance.module').then( m => m.ClientBalancePageModule)
+  },
 ];
 
 @NgModule({

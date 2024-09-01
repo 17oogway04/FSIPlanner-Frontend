@@ -1,0 +1,392 @@
+<ion-content [fullscreen]="true">
+  <ion-toolbar>
+    <ion-button (click)="openForm()" fill="clear" color="secondary" slot="end">Add liability</ion-button>
+  </ion-toolbar>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <h1>Type</h1>
+      </ion-col>
+      <ion-col>
+        <h1>Description</h1>
+      </ion-col>
+      <ion-col>
+        <h1>Category</h1>
+      </ion-col>
+      <ion-col>
+        <h1>Balance</h1>
+      </ion-col>
+      <ion-col>
+        <h1>Rate</h1>
+      </ion-col>
+      <ion-col>
+        <h1>Payment</h1>
+      </ion-col>
+      <ion-col>
+        <h1>Term</h1>
+      </ion-col>
+      <ion-col>
+        <h1>Value</h1>
+      </ion-col>
+      <ion-col>
+        
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid *ngFor="let l of userLiabilities">
+    <ion-row *ngIf="l.type == '1'">
+      <ion-col>{{l.type}}</ion-col>
+      <ion-col>{{l.description}}</ion-col>
+      <ion-col> Category</ion-col>
+      <ion-col>${{l.balance}}</ion-col>
+      <ion-col>{{l.rate}}</ion-col>
+      <ion-col>${{l.payment}}</ion-col>
+      <ion-col>{{l.term}}</ion-col>
+      <ion-col>{{l.value}}</ion-col>
+      <ion-col> <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
+            account</strong></ion-button></ion-col>
+    </ion-row>
+    <ion-row *ngIf="l.type == '2'">
+      <ion-col>{{l.type}}</ion-col>
+      <ion-col>{{l.description}}</ion-col>
+      <ion-col> Category</ion-col>
+
+      <ion-col>${{l.balance}}</ion-col>
+      <ion-col>{{l.rate}}</ion-col>
+      <ion-col>${{l.payment}}</ion-col>
+      <ion-col>{{l.term}}</ion-col>
+      <ion-col>{{l.value}}</ion-col>
+      <ion-col> <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
+            account</strong></ion-button></ion-col>
+    </ion-row>
+    <ion-row *ngIf="l.type == '3'">
+      <ion-col>{{l.type}}</ion-col>
+      <ion-col>{{l.description}}</ion-col>
+      <ion-col> Category</ion-col>
+
+      <ion-col>${{l.balance}}</ion-col>
+      <ion-col>{{l.rate}}</ion-col>
+      <ion-col>${{l.payment}}</ion-col>
+      <ion-col>{{l.term}}</ion-col>
+      <ion-col>{{l.value}}</ion-col>
+      <ion-col> <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
+            account</strong></ion-button></ion-col>
+    </ion-row>
+    <ion-row *ngIf="l.type == '4'">
+      <ion-col>{{l.type}}</ion-col>
+      <ion-col>{{l.description}}</ion-col>
+      <ion-col> Category</ion-col>
+
+      <ion-col>${{l.balance}}</ion-col>
+      <ion-col>{{l.rate}}</ion-col>
+      <ion-col>${{l.payment}}</ion-col>
+      <ion-col>{{l.term}}</ion-col>
+      <ion-col>{{l.value}}</ion-col>
+      <ion-col> <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
+            account</strong></ion-button></ion-col>
+    </ion-row>
+    <ion-row *ngIf="l.type == '5'">
+      <ion-col>{{l.type}}</ion-col>
+      <ion-col>{{l.description}}</ion-col>
+      <ion-col> Category</ion-col>
+
+      <ion-col>${{l.balance}}</ion-col>
+      <ion-col>{{l.rate}}</ion-col>
+      <ion-col>${{l.payment}}</ion-col>
+      <ion-col>{{l.term}}</ion-col>
+      <ion-col>{{l.value}}</ion-col>
+      <ion-col> <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
+            account</strong></ion-button></ion-col>
+    </ion-row>
+    <ion-row *ngIf="l.type == '6'">
+      <ion-col>{{l.type}}</ion-col>
+      <ion-col>{{l.description}}</ion-col>
+      <ion-col> Category</ion-col>
+
+      <ion-col>${{l.balance}}</ion-col>
+      <ion-col>{{l.rate}}</ion-col>
+      <ion-col>${{l.payment}}</ion-col>
+      <ion-col>{{l.term}}</ion-col>
+      <ion-col>{{l.value}}</ion-col>
+      <ion-col> <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
+            account</strong></ion-button></ion-col>
+    </ion-row>
+    <ion-row *ngIf="l.type == '7'">
+      <ion-col>{{l.type}}</ion-col>
+      <ion-col>{{l.description}}</ion-col>
+      <ion-col> Category</ion-col>
+
+      <ion-col>${{l.balance}}</ion-col>
+      <ion-col>{{l.rate}}</ion-col>
+      <ion-col>${{l.payment}}</ion-col>
+      <ion-col>{{l.term}}</ion-col>
+      <ion-col>{{l.value}}</ion-col>
+      <ion-col> <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
+            account</strong></ion-button></ion-col>
+    </ion-row>
+    <ion-row *ngIf="l.type == '8'">
+      <ion-col>{{l.type}}</ion-col>
+      <ion-col>{{l.description}}</ion-col>
+      <ion-col> Category</ion-col>
+
+      <ion-col>${{l.balance}}</ion-col>
+      <ion-col>{{l.rate}}</ion-col>
+      <ion-col>${{l.payment}}</ion-col>
+      <ion-col>{{l.term}}</ion-col>
+      <ion-col>{{l.value}}</ion-col>
+      <ion-col> <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
+            account</strong></ion-button></ion-col>
+    </ion-row>
+    <ion-row *ngIf="l.type == '9'">
+      <ion-col>{{l.type}}</ion-col>
+      <ion-col>{{l.description}}</ion-col>
+      <ion-col> Category</ion-col>
+
+      <ion-col>${{l.balance}}</ion-col>
+      <ion-col>{{l.rate}}</ion-col>
+      <ion-col>${{l.payment}}</ion-col>
+      <ion-col>{{l.term}}</ion-col>
+      <ion-col>{{l.value}}</ion-col>
+      <ion-col> <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
+            account</strong></ion-button></ion-col>
+    </ion-row>
+    <ion-row *ngIf="l.type == '10'">
+      <ion-col>{{l.type}}</ion-col>
+      <ion-col>{{l.description}}</ion-col>
+      <ion-col> Category</ion-col>
+
+      <ion-col>${{l.balance}}</ion-col>
+      <ion-col>{{l.rate}}</ion-col>
+      <ion-col>${{l.payment}}</ion-col>
+      <ion-col>{{l.term}}</ion-col>
+      <ion-col>{{l.value}}</ion-col>
+      <ion-col> <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
+            account</strong></ion-button></ion-col>
+    </ion-row>
+    <ion-row *ngIf="l.type == '11'">
+      <ion-col>{{l.type}}</ion-col>
+      <ion-col>{{l.description}}</ion-col>
+      <ion-col> Category</ion-col>
+
+      <ion-col>${{l.balance}}</ion-col>
+      <ion-col>{{l.rate}}</ion-col>
+      <ion-col>${{l.payment}}</ion-col>
+      <ion-col>{{l.term}}</ion-col>
+      <ion-col>{{l.value}}</ion-col>
+      <ion-col> <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
+            account</strong></ion-button></ion-col>
+    </ion-row>
+    <ion-row *ngIf="l.type == '12'">
+      <ion-col>{{l.type}}</ion-col>
+      <ion-col>{{l.description}}</ion-col>
+      <ion-col> Category</ion-col>
+
+      <ion-col>${{l.balance}}</ion-col>
+      <ion-col>{{l.rate}}</ion-col>
+      <ion-col>${{l.payment}}</ion-col>
+      <ion-col>{{l.term}}</ion-col>
+      <ion-col>{{l.value}}</ion-col>
+      <ion-col> <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
+            account</strong></ion-button></ion-col>
+    </ion-row>
+    <ion-row *ngIf="l.type == '13'">
+      <ion-col>{{l.type}}</ion-col>
+      <ion-col>{{l.description}}</ion-col>
+      <ion-col> Category</ion-col>
+
+      <ion-col>${{l.balance}}</ion-col>
+      <ion-col>{{l.rate}}</ion-col>
+      <ion-col>${{l.payment}}</ion-col>
+      <ion-col>{{l.term}}</ion-col>
+      <ion-col>{{l.value}}</ion-col>
+      <ion-col> <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
+            account</strong></ion-button></ion-col>
+    </ion-row>
+    <ion-row *ngIf="l.type == '14'">
+      <ion-col>{{l.type}}</ion-col>
+      <ion-col>{{l.description}}</ion-col>
+      <ion-col> Category</ion-col>
+
+      <ion-col>${{l.balance}}</ion-col>
+      <ion-col>{{l.rate}}</ion-col>
+      <ion-col>${{l.payment}}</ion-col>
+      <ion-col>{{l.term}}</ion-col>
+      <ion-col>{{l.value}}</ion-col>
+      <ion-col> <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
+            account</strong></ion-button></ion-col>
+    </ion-row>
+    <ion-row *ngIf="l.type == '15'">
+      <ion-col>{{l.type}}</ion-col>
+      <ion-col>{{l.description}}</ion-col>
+      <ion-col> Category</ion-col>
+
+      <ion-col>${{l.balance}}</ion-col>
+      <ion-col>{{l.rate}}</ion-col>
+      <ion-col>${{l.payment}}</ion-col>
+      <ion-col>{{l.term}}</ion-col>
+      <ion-col>{{l.value}}</ion-col>
+      <ion-col> <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
+            account</strong></ion-button></ion-col>
+    </ion-row>
+    <ion-row *ngIf="l.type == '16'">
+      <ion-col>{{l.type}}</ion-col>
+      <ion-col>{{l.description}}</ion-col>
+      <ion-col> Category</ion-col>
+
+      <ion-col>${{l.balance}}</ion-col>
+      <ion-col>{{l.rate}}</ion-col>
+      <ion-col>${{l.payment}}</ion-col>
+      <ion-col>{{l.term}}</ion-col>
+      <ion-col>{{l.value}}</ion-col>
+      <ion-col> <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
+            account</strong></ion-button></ion-col>
+    </ion-row>
+    <ion-row *ngIf="l.type == '17'">
+      <ion-col>{{l.type}}</ion-col>
+      <ion-col>{{l.description}}</ion-col>
+      <ion-col> Category</ion-col>
+
+      <ion-col>${{l.balance}}</ion-col>
+      <ion-col>{{l.rate}}</ion-col>
+      <ion-col>${{l.payment}}</ion-col>
+      <ion-col>{{l.term}}</ion-col>
+      <ion-col>{{l.value}}</ion-col>
+      <ion-col> <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
+            account</strong></ion-button></ion-col>
+    </ion-row>
+    <ion-row *ngIf="l.type == '18'">
+      <ion-col>{{l.type}}</ion-col>
+      <ion-col>{{l.description}}</ion-col>
+      <ion-col> Category</ion-col>
+
+      <ion-col>${{l.balance}}</ion-col>
+      <ion-col>{{l.rate}}</ion-col>
+      <ion-col>${{l.payment}}</ion-col>
+      <ion-col>{{l.term}}</ion-col>
+      <ion-col>{{l.value}}</ion-col>
+      <ion-col> <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
+            account</strong></ion-button></ion-col>
+    </ion-row>
+    <ion-row *ngIf="l.type == '19'">
+      <ion-col>{{l.type}}</ion-col>
+      <ion-col>{{l.description}}</ion-col>
+      <ion-col> Category</ion-col>
+
+      <ion-col>${{l.balance}}</ion-col>
+      <ion-col>{{l.rate}}</ion-col>
+      <ion-col>${{l.payment}}</ion-col>
+      <ion-col>{{l.term}}</ion-col>
+      <ion-col>{{l.value}}</ion-col>
+      <ion-col> <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
+            account</strong></ion-button></ion-col>
+    </ion-row>
+    <ion-row *ngIf="l.type == '20'">
+      <ion-col>{{l.type}}</ion-col>
+      <ion-col>{{l.description}}</ion-col>
+      <ion-col> Category</ion-col>
+      <ion-col>${{l.balance}}</ion-col>
+      <ion-col>{{l.rate}}</ion-col>
+      <ion-col>${{l.payment}}</ion-col>
+      <ion-col>{{l.term}}</ion-col>
+      <ion-col>{{l.value}}</ion-col>
+      <ion-col> <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
+        account</strong></ion-button></ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="l.type == '21'">
+      <ion-col>{{l.type}}</ion-col>
+      <ion-col>{{l.description}}</ion-col>
+      <ion-col> Category</ion-col>
+      <ion-col>${{l.balance}}</ion-col>
+      <ion-col>{{l.rate}}</ion-col>
+      <ion-col>${{l.payment}}</ion-col>
+      <ion-col>{{l.term}}</ion-col>
+      <ion-col>{{l.value}}</ion-col>
+      <ion-col> <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
+            account</strong></ion-button></ion-col>
+    </ion-row>
+    <ion-row *ngIf="l.type == '22'">
+      <ion-col>{{l.type}}</ion-col>
+      <ion-col>{{l.description}}</ion-col>
+      <ion-col> Category</ion-col>
+      <ion-col>${{l.balance}}</ion-col>
+      <ion-col>{{l.rate}}</ion-col>
+      <ion-col>${{l.payment}}</ion-col>
+      <ion-col>{{l.term}}</ion-col>
+      <ion-col>{{l.value}}</ion-col>
+      <ion-col> <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
+            account</strong></ion-button></ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!--Adding account-->
+  <div *ngIf="isFormVisible" id="inputForm">
+    <form #form="ngForm" (ngSubmit)="createLiability()">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="2">
+            <label>Type</label><br>
+            <input type="text" name="type" [(ngModel)]="newLiability.type"><br>
+            <label>Description</label><br>
+            <input type="text" name="description" [(ngModel)]="newLiability.description"><br>
+            <label>Balance</label><br>
+            <input type="text" name="balance" [(ngModel)]="newLiability.balance"><br>
+          </ion-col>
+          <ion-col size="2">
+            <label>Rate </label><br>
+            <input type="text" name="rate" [(ngModel)]="newLiability.rate"><br>
+            <label>Payment</label><br>
+            <input type="text" name="payment" [(ngModel)]="newLiability.payment"><br>
+          </ion-col>
+          <ion-col size="2">
+            <label>Term</label><br>
+            <input type="text" name="term" [(ngModel)]="newLiability.term"><br>
+            <label>Value</label><br>
+            <input type="text" name="value" [(ngModel)]="newLiability.value"><br>
+          </ion-col>
+          <ion-col size="2">
+            <h4>Types to categorize your accounts</h4>
+            <ul>
+              <li> Type: 1 | Category: Checking</li>
+              <li> Type: 2 | Category: Currency</li>
+              <li> Type: 3 | Category: Savings</li>
+              <li> Type: 4 | Category: CDs</li>
+              <li> Type: 5 | Category: Health and Medical Savings</li>
+              <li> Type: 6 | Category: Life Insurance</li>
+              <li> Type: 7 | Category: Annuities</li>
+              <li> Type: 8 | Category: Investments</li>
+              <li> Type: 9 | Category: IRAs</li>
+              <li> Type: 10 | Category: Roth IRA</li>
+            </ul>
+          </ion-col>
+          <ion-col size="2">
+            <ul>
+              <li> Type: 11 | Category: Employer Retirement Plans</li>
+
+              <li> Type: 12 | Category: Bullion</li>
+              <li> Type: 13 | Category: Primary Residence</li>
+              <li> Type: 14 | Category: Secondary Residence</li>
+              <li> Type: 15 | Category: Real Estate</li>
+              <li> Type: 16 | Category: Business</li>
+              <li> Type: 17 | Category: Trust</li>
+              <li> Type: 18 | Category: Vehicles</li>
+              <li> Type: 19 | Category: Personal Property</li>
+              <li> Type: 20 | Category: Credit Cards</li>
+              <li> Type: 21 | Category: Student Loans</li>
+              <li> Type: 22 | Category: Other</li>
+            </ul>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <input hidden="true" type="text" name="username" [(ngModel)]="newLiability.username">
+      <input hidden="true" type="text" name="notesId" [(ngModel)]="newLiability.liabilitiesId">
+
+      <ion-button type="submit" fill="clear" color="secondary">
+        Create account
+      </ion-button>
+      <ion-button (click)="closeForm()" fill="clear" color="secondary">Cancel</ion-button>
+    </form>
+  </div>
+</ion-content>

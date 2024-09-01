@@ -34,7 +34,7 @@
   </ion-grid>
   <ion-toolbar style="padding-top: 20px;">
     <ion-segment>
-      <ion-segment-button>
+      <ion-segment-button [routerLink]="['/client-balance', presentUser.userName]">
         <ion-label>Balance</ion-label>
       </ion-segment-button>
       <ion-segment-button [routerLink]="['/client-buckets', presentUser.userName]">

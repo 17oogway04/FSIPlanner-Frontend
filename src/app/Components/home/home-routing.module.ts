@@ -27,6 +27,10 @@ const routes: Routes = [
         path: 'balance/:username',
         loadChildren: () => import('../User/balance/balance.module').then( m => m.BalancePageModule)
       },
+      {
+        path: 'liabilities/:username',
+        loadChildren: () => import('../User/liabilities/liabilities.module').then( m => m.LiabilitiesPageModule)
+      },
     ]
   }
 ];

@@ -99,6 +99,10 @@ const routes: Routes = [
     path: 'client-balance/:username',
     loadChildren: () => import('./Components/fsi-clients/client-balance/client-balance.module').then( m => m.ClientBalancePageModule)
   },
+  {
+    path: 'edit-liability/:id',
+    loadChildren: () => import('./Components/User/edit-liability/edit-liability.module').then( m => m.EditLiabilityPageModule)
+  },
 ];
 
 @NgModule({

@@ -13,7 +13,7 @@ export class LiabilitiesPage implements OnInit {
   username: string = '';
   isFormVisible = false;
   userLiabilities: Liabilities[] = [];
-  newLiability: Liabilities = new Liabilities(0,"","", "", "", "", "", "", this.actRouter.snapshot.paramMap.get("username") ?? '');
+  newLiability: Liabilities = new Liabilities(0,"","",0, "", "", "", "", this.actRouter.snapshot.paramMap.get("username") ?? '');
   constructor(private myLiabilityService: LiabilitiesService, private actRouter: ActivatedRoute) { }
 
   ngOnInit() {

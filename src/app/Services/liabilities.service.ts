@@ -40,4 +40,11 @@ export class LiabilitiesService {
     }
     return this.http.delete<any>(`${this.baseUrl}/${liabilityId}`, {headers: reqHeaders})
   }
+
+  getLiabilityById(liabilityId: number): Observable<Liabilities>{
+    let reqHeaders = {
+      Authorization: `Bearer ${localStorage.getItem(this.tokenKey)}`
+    }
+    return this.http.get<Liabilities>(`${this.baseUrl}/by-liabilityId${liabilityId}`, {headers: reqHeaders})
+  }
 }

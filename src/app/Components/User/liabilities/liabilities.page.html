@@ -30,6 +30,9 @@
         <h1>Value</h1>
       </ion-col>
       <ion-col>
+
+      </ion-col>
+      <ion-col>
         
       </ion-col>
     </ion-row>
@@ -44,8 +47,10 @@
       <ion-col>${{l.payment}}</ion-col>
       <ion-col>{{l.term}}</ion-col>
       <ion-col>{{l.value}}</ion-col>
-      <ion-col> <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
-            account</strong></ion-button></ion-col>
+      <ion-button fill="clear" color="secondary" [routerLink]="['/edit-liability', l.liabilitiesId]"><strong>Edit
+        account</strong></ion-button>
+        <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
+            account</strong></ion-button>
     </ion-row>
     <ion-row *ngIf="l.type == '2'">
       <ion-col>{{l.type}}</ion-col>
@@ -57,8 +62,10 @@
       <ion-col>${{l.payment}}</ion-col>
       <ion-col>{{l.term}}</ion-col>
       <ion-col>{{l.value}}</ion-col>
-      <ion-col> <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
-            account</strong></ion-button></ion-col>
+      <ion-button fill="clear" color="secondary" [routerLink]="['/edit-liability', l.liabilitiesId]"><strong>Edit
+        account</strong></ion-button>
+        <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
+            account</strong></ion-button>
     </ion-row>
     <ion-row *ngIf="l.type == '3'">
       <ion-col>{{l.type}}</ion-col>
@@ -70,8 +77,10 @@
       <ion-col>${{l.payment}}</ion-col>
       <ion-col>{{l.term}}</ion-col>
       <ion-col>{{l.value}}</ion-col>
-      <ion-col> <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
-            account</strong></ion-button></ion-col>
+      <ion-button fill="clear" color="secondary" [routerLink]="['/edit-liability', l.liabilitiesId]"><strong>Edit
+        account</strong></ion-button>
+        <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
+            account</strong></ion-button>
     </ion-row>
     <ion-row *ngIf="l.type == '4'">
       <ion-col>{{l.type}}</ion-col>
@@ -83,8 +92,10 @@
       <ion-col>${{l.payment}}</ion-col>
       <ion-col>{{l.term}}</ion-col>
       <ion-col>{{l.value}}</ion-col>
-      <ion-col> <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
-            account</strong></ion-button></ion-col>
+      <ion-button fill="clear" color="secondary" [routerLink]="['/edit-liability', l.liabilitiesId]"><strong>Edit
+        account</strong></ion-button>
+        <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
+            account</strong></ion-button>
     </ion-row>
     <ion-row *ngIf="l.type == '5'">
       <ion-col>{{l.type}}</ion-col>
@@ -96,8 +107,10 @@
       <ion-col>${{l.payment}}</ion-col>
       <ion-col>{{l.term}}</ion-col>
       <ion-col>{{l.value}}</ion-col>
-      <ion-col> <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
-            account</strong></ion-button></ion-col>
+      <ion-button fill="clear" color="secondary" [routerLink]="['/edit-liability', l.liabilitiesId]"><strong>Edit
+        account</strong></ion-button>
+        <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
+            account</strong></ion-button>
     </ion-row>
     <ion-row *ngIf="l.type == '6'">
       <ion-col>{{l.type}}</ion-col>
@@ -109,8 +122,10 @@
       <ion-col>${{l.payment}}</ion-col>
       <ion-col>{{l.term}}</ion-col>
       <ion-col>{{l.value}}</ion-col>
-      <ion-col> <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
-            account</strong></ion-button></ion-col>
+      <ion-button fill="clear" color="secondary" [routerLink]="['/edit-liability', l.liabilitiesId]"><strong>Edit
+        account</strong></ion-button>
+        <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
+            account</strong></ion-button>
     </ion-row>
     <ion-row *ngIf="l.type == '7'">
       <ion-col>{{l.type}}</ion-col>
@@ -122,8 +137,10 @@
       <ion-col>${{l.payment}}</ion-col>
       <ion-col>{{l.term}}</ion-col>
       <ion-col>{{l.value}}</ion-col>
-      <ion-col> <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
-            account</strong></ion-button></ion-col>
+      <ion-button fill="clear" color="secondary" [routerLink]="['/edit-liability', l.liabilitiesId]"><strong>Edit
+        account</strong></ion-button>
+        <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
+            account</strong></ion-button>
     </ion-row>
     <ion-row *ngIf="l.type == '8'">
       <ion-col>{{l.type}}</ion-col>
@@ -135,8 +152,10 @@
       <ion-col>${{l.payment}}</ion-col>
       <ion-col>{{l.term}}</ion-col>
       <ion-col>{{l.value}}</ion-col>
-      <ion-col> <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
-            account</strong></ion-button></ion-col>
+      <ion-button fill="clear" color="secondary" [routerLink]="['/edit-liability', l.liabilitiesId]"><strong>Edit
+        account</strong></ion-button>
+        <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
+            account</strong></ion-button>
     </ion-row>
     <ion-row *ngIf="l.type == '9'">
       <ion-col>{{l.type}}</ion-col>
@@ -148,8 +167,10 @@
       <ion-col>${{l.payment}}</ion-col>
       <ion-col>{{l.term}}</ion-col>
       <ion-col>{{l.value}}</ion-col>
-      <ion-col> <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
-            account</strong></ion-button></ion-col>
+      <ion-button fill="clear" color="secondary" [routerLink]="['/edit-liability', l.liabilitiesId]"><strong>Edit
+        account</strong></ion-button>
+        <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
+            account</strong></ion-button>
     </ion-row>
     <ion-row *ngIf="l.type == '10'">
       <ion-col>{{l.type}}</ion-col>
@@ -161,8 +182,10 @@
       <ion-col>${{l.payment}}</ion-col>
       <ion-col>{{l.term}}</ion-col>
       <ion-col>{{l.value}}</ion-col>
-      <ion-col> <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
-            account</strong></ion-button></ion-col>
+      <ion-button fill="clear" color="secondary" [routerLink]="['/edit-liability', l.liabilitiesId]"><strong>Edit
+        account</strong></ion-button>
+        <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
+            account</strong></ion-button>
     </ion-row>
     <ion-row *ngIf="l.type == '11'">
       <ion-col>{{l.type}}</ion-col>
@@ -174,8 +197,10 @@
       <ion-col>${{l.payment}}</ion-col>
       <ion-col>{{l.term}}</ion-col>
       <ion-col>{{l.value}}</ion-col>
-      <ion-col> <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
-            account</strong></ion-button></ion-col>
+      <ion-button fill="clear" color="secondary" [routerLink]="['/edit-liability', l.liabilitiesId]"><strong>Edit
+        account</strong></ion-button>
+        <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
+            account</strong></ion-button>
     </ion-row>
     <ion-row *ngIf="l.type == '12'">
       <ion-col>{{l.type}}</ion-col>
@@ -187,8 +212,10 @@
       <ion-col>${{l.payment}}</ion-col>
       <ion-col>{{l.term}}</ion-col>
       <ion-col>{{l.value}}</ion-col>
-      <ion-col> <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
-            account</strong></ion-button></ion-col>
+      <ion-button fill="clear" color="secondary" [routerLink]="['/edit-liability', l.liabilitiesId]"><strong>Edit
+        account</strong></ion-button>
+        <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
+            account</strong></ion-button>
     </ion-row>
     <ion-row *ngIf="l.type == '13'">
       <ion-col>{{l.type}}</ion-col>
@@ -200,8 +227,10 @@
       <ion-col>${{l.payment}}</ion-col>
       <ion-col>{{l.term}}</ion-col>
       <ion-col>{{l.value}}</ion-col>
-      <ion-col> <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
-            account</strong></ion-button></ion-col>
+      <ion-button fill="clear" color="secondary" [routerLink]="['/edit-liability', l.liabilitiesId]"><strong>Edit
+        account</strong></ion-button>
+        <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
+            account</strong></ion-button>
     </ion-row>
     <ion-row *ngIf="l.type == '14'">
       <ion-col>{{l.type}}</ion-col>
@@ -213,8 +242,10 @@
       <ion-col>${{l.payment}}</ion-col>
       <ion-col>{{l.term}}</ion-col>
       <ion-col>{{l.value}}</ion-col>
-      <ion-col> <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
-            account</strong></ion-button></ion-col>
+      <ion-button fill="clear" color="secondary" [routerLink]="['/edit-liability', l.liabilitiesId]"><strong>Edit
+        account</strong></ion-button>
+        <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
+            account</strong></ion-button>
     </ion-row>
     <ion-row *ngIf="l.type == '15'">
       <ion-col>{{l.type}}</ion-col>
@@ -226,8 +257,10 @@
       <ion-col>${{l.payment}}</ion-col>
       <ion-col>{{l.term}}</ion-col>
       <ion-col>{{l.value}}</ion-col>
-      <ion-col> <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
-            account</strong></ion-button></ion-col>
+      <ion-button fill="clear" color="secondary" [routerLink]="['/edit-liability', l.liabilitiesId]"><strong>Edit
+        account</strong></ion-button>
+        <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
+            account</strong></ion-button>
     </ion-row>
     <ion-row *ngIf="l.type == '16'">
       <ion-col>{{l.type}}</ion-col>
@@ -239,8 +272,10 @@
       <ion-col>${{l.payment}}</ion-col>
       <ion-col>{{l.term}}</ion-col>
       <ion-col>{{l.value}}</ion-col>
-      <ion-col> <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
-            account</strong></ion-button></ion-col>
+      <ion-button fill="clear" color="secondary" [routerLink]="['/edit-liability', l.liabilitiesId]"><strong>Edit
+        account</strong></ion-button>
+        <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
+            account</strong></ion-button>
     </ion-row>
     <ion-row *ngIf="l.type == '17'">
       <ion-col>{{l.type}}</ion-col>
@@ -252,8 +287,10 @@
       <ion-col>${{l.payment}}</ion-col>
       <ion-col>{{l.term}}</ion-col>
       <ion-col>{{l.value}}</ion-col>
-      <ion-col> <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
-            account</strong></ion-button></ion-col>
+      <ion-button fill="clear" color="secondary" [routerLink]="['/edit-liability', l.liabilitiesId]"><strong>Edit
+        account</strong></ion-button>
+        <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
+            account</strong></ion-button>
     </ion-row>
     <ion-row *ngIf="l.type == '18'">
       <ion-col>{{l.type}}</ion-col>
@@ -265,8 +302,10 @@
       <ion-col>${{l.payment}}</ion-col>
       <ion-col>{{l.term}}</ion-col>
       <ion-col>{{l.value}}</ion-col>
-      <ion-col> <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
-            account</strong></ion-button></ion-col>
+      <ion-button fill="clear" color="secondary" [routerLink]="['/edit-liability', l.liabilitiesId]"><strong>Edit
+        account</strong></ion-button>
+        <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
+            account</strong></ion-button>
     </ion-row>
     <ion-row *ngIf="l.type == '19'">
       <ion-col>{{l.type}}</ion-col>
@@ -278,8 +317,10 @@
       <ion-col>${{l.payment}}</ion-col>
       <ion-col>{{l.term}}</ion-col>
       <ion-col>{{l.value}}</ion-col>
-      <ion-col> <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
-            account</strong></ion-button></ion-col>
+      <ion-button fill="clear" color="secondary" [routerLink]="['/edit-liability', l.liabilitiesId]"><strong>Edit
+        account</strong></ion-button>
+        <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
+            account</strong></ion-button>
     </ion-row>
     <ion-row *ngIf="l.type == '20'">
       <ion-col>{{l.type}}</ion-col>
@@ -290,8 +331,10 @@
       <ion-col>${{l.payment}}</ion-col>
       <ion-col>{{l.term}}</ion-col>
       <ion-col>{{l.value}}</ion-col>
-      <ion-col> <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
-        account</strong></ion-button></ion-col>
+      <ion-button fill="clear" color="secondary" [routerLink]="['/edit-liability', l.liabilitiesId]"><strong>Edit
+        account</strong></ion-button>
+        <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
+            account</strong></ion-button>
     </ion-row>
 
     <ion-row *ngIf="l.type == '21'">
@@ -303,9 +346,12 @@
       <ion-col>${{l.payment}}</ion-col>
       <ion-col>{{l.term}}</ion-col>
       <ion-col>{{l.value}}</ion-col>
-      <ion-col> <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
-            account</strong></ion-button></ion-col>
+      <ion-button fill="clear" color="secondary" [routerLink]="['/edit-liability', l.liabilitiesId]"><strong>Edit
+        account</strong></ion-button>
+        <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
+            account</strong></ion-button>
     </ion-row>
+    
     <ion-row *ngIf="l.type == '22'">
       <ion-col>{{l.type}}</ion-col>
       <ion-col>{{l.description}}</ion-col>
@@ -315,8 +361,10 @@
       <ion-col>${{l.payment}}</ion-col>
       <ion-col>{{l.term}}</ion-col>
       <ion-col>{{l.value}}</ion-col>
-      <ion-col> <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
-            account</strong></ion-button></ion-col>
+      <ion-button fill="clear" color="secondary" [routerLink]="['/edit-liability', l.liabilitiesId]"><strong>Edit
+        account</strong></ion-button>
+        <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
+            account</strong></ion-button>
     </ion-row>
   </ion-grid>
 

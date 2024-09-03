@@ -39,7 +39,7 @@ export class ClientAssetPage implements OnInit {
   selectedType: string = '';
   isFormVisible = false;
   userAsset: Asset[] = [];
-  newAsset: Asset = new Asset(0, "", "", "", "", "","", "", "", "", this.actRouter.snapshot.paramMap.get("username") ?? '', "")
+  newAsset: Asset = new Asset(0, "", "", "", "", "","", 0, "", "", this.actRouter.snapshot.paramMap.get("username") ?? '', "")
 
   constructor(private myAssetservice: AssetService, private actRouter: ActivatedRoute) { }
 

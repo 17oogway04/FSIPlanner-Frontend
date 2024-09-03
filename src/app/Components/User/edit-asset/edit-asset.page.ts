@@ -19,7 +19,7 @@ export class EditAssetPage implements OnInit {
     taxStructure: '',
     valuationDate: '',
     maturityDate: '',
-    balance: '',
+    balance: 0,
     type: '',
     bucket: '',
     assetName: '',

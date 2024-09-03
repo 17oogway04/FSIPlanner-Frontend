@@ -6,13 +6,13 @@ export class Asset {
     taxStructure?: string;
     valuationDate?: string;
     maturityDate?: string;
-    balance?: string;
+    balance?: number;
     type?: string;
     bucket?: string;
     username?: string;
     assetName?: string;
 
-    constructor(assetId: number, custodian: string, accountNumber: string, rateOfReturn: string, taxStructure: string, valuationDate: string, maturityDate: string, balance: string, type: string, bucket: string, username: string, assetName: string)
+    constructor(assetId: number, custodian: string, accountNumber: string, rateOfReturn: string, taxStructure: string, valuationDate: string, maturityDate: string, balance: number, type: string, bucket: string, username: string, assetName: string)
     {
         this.assetId = assetId;
         this.custodian = custodian;

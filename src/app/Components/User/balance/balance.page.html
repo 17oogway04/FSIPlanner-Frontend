@@ -19,7 +19,7 @@
     </ion-row>
     <ion-row *ngFor="let item of combinedBalance">
       <ion-col>{{ item.type }}</ion-col>
-      <ion-col>Category</ion-col>
+      <ion-col>{{catergories[item.type]}}</ion-col>
       <ion-col>${{ item.assetBalance | number: '1.2-2'}}</ion-col>
       <ion-col>${{ item.liabilityBalance | number: '1.2-2'}}</ion-col>
       <ion-col>${{ item.netWorth | number: '1.2-2'}}</ion-col>

@@ -13,6 +13,31 @@ import { LiabilitiesService } from 'src/app/Services/liabilities.service';
   styleUrls: ['./balance.page.scss'],
 })
 export class BalancePage implements OnInit {
+  catergories: { [key: string]: string } = {
+    "1": "Checking",
+    "2": "Currency",
+    "3": "Savings",
+    "4": "CDs",
+    "5": "Health and Medical Savings",
+    "6": "Life Insurance",
+    "7": "Annuities",
+    "8": "Investments",
+    "9": "IRAs",
+    "10": "Roth IRA",
+    "11": "Employer Retirement Plans",
+    "12": "Bullion",
+    "13": "Primary Residence",
+    "14": "Secondary Residence",
+    "15": "Real Estate",
+    "16": "Business",
+    "17": "Trust",
+    "18": "Vehicles",
+    "19": "Personal Property",
+    "20": "Credit Cards",
+    "21": "Student Loans",
+    "22": "Other"
+  }
+  selectedType: string = '';
 
   userBalance: Balance[] = [];
   liabilityBalance: Balance[] = [];
@@ -35,7 +60,6 @@ export class BalancePage implements OnInit {
     this.loadUserBalances()
 
   }
-
   loadUserBalances(){
     this.myAssetService.getAssetsByUsername(this.username).subscribe((response) => {
       this.userAsset = response;

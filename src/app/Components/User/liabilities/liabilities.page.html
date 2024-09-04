@@ -33,24 +33,25 @@
 
       </ion-col>
       <ion-col>
-        
+
       </ion-col>
     </ion-row>
   </ion-grid>
   <ion-grid *ngFor="let l of userLiabilities">
-    <ion-row >
+    <ion-row>
+
       <ion-col>{{l.type}}</ion-col>
       <ion-col>{{l.description}}</ion-col>
-      <ion-col> Category</ion-col>
+      <ion-col> {{catergories[l.type!] || "invalid key"}}</ion-col>
       <ion-col>${{l.balance | number: '1.2-2'}}</ion-col>
       <ion-col>{{l.rate}}</ion-col>
       <ion-col>${{l.payment | number: '1.2-2'}}</ion-col>
       <ion-col>{{l.term}}</ion-col>
       <ion-col>{{l.value | number: '1.2-2'}}</ion-col>
       <ion-button fill="clear" color="secondary" [routerLink]="['/edit-liability', l.liabilitiesId]"><strong>Edit
-        account</strong></ion-button>
-        <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
-            account</strong></ion-button>
+          account</strong></ion-button>
+      <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
+          account</strong></ion-button>
     </ion-row>
   </ion-grid>
 

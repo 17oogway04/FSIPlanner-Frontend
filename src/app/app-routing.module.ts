@@ -103,6 +103,15 @@ const routes: Routes = [
     path: 'edit-liability/:id',
     loadChildren: () => import('./Components/User/edit-liability/edit-liability.module').then( m => m.EditLiabilityPageModule)
   },
+  {
+    path: 'client-liability/:username',
+    loadChildren: () => import('./Components/fsi-clients/client-liability/client-liability.module').then( m => m.ClientLiabilityPageModule)
+  },
+  {
+    path: 'client-edit-liability/:id',
+    loadChildren: () => import('./Components/fsi-clients/client-edit-liability/client-edit-liability.module').then( m => m.ClientEditLiabilityPageModule)
+  },
+
 ];
 
 @NgModule({

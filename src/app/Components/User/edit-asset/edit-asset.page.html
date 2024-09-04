@@ -28,7 +28,7 @@
                 <input type="text" name="valuationDate" [(ngModel)]="currentAsset.valuationDate"><br><br>
                 <label><strong>Maturity Date: </strong>{{currentAsset.maturityDate}}</label><br>
                 <input type="text" name="maturityDate" [(ngModel)]="currentAsset.maturityDate"><br><br>
-                <label><strong>Balance: </strong>{{currentAsset.balance}}</label><br>
+                <label><strong>Balance: </strong>{{currentAsset.balance | number: '1.2-2'}}</label><br>
                 <input type="text" name="balance" [(ngModel)]="currentAsset.balance"><br><br>
                 <label><strong>Type: </strong>{{currentAsset.type}}</label><br>
                 <input type="text" name="type" [(ngModel)]="currentAsset.type"><br><br>

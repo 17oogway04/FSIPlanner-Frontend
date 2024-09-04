@@ -1,32 +1,41 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Liabilities } from 'src/app/Models/liabilities';
 import { LiabilitiesService } from 'src/app/Services/liabilities.service';
 
 @Component({
-  selector: 'app-liabilities',
-  templateUrl: './liabilities.page.html',
-  styleUrls: ['./liabilities.page.scss'],
+  selector: 'app-client-liability',
+  templateUrl: './client-liability.page.html',
+  styleUrls: ['./client-liability.page.scss'],
 })
-export class LiabilitiesPage implements OnInit {
-
+export class ClientLiabilityPage implements OnInit {
   username: string = '';
-  isFormVisible = false;
   userLiabilities: Liabilities[] = [];
+  isFormVisible = false;
+
   newLiability: Liabilities = new Liabilities(0,"","",0, "", "", "", "", this.actRouter.snapshot.paramMap.get("username") ?? '');
-  constructor(private myLiabilityService: LiabilitiesService, private actRouter: ActivatedRoute) { }
+
+
+  constructor(private myLiabilityService: LiabilitiesService, private actRouter: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     const name = this.actRouter.snapshot.paramMap.get("username") ?? '';
     if(name != null){
-      this.username = name
+      this.username = name;
     }
-    this.loadUserLiabilities();
+    this.loadUserLiabilities()
   }
 
   loadUserLiabilities(){
     this.myLiabilityService.getLiabilitiesByUsername(this.username).subscribe((response) => {
       this.userLiabilities = response.sort((a,b) => parseInt(a.type!) - parseInt(b.type!));
+    })
+  }
+
+  deleteLiability(id: number){
+    this.myLiabilityService.deleteLiability(id).subscribe(() => {
+      window.alert("Liability has been deleted");
+      this.loadUserLiabilities()
     })
   }
 
@@ -38,6 +47,7 @@ export class LiabilitiesPage implements OnInit {
       }
     })
   }
+
   openForm() {
     this.isFormVisible = true;
   }
@@ -46,11 +56,5 @@ export class LiabilitiesPage implements OnInit {
     this.isFormVisible = false;
   }
 
-  deleteLiability(id: number){
-    this.myLiabilityService.deleteLiability(id).subscribe(() => {
-      window.alert("Liability has been deleted");
-      this.loadUserLiabilities()
-    })
-  }
 
 }

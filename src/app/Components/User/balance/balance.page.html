@@ -20,9 +20,9 @@
     <ion-row *ngFor="let item of combinedBalance">
       <ion-col>{{ item.type }}</ion-col>
       <ion-col>Category</ion-col>
-      <ion-col>${{ item.assetBalance }}</ion-col>
-      <ion-col>${{ item.liabilityBalance }}</ion-col>
-      <ion-col>${{ item.netWorth }}</ion-col>
+      <ion-col>${{ item.assetBalance | number: '1.2-2'}}</ion-col>
+      <ion-col>${{ item.liabilityBalance | number: '1.2-2'}}</ion-col>
+      <ion-col>${{ item.netWorth | number: '1.2-2'}}</ion-col>
     </ion-row>
   </ion-grid>
   <ion-button (click)="printAssets()" id="printerBtn" color="secondary" style="padding: 10px;">Print</ion-button>

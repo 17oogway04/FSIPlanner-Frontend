@@ -1,8 +1,14 @@
-<ion-content [fullscreen]="true">
+<ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-title>Client liability</ion-title>
+    <ion-button [routerLink]="['/fsi-profile', username]" fill="clear" color="secondary" slot="end" size="large">Home</ion-button>
     <ion-button (click)="openForm()" fill="clear" color="secondary" slot="end" size="large">Add liability</ion-button>
-  </ion-toolbar>
 
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+ 
   <ion-grid>
     <ion-row>
       <ion-col>
@@ -47,7 +53,7 @@
       <ion-col>${{l.payment | number: '1.2-2'}}</ion-col>
       <ion-col>{{l.term}}</ion-col>
       <ion-col>{{l.value | number: '1.2-2'}}</ion-col>
-      <ion-button fill="clear" color="secondary" [routerLink]="['/edit-liability', l.liabilitiesId]"><strong>Edit
+      <ion-button fill="clear" color="secondary" [routerLink]="['/client-edit-liability', l.liabilitiesId]"><strong>Edit
         account</strong></ion-button>
         <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
             account</strong></ion-button>

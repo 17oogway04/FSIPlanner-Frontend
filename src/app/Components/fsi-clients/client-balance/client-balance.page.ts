@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Asset } from 'src/app/Models/asset';
 import { Balance } from 'src/app/Models/balance';
+import { Liabilities } from 'src/app/Models/liabilities';
 import { AssetService } from 'src/app/Services/asset.service';
 import { BalanceService } from 'src/app/Services/balance.service';
+import { LiabilitiesService } from 'src/app/Services/liabilities.service';
 
 @Component({
   selector: 'app-client-balance',
@@ -13,10 +15,14 @@ import { BalanceService } from 'src/app/Services/balance.service';
 export class ClientBalancePage implements OnInit {
 
   userBalance: Balance[] = [];
+  liabilityBalance: Balance[] = [];
   userAsset: Asset[] = [];
+  userLiabilities: Liabilities[] = [];
   username: string ='';
 
-  constructor(private myBalanceService: BalanceService, private actRouter: ActivatedRoute, private myAssetService: AssetService) { }
+  combinedBalance: any[] = [];
+
+  constructor(private myBalanceService: BalanceService, private actRouter: ActivatedRoute, private myAssetService: AssetService, private myLiabilityService: LiabilitiesService) { }
 
   ngOnInit() {
     const name = this.actRouter.snapshot.paramMap.get("username") ?? '';
@@ -24,17 +30,55 @@ export class ClientBalancePage implements OnInit {
     {
       this.username = name;
     }
-    this.loadUserAssets()     
+    this.loadUserBalances()     
   }
-
-  loadUserAssets(){
+  loadUserBalances(){
     this.myAssetService.getAssetsByUsername(this.username).subscribe((response) => {
       this.userAsset = response;
-      this.myBalanceService.updateBalances(this.username).subscribe((balance) => {
-        this.userBalance = [balance]
+      this.myLiabilityService.getLiabilitiesByUsername(this.username).subscribe((response) => {
+        this.userLiabilities = response;
+        this.combinedBalance = this.combineBalances();
       })
     })
+  }
+  
+  combineBalances(){
+    const combined: any[] = [];
 
+       const assetSumByType: { [key: string]: number } = {};
+       const liabilitySumByType: { [key: string]: number } = {};
+   
+       this.userAsset.forEach(a => {
+         const type = a.type!;
+         if (!assetSumByType[type]) {
+           assetSumByType[type] = 0;
+         }
+         assetSumByType[type] += a.balance!;
+       });
+   
+       this.userLiabilities.forEach(l => {
+         const type = l.type!;
+         if (!liabilitySumByType[type]) {
+           liabilitySumByType[type] = 0;
+         }
+         liabilitySumByType[type] += l.balance!;
+       });
+   
+       for (let i = 1; i <= 22; i++) {
+         const type = i.toString();
+         const assetBalance = assetSumByType[type] || 0;
+         const liabilityBalance = liabilitySumByType[type] || 0;
+   
+         combined.push({
+           type,
+           assetBalance,
+           liabilityBalance,
+           netWorth: assetBalance + liabilityBalance
+         });
+       }
+   
+    
+    return combined;
   }
 
   printAssets(){

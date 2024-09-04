@@ -18,7 +18,7 @@
                 |
                 Valuation Date:  <strong>{{a.valuationDate}}</strong> | Maturity date: 
                 <strong>{{a.maturityDate}}</strong> |
-                Balance:  <strong>${{a.balance}}</strong> | Type:  <strong>{{types[a.type!] || "invalid key"}}</strong>
+                Balance:  <strong>${{a.balance | number: '1.2-2'}}</strong> | Type:  <strong>{{types[a.type!] || "invalid key"}}</strong>
               </h5>
             </li>
 
@@ -44,7 +44,7 @@
                 |
                 Valuation Date:  <strong>{{a.valuationDate}}</strong> | Maturity date: 
                 <strong>{{a.maturityDate}}</strong> |
-                Balance:  <strong>${{a.balance}}</strong> | Type:  <strong>{{types[a.type!] || "invalid key"}}</strong>
+                Balance:  <strong>${{a.balance | number: '1.2-2'}}</strong> | Type:  <strong>{{types[a.type!] || "invalid key"}}</strong>
               </h5>
             </li>
 
@@ -69,7 +69,7 @@
                 |
                 Valuation Date:  <strong>{{a.valuationDate}}</strong> | Maturity date: 
                 <strong>{{a.maturityDate}}</strong> |
-                Balance:  <strong>${{a.balance}}</strong> | Type:  <strong>{{types[a.type!] || "invalid key"}}</strong>
+                Balance:  <strong>${{a.balance | number: '1.2-2'}}</strong> | Type:  <strong>{{types[a.type!] || "invalid key"}}</strong>
               </h5>
             </li>
 

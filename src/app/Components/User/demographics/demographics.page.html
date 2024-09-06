@@ -14,7 +14,7 @@
   <h1>{{loggedInUser.firstName}} {{loggedInUser.lastName}}</h1>
   <ion-list [inset]="true" *ngFor="let d of userDemographics">
     <ion-item>
-      <ion-label><strong> Spouse/Significant other:</strong> {{d.spouse}}</ion-label>
+      <ion-label><strong> Spouse/Significant other:</strong> {{d.spouse}} | {{d.spouseEmail}}</ion-label>
     </ion-item>
     <ion-item>
       <ion-label><strong>Children:</strong> {{d.c1}} | {{d.c2}} | {{d.c3}} | {{d.c4}}</ion-label>
@@ -69,6 +69,7 @@
       <input hidden="true" type="text" name="username" [(ngModel)]="demographic.username">
       <input hidden="true" type="text" name="demographicsId" [(ngModel)]="demographic.demographicsId">
       <input name="spouse" placeholder="Enter spouse, if applicable" [(ngModel)]="demographic.spouse">
+      <input name="spouse" placeholder="Enter spouse email, if applicable" [(ngModel)]="demographic.spouseEmail">
       <input name="c1" placeholder="Enter child, if applicable" [(ngModel)]="demographic.c1">
       <input name="c2" placeholder="Enter child, if applicable" [(ngModel)]="demographic.c2">
       <input name="c3" placeholder="Enter child, if applicable" [(ngModel)]="demographic.c3">

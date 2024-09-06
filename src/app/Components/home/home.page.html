@@ -3,28 +3,40 @@
     <ion-title slot="start">Financial Strategies Inc.</ion-title>
     <ion-button fill="clear" slot="end" [routerLink]="['/demographics', presentUser.userName]">
       More about {{presentUser.firstName}}
-    </ion-button> 
-    <ion-button *ngIf="userName === 'isaacm@mutualmail.com'" fill="clear" slot="end" routerLink="/signup">Create new account</ion-button> 
-    <ion-button  *ngIf="userName === 'isaacm@mutualmail.com'"  fill="clear" slot="end" routerLink="/search-users">Search users</ion-button> 
+    </ion-button>
+    <ion-button *ngIf="userName === 'isaacm@mutualmail.com'" fill="clear" slot="end" routerLink="/signup">Create new
+      account</ion-button>
+    <ion-button *ngIf="userName === 'isaacm@mutualmail.com'" fill="clear" slot="end" routerLink="/search-users">Search
+      users</ion-button>
     <ion-button *ngIf="!isAuthenticated" [routerLink]="['/login']" fill="clear" slot="end">
-      Log in 
+      Log in
     </ion-button>
     <ion-button *ngIf="isAuthenticated" (click)="logout()" fill="clear" slot="end">
-      Log out 
+      Log out
     </ion-button>
-  </ion-toolbar>
+  </ion-toolbar>        
   <ion-grid>
     <ion-row>
       <ion-col sizeXl="2" sizeLg="3" sizeMd="4" sizeSm="5" sizeXs="12">
-        <div id="pic">
-          <img src="../../../assets/img/profileSymbol.png" id="profilePic">
+        <div class="avatar-container">
+          <div class="image-container" 
+               [ngStyle]="{ backgroundImage: 'url(' + (profilePic || '../../../assets/img/profileSymbol.png') + ')' }">
+          </div>
+          
+          <label for="avatar-input-file">
+            <div class="icon-wrapper">
+              <input type="file" id="avatar-input-file" accept="image/*" (change)="onFileChange($event)" />
+              <ion-icon id="icon" name="create-outline"></ion-icon>
+            </div>
+          </label>
         </div>
+
       </ion-col>
       <ion-col sizeXl="10" sizeLg="9" sizeMd="8" sizeSm="7" sizeXs="12">
         <!--current user information-->
         <div id="info">
-          <h1 id="header">{{presentUser.firstName}} {{presentUser.lastName}}</h1>      
-         </div>
+          <h1 id="header">{{presentUser.firstName}} {{presentUser.lastName}}</h1>
+        </div>
       </ion-col>
     </ion-row>
   </ion-grid>

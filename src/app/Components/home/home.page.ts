@@ -11,6 +11,8 @@ import { UserService } from 'src/app/Services/user.service';
 })
 export class HomePage implements OnInit {
   baseUrl: string = "http://localhost:5247/api/user"
+  basicUrl: string = "http://localhost:5247"
+  profilePic: string = '';
   isAuthenticated: boolean = false;
   userName: string = '';
   isAllowed: boolean = true;
@@ -22,13 +24,14 @@ export class HomePage implements OnInit {
     profilePicture: ''
   }
   loggedInUser?: User;
-  file: string = '';
+  file:any;
 
   constructor(private myUserservice: UserService, private actRouter: ActivatedRoute, private http: HttpClient) { }
 
   ngOnInit() {      
     this.myUserservice.getCurrentUser().subscribe(response => {
       this.loggedInUser = this.presentUser = response;
+      this.profilePic = this.presentUser.profilePicture ? `${this.basicUrl}${this.presentUser.profilePicture}` : '';
       this.userName = this.presentUser.userName ?? '';
       this.myUserservice.isLoggedInSubj.next(!response.userId)
       const name = this.actRouter.snapshot.paramMap.get("username") ?? ''    
@@ -57,7 +60,17 @@ export class HomePage implements OnInit {
       }
     }
 
-
+    onFileChange(event: any) {
+      const files = event.target.files as FileList;
+  
+      if (files.length > 0) {
+        const file = files[0];
+        this.myUserservice.uploadProfilePicture(file).subscribe((response: any) => {
+          this.file = URL.createObjectURL(file); // Temporarily display the image
+          this.presentUser!.profilePicture = response.ProfilePictureUrl; // Update the user profile
+        });
+      }
+   }
   
 }
   

@@ -15,8 +15,17 @@ export class UserService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
+
+  uploadProfilePicture(file: File): Observable<any>{
+    const formData = new FormData();
+    formData.append('file', file);
+    let reqHeaders = 
+    {
+      Authorization: `Bearer ${localStorage.getItem(this.tokenKey)}`
+    }
+    return this.http.post(`${this.baseUrl}/upload-profile-picture`, formData, {headers: reqHeaders});
+  }  
   register(newUser: User){
-    //may need authorization as well
     let reqHeaders = 
     {
       Authorization: `Bearer ${localStorage.getItem(this.tokenKey)}`

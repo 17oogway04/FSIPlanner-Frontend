@@ -23,6 +23,7 @@ export class HomePage implements OnInit {
   }
   loggedInUser?: User;
   file: string = '';
+
   constructor(private myUserservice: UserService, private actRouter: ActivatedRoute, private http: HttpClient) { }
 
   ngOnInit() {      
@@ -55,33 +56,10 @@ export class HomePage implements OnInit {
         this.isAllowed = false;
       }
     }
- 
-}
-//   onFileChange(event: any) {
-//     const files = event.target.files as FileList;
 
-//     if (files.length > 0) {
-//       const file = files[0]
-//       const formData = new FormData();
-//       formData.append('file', file);
 
-//       this.http.post(`${this.baseUrl}/register`, formData).subscribe((response: any) => {
-//         this.file = response.fileUrl;
-//         localStorage.setItem('profilePicture', this.file);
-//       });
-
-//       this.resetInput()
-//     }
   
-//  }
-
-//  resetInput(){
-//   const input = document.getElementById('avatar-input-file') as HTMLInputElement;
-//   if(input){
-//     input.value = "";
-//   }
-// }
-
+}
   
 
 

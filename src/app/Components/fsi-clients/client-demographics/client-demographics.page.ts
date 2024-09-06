@@ -17,6 +17,7 @@ export class ClientDemographicsPage implements OnInit {
   demographic: Demographics = {
     demographicsId: 0,
     spouse: '',
+    spouseEmail: '',
     c1: '',
     c2: '',
     c3: '',
@@ -48,6 +49,8 @@ export class ClientDemographicsPage implements OnInit {
     }
     this.loadUserDemographics()
   }
+
+
 
   loadUserDemographics(){
     this.demoService.GetDemographicsByUsername(this.userName).subscribe(response => {

@@ -38,6 +38,7 @@ export class DemographicsPage implements OnInit {
   demographic: Demographics = {
     demographicsId: 0,
     spouse: '',
+    spouseEmail: '',
     c1: '',
     c2: '',
     c3: '',

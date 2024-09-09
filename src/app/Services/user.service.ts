@@ -16,66 +16,67 @@ export class UserService {
   constructor(private http: HttpClient, private router: Router) { }
 
 
-  uploadProfilePicture(file: File): Observable<any>{
+  uploadProfilePicture(file: File): Observable<any> {
     const formData = new FormData();
     formData.append('file', file);
-    let reqHeaders = 
+    let reqHeaders =
     {
       Authorization: `Bearer ${localStorage.getItem(this.tokenKey)}`
     }
-    return this.http.post(`${this.baseUrl}/upload-profile-picture`, formData, {headers: reqHeaders});
-  }  
-  register(newUser: User){
-    let reqHeaders = 
+    return this.http.post(`${this.baseUrl}/upload-profile-picture`, formData, { headers: reqHeaders });
+  }
+  register(newUser: User) {
+    let reqHeaders =
     {
       Authorization: `Bearer ${localStorage.getItem(this.tokenKey)}`
     }
-    return this.http.post(`${this.baseUrl}/register`, newUser, {headers: reqHeaders});
+    return this.http.post(`${this.baseUrl}/register`, newUser, { headers: reqHeaders });
   }
 
-  login(username: string, password: string)
-  {
+  login(username: string, password: string) {
     let queryParams = new HttpParams();
     queryParams = queryParams.append('username', username);
     queryParams = queryParams.append('password', password);
 
-    return this.http.get(`${this.baseUrl}/login`, {params: queryParams, responseType: 'text'})
+    return this.http.get(`${this.baseUrl}/login`, { params: queryParams, responseType: 'text' })
       .pipe(tap((response: any) => {
         localStorage.setItem('myFSIToken', response);
         this.isLoggedInSubj.next(true);
       }));
   }
 
-  getCurrentUser(): Observable<User>{
-    let reqHeaders = 
+  getCurrentUser(): Observable<User> {
+    let reqHeaders =
     {
       Authorization: `Bearer ${localStorage.getItem(this.tokenKey)}`
     }
 
-    return this.http.get<User>(`${this.baseUrl}/current`, {headers: reqHeaders})
+    return this.http.get<User>(`${this.baseUrl}/current`, { headers: reqHeaders })
       .pipe(tap((response: any) => {
         // console.log(response);
       }))
   }
 
-  getUsers(): Observable<User[]>{
+  getUsers(): Observable<User[]> {
     //may need authorization as well
-    let reqHeaders = 
+    let reqHeaders =
     {
       Authorization: `Bearer ${localStorage.getItem(this.tokenKey)}`
     }
-    return this.http.get<User[]>(this.baseUrl, {headers: reqHeaders});
+    return this.http.get<User[]>(this.baseUrl, { headers: reqHeaders });
   }
-  
-  getUserByName(name: string): Observable<User[]>{
-    let reqHeaders = 
+
+  getUserByName(name: string): Observable<User[]> {
+    let reqHeaders =
     {
       Authorization: `Bearer ${localStorage.getItem(this.tokenKey)}`
     }
-    return this.http.get<User[]>(`${this.baseUrl}/${name}`, {headers: reqHeaders}
+    return this.http.get<User[]>(`${this.baseUrl}/${name}`, { headers: reqHeaders }
     );
   }
 
+
+  
   getUserByUsername(username: string): Observable<User>{
     let reqHeaders = 
     {
@@ -85,18 +86,18 @@ export class UserService {
     );
   }
 
-  getUserByUserId(id: number): Observable<User>{
-    let reqHeaders = 
+  getUserByUserId(id: number): Observable<User> {
+    let reqHeaders =
     {
       Authorization: `Bearer ${localStorage.getItem(this.tokenKey)}`
     }
-    return this.http.get<User>(`${this.baseUrl}/by-userId/${id}?userId=${id}`, {headers: reqHeaders})
+    return this.http.get<User>(`${this.baseUrl}/by-userId/${id}?userId=${id}`, { headers: reqHeaders })
   }
 
-  logout(){
+  logout() {
     this.isLoggedInSubj.next(false);
     localStorage.removeItem('myFSIToken')
-    if(localStorage.getItem('myFSIToken') === null){
+    if (localStorage.getItem('myFSIToken') === null) {
       console.log('Successfully logged out')
     }
     this.router.navigate(['/login'])

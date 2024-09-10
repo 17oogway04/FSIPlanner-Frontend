@@ -1,0 +1,109 @@
+<ion-content [fullscreen]="true">
+  <ion-toolbar>
+    <ion-button fill="clear" color="secondary" slot="end" size="large" (click)="openForm()">Add Life policy</ion-button>
+  </ion-toolbar>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <h1>Policy Name</h1>
+      </ion-col>
+      <ion-col>
+        <h1>Policy Type</h1>
+      </ion-col>
+      <ion-col>
+        <h1>Owner</h1>
+      </ion-col>
+      <ion-col>
+        <h1>Insured</h1>
+      </ion-col>
+      <ion-col>
+        <h1>Premium</h1>
+      </ion-col>
+      <ion-col>
+        <h1>Cash Value</h1>
+      </ion-col>
+      <ion-col>
+        <h1>DBC 1</h1>
+      </ion-col>
+      <ion-col>
+        <h1>DBC 2</h1>
+      </ion-col>
+      <ion-col>
+        <h1>Riders</h1>
+      </ion-col>
+      <ion-col>
+        <h1>Rider Benefit</h1>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid *ngFor="let l of userLife">
+    <ion-row>
+      <ion-col>{{l.policyName}}</ion-col>
+      <ion-col>{{l.policyType}}</ion-col>
+      <ion-col>{{l.owner}}</ion-col>
+      <ion-col>{{l.insured}}</ion-col>
+      <ion-col>{{l.premium | number: '1.2-2'}}</ion-col>
+      <ion-col>{{l.cashValue | number: '1.2-2'}}</ion-col>
+      <ion-col>{{l.deathBenefitOne | number: '1.2-2'}}</ion-col>
+      <ion-col>{{l.deathBenefitTwo | number: '1.2-2'}}</ion-col>
+      <ion-col>{{l.riders | number: '1.2-2'}}</ion-col>
+      <ion-col>{{l.ridersBenefit | number: '1.2-2'}}</ion-col>
+    </ion-row>      
+    <ion-button fill="clear" color="danger" (click)="deleteLife(l.lifeId!)"><strong>Delete
+        account</strong></ion-button>
+
+  </ion-grid>
+
+
+  <!--Adding account-->
+  <div *ngIf="isFormVisible" id="inputForm">
+    <form #form="ngForm" (ngSubmit)="createLife()">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <label>Policy name</label><br>
+            <input type="text" name="policyName" [(ngModel)]="newLife.policyName"><br>
+            <ion-select label="Policy type" placeholder="Pick a policy type" name="policyType"[(ngModel)]="newLife.policyType" id="policyType">
+              <ion-select-option value="Term" name="policyType" >Term</ion-select-option>
+              <ion-select-option value="Universal">Universal</ion-select-option>
+              <ion-select-option value="Variable">Variable</ion-select-option>
+              <ion-select-option value="Whole life">Whole Life</ion-select-option>
+            </ion-select>
+            <!-- <label>Policy type</label><br>
+            <input type="text" name="policyType" [(ngModel)]="newLife.policyType"><br> -->
+            <label>Owner</label><br>
+            <input type="text" name="owner" [(ngModel)]="newLife.owner"><br>
+          </ion-col>
+          <ion-col>
+            <label>Insured </label><br>
+            <input type="text" name="insured" [(ngModel)]="newLife.insured"><br>
+            <label>Premium</label><br>
+            <input type="text" name="premium" [(ngModel)]="newLife.premium"><br>
+            <label>Cash vale</label><br>
+            <input type="text" name="cashValue" [(ngModel)]="newLife.cashValue"><br>
+          </ion-col>
+          <ion-col>
+            <label>DBC 1</label><br>
+            <input type="text" name="deathBenefitOne" [(ngModel)]="newLife.deathBenefitOne"><br>
+            <label>DBC 2</label><br>
+            <input type="text" name="deathBenefitTwo" [(ngModel)]="newLife.deathBenefitTwo"><br>
+            <label>Riders</label><br>
+            <input type="text" name="riders" [(ngModel)]="newLife.riders"><br>
+            <label>Riders Benefit</label><br>
+            <input type="text" name="ridersBenefit" [(ngModel)]="newLife.ridersBenefit"><br>
+
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <input hidden="true" type="text" name="username" [(ngModel)]="newLife.username">
+      <input hidden="true" type="text" name="notesId" [(ngModel)]="newLife.lifeId">
+
+      <ion-button type="submit" fill="clear" color="secondary">
+        Create account
+      </ion-button>
+      <ion-button (click)="closeForm()" fill="clear" color="secondary">Cancel</ion-button>
+    </form>
+  </div>
+</ion-content>

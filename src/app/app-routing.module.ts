@@ -110,7 +110,7 @@ const routes: Routes = [
   {
     path: 'client-edit-liability/:id',
     loadChildren: () => import('./Components/fsi-clients/client-edit-liability/client-edit-liability.module').then( m => m.ClientEditLiabilityPageModule)
-  },
+  }
 
 ];
 

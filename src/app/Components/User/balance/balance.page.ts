@@ -3,9 +3,11 @@ import { ActivatedRoute } from '@angular/router';
 import { Asset } from 'src/app/Models/asset';
 import { Balance } from 'src/app/Models/balance';
 import { Liabilities } from 'src/app/Models/liabilities';
+import { Life } from 'src/app/Models/life';
 import { AssetService } from 'src/app/Services/asset.service';
 import { BalanceService } from 'src/app/Services/balance.service';
 import { LiabilitiesService } from 'src/app/Services/liabilities.service';
+import { LifeService } from 'src/app/Services/life.service';
 
 @Component({
   selector: 'app-balance',
@@ -43,72 +45,84 @@ export class BalancePage implements OnInit {
   liabilityBalance: Balance[] = [];
   userAsset: Asset[] = [];
   userLiabilities: Liabilities[] = [];
-  username: string ='';
-
+  username: string = '';
+  userLife: Life[] = [{
+    policyName: '',
+    policyType: '',
+    owner: '',
+    insured: '',
+    premium: '',
+    cashValue: '',
+    deathBenefitOne: '',
+    deathBenefitTwo: '',
+    riders: '',
+    ridersBenefit: '',
+    percentageToSavings: ''
+  }];
   combinedBalance: any[] = [];
 
   checkingValue: string = '';
-  constructor(private myBalanceService: BalanceService, private actRouter: ActivatedRoute, private myAssetService: AssetService, private myLiabilityService: LiabilitiesService) { }
+  constructor(private myBalanceService: BalanceService, private actRouter: ActivatedRoute, private myAssetService: AssetService, private myLiabilityService: LiabilitiesService, private myLifeService: LifeService) { }
 
   ngOnInit() {
     const name = this.actRouter.snapshot.paramMap.get("username") ?? '';
-    if(name != null)
-    {
+    if (name != null) {
       this.username = name;
     }
 
     this.loadUserBalances()
-
   }
-  loadUserBalances(){
+  loadUserBalances() {
     this.myAssetService.getAssetsByUsername(this.username).subscribe((response) => {
       this.userAsset = response;
       this.myLiabilityService.getLiabilitiesByUsername(this.username).subscribe((response) => {
         this.userLiabilities = response;
+      })
+      this.myLifeService.getLifeByUsername(this.username).subscribe((response) => {
+        this.userLife = response
         this.combinedBalance = this.combineBalances();
       })
     })
   }
-  
-  combineBalances(){
+
+  combineBalances() {
     const combined: any[] = [];
 
-       const assetSumByType: { [key: string]: number } = {};
-       const liabilitySumByType: { [key: string]: number } = {};
-   
-       this.userAsset.forEach(a => {
-         const type = a.type!;
-         if (!assetSumByType[type]) {
-           assetSumByType[type] = 0;
-         }
-         assetSumByType[type] += a.balance!;
-       });
-   
-       this.userLiabilities.forEach(l => {
-         const type = l.type!;
-         if (!liabilitySumByType[type]) {
-           liabilitySumByType[type] = 0;
-         }
-         liabilitySumByType[type] += l.balance!;
-       });
-   
-       for (let i = 1; i <= 22; i++) {
-         const type = i.toString();
-         const assetBalance = assetSumByType[type] || 0;
-         const liabilityBalance = liabilitySumByType[type] || 0;
-   
-         combined.push({
-           type,
-           assetBalance,
-           liabilityBalance,
-           netWorth: assetBalance + liabilityBalance
-         });
-       }
-   
-    
+    const assetSumByType: { [key: string]: number } = {};
+    const liabilitySumByType: { [key: string]: number } = {};
+
+    this.userAsset.forEach(a => {
+      const type = a.type!;
+      if (!assetSumByType[type]) {
+        assetSumByType[type] = 0;
+      }
+      assetSumByType[type] += a.balance!;
+    });
+
+    this.userLiabilities.forEach(l => {
+      const type = l.type!;
+      if (!liabilitySumByType[type]) {
+        liabilitySumByType[type] = 0;
+      }
+      liabilitySumByType[type] += l.balance!;
+    });
+
+    for (let i = 1; i <= 22; i++) {
+      const type = i.toString();
+      const assetBalance = assetSumByType[type] || 0;
+      const liabilityBalance = liabilitySumByType[type] || 0;
+      combined.push({
+        type,
+        assetBalance,
+        liabilityBalance,
+        netWorth: assetBalance + liabilityBalance
+      });
+    }
+
+
     return combined;
   }
-  printAssets(){
+  printAssets() {
     window.print()
   }
 

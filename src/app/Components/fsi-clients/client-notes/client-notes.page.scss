@@ -18,6 +18,19 @@ input{
     margin: 5px;
     width: auto;
 }
+
+ion-card{
+    width: 450px;
+}
 *{
     font-family: Felix Titling;
   }
+  @media print{
+    #printerBtn{
+        visibility: hidden;
+    }
+
+    ion-card{
+        width: 400px;
+    }
+}

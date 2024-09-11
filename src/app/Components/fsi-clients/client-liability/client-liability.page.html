@@ -1,4 +1,4 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true" id="printerBtn">
   <ion-toolbar>
     <ion-title>Client liability</ion-title>
     <ion-button [routerLink]="['/fsi-profile', username]" fill="clear" color="secondary" slot="end" size="large">Home</ion-button>
@@ -8,7 +8,8 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
- 
+  <div id="printableSection">
+
   <ion-grid>
     <ion-row>
       <ion-col>
@@ -35,12 +36,7 @@
       <ion-col>
         <h1>Value</h1>
       </ion-col>
-      <ion-col>
-
-      </ion-col>
-      <ion-col>
-        
-      </ion-col>
+     
     </ion-row>
   </ion-grid>
   <ion-grid *ngFor="let l of userLiabilities">
@@ -53,11 +49,12 @@
       <ion-col>${{l.payment | number: '1.2-2'}}</ion-col>
       <ion-col>{{l.term}}</ion-col>
       <ion-col>{{l.value | number: '1.2-2'}}</ion-col>
-      <ion-button fill="clear" color="secondary" [routerLink]="['/client-edit-liability', l.liabilitiesId]"><strong>Edit
+     
+    </ion-row> 
+    <ion-button id="printerBtn" fill="clear" color="secondary" [routerLink]="['/client-edit-liability', l.liabilitiesId]"><strong>Edit
         account</strong></ion-button>
-        <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
+        <ion-button id="printerBtn" fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
             account</strong></ion-button>
-    </ion-row>
   </ion-grid>
 
   <!--Adding account-->
@@ -129,4 +126,7 @@
       <ion-button (click)="closeForm()" fill="clear" color="secondary">Cancel</ion-button>
     </form>
   </div>
+  </div>
+  <ion-button (click)="printLiabilities()" id="printerBtn" color="secondary" style="padding: 10px;">Print</ion-button>
+
 </ion-content>

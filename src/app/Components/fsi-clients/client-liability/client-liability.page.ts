@@ -47,7 +47,9 @@ export class ClientLiabilityPage implements OnInit {
       }
     })
   }
-
+  printLiabilities(){
+    window.print()
+  }
   openForm() {
     this.isFormVisible = true;
   }

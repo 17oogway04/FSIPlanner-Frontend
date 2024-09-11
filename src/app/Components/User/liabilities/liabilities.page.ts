@@ -74,6 +74,9 @@ export class LiabilitiesPage implements OnInit {
       }
     })
   }
+  printLiabilities(){
+    window.print()
+  }
   openForm() {
     this.isFormVisible = true;
   }

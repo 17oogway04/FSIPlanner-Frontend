@@ -1,10 +1,12 @@
 <ion-content [fullscreen]="true">
     <ion-toolbar>
-      <ion-button (click)="openForm()" fill="clear" color="secondary" slot="end">Add a note</ion-button>
+      <ion-button (click)="openForm()" id="printerBtn" fill="clear" color="secondary" slot="end">Add a note</ion-button>
 
     </ion-toolbar>
+    <div id="printableSection">
+
   <div *ngFor="let n of userNotes" style="display: inline-flex;">
-    <ion-card style="width:500px">
+    <ion-card >
       <ion-card-header>
         <ion-card-title>{{n.subject}}</ion-card-title>
         <ion-card-subtitle>{{n.createdAt | date: 'MM/dd/yyyy h:mm a' : 'America/Chicago'}}</ion-card-subtitle>
@@ -13,10 +15,10 @@
       <ion-card-content>
         {{n.description}}
       </ion-card-content>
-      <ion-button  fill="clear" color="secondary" [routerLink]="['/edit-note', n.notesId]">
+      <ion-button  id="printerBtn" fill="clear" color="secondary" [routerLink]="['/edit-note', n.notesId]">
         Edit note
       </ion-button>
-      <ion-button (click)="deleteNote(n.notesId!)" fill="clear" color="danger">
+      <ion-button id="printerBtn" (click)="deleteNote(n.notesId!)" fill="clear" color="danger">
         Delete note
       </ion-button>
     </ion-card>
@@ -39,4 +41,7 @@
       <ion-button (click)="closeForm()" fill="clear" color="secondary">Cancel</ion-button>
     </form>
   </div>
+    </div>
+    <ion-button (click)="printNotes()" id="printerBtn" color="secondary" style="padding: 10px;">Print</ion-button>
+
 </ion-content>

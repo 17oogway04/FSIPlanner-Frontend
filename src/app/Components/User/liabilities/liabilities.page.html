@@ -1,8 +1,8 @@
 <ion-content [fullscreen]="true">
   <ion-toolbar>
-    <ion-button (click)="openForm()" fill="clear" color="secondary" slot="end" size="large">Add liability</ion-button>
+    <ion-button (click)="openForm()" fill="clear" color="secondary" slot="end" size="large" id="printerBtn">Add liability</ion-button>
   </ion-toolbar>
-
+  <div id="printableSection">
   <ion-grid>
     <ion-row>
       <ion-col>
@@ -29,30 +29,25 @@
       <ion-col>
         <h1>Value</h1>
       </ion-col>
-      <ion-col>
-
-      </ion-col>
-      <ion-col>
-
-      </ion-col>
     </ion-row>
   </ion-grid>
   <ion-grid *ngFor="let l of userLiabilities">
     <ion-row>
 
-      <ion-col>{{l.type}}</ion-col>
-      <ion-col>{{l.description}}</ion-col>
-      <ion-col> {{catergories[l.type!] || "invalid key"}}</ion-col>
-      <ion-col>${{l.balance | number: '1.2-2'}}</ion-col>
-      <ion-col>{{l.rate}}</ion-col>
-      <ion-col>${{l.payment | number: '1.2-2'}}</ion-col>
-      <ion-col>{{l.term}}</ion-col>
-      <ion-col>{{l.value | number: '1.2-2'}}</ion-col>
-      <ion-button fill="clear" color="secondary" [routerLink]="['/edit-liability', l.liabilitiesId]"><strong>Edit
-          account</strong></ion-button>
-      <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
-          account</strong></ion-button>
+      <ion-col id="text">{{l.type}}</ion-col>
+      <ion-col id="text">{{l.description}}</ion-col>
+      <ion-col id="text"> {{catergories[l.type!] || "invalid key"}}</ion-col>
+      <ion-col id="text">${{l.balance | number: '1.2-2'}}</ion-col>
+      <ion-col id="text">{{l.rate}}</ion-col>
+      <ion-col id="text">${{l.payment | number: '1.2-2'}}</ion-col>
+      <ion-col id="text">{{l.term}}</ion-col>
+      <ion-col id="text">{{l.value | number: '1.2-2'}}</ion-col>
+      
     </ion-row>
+    <ion-button fill="clear" color="secondary" [routerLink]="['/edit-liability', l.liabilitiesId]" id="printerBtn"><strong>Edit
+          account</strong></ion-button>
+      <ion-button fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)" id="printerBtn"><strong>Delete
+          account</strong></ion-button>
   </ion-grid>
 
   <!--Adding account-->
@@ -124,4 +119,7 @@
       <ion-button (click)="closeForm()" fill="clear" color="secondary">Cancel</ion-button>
     </form>
   </div>
+  </div>
+  <ion-button (click)="printLiabilities()" id="printerBtn" color="secondary" style="padding: 10px;">Print</ion-button>
+
 </ion-content>

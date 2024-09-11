@@ -29,7 +29,9 @@ export class ClientNotesPage implements OnInit {
     this.loadUserNotes()
     console.log(this.username);
   }
-
+  printNotes(){
+    window.print()
+  }
   getUsername(){
     this.myUserService.getUserByUserId(parseInt(this.userId)).subscribe((response) => {
       this.username = response.userName;

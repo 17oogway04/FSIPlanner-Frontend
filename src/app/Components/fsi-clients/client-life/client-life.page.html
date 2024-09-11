@@ -1,8 +1,14 @@
-<ion-content [fullscreen]="true">
+<ion-header [translucent]="true" id="lifeHeader">
   <ion-toolbar>
+    <ion-title>Client's Life Policies</ion-title>
+    <ion-button [routerLink]="['/fsi-profile', username]" fill="clear" color="secondary" slot="end" size="large">Home</ion-button>
+
     <ion-button fill="clear" color="secondary" slot="end" size="large" (click)="openForm()" id="printerBtn">Add Life
       policy</ion-button>
   </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
   <div id="printableSection">
 
     <ion-grid>
@@ -55,7 +61,7 @@
 
 
       </ion-row>
-      <ion-button id="printerBtn" fill="clear" color="secondary" [routerLink]="['/edit-life', l.lifeId]"><strong>Edit
+      <ion-button id="printerBtn" fill="clear" color="secondary" [routerLink]="['/client-edit-life', l.lifeId]"><strong>Edit
           account</strong></ion-button>
       <ion-button id="printerBtn" fill="clear" color="danger" (click)="deleteLife(l.lifeId!)"><strong>Delete
           account</strong></ion-button>
@@ -116,5 +122,4 @@
     </div>
   </div>
   <ion-button (click)="printLife()" id="printerBtn" color="secondary" style="padding: 10px;">Print</ion-button>
-
 </ion-content>

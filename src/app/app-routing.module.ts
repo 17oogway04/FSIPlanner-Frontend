@@ -110,6 +110,18 @@ const routes: Routes = [
   {
     path: 'client-edit-liability/:id',
     loadChildren: () => import('./Components/fsi-clients/client-edit-liability/client-edit-liability.module').then( m => m.ClientEditLiabilityPageModule)
+  },
+  {
+    path: 'edit-life/:id',
+    loadChildren: () => import('./Components/User/edit-life/edit-life.module').then( m => m.EditLifePageModule)
+  },
+  {
+    path: 'client-life/:username',
+    loadChildren: () => import('./Components/fsi-clients/client-life/client-life.module').then( m => m.ClientLifePageModule)
+  },
+  {
+    path: 'client-edit-life/:id',
+    loadChildren: () => import('./Components/fsi-clients/client-edit-life/client-edit-life.module').then( m => m.ClientEditLifePageModule)
   }
 
 ];

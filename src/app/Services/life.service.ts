@@ -11,6 +11,22 @@ export class LifeService {
   tokenKey: string = "myFSIToken";
   constructor(private http: HttpClient) { }
 
+  updateLife(id: number, newLife: Life): Observable<Life>{
+    let reqHeaders = {
+      Authorization: `Bearer ${localStorage.getItem(this.tokenKey)}`
+    }
+
+    return this.http.put(`${this.baseUrl}/${id}`, newLife, {headers: reqHeaders})
+  }
+
+  getLifeById(id: number): Observable<Life>{
+    let reqHeaders = {
+      Authorization: `Bearer ${localStorage.getItem(this.tokenKey)}`
+    }
+
+    return this.http.get<Life>(`${this.baseUrl}/by-lifeId${id}`, {headers: reqHeaders})
+  }
+
   getLifeByUsername(username: string): Observable<Life[]>{
     let reqHeaders = {
       Authorization: `Bearer ${localStorage.getItem(this.tokenKey)}`

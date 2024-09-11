@@ -4,12 +4,11 @@ import { Life } from 'src/app/Models/life';
 import { LifeService } from 'src/app/Services/life.service';
 
 @Component({
-  selector: 'app-life',
-  templateUrl: './life.page.html',
-  styleUrls: ['./life.page.scss'],
+  selector: 'app-client-life',
+  templateUrl: './client-life.page.html',
+  styleUrls: ['./client-life.page.scss'],
 })
-export class LifePage implements OnInit {
-
+export class ClientLifePage implements OnInit {
   userLife: Life[] = [];
   username: string = '';
   newLife: Life = {
@@ -28,7 +27,6 @@ export class LifePage implements OnInit {
     username: this.actRouter.snapshot.paramMap.get("username") ?? ''
   };
   isFormVisible = false;
-
   constructor(private myLifeService: LifeService, private actRouter: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
@@ -46,7 +44,6 @@ export class LifePage implements OnInit {
       this.userLife = response;
     })
   }
-
   createLife(){
     this.myLifeService.createLife(this.newLife).subscribe((response) => {
       if(response != null){

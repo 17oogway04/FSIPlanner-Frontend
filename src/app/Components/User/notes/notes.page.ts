@@ -37,6 +37,9 @@ export class NotesPage implements OnInit {
     this.loadUserNotes()
   }
 
+  printNotes(){
+    window.print()
+  }
   loadUserNotes(){
     this.notesService.GetNotesByUsername(this.username).subscribe(response => {
       let sortedArray = response.reverse();

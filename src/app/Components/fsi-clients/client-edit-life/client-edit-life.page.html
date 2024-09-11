@@ -1,0 +1,37 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>client-edit-life</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form #form="ngForm" (ngSubmit)="onSubmit()">
+    <label><strong>Policy Name: </strong>{{currentLife.policyName}}</label><br>
+    <input type="text" name="policyName" [(ngModel)]="currentLife.policyName"><br><br>
+    <label><strong>Policy type: </strong>{{currentLife.policyType}}</label><br>
+    <input type="text" name="policyType" [(ngModel)]="currentLife.policyType"><br>
+    <label><strong>Owner: </strong>{{currentLife.owner}}</label><br>
+    <input type="text" name="owner" [(ngModel)]="currentLife.owner"><br>
+    <label><strong>Insured: </strong>{{currentLife.insured}}</label><br>
+    <input type="text" name="insured" [(ngModel)]="currentLife.insured"><br>
+    <label><strong>Premium: </strong>{{currentLife.premium}}</label><br>
+    <input type="text" name="premium" [(ngModel)]="currentLife.premium"><br>
+    <label><strong>Cash Value: </strong>{{currentLife.cashValue}}</label><br>
+    <input type="text" name="cashValue" [(ngModel)]="currentLife.cashValue"><br>
+    <label><strong>Death Benefit Client 1: </strong>{{currentLife.deathBenefitOne}}</label><br>
+    <input type="text" name="deathBenefitOne" [(ngModel)]="currentLife.deathBenefitOne"><br>
+    <label><strong>Death Benefit Client 2: </strong>{{currentLife.deathBenefitTwo}}</label><br>
+    <input type="text" name="deathBenefitTwo" [(ngModel)]="currentLife.deathBenefitTwo"><br>
+    <label><strong>Riders: </strong>{{currentLife.riders}}</label><br>
+    <input type="text" name="riders" [(ngModel)]="currentLife.riders"><br>
+    <label><strong>Rider benefit: </strong>{{currentLife.ridersBenefit}}</label><br>
+    <input type="text" name="ridersBenefit" [(ngModel)]="currentLife.ridersBenefit"><br>
+    <label><strong>% to Savings: </strong>{{currentLife.percentageToSavings}}</label><br>
+    <input type="text" name="percentageToSavings" [(ngModel)]="currentLife.percentageToSavings"><br>
+
+    <ion-button type="submit" fill="clear" color="secondary" size="large">Edit</ion-button>
+    <ion-button routerLink="/client-life/{{currentLife.username}}" fill="clear"
+      color="secondary" size="large">Cancel</ion-button>
+  </form>
+</ion-content>
+

@@ -1,0 +1,18 @@
+*{
+    font-family: Felix Titling;
+  }
+
+  @media print{
+    #printerBtn{
+        visibility: hidden;
+    }
+
+    h1{
+        font-size: 1.1em;
+        text-decoration: underline;
+    }
+
+    #lifeHeader{
+      visibility: hidden;
+    }
+}

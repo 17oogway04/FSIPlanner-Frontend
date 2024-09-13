@@ -33,6 +33,10 @@ export class AssetOverviewPage implements OnInit {
       this.showChart()
     })
   }
+  printOverview(){
+    window.print()
+  }
+
 
 
   showChart() {

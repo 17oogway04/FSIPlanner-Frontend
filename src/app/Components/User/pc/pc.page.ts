@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PC } from 'src/app/Models/pc';
 import { PCService } from 'src/app/Services/pc.service';
+import { UserService } from 'src/app/Services/user.service';
 
 @Component({
   selector: 'app-pc',
@@ -14,20 +15,20 @@ export class PcPage implements OnInit {
 
   userPC: PC[] = [];
   newPC: PC = new PC(0, "","","","","","", this.actRouter.snapshot.paramMap.get("username") ?? '')
-  constructor(private myPCService: PCService, private actRouter: ActivatedRoute) { }
+  constructor(private myPCService: PCService, private actRouter: ActivatedRoute, private userService: UserService) { }
 
   ngOnInit() {
-    const name = this.actRouter.snapshot.paramMap.get("username") ?? '';
-    if(name !== ''){
-      this.username = name;
-    }
     this.loadUserPC()
   }
 
   loadUserPC(){
-    this.myPCService.getPCByUsername(this.username).subscribe((response) => {
+    this.userService.getCurrentUser().subscribe((response) => {
+      this.username = response.userName!;
+      this.myPCService.getPCByUsername(this.username).subscribe((response) => {
       this.userPC = response;
     })
+    })
+    
   }
 
   createPC(): void{

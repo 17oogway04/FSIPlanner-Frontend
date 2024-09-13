@@ -8,31 +8,31 @@ const routes: Routes = [
     component: HomePage,
     children: [
       {
-        path: 'notes/:username',
+        path: 'notes',
         loadChildren: () => import('../User/notes/notes.module').then(m => m.NotesPageModule)
       },
       {
-        path: 'pc/:username',
+        path: 'pc',
         loadChildren: () => import('../User/pc/pc.module').then(m => m.PcPageModule)
       },
       {
-        path: 'asset/:username',
+        path: 'asset',
         loadChildren: () => import('../User/asset/asset.module').then( m => m.AssetPageModule)
       },
       {
-        path: 'buckets/:username',
+        path: 'buckets',
         loadChildren: () => import('../User/buckets/buckets.module').then( m => m.BucketsPageModule)
       },
       {
-        path: 'balance/:username',
+        path: 'balance',
         loadChildren: () => import('../User/balance/balance.module').then( m => m.BalancePageModule)
       },
       {
-        path: 'liabilities/:username',
+        path: 'liabilities',
         loadChildren: () => import('../User/liabilities/liabilities.module').then( m => m.LiabilitiesPageModule)
       },
       {
-        path: 'life/:username',
+        path: 'life',
         loadChildren: () => import('../User/life/life.module').then( m => m.LifePageModule)
       },
     ]

@@ -1,0 +1,13 @@
+* {
+    font-family: Felix Titling;
+}
+
+.chart {
+    height: 750px;
+}
+
+@media print {
+    #printerBtn {
+        visibility: hidden;
+    }
+}

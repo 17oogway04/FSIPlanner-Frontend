@@ -1,7 +1,7 @@
 <ion-header id="globalHeader">
   <ion-toolbar id="headerTool">
     <ion-title slot="start">Financial Strategies Inc.</ion-title>
-    <ion-button fill="clear" slot="end" [routerLink]="['/demographics', presentUser.userName]">
+    <ion-button fill="clear" slot="end" routerLink="/demographics">
       More about {{presentUser.firstName}}
     </ion-button>
     <ion-button *ngIf="userName === 'isaacm@mutualmail.com'" fill="clear" slot="end" routerLink="/signup">Create new
@@ -42,28 +42,28 @@
   </ion-grid>
   <ion-toolbar style="padding-top: 20px;">
     <ion-segment>
-      <ion-segment-button routerLink="/home/balance/{{presentUser.userName}}">
+      <ion-segment-button routerLink="/home/balance">
         <ion-label>Balance</ion-label>
       </ion-segment-button>
-      <ion-segment-button routerLink="/home/buckets/{{presentUser.userName}}">
+      <ion-segment-button routerLink="/home/buckets">
         <ion-label>Buckets</ion-label>
       </ion-segment-button>
-      <ion-segment-button routerLink="/home/asset/{{presentUser.userName}}">
+      <ion-segment-button routerLink="/home/asset">
         <ion-label> Assets</ion-label>
       </ion-segment-button>
-      <ion-segment-button routerLink="/home/liabilities/{{presentUser.userName}}">
+      <ion-segment-button routerLink="/home/liabilities">
         <ion-label> Liabilities</ion-label>
       </ion-segment-button>
-      <ion-segment-button routerLink="/home/life/{{presentUser.userName}}">
+      <ion-segment-button routerLink="/home/life">
         <ion-label> Life</ion-label>
       </ion-segment-button>
-      <ion-segment-button routerLink="/home/pc/{{presentUser.userName}}">
+      <ion-segment-button routerLink="/home/pc">
         <ion-label> P&C</ion-label>
       </ion-segment-button>
       <ion-segment-button>
         <ion-label> Disability Ins</ion-label>
       </ion-segment-button>
-      <ion-segment-button routerLink="/home/notes/{{presentUser.userName}}">
+      <ion-segment-button routerLink="/home/notes">
         <ion-label> Notes</ion-label>
       </ion-segment-button>
     </ion-segment>

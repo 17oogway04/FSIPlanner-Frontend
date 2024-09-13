@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Liabilities } from 'src/app/Models/liabilities';
 import { LiabilitiesService } from 'src/app/Services/liabilities.service';
+import { UserService } from 'src/app/Services/user.service';
 
 @Component({
   selector: 'app-liabilities',
@@ -40,22 +41,21 @@ export class LiabilitiesPage implements OnInit {
   isFormVisible = false;
   userLiabilities: Liabilities[] = [];
   newLiability: Liabilities = new Liabilities(0,"","",0, "", "", "", "", this.actRouter.snapshot.paramMap.get("username") ?? '');
-  constructor(private myLiabilityService: LiabilitiesService, private actRouter: ActivatedRoute) { }
+  constructor(private myLiabilityService: LiabilitiesService, private actRouter: ActivatedRoute, private userService: UserService) { }
 
   ngOnInit() {
-    const name = this.actRouter.snapshot.paramMap.get("username") ?? '';
-    if(name != null){
-      this.username = name
-    }
     this.loadUserLiabilities();
     this.getTypeValue()
-
   }
 
   loadUserLiabilities(){
-    this.myLiabilityService.getLiabilitiesByUsername(this.username).subscribe((response) => {
+    this.userService.getCurrentUser().subscribe((response) => {
+      this.username = response.userName!;
+      this.myLiabilityService.getLiabilitiesByUsername(this.username).subscribe((response) => {
       this.userLiabilities = response.sort((a,b) => parseInt(a.type!) - parseInt(b.type!));
     })
+    })
+    
   }
 
   getTypeValue() {

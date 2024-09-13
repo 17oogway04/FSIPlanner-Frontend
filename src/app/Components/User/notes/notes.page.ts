@@ -27,13 +27,9 @@ export class NotesPage implements OnInit {
   userNotes: Notes[] = [];
   id?: number = this.newNote.notesId;
 
-  constructor(private notesService: NotesService, private actRouter: ActivatedRoute, private http: HttpClient) { }
+  constructor(private notesService: NotesService, private actRouter: ActivatedRoute, private http: HttpClient, private userService: UserService) { }
 
   ngOnInit() {
-    const name = this.actRouter.snapshot.paramMap.get("username") ?? '';
-    if(name !== ''){
-      this.username = name;
-    }
     this.loadUserNotes()
   }
 
@@ -41,7 +37,9 @@ export class NotesPage implements OnInit {
     window.print()
   }
   loadUserNotes(){
-    this.notesService.GetNotesByUsername(this.username).subscribe(response => {
+    this.userService.getCurrentUser().subscribe((response) => {
+      this.username = response.userName!;  
+      this.notesService.GetNotesByUsername(this.username).subscribe(response => {
       let sortedArray = response.reverse();
       this.userNotes = sortedArray;
       if(response !==null){
@@ -49,6 +47,8 @@ export class NotesPage implements OnInit {
         this.none = true;
       }
     })
+    })
+  
   }
 
   createNote(): void{

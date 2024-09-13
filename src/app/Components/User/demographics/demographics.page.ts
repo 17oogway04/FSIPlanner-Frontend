@@ -69,13 +69,13 @@ export class DemographicsPage implements OnInit {
       this.loggedInUser = this.presentUser = response;
       this.userName = this.presentUser.userName ?? '';
 
-      const name = this.actRouter.snapshot.paramMap.get("username") ?? '';
-      if(name!== ''){
-        this.userName = name;
-        this.myUserService.getUserByUsername(name).subscribe(response => {
-          this.presentUser = response;
-        })
-      }
+      // const name = this.actRouter.snapshot.paramMap.get("username") ?? '';
+      // if(name!== ''){
+      //   this.userName = name;
+      //   this.myUserService.getUserByUsername(name).subscribe(response => {
+      //     this.presentUser = response;
+      //   })
+      // }
 
       this.loadUserDemographics();
 
@@ -88,13 +88,17 @@ export class DemographicsPage implements OnInit {
   }
 
   loadUserDemographics(){
-    this.myDemoSerivce.GetDemographicsByUsername(this.userName).subscribe(response => {
+    this.myUserService.getCurrentUser().subscribe((response) => {
+      this.userName = response.userName!;
+      this.myDemoSerivce.GetDemographicsByUsername(this.userName).subscribe(response => {
       this.userDemographics = response;
       if(response !==null){
         this.input = true
         this.none = true;
       }
     })
+    })
+    
   }
 
   createDemographic(){

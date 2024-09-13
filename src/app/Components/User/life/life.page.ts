@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Life } from 'src/app/Models/life';
 import { LifeService } from 'src/app/Services/life.service';
+import { UserService } from 'src/app/Services/user.service';
 
 @Component({
   selector: 'app-life',
@@ -29,22 +30,22 @@ export class LifePage implements OnInit {
   };
   isFormVisible = false;
 
-  constructor(private myLifeService: LifeService, private actRouter: ActivatedRoute, private router: Router) { }
+  constructor(private myLifeService: LifeService, private actRouter: ActivatedRoute, private router: Router, private userService: UserService) { }
 
   ngOnInit() {
-    const name = this.actRouter.snapshot.paramMap.get("username") ?? '';
-    if(name != null){
-      this.username = name
-    }
     this.loadUserLife()
   }
   printLife(){
     window.print()
   }
   loadUserLife(){
-    this.myLifeService.getLifeByUsername(this.username).subscribe((response) => {
+    this.userService.getCurrentUser().subscribe((response) => {
+      this.username = response.userName!;
+      this.myLifeService.getLifeByUsername(this.username).subscribe((response) => {
       this.userLife = response;
     })
+    })
+    
   }
 
   createLife(){

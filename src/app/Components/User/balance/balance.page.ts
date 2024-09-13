@@ -8,6 +8,7 @@ import { AssetService } from 'src/app/Services/asset.service';
 import { BalanceService } from 'src/app/Services/balance.service';
 import { LiabilitiesService } from 'src/app/Services/liabilities.service';
 import { LifeService } from 'src/app/Services/life.service';
+import { UserService } from 'src/app/Services/user.service';
 
 @Component({
   selector: 'app-balance',
@@ -62,18 +63,15 @@ export class BalancePage implements OnInit {
   combinedBalance: any[] = [];
 
   checkingValue: string = '';
-  constructor(private myBalanceService: BalanceService, private actRouter: ActivatedRoute, private myAssetService: AssetService, private myLiabilityService: LiabilitiesService, private myLifeService: LifeService) { }
+  constructor(private myBalanceService: BalanceService, private actRouter: ActivatedRoute, private myAssetService: AssetService, private myLiabilityService: LiabilitiesService, private myLifeService: LifeService, private userService: UserService) { }
 
   ngOnInit() {
-    const name = this.actRouter.snapshot.paramMap.get("username") ?? '';
-    if (name != null) {
-      this.username = name;
-    }
-
     this.loadUserBalances()
   }
   loadUserBalances() {
-    this.myAssetService.getAssetsByUsername(this.username).subscribe((response) => {
+    this.userService.getCurrentUser().subscribe((response) => {
+      this.username = response.userName!;
+      this.myAssetService.getAssetsByUsername(this.username).subscribe((response) => {
       this.userAsset = response;
       this.myLiabilityService.getLiabilitiesByUsername(this.username).subscribe((response) => {
         this.userLiabilities = response;
@@ -83,6 +81,8 @@ export class BalancePage implements OnInit {
         this.combinedBalance = this.combineBalances();
       })
     })
+    })
+    
   }
 
   combineBalances() {

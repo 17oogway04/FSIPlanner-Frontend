@@ -24,6 +24,9 @@ export class ClientAssetOverviewPage implements OnInit {
     }
     this.getUserAssets()
   }
+  printOverview(){
+    window.print()
+  }
 
   getUserAssets() {
     this.myAssetService.getAssetsByUsername(this.username).subscribe((response) => {

@@ -1,13 +1,19 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true" id="printerBtn">
   <ion-toolbar>
     <ion-title>Asset Overview</ion-title>
-    <ion-button routerLink="/home/asset/{{this.username}}" slot="end" fill="clear" id="home" size="large" color="secondary">Back</ion-button>
+    <ion-button routerLink="/home/asset/{{this.username}}" slot="end" fill="clear" id="home" size="large"
+      color="secondary">Back</ion-button>      
 
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div>
-    <div style="display: block; height: 800px;"><canvas id="pie-chart"></canvas></div>
-  </div>
+  <div id="printableSection">
+    <div>
+      <div class="chart"><canvas id="pie-chart"></canvas></div>    
+
+    </div>  
+  </div>      
+  <ion-button (click)="printOverview()" id="printerBtn" color="secondary" size="large" fill="clear">Print</ion-button>
+
 </ion-content>

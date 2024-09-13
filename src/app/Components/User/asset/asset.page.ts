@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ItemReorderEventDetail } from '@ionic/angular';
 import { Asset } from 'src/app/Models/asset';
 import { AssetService } from 'src/app/Services/asset.service';
+import { UserService } from 'src/app/Services/user.service';
 
 @Component({
   selector: 'app-asset',
@@ -43,7 +44,7 @@ export class AssetPage implements OnInit {
   userAsset: Asset[] = [];
   newAsset: Asset = new Asset(0, "", "", "", "", "", "", 0, "", "", this.actRouter.snapshot.paramMap.get("username") ?? '', "")
 
-  constructor(private myAssetservice: AssetService, private actRouter: ActivatedRoute) { }
+  constructor(private myAssetservice: AssetService, private actRouter: ActivatedRoute, private userService: UserService) { }
 
   ngOnInit() {
     const name = this.actRouter.snapshot.paramMap.get("username") ?? '';
@@ -84,8 +85,14 @@ export class AssetPage implements OnInit {
     // if (storedOrder == "") {
     //   this.userAsset = JSON.parse(storedOrder);
     // } else {
-      this.myAssetservice.getAssetsByUsername(this.username).subscribe((response) => {
-        this.userAsset = response
+      // this.myAssetservice.getAssetsByUsername(this.username).subscribe((response) => {
+      //   this.userAsset = response
+      // })
+      this.userService.getCurrentUser().subscribe((response) => {
+        this.username = response.userName!;
+        this.myAssetservice.getAssetsByUsername(this.username).subscribe((response) => {
+          this.userAsset = response;
+        })
       })
   }
 

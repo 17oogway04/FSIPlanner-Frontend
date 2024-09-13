@@ -3,6 +3,7 @@ import { Bucket } from 'src/app/Models/asset';
 import { AssetService } from 'src/app/Services/asset.service';
 import { DecimalPipe } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+import { UserService } from 'src/app/Services/user.service';
 
 @Component({
   selector: 'app-buckets',
@@ -24,13 +25,9 @@ export class BucketsPage implements OnInit {
   username: string = '';
   bucket: Bucket[] = []
   totalCapitalAmount: number = 0;
-  constructor(private myBucketService: AssetService, private decimalPipe: DecimalPipe, private actRouter: ActivatedRoute) { }
+  constructor(private myBucketService: AssetService, private decimalPipe: DecimalPipe, private actRouter: ActivatedRoute, private userService: UserService) { }
 
   ngOnInit() {
-    let user = this.actRouter.snapshot.paramMap.get("username") ?? ''
-    if(user !== null){
-      this.username = user
-    }
     this.getBuckets()
     this.totalCapital()
   }
@@ -39,10 +36,14 @@ export class BucketsPage implements OnInit {
   }
 
   getBuckets(){
-    this.myBucketService.getBuckets(this.username).subscribe((response) => {
+    this.userService.getCurrentUser().subscribe((response) => {
+      this.username = response.userName!;
+      this.myBucketService.getBuckets(this.username).subscribe((response) => {
       this.bucket = response;
       this.totalCapital()
     })
+    })
+    
   }
 
   totalCapital(){

@@ -110,4 +110,12 @@ export class UserService {
    return this.http.delete<any>(`${this.baseUrl}/${username}`, {headers: reqHeaders})
   }
 
+  updateUser(newUser: User): Observable<User>{
+    let reqHeaders = 
+    {
+      Authorization: `Bearer ${localStorage.getItem(this.tokenKey)}`
+    }
+    return this.http.put<User>(`${this.baseUrl}/${newUser.userId}`, newUser, {headers: reqHeaders})
+  }
+
 }

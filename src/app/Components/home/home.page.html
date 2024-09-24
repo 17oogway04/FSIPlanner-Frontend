@@ -2,20 +2,20 @@
   <ion-toolbar id="headerTool">
     <ion-title slot="start">Financial Strategies Inc.</ion-title>
     
-    <div class="dropdown" *ngIf="userName === 'isaacm@mutualmail.com'" slot="end">
+    <!-- <div class="dropdown" *ngIf="!isAllowed" slot="end">
       <button class="dropbtn">FSI USERS</button>
       <div class="dropdown-content">
         <a routerLink="/signup">Create new account</a>
         <a routerLink="/search-users">Search users</a>
       </div>
-    </div>
+    </div> -->
     <ion-button fill="clear" slot="end" routerLink="/demographics">
       More about {{presentUser.firstName}}
     </ion-button>
-    <ion-button *ngIf="!isAuthenticated" [routerLink]="['/login']" fill="clear" slot="end">
+    <ion-button *ngIf="isAuthenticated" [routerLink]="['/login']" fill="clear" slot="end">
       Log in
     </ion-button>
-    <ion-button *ngIf="isAuthenticated" (click)="logout()" fill="clear" slot="end">
+    <ion-button *ngIf="!isAuthenticated" (click)="logout()" fill="clear" slot="end">
       Log out
     </ion-button>
   </ion-toolbar>
@@ -40,6 +40,7 @@
         <!--current user information-->
         <div id="info">
           <h1 id="header">{{presentUser.firstName}} {{presentUser.lastName}}</h1>
+          <ion-button fill="clear" color="secondary" [routerLink]="['/edit-user', presentUser.userId]">Edit {{presentUser.firstName}}'s profile</ion-button>
         </div>
       </ion-col>
     </ion-row>

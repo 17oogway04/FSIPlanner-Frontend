@@ -1,28 +1,32 @@
 <ion-header id="globalHeader">
   <ion-toolbar id="headerTool">
     <ion-title slot="start">Financial Strategies Inc.</ion-title>
+    
+    <div class="dropdown" *ngIf="userName === 'isaacm@mutualmail.com'" slot="end">
+      <button class="dropbtn">FSI USERS</button>
+      <div class="dropdown-content">
+        <a routerLink="/signup">Create new account</a>
+        <a routerLink="/search-users">Search users</a>
+      </div>
+    </div>
     <ion-button fill="clear" slot="end" routerLink="/demographics">
       More about {{presentUser.firstName}}
     </ion-button>
-    <ion-button *ngIf="userName === 'isaacm@mutualmail.com'" fill="clear" slot="end" routerLink="/signup">Create new
-      account</ion-button>
-    <ion-button *ngIf="userName === 'isaacm@mutualmail.com'" fill="clear" slot="end" routerLink="/search-users">Search
-      users</ion-button>
     <ion-button *ngIf="!isAuthenticated" [routerLink]="['/login']" fill="clear" slot="end">
       Log in
     </ion-button>
     <ion-button *ngIf="isAuthenticated" (click)="logout()" fill="clear" slot="end">
       Log out
     </ion-button>
-  </ion-toolbar>        
+  </ion-toolbar>
   <ion-grid>
     <ion-row>
       <ion-col sizeXl="2" sizeLg="3" sizeMd="4" sizeSm="5" sizeXs="12">
         <div class="avatar-container">
-          <div class="image-container" 
-               [ngStyle]="{ backgroundImage: 'url(' + (profilePic || '../../../assets/img/profileSymbol.png') + ')' }">
+          <div class="image-container"
+            [ngStyle]="{ backgroundImage: 'url(' + (profilePic || '../../../assets/img/profileSymbol.png') + ')' }">
           </div>
-          
+
           <label for="avatar-input-file">
             <div class="icon-wrapper">
               <input type="file" id="avatar-input-file" accept="image/*" (change)="onFileChange($event)" />

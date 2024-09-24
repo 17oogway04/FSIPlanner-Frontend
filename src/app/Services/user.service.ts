@@ -102,4 +102,12 @@ export class UserService {
     this.router.navigate(['/login'])
   }
 
+  deleteUser(username: string): Observable<any>{
+    let reqHeaders = 
+    {
+      Authorization: `Bearer ${localStorage.getItem(this.tokenKey)}`
+    }
+   return this.http.delete<any>(`${this.baseUrl}/${username}`, {headers: reqHeaders})
+  }
+
 }

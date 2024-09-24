@@ -10,21 +10,22 @@ import { UserService } from 'src/app/Services/user.service';
 })
 export class SearchUsersPage implements OnInit {
   searchStr!: string;
+  basicUrl: string = "http://localhost:5247"
   id: string = "0";
-  users: User = {
+  profilepic = '';
+  allUsers: User[] = [{
     userId: 0,
     firstName: '',
     lastName: '',
     userName: '',
     password: '',
     profilePicture: ''
-  }
-
+  }]
   user: User[] = [];
   constructor(private myUserService: UserService, private actRouter: ActivatedRoute) { }
 
-  ngOnInit() {
- 
+  ngOnInit() {  
+    this.getUsers()
   }
 
   searchUser(){
@@ -33,10 +34,20 @@ export class SearchUsersPage implements OnInit {
 
   async searchUserByName(username: string){
     this.myUserService.getUserByName(username).subscribe(response => {
-      // this.users.firstName = response.firstName;
-      // this.users.lastName = response.lastName;
-      // this.users.userName = response.userName;
       this.user = response;
+    })
+  }
+
+  getUsers(){
+    this.myUserService.getUsers().subscribe((response) => {
+      this.allUsers = response;
+    })
+  }
+
+  deleteUser(username: string){
+    this.myUserService.deleteUser(username).subscribe(() => {
+      window.alert("User deleted")
+      window.location.reload();
     })
   }
 

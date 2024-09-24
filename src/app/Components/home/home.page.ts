@@ -15,8 +15,9 @@ export class HomePage implements OnInit {
   profilePic: string = '';
   isAuthenticated: boolean = false;
   userName: string = '';
-  isAllowed: boolean = true;
+  isAllowed: boolean = false;
   presentUser: User ={
+    userId: 0,
     firstName: '',
     lastName: '',
     userName: '',
@@ -39,13 +40,13 @@ export class HomePage implements OnInit {
         this.userName = name;        
         this.myUserservice.getUserByUsername(name).subscribe(response => {
           this.presentUser = response;
-        }) 
-
+        })       
       }})
       
       this.myUserservice.isLoggedInSubj.subscribe(isLoggedIn => {
         this.isAuthenticated = isLoggedIn;
         this.isAuthenticated = isLoggedIn;
+        
       })
     }
     logout(){
@@ -53,7 +54,7 @@ export class HomePage implements OnInit {
     }
 
     checkUsername(){
-      if(this.userName === "isaacm@mutualmail.com" || "jenniferh@mutualmail.com"){
+      if(this.presentUser.userName == "isaacm@mutualmail.com" || "jenniferh@mutualmail.com"){
         this.isAllowed = true;
       }else{
         this.isAllowed = false;

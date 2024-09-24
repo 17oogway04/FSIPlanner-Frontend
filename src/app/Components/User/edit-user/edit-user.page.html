@@ -1,0 +1,26 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Edit user</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form #form="ngForm" (ngSubmit)="onSubmit()">
+    <label>First name: {{presentUser.firstName}}</label><br>
+    <input type="text" name="firstName" [(ngModel)]="presentUser.firstName"><br>
+    <label>Last name: {{presentUser.lastName}}</label><br>
+    <input type="text" name="lastName" [(ngModel)]="presentUser.lastName"><br>
+    <label>User name: {{presentUser.userName}}</label><br>
+    <input type="text" name="userName" [(ngModel)]="presentUser.userName"><br>
+    <!-- <label>Passowrd: {{presentUser.password}}</label><br> -->
+
+    <input type="text" name="password" [(ngModel)]="presentUser.password" hidden><br>
+
+    <input type="text" name="userId" [(ngModel)]="presentUser.userId" hidden><br>
+
+    <ion-button type="submit" fill="clear" color="secondary">Edit</ion-button>
+
+    <ion-button routerLink="/home" fill="clear"
+      color="secondary">Cancel</ion-button>
+  </form>
+</ion-content>

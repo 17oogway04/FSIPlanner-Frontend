@@ -1,14 +1,20 @@
-<ion-header id="globalHeader">
+<ion-header id="globalHeader" [translucent]="true">
   <ion-toolbar id="headerTool">
     <ion-title slot="start">Financial Strategies Inc.</ion-title>
-    
-    <!-- <div class="dropdown" *ngIf="!isAllowed" slot="end">
+    <div class="dropdown" slot="end" *ngIf="presentUser.userName == 'isaacm@mutualmail.com'">
       <button class="dropbtn">FSI USERS</button>
-      <div class="dropdown-content">
-        <a routerLink="/signup">Create new account</a>
+      <div class="dropdown-options">
+        <a routerLink="/signup">New account</a>
         <a routerLink="/search-users">Search users</a>
       </div>
-    </div> -->
+    </div>
+    <div class="dropdown" slot="end" *ngIf="presentUser.userName == 'jenniferh@mutualmail.com'">
+      <button class="dropbtn">FSI USERS</button>
+      <div class="dropdown-options">
+        <a routerLink="/signup">New account</a>
+        <a routerLink="/search-users">Search users</a>
+      </div>
+    </div>
     <ion-button fill="clear" slot="end" routerLink="/demographics">
       More about {{presentUser.firstName}}
     </ion-button>
@@ -20,6 +26,7 @@
     </ion-button>
   </ion-toolbar>
   <ion-grid>
+
     <ion-row>
       <ion-col sizeXl="2" sizeLg="3" sizeMd="4" sizeSm="5" sizeXs="12">
         <div class="avatar-container">
@@ -37,10 +44,30 @@
 
       </ion-col>
       <ion-col sizeXl="10" sizeLg="9" sizeMd="8" sizeSm="7" sizeXs="12">
+
         <!--current user information-->
         <div id="info">
+          
           <h1 id="header">{{presentUser.firstName}} {{presentUser.lastName}}</h1>
-          <ion-button fill="clear" color="secondary" [routerLink]="['/edit-user', presentUser.userId]">Edit {{presentUser.firstName}}'s profile</ion-button>
+          <ion-toolbar>
+          <ion-button fill="clear" color="secondary" [routerLink]="['/edit-user', presentUser.userId]">Edit
+            {{presentUser.firstName}}'s profile</ion-button>
+            <!-- <div class="dropdown">
+              <button>FSI Users</button>
+              <div class="dropdown-options">
+                <a routerLink="/signup">Create new account</a>
+                <a routerLink="/search-users">Search users</a>
+              </div>
+            </div> -->
+            <!-- <div class="dropdown" slot="end">
+            <ion-button class="dropbtn" fill="clear" color="secondary">FSI USERS</ion-button>
+            <div class="dropdown-content">
+              <a routerLink="/signup">Create new account</a>
+              <a routerLink="/search-users">Search users</a>
+            </div>
+          </div>   -->
+          </ion-toolbar>
+          
         </div>
       </ion-col>
     </ion-row>

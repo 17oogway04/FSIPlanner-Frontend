@@ -28,6 +28,26 @@
       <ion-button fill="clear" color="danger" (click)="deleteUser(u.userName!)">Delete User</ion-button> -->
     </ion-item>
   </ion-list>
+
+    <div *ngFor="let u of user">
+      <ion-card style="max-width: 300px;">
+        <img alt="Client profile pic" src="http://localhost:5247/{{u.profilePicture}}"
+          style=" height:300px; width: 100%;" [routerLink]="['/fsi-profile', u.userName]">
+        <ion-card-header>
+          <ion-card-title>{{u.firstName}} {{u.lastName}}</ion-card-title>
+          <ion-card-subtitle>{{u.userName}}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-button fill="clear" color="secondary" [routerLink]="['/edit-user', u.userId]">Edit user</ion-button>
+        <ion-button fill="clear" color="danger" (click)="deleteUser(u.userName!)">Delete user</ion-button>
+
+      </ion-card>
+
+      <!-- <ion-button [routerLink]="['/fsi-profile', u.userName]" fill="clear" color="secondary"
+        size="large">{{u.firstName}} {{u.lastName}}</ion-button>
+      <ion-button fill="clear" color="danger" (click)="deleteUser(u.userName!)">Delete User</ion-button> -->
+    </div>
+
+
   <!-- <div >
      <ion-card *ngFor="let u of allUsers" style="display: inline-flex;" [routerLink]="['/fsi-profile', u.userName]"> 
     <img alt="Client profile pic" src="http://localhost:5247/{{u.profilePicture}}"style="object-fit: contain; height:300px;" />

@@ -3,9 +3,9 @@ export class Notes {
     subject?: string;
     username?: string;
     description?: string;
-    createdAt?: Date;
+    createdAt?: string;
 
-    constructor(notesId: number, subject: string, username: string, description: string, createdAt: Date){
+    constructor(notesId: number, subject: string, username: string, description: string, createdAt: string){
         this.notesId = notesId;
         this.subject = subject;
         this.username = username;

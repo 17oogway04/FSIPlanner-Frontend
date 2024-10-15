@@ -8,6 +8,7 @@ import { User } from 'src/app/Models/user';
 import { NotesService } from 'src/app/Services/notes.service';
 import { UserService } from 'src/app/Services/user.service';
 import { OverlayEventDetail } from '@ionic/core/components';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-notes',
@@ -23,16 +24,23 @@ export class NotesPage implements OnInit {
   isEditVisible = false;
   none = false;
   input = false;
-  newNote: Notes = new Notes(0,"", this.actRouter.snapshot.paramMap.get("username") ?? '', "", new Date())
+  newNote: Notes = new Notes(0,"", localStorage.getItem('ClientName')!, "", "")
   userNotes: Notes[] = [];
   id?: number = this.newNote.notesId;
 
   constructor(private notesService: NotesService, private actRouter: ActivatedRoute, private http: HttpClient, private userService: UserService) { }
 
   ngOnInit() {
+    this.saveUsername()
     this.loadUserNotes()
   }
 
+  
+  saveUsername(){
+    this.userService.getCurrentUser().subscribe((response) => {
+      localStorage.setItem('ClientName', response.userName!)
+    })
+  }
   printNotes(){
     window.print()
   }
@@ -53,7 +61,8 @@ export class NotesPage implements OnInit {
 
   createNote(): void{
     if (!this.newNote.createdAt) {
-      this.newNote.createdAt = new Date();
+      let mom = moment();
+      this.newNote.createdAt = mom.toISOString();
     }
     this.notesService.CreateNote(this.newNote).subscribe(() => {
 

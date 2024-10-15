@@ -25,12 +25,13 @@ export class NotesService {
     {
       Authorization: `Bearer ${localStorage.getItem(this.tokenKey)}`
     }
-    return this.http.get<Notes[]>(`${this.baseUrl}/by-username/${username}`, {headers: reqHeaders}).pipe(
-      map(notes => notes.map(note => ({
-        ...note,
-        createdAt: new Date(note.createdAt!)
-      })))
-    )
+    return this.http.get<Notes[]>(`${this.baseUrl}/by-username/${username}`, {headers: reqHeaders})
+    // .pipe(
+    //   map(notes => notes.map(note => ({
+    //     ...note,
+    //     createdAt: new Date(note.createdAt!)
+    //   })))
+    // )
   }
 
   GetNotesByUserId(userId: number): Observable<Notes[]>{
@@ -54,7 +55,7 @@ export class NotesService {
     {
       Authorization: `Bearer ${localStorage.getItem(this.tokenKey)}`
     }
-    newNote.createdAt?.toISOString();
+    // newNote.createdAt?.toISOString();
     return this.http.post<Notes>(this.baseUrl, newNote, {headers: reqHeaders})
   }
 

@@ -14,7 +14,7 @@ export class ClientNotesPage implements OnInit {
   username?: string = '';
   isFormVisible = false;
   userNotes: Notes[] = [];
-  newNote: Notes = new Notes(0,"",this.actRouter.snapshot.paramMap.get("username") ?? '',"", new Date())
+  newNote: Notes = new Notes(0,"",this.actRouter.snapshot.paramMap.get("username") ?? '',"", '')
   userId: string = "0";
 
 
@@ -50,7 +50,7 @@ export class ClientNotesPage implements OnInit {
   }
   createNote(): void{
     if (!this.newNote.createdAt) {
-      this.newNote.createdAt = new Date();
+      // this.newNote.createdAt = new Date();
     }
     this.myNotesService.CreateNote(this.newNote).subscribe(() => {
 

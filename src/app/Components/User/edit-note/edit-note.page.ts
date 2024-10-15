@@ -15,7 +15,7 @@ export class EditNotePage implements OnInit {
     notesId: 0,
     subject: '',
     description: '',
-    createdAt: new Date,
+    createdAt: '',
     username: this.actRouter.snapshot.paramMap.get("username") ?? ''
 
   }

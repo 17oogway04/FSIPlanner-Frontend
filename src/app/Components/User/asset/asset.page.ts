@@ -13,7 +13,9 @@ import { UserService } from 'src/app/Services/user.service';
 })
 export class AssetPage implements OnInit {
 
-  username: string = '';
+  username: string = '';  
+  newAsset: Asset = new Asset(0, "", "", "", "", "", "", 0, "", "", localStorage.getItem('ClientName')!, "")
+
   types: { [key: string]: string } = {
     "1": "Checking",
     "2": "Currency",
@@ -41,25 +43,25 @@ export class AssetPage implements OnInit {
 
   selectedType: string = '';
   isFormVisible = false;
+  userAssetName: string = '';
   userAsset: Asset[] = [];
-  newAsset: Asset = new Asset(0, "", "", "", "", "", "", 0, "", "", this.actRouter.snapshot.paramMap.get("username") ?? '', "")
 
   constructor(private myAssetservice: AssetService, private actRouter: ActivatedRoute, private userService: UserService) { }
 
   ngOnInit() {
-    const name = this.actRouter.snapshot.paramMap.get("username") ?? '';
-    if (name !== '') {
-      this.username = name;
-    }
-
-    this.loadUserAsset()
+    this.saveUsername()
+    this.loadUserAsset()   
     this.getTypeValue()
   }
 
   printAssets(){
     window.print()
   }
-
+  saveUsername(){
+    this.userService.getCurrentUser().subscribe((response) => {
+      localStorage.setItem('ClientName', response.userName!)
+    })
+  }
   handleReorder(event: CustomEvent<ItemReorderEventDetail>) {
     const { from, to } = event.detail;
     const item = this.userAsset[from];

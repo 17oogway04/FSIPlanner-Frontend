@@ -130,6 +130,10 @@ const routes: Routes = [
   {
     path: 'client-edit-user/:id',
     loadChildren: () => import('./Components/fsi-clients/client-edit-user/client-edit-user.module').then( m => m.ClientEditUserPageModule)
+  },
+  {
+    path: 'client-request-update',
+    loadChildren: () => import('./Components/fsi-clients/client-request-update/client-request-update.module').then( m => m.ClientRequestUpdatePageModule)
   }
 
 ];

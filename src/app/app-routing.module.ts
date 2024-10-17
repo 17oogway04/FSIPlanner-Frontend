@@ -126,6 +126,10 @@ const routes: Routes = [
   {
     path: 'edit-user/:id',
     loadChildren: () => import('./Components/User/edit-user/edit-user.module').then( m => m.EditUserPageModule)
+  },
+  {
+    path: 'client-edit-user/:id',
+    loadChildren: () => import('./Components/fsi-clients/client-edit-user/client-edit-user.module').then( m => m.ClientEditUserPageModule)
   }
 
 ];

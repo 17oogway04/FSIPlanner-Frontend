@@ -134,6 +134,10 @@ const routes: Routes = [
   {
     path: 'client-request-update',
     loadChildren: () => import('./Components/fsi-clients/client-request-update/client-request-update.module').then( m => m.ClientRequestUpdatePageModule)
+  },
+  {
+    path: 'filter-pipe',
+    loadChildren: () => import('./Components/User/filter.pipe').then( m => m.FilterPipe)
   }
 
 ];

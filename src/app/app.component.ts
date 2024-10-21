@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 import { UserService } from './Services/user.service';
 import { User } from './Models/user';
+import { FilterPipe } from './Components/User/filter.pipe';
 
 @Component({
   selector: 'app-root',

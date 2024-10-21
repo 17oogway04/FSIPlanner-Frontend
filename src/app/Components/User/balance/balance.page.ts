@@ -53,7 +53,7 @@ export class BalancePage implements OnInit {
     owner: '',
     insured: '',
     premium: '',
-    cashValue: '',
+    cashValue: 0,
     deathBenefitOne: '',
     deathBenefitTwo: '',
     riders: '',
@@ -67,22 +67,24 @@ export class BalancePage implements OnInit {
 
   ngOnInit() {
     this.loadUserBalances()
+
   }
   loadUserBalances() {
     this.userService.getCurrentUser().subscribe((response) => {
       this.username = response.userName!;
       this.myAssetService.getAssetsByUsername(this.username).subscribe((response) => {
-      this.userAsset = response;
-      this.myLiabilityService.getLiabilitiesByUsername(this.username).subscribe((response) => {
-        this.userLiabilities = response;
-      })
-      this.myLifeService.getLifeByUsername(this.username).subscribe((response) => {
-        this.userLife = response
-        this.combinedBalance = this.combineBalances();
+        this.userAsset = response;
+        this.myLiabilityService.getLiabilitiesByUsername(this.username).subscribe((response) => {
+          this.userLiabilities = response;
+        })
+        this.myLifeService.getLifeByUsername(this.username).subscribe((response) => {
+          this.userLife = response
+          this.combinedBalance = this.combineBalances();
+
+        })
       })
     })
-    })
-    
+
   }
 
   combineBalances() {
@@ -99,6 +101,14 @@ export class BalancePage implements OnInit {
       assetSumByType[type] += a.balance!;
     });
 
+    const lifeInsuranceCashValueTotal = this.userLife.reduce((total, life) => {
+      return total + (life.cashValue || 0);
+    }, 0);
+
+    if (!assetSumByType['6']) { 
+      assetSumByType['6'] = 0;
+    }
+    assetSumByType['6'] += lifeInsuranceCashValueTotal;
     this.userLiabilities.forEach(l => {
       const type = l.type!;
       if (!liabilitySumByType[type]) {

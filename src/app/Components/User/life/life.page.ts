@@ -20,7 +20,7 @@ export class LifePage implements OnInit {
     owner: '',
     insured: '',
     premium: '',
-    cashValue: '',
+    cashValue: 0,
     deathBenefitOne: '',
     deathBenefitTwo: '',
     riders: '',

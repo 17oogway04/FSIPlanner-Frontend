@@ -1,10 +1,16 @@
 <ion-header [translucent]="true" id="assetHeader">
   <ion-toolbar>
-    <ion-button (click)="openForm()" fill="clear" color="secondary" slot="end" size="large">Add an account</ion-button>
-    <ion-button [routerLink]="['/fsi-profile', username]" fill="clear" color="secondary" slot="start" size="large">Home</ion-button>
-    <ion-button fill="clear" color="secondary" slot="end" size="large" routerLink="/client-asset-overview/{{username}}" id="printerBtn">Asset overview</ion-button>
-    <ion-button fill="clear" color="secondary" slot="end" size="large" routerLink="/client-request-update" id="printerBtn">Request
-      update</ion-button>
+    <ion-title style="font-size: 1.6em;">Client Assets</ion-title>    
+    <ion-button [routerLink]="['/fsi-profile', username]" fill="clear" color="secondary" slot="end" size="large">Home</ion-button>
+    <div class="dropdown" slot="end">
+      <ion-button class="dropbtn" color="secondary" size="large" fill="clear">More</ion-button>
+      <div class="dropdown-options">
+        <ion-button (click)="openForm()" fill="clear" color="secondary" slot="end" >Add an account</ion-button>
+        <ion-button fill="clear" color="secondary" slot="end"  routerLink="/client-asset-overview/{{username}}" id="printerBtn">Asset overview</ion-button>
+        <ion-button fill="clear" color="secondary" slot="end"  routerLink="/client-request-update" id="printerBtn">Request
+          update</ion-button>
+      </div>
+    </div>    
   </ion-toolbar>
 </ion-header>
 

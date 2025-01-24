@@ -1,10 +1,20 @@
 <ion-header id="pcHeader">
   <ion-toolbar>
-    <ion-button slot="end" fill="clear" color="secondary" (click)="openForm()" size="large">Add Insurance</ion-button>
-    <ion-button [routerLink]="['/fsi-profile', username]" fill="clear" color="secondary" slot="start" size="large">Home</ion-button>
-    <ion-button fill="clear" color="secondary" slot="end" size="large" routerLink="/client-request-update" id="printerBtn">Request
-      update</ion-button>
-   </ion-toolbar>
+    <ion-title style="font-size: 1.6em;">Client PC</ion-title>
+    <ion-button [routerLink]="['/fsi-profile', username]" fill="clear" color="secondary" slot="end"
+      size="large">Home</ion-button>
+    <div class="dropdown" slot="end">
+      <ion-button class="dropbtn" color="secondary" size="large" fill="clear">More</ion-button>
+      <div class="dropdown-options">
+        <ion-button slot="end" fill="clear" color="secondary" (click)="openForm()" size="large">Add
+          Insurance</ion-button>
+        <ion-button fill="clear" color="secondary" slot="end" size="large" routerLink="/client-request-update"
+          id="printerBtn">Request
+          update</ion-button>
+      </div>
+    </div>
+
+  </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
@@ -35,33 +45,32 @@
   </div>
   <div id="printableSection">
 
-   <div *ngFor="let p of userPC" style="display: inline-flex;">
-     <ion-card id="ins">
-       <ion-card-header>
-         <ion-card-title>{{p.companyName}}</ion-card-title>
-         <ion-card-subtitle>{{p.policyType}}</ion-card-subtitle>
-       </ion-card-header>
-     
-       <ion-card-content>
-         <ion-list>
-           <ion-item>Premium: {{p.premium | number: '1.2-2'}}</ion-item>
-           <ion-item>Deductible: {{p.deductible | number: '1.2-2'}}</ion-item>
-           <ion-item>Liability Limit: {{p.liabilityLimit | number: '1.2-2'}}</ion-item>
-           <ion-item>Expiration date: {{p.expirationDate}}</ion-item>
-         </ion-list>
-         <ion-buttons>
-          <ion-button  fill="clear" color="secondary" [routerLink]="['/client-edit-pc', p.pcId]">
-            Edit insurance policy
-          </ion-button>
-          <ion-button (click)="deletePC(p.pcId!)" fill="clear" color="danger">
-            Delete insurance policy
-          </ion-button>
-         </ion-buttons>
-       </ion-card-content>
-     </ion-card>
-   </div>
+    <div *ngFor="let p of userPC" style="display: inline-flex;">
+      <ion-card id="ins">
+        <ion-card-header>
+          <ion-card-title>{{p.companyName}}</ion-card-title>
+          <ion-card-subtitle>{{p.policyType}}</ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-card-content>
+          <ion-list>
+            <ion-item>Premium: {{p.premium | number: '1.2-2'}}</ion-item>
+            <ion-item>Deductible: {{p.deductible | number: '1.2-2'}}</ion-item>
+            <ion-item>Liability Limit: {{p.liabilityLimit | number: '1.2-2'}}</ion-item>
+            <ion-item>Expiration date: {{p.expirationDate}}</ion-item>
+          </ion-list>
+          <ion-buttons>
+            <ion-button fill="clear" color="secondary" [routerLink]="['/client-edit-pc', p.pcId]">
+              Edit insurance policy
+            </ion-button>
+            <ion-button (click)="deletePC(p.pcId!)" fill="clear" color="danger">
+              Delete insurance policy
+            </ion-button>
+          </ion-buttons>
+        </ion-card-content>
+      </ion-card>
+    </div>
   </div>
   <ion-button (click)="printAssets()" id="printerBtn" color="secondary" style="padding: 10px;">Print</ion-button>
 
- </ion-content>
- 
+</ion-content>

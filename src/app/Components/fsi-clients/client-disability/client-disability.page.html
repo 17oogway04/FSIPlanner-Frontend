@@ -1,14 +1,22 @@
 <ion-header>
   <ion-toolbar>
-    <ion-button slot="start" routerLink="/fsi-profile/{{username}}" fill="clear" color="secondary" size="large"
-      slot="start">Home</ion-button>
-    <ion-button fill="clear" color="secondary" slot="end" size="large" (click)="openForm()" id="printerBtn">Add
-      Disability Insurance
-      policy</ion-button>
-    <ion-button fill="clear" color="secondary" slot="end" size="large" routerLink="/request-update"
-      id="printerBtn">Request
-      update</ion-button>
+    <ion-title style="font-size: 1.6em;">Client Disability</ion-title>    
+
+    <ion-button routerLink="/fsi-profile/{{username}}" fill="clear" color="secondary" size="large"
+      slot="end">Home</ion-button>
+    <div class="dropdown" slot="end">
+      <ion-button class="dropbtn" color="secondary" size="large" fill="clear">More</ion-button>
+      <div class="dropdown-options">
+        <ion-button fill="clear" color="secondary" slot="end" size="large" (click)="openForm()" id="printerBtn">Add
+          Disability Insurance
+          policy</ion-button>        
+        <ion-button fill="clear" color="secondary" slot="end" size="large" routerLink="/client-request-update"
+          id="printerBtn">Request
+          update</ion-button>
+      </div>
+    </div>
   </ion-toolbar>
+
 </ion-header>
 
 

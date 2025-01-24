@@ -36,6 +36,7 @@ export class EditUserPage implements OnInit {
       this.presentUser.firstName = this.user.firstName;
       this.presentUser.lastName = this.user.lastName; 
       this.presentUser.id = this.user.id;
+      this.presentUser.profilePicture = this.user.profilePicture;
     })
   }
 

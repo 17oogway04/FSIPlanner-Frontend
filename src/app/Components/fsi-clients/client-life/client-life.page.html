@@ -1,11 +1,20 @@
 <ion-header [translucent]="true" id="lifeHeader">
-  <ion-toolbar>
-    <ion-button [routerLink]="['/fsi-profile', username]" fill="clear" color="secondary" slot="start" size="large">Home</ion-button>
 
-    <ion-button fill="clear" color="secondary" slot="end" size="large" (click)="openForm()" id="printerBtn">Add Life
-      policy</ion-button>
-      <ion-button fill="clear" color="secondary" slot="end" size="large" routerLink="/client-request-update" id="printerBtn">Request
-        update</ion-button>
+  <ion-toolbar>  
+    <ion-title style="font-size: 1.6em;">Client Life</ion-title>        
+    <ion-button [routerLink]="['/fsi-profile', username]" fill="clear" color="secondary" slot="end"
+      size="large">Home</ion-button>
+    <div class="dropdown" slot="end">
+      <ion-button class="dropbtn" color="secondary" size="large" fill="clear">More</ion-button>
+      <div class="dropdown-options">
+        <ion-button fill="clear" color="secondary" slot="end" size="large" (click)="openForm()" id="printerBtn">Add Life
+          policy</ion-button>
+        <ion-button fill="clear" color="secondary" slot="end" size="large" routerLink="/client-request-update"
+          id="printerBtn">Request
+          update</ion-button>
+      </div>
+    </div>
+
   </ion-toolbar>
 </ion-header>
 
@@ -62,7 +71,8 @@
 
 
       </ion-row>
-      <ion-button id="printerBtn" fill="clear" color="secondary" [routerLink]="['/client-edit-life', l.lifeId]"><strong>Edit
+      <ion-button id="printerBtn" fill="clear" color="secondary"
+        [routerLink]="['/client-edit-life', l.lifeId]"><strong>Edit
           account</strong></ion-button>
       <ion-button id="printerBtn" fill="clear" color="danger" (click)="deleteLife(l.lifeId!)"><strong>Delete
           account</strong></ion-button>

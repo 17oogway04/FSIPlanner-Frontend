@@ -154,7 +154,7 @@ const routes: Routes = [
   {
     path: 'client-disability',
     loadChildren: () => import('./Components/fsi-clients/client-disability/client-disability.module').then( m => m.ClientDisabilityPageModule)
-  }
+  },
 
 ];
 

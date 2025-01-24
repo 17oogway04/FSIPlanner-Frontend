@@ -13,10 +13,10 @@ export class ClientEditUserPage implements OnInit {
 
   name: string = '';
   presentUser: User = {
-    id: "0",
+    id: '',
     firstName: '',
     lastName: '',
-    username: localStorage.getItem('FSIName')!,
+    username: '',
     profilePicture: ''
   }
   user: any;
@@ -26,6 +26,7 @@ export class ClientEditUserPage implements OnInit {
     const username = this.actRouter.snapshot.paramMap.get('username') ?? '';
     if (username) {
       this.name = username;
+      this.presentUser.username = this.name!;
       this.getUserInfo();
     } else {
       console.error("Username is missing in the route.");
@@ -38,13 +39,15 @@ export class ClientEditUserPage implements OnInit {
       this.user = response;
       this.presentUser.firstName = this.user.firstName;
       this.presentUser.lastName = this.user.lastName;
+      this.presentUser.id = this.user.id;
+      this.presentUser.profilePicture = this.user.profilePicture;
     })
   }
 
   onSubmit() {
     this.userService.updateUser(this.presentUser).subscribe(() => {
       window.alert("User profile update successfully");
-      this.router.navigate(['home']);
+      this.router.navigate(['fsi-profile/', this.name]);
     }, error => {
       console.log("Error: ", error)
       if (error.status == 403) {

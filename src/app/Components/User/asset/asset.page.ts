@@ -14,7 +14,7 @@ import { UserService } from 'src/app/Services/user.service';
 export class AssetPage implements OnInit {
 
   username: string = '';  
-  newAsset: Asset = new Asset(0, "", "", "", "", "", "", 0, "", "", localStorage.getItem('ClientName')!, "")
+  newAsset: Asset = new Asset("",0, "", "", "", "", "", "", 0, "", "", localStorage.getItem('ClientName')!, "")
 
   types: { [key: string]: string } = {
     "1": "Checking",
@@ -45,7 +45,8 @@ export class AssetPage implements OnInit {
   isFormVisible = false;
   userAssetName: string = '';
   userAsset: Asset[] = [];
-
+  assetUser: any;
+  user: any;
   constructor(private myAssetservice: AssetService, private actRouter: ActivatedRoute, private userService: UserService) { }
 
   ngOnInit() {
@@ -59,21 +60,22 @@ export class AssetPage implements OnInit {
   }
   saveUsername(){
     this.userService.getCurrentUser().subscribe((response) => {
-      localStorage.setItem('ClientName', response.userName!)
+      this.user = response;
+      localStorage.setItem('ClientName', this.user.result.userName)
     })
   }
-  handleReorder(event: CustomEvent<ItemReorderEventDetail>) {
-    const { from, to } = event.detail;
-    const item = this.userAsset[from];
-    this.userAsset.splice(from, 1);
-    this.userAsset.splice(to, 0, item);
-    // this.saveItems()
-    event.detail.complete();
-  }
+  // handleReorder(event: CustomEvent<ItemReorderEventDetail>) {
+  //   const { from, to } = event.detail;
+  //   const item = this.userAsset[from];
+  //   this.userAsset.splice(from, 1);
+  //   this.userAsset.splice(to, 0, item);
+  //   // this.saveItems()
+  //   event.detail.complete();
+  // }
 
-  saveItems() {
-    localStorage.setItem("items", JSON.stringify(this.userAsset));
-  }
+  // saveItems() {
+  //   localStorage.setItem("items", JSON.stringify(this.userAsset));
+  // }
   getTypeValue() {
     if (this.newAsset.type && this.types[this.newAsset.type]) {
       this.selectedType = this.types[this.newAsset.type];
@@ -91,7 +93,9 @@ export class AssetPage implements OnInit {
       //   this.userAsset = response
       // })
       this.userService.getCurrentUser().subscribe((response) => {
-        this.username = response.userName!;
+        this.assetUser = response;
+        this.username = this.assetUser.result.userName;
+        this.newAsset.userId = this.assetUser.result.id;
         this.myAssetservice.getAssetsByUsername(this.username).subscribe((response) => {
           this.userAsset = response;
         })

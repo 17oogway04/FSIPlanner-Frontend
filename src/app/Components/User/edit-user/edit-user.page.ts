@@ -10,28 +10,32 @@ import { UserService } from 'src/app/Services/user.service';
   styleUrls: ['./edit-user.page.scss'],
 })
 export class EditUserPage implements OnInit {
-  id: string = "0"
+  name: string = ""
   presentUser: User ={
-    userId: 0,
+    id: '',
     firstName: '',
     lastName: '',
-    userName: '',
-    password: '',
+    username: '',
     profilePicture: ''
   }
+  user: any;
   constructor(private http: HttpClient, private userService: UserService, private actRouter: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    const userId = this.actRouter.snapshot.paramMap.get('id') ?? '';
-    if(userId != null){
-      this.id = userId;
+    const username = this.actRouter.snapshot.paramMap.get('username') ?? '';
+    if(username){
+      this.name = username;
+      this.presentUser.username = this.name!;
     }
     this.getUserInfo()
   }
 
   getUserInfo(){
-    this.userService.getUserByUserId(parseInt(this.id)).subscribe((response) => {
-      this.presentUser = response;
+    this.userService.getUserByUsername(this.name).subscribe((response) => {
+      this.user = response; 
+      this.presentUser.firstName = this.user.firstName;
+      this.presentUser.lastName = this.user.lastName; 
+      this.presentUser.id = this.user.id;
     })
   }
 

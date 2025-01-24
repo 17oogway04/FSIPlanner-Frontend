@@ -11,34 +11,39 @@ import { UserService } from 'src/app/Services/user.service';
 export class FSIProfilePage implements OnInit {
 
   id: number = 0;
-  presentUser: User = new User(0, "","", this.actRouter.snapshot.paramMap.get("username") ??'', "", "");
+  presentUser: User = {
+    id: "0",
+    username: '',
+    firstName: '',
+    lastName: '',
+    profilePicture: ''
+  }
   userName: string = "";
-  file:any;
+  file: any;
   profilePic: string = '';
   basicUrl: string = "http://localhost:5247"
-
+  user: any;
   constructor(private myUserService: UserService, private actRouter: ActivatedRoute) { }
 
   ngOnInit() {
-    const name = this.actRouter.snapshot.paramMap.get("username") ?? '';
-    // const routeId = this.actRouter.snapshot.paramMap.get("id") ?? '';
-    // this.id = parseInt(routeId);
-    // if(this.id !== null){
-    //   this.myUserService.getUserByUserId(this.id).subscribe(response => {
-    //     this.presentUser = response;
-    //   }, error => {
-    //     console.log("Error: ", error);
-    //   })
-    // }
-    if (name !== '') {
-      this.myUserService.getUserByUsername(name).subscribe(response => {
-        console.log('User fetched:', response);
-        this.presentUser = response;
-        this.profilePic = this.presentUser.profilePicture ? `${this.basicUrl}${this.presentUser.profilePicture}` : '';
-
-      }, error => {
-        console.error('Error fetching user:', error);
-      });
+    const name = this.actRouter.snapshot.paramMap.get("username") || localStorage.getItem('FSIName') || '';
+    if (name) {
+      localStorage.setItem('FSIName', name);
+      this.myUserService.getUserByUsername(name).subscribe(
+        response => {
+          this.user = response;
+          this.presentUser.firstName = this.user.firstName
+          this.presentUser.lastName = this.user.lastName
+          this.presentUser.username = this.user.userName;
+          this.presentUser.profilePicture = this.user.profilePicture;    
+          this.profilePic = this.presentUser.profilePicture ? `${this.basicUrl}${this.presentUser.profilePicture}` : '';
+        },
+        error => {
+          console.error('Error fetching user:', error);
+        }
+      );
+    } else {
+      console.warn("No username found in route.");
     }
 
   }
@@ -53,6 +58,6 @@ export class FSIProfilePage implements OnInit {
         this.presentUser!.profilePicture = response.ProfilePictureUrl; // Update the user profile
       });
     }
- }
+  }
 
 }

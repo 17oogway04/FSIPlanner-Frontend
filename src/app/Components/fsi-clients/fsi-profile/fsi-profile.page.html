@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar id="headerTool">
     <ion-title>FSI Client Profile</ion-title>
-    <ion-button [routerLink]="['/client-demographics', presentUser.userName]" fill="clear" slot="end">More about {{presentUser.firstName}}</ion-button>
+    <ion-button [routerLink]="['/client-demographics']" fill="clear" slot="end">More about {{presentUser.firstName}}</ion-button>
     <ion-button routerLink="/search-users" fill="clear" slot="end">Back to search</ion-button>
   </ion-toolbar>
   <ion-grid>
@@ -18,35 +18,36 @@
         <div id="info">
           <h1 id="header">{{presentUser.firstName}} {{presentUser.lastName}}</h1>      
          </div>
-         <ion-button fill="clear" color="secondary" [routerLink]="['/client-edit-user', presentUser.userId]">Edit
-          {{presentUser.firstName}}'s profile</ion-button>
+         <ion-button *ngIf="presentUser.username" fill="clear" color="secondary" [routerLink]="['/client-edit-user/', presentUser.username]">
+          Edit {{presentUser.firstName}}'s profile
+        </ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
   <ion-toolbar style="padding-top: 20px;">
     <ion-segment>
-      <ion-segment-button [routerLink]="['/client-balance', presentUser.userName]">
+      <ion-segment-button [routerLink]="['/client-balance']">
         <ion-label>Balance</ion-label>
       </ion-segment-button>
-      <ion-segment-button [routerLink]="['/client-buckets', presentUser.userName]">
+      <ion-segment-button [routerLink]="['/client-buckets']">
         <ion-label>Buckets</ion-label>
       </ion-segment-button>
-      <ion-segment-button [routerLink]="['/client-asset', presentUser.userName]">
+      <ion-segment-button [routerLink]="['/client-asset']">
         <ion-label> Assets</ion-label>
       </ion-segment-button>
-      <ion-segment-button [routerLink]="['/client-liability', presentUser.userName]">
+      <ion-segment-button [routerLink]="['/client-liability']">
         <ion-label> Liabilities</ion-label>
       </ion-segment-button>
-      <ion-segment-button [routerLink]="['/client-life', presentUser.userName]">
+      <ion-segment-button [routerLink]="['/client-life']">
         <ion-label> Life</ion-label>
       </ion-segment-button>
-      <ion-segment-button [routerLink]="['/client-pc', presentUser.userName]">
+      <ion-segment-button [routerLink]="['/client-pc']">
         <ion-label> P&C</ion-label>
       </ion-segment-button>
-      <ion-segment-button>
+      <ion-segment-button [routerLink]="['/client-disability']">
         <ion-label> Disability Ins</ion-label>
       </ion-segment-button>
-      <ion-segment-button [routerLink]="['/client-notes', presentUser.userName]">
+      <ion-segment-button [routerLink]="['/client-notes']">
         <ion-label> Notes</ion-label>
       </ion-segment-button>
     </ion-segment>

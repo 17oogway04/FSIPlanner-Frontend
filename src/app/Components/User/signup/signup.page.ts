@@ -13,8 +13,7 @@ export class SignupPage implements OnInit {
   newUser: User = {
     firstName: '',
     lastName: '',
-    userName: '',
-    password: '',
+    username: '',
     profilePicture: ''
 
   }

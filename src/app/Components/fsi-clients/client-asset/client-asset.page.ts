@@ -39,13 +39,13 @@ export class ClientAssetPage implements OnInit {
   selectedType: string = '';
   isFormVisible = false;
   userAsset: Asset[] = [];
-  newAsset: Asset = new Asset(0, "", "", "", "", "","", 0, "", "", this.actRouter.snapshot.paramMap.get("username") ?? '', "")
+  newAsset: Asset = new Asset("",0, "", "", "", "", "","", 0, "", "", localStorage.getItem('ClientName')!, "")
 
   constructor(private myAssetservice: AssetService, private actRouter: ActivatedRoute) { }
 
   ngOnInit() {
-    const name = this.actRouter.snapshot.paramMap.get("username") ?? '';
-    if (name !== '') {
+    const name = localStorage.getItem('FSIName');
+    if (name !== null) {
       this.username = name;
     }
 

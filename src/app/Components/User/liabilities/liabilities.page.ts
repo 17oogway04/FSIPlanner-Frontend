@@ -36,11 +36,11 @@ export class LiabilitiesPage implements OnInit {
     "22": "Other"
   }
   selectedType: string = '';
-
+  user:any;
   username: string = '';
   isFormVisible = false;
   userLiabilities: Liabilities[] = [];
-  newLiability: Liabilities = new Liabilities(0,"","",0, "", "", "", "", this.actRouter.snapshot.paramMap.get("username") ?? '');
+  newLiability: Liabilities = new Liabilities("",0,"","",0, "", "", "", "", localStorage.getItem('ClientName')!);
   constructor(private myLiabilityService: LiabilitiesService, private actRouter: ActivatedRoute, private userService: UserService) { }
 
   ngOnInit() {
@@ -50,7 +50,8 @@ export class LiabilitiesPage implements OnInit {
 
   loadUserLiabilities(){
     this.userService.getCurrentUser().subscribe((response) => {
-      this.username = response.userName!;
+      this.user = response;
+      this.username = this.user.result.userName;
       this.myLiabilityService.getLiabilitiesByUsername(this.username).subscribe((response) => {
       this.userLiabilities = response.sort((a,b) => parseInt(a.type!) - parseInt(b.type!));
     })

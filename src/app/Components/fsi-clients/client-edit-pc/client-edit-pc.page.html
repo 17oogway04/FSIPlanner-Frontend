@@ -10,18 +10,18 @@
     <input type="text" name="companyName" [(ngModel)]="currentPC.companyName"><br><br>
     <label>Policy type: {{currentPC.policyType}}</label><br>
     <input type="text" name="policyType" [(ngModel)]="currentPC.policyType"><br>
-    <label>Premium: {{currentPC.premium}}</label><br>
+    <label>Premium: {{currentPC.premium | number: '1.2-2'}}</label><br>
     <input type="text" name="premium" [(ngModel)]="currentPC.premium"><br>
-    <label>Deductible: {{currentPC.deductible}}</label><br>
+    <label>Deductible: {{currentPC.deductible | number: '1.2-2'}}</label><br>
     <input type="text" name="deductible" [(ngModel)]="currentPC.deductible"><br>
     <label>Expiration date: {{currentPC.expirationDate}}</label><br>
     <input type="text" name="expirationDate" [(ngModel)]="currentPC.expirationDate"><br>
-    <label>Liability limit: {{currentPC.liabilityLimit}}</label><br>
+    <label>Liability limit: {{currentPC.liabilityLimit | number: '1.2-2'}}</label><br>
     <input type="text" name="liabilityLimit" [(ngModel)]="currentPC.liabilityLimit"><br>
 
 
     <ion-button type="submit" fill="clear" color="secondary">Edit</ion-button>
-    <ion-button routerLink="/client-pc/{{currentPC.username}}" fill="clear"
+    <ion-button routerLink="/client-pc/" fill="clear"
       color="secondary">Cancel</ion-button>
   </form>
 </ion-content>

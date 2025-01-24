@@ -13,6 +13,7 @@ export class ClientLifePage implements OnInit {
   username: string = '';
   newLife: Life = {
     lifeId: 0,
+    userId: '0',
     policyName: '',
     policyType: '',
     owner: '',
@@ -24,13 +25,13 @@ export class ClientLifePage implements OnInit {
     riders: '',
     ridersBenefit: '',
     percentageToSavings: '',
-    username: this.actRouter.snapshot.paramMap.get("username") ?? ''
+    username: localStorage.getItem('ClientName')!
   };
   isFormVisible = false;
   constructor(private myLifeService: LifeService, private actRouter: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    const name = this.actRouter.snapshot.paramMap.get("username") ?? '';
+    const name = localStorage.getItem('FSIName');
     if(name != null){
       this.username = name
     }

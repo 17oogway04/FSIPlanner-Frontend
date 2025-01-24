@@ -21,7 +21,7 @@ export class BucketsPage implements OnInit {
     balance: 0, 
     username: ''
   }
-
+  user:any;
   username: string = '';
   bucket: Bucket[] = []
   totalCapitalAmount: number = 0;
@@ -37,7 +37,8 @@ export class BucketsPage implements OnInit {
 
   getBuckets(){
     this.userService.getCurrentUser().subscribe((response) => {
-      this.username = response.userName!;
+      this.user = response;
+      this.username = this.user.result.userName;
       this.myBucketService.getBuckets(this.username).subscribe((response) => {
       this.bucket = response;
       this.totalCapital()

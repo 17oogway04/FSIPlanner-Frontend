@@ -10,48 +10,51 @@ import { UserService } from 'src/app/Services/user.service';
   styleUrls: ['./pc.page.scss'],
 })
 export class PcPage implements OnInit {
-  username: string ='';
+  username: string = '';
   isFormVisible = false;
-
+  user: any;
   userPC: PC[] = [];
-  newPC: PC = new PC(0, "","","","","","", this.actRouter.snapshot.paramMap.get("username") ?? '')
+  newPC: PC = new PC("",0, "", "", "", "", "", "", localStorage.getItem('ClientName')!)
   constructor(private myPCService: PCService, private actRouter: ActivatedRoute, private userService: UserService) { }
 
   ngOnInit() {
     this.loadUserPC()
   }
 
-  loadUserPC(){
+  loadUserPC() {
     this.userService.getCurrentUser().subscribe((response) => {
-      this.username = response.userName!;
+      this.user = response;
+      this.username = this.user.result.userName;
       this.myPCService.getPCByUsername(this.username).subscribe((response) => {
-      this.userPC = response;
+        this.userPC = response;
+      })
     })
-    })
-    
+
   }
 
-  createPC(): void{
-    this.myPCService.createPC(this.newPC).subscribe(() => {
-      window.alert("Insurance added")
-    }, error => {
-      console.log("Error: ", error)
+  createPC(): void {
+    this.myPCService.createPC(this.newPC).subscribe((response) => {
+      if (response != null) {
+        window.alert("Insurance added")
+        window.location.reload()
+      }else{
+        window.alert("Error with information inputted")
+      }
     })
-    window.location.reload()
   }
-  printAssets(){
+  printAssets() {
     window.print()
   }
 
-  openForm(){
+  openForm() {
     this.isFormVisible = true;
   }
 
-  closeForm(){
+  closeForm() {
     this.isFormVisible = false;
   }
 
-  deletePC(id: number){
+  deletePC(id: number) {
     this.myPCService.deletePC(id).subscribe(() => {
       window.alert("Insurance policy deleted");
       this.loadUserPC()

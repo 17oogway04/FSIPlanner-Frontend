@@ -16,9 +16,9 @@
 
       <ion-card-content>
         <ion-list>
-          <ion-item>Premium: {{p.premium}}</ion-item>
-          <ion-item>Deductible: {{p.deductible}}</ion-item>
-          <ion-item>Liability Limit: {{p.liabilityLimit}}</ion-item>
+          <ion-item>Premium: {{p.premium | number: '1.2-2'}}</ion-item>
+          <ion-item>Deductible: {{p.deductible | number: '1.2-2'}}</ion-item>
+          <ion-item>Liability Limit: {{p.liabilityLimit | number: '1.2-2'}}</ion-item>
           <ion-item>Expiration date: {{p.expirationDate}}</ion-item>
         </ion-list>
         <ion-button fill="clear" color="secondary" [routerLink]="['/edit-pc', p.pcId]">
@@ -57,6 +57,7 @@
       </ion-grid>
       <input hidden="true" type="text" name="username" [(ngModel)]="newPC.username">
       <input hidden="true" type="text" name="notesId" [(ngModel)]="newPC.pcId">
+      <input hidden="true" type="text" name="notesId" [(ngModel)]="newPC.userId">
 
       <ion-button type="submit" fill="clear" color="secondary">
         Input insurance

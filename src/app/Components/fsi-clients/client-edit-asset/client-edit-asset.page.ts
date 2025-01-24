@@ -39,7 +39,7 @@ export class ClientEditAssetPage implements OnInit {
   onSubmit(){
     this.myAssetService.updateAsset(parseInt(this.id), this.currentAsset).subscribe(() => {
       window.alert("Account updated successfully")
-      this.router.navigate(['client-asset/', this.currentAsset.username])
+      this.router.navigate(['client-asset/'])
     }, error => {
       console.log("Error: ", error)
       if(error.status == 401){

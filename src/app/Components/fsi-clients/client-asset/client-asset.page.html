@@ -22,7 +22,7 @@
               |
               <strong>Valuation Date: </strong> {{a.valuationDate}} | <strong>Maturity date: </strong>
               {{a.maturityDate}} |
-              <strong>Balance: </strong> ${{a.balance}} | <strong>Type: </strong> {{types[a.type!] || "invalid key"}}
+              <strong>Balance: </strong> ${{a.balance | number: '1.2-2'}} | <strong>Type: </strong> {{types[a.type!] || "invalid key"}}
             </h5>
           </li>
 
@@ -45,7 +45,7 @@
               |
               <strong>Valuation Date: </strong> {{a.valuationDate}} | <strong>Maturity date: </strong>
               {{a.maturityDate}} |
-              <strong>Balance: </strong> ${{a.balance}} | <strong>Type: </strong> {{types[a.type!] || "invalid key"}}
+              <strong>Balance: </strong> ${{a.balance | number: '1.2-2'}} | <strong>Type: </strong> {{types[a.type!] || "invalid key"}}
             </h5>
           </li>
 
@@ -67,7 +67,7 @@
               |
               <strong>Valuation Date: </strong> {{a.valuationDate}} | <strong>Maturity date: </strong>
               {{a.maturityDate}} |
-              <strong>Balance: </strong> ${{a.balance}} | <strong>Type: </strong> {{types[a.type!] || "invalid key"}}
+              <strong>Balance: </strong> ${{a.balance | number: '1.2-2'}} | <strong>Type: </strong> {{types[a.type!] || "invalid key"}}
             </h5>
           </li>
 
@@ -89,7 +89,7 @@
             <input type="text" name="custodian" placeholder="Required" [(ngModel)]="newAsset.custodian" required="true"><br>
             <label>Account number</label><br>
             <input type="text" name="accountNumber" placeholder="Required" [(ngModel)]="newAsset.accountNumber" required="true"><br>
-            <label>Name (Spend, Save, or Invest)</label><br>
+            <label>With FSI</label><br>
             <input type="text" name="assetName" placeholder="Required" [(ngModel)]="newAsset.assetName" required="true"><br>
           </ion-col>
           <ion-col size="2">
@@ -144,6 +144,8 @@
 
       <input hidden="true" type="text" name="username" [(ngModel)]="newAsset.username">
       <input hidden="true" type="text" name="notesId" [(ngModel)]="newAsset.assetId">
+      <input hidden="true" type="text" name="userId" [(ngModel)]="newAsset.userId">
+
 
       <ion-button type="submit" fill="clear" color="secondary">
         Create account

@@ -34,7 +34,7 @@ export class EditLiabilityPage implements OnInit {
   onSubmit(){
     this.myLiabilityService.updateLiability(parseInt(this.id), this.currentLiability).subscribe(() => {
       window.alert("Liability updated successfully")
-      this.router.navigate(['home/liabilities/', this.currentLiability.username])
+      this.router.navigate(['home/liabilities/'])
     }, error => {
       console.log("Error: ", error)
       if(error.status == 401){

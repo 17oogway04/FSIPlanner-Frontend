@@ -15,6 +15,14 @@ export class UserService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
+  resetPassword(email: string, token: string, newPassword: string): Observable<any>{
+    return this.http.post(`${this.baseUrl}/reset-password`, {email, token, newPassword});
+  }
+
+  forgotPassword(email: string): Observable<any>{
+    const clientAppUrl = 'http://localhost:8100/reset-password'
+    return this.http.post(`${this.baseUrl}/forgot-password`, {email, clientAppUrl})
+  }
 
   uploadProfilePicture(file: File): Observable<any>{
     const formData = new FormData();
@@ -54,7 +62,7 @@ export class UserService {
 
     return this.http.get<User>(`${this.baseUrl}/current`, {headers: reqHeaders})
       .pipe(tap((response: any) => {
-        // console.log(response);
+        console.log(response)
       }))
   }
 
@@ -115,7 +123,7 @@ export class UserService {
     {
       Authorization: `Bearer ${localStorage.getItem(this.tokenKey)}`
     }
-    return this.http.put<User>(`${this.baseUrl}/${newUser.userId}`, newUser, {headers: reqHeaders})
+    return this.http.put<User>(`${this.baseUrl}/${newUser.username}`, newUser, {headers: reqHeaders})
   }
 
 }

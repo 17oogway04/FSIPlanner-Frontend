@@ -17,7 +17,7 @@ export class ClientEditPcPage implements OnInit {
     premium: '',
     expirationDate: '',
     deductible: '',
-    username: this.actRouter.snapshot.paramMap.get("username") ??''
+    username: localStorage.getItem('ClientName')!
   }
   constructor(private myPCService: PCService, private actRouter: ActivatedRoute, private router: Router) { }
 
@@ -32,7 +32,7 @@ export class ClientEditPcPage implements OnInit {
   onSubmit(){
     this.myPCService.updatePC(parseInt(this.id), this.currentPC).subscribe(() => {
       window.alert("Insurance policy updated successfully")
-      this.router.navigate(['client-pc/', this.currentPC.username])
+      this.router.navigate(['client-pc/'])
     }, error => {
       console.log("Error: ", error)
       if(error.status == 401){

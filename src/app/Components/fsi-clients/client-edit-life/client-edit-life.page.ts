@@ -38,7 +38,7 @@ export class ClientEditLifePage implements OnInit {
   onSubmit(){
     this.myLifeService.updateLife(parseInt(this.id), this.currentLife).subscribe(() => {
       window.alert("Life policy updated");
-      this.router.navigate(['client-life/', this.currentLife.username])
+      this.router.navigate(['client-life/'])
     }, error => {
       console.log("Error: ", error)
       if(error.status == 401){

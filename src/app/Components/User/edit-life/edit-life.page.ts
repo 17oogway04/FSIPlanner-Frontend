@@ -38,7 +38,7 @@ export class EditLifePage implements OnInit {
   onSubmit(){
     this.myLifeService.updateLife(parseInt(this.id), this.currentLife).subscribe(() => {
       window.alert("Life policy updated");
-      this.router.navigate(['home/life/', this.currentLife.username])
+      this.router.navigate(['home/life/'])
     }, error => {
       console.log("Error: ", error)
       if(error.status == 401){

@@ -14,9 +14,9 @@
     <label>Subject: {{currentNote.subject}}</label><br>
     <input type="text" name="subject" [(ngModel)]="currentNote.subject"><br><br>
     <label>Description: {{currentNote.description}}</label><br>
-    <input type="text" name="description" [(ngModel)]="currentNote.description"><br>
+    <textarea type="text" name="description" [(ngModel)]="currentNote.description"></textarea><br>
     <ion-button type="submit" fill="clear" color="secondary">Edit</ion-button>
-    <ion-button routerLink="/home/notes/{{currentNote.username}}" fill="clear"
+    <ion-button routerLink="/home/notes" fill="clear"
       color="secondary">Cancel</ion-button>
   </form>
 </ion-content>

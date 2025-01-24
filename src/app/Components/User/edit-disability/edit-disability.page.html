@@ -1,0 +1,51 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Edit disability</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <form #form="ngForm" (ngSubmit)="onSubmit()" id="inputForm">
+          <ion-grid>
+            <ion-row>
+              <ion-col >
+                <label><strong>Policy name: </strong>{{currentDisability.policyName}}</label><br>
+                <input type="text" name="policyName" [(ngModel)]="currentDisability.policyName"><br><br>
+                <label><strong>Policy type: </strong>{{currentDisability.policyType}}</label><br>
+                <input type="text" name="policyType" [(ngModel)]="currentDisability.policyType"><br><br>
+                <label><strong>Owner: </strong>{{currentDisability.owner}}</label><br>
+                <input type="text" name="owner" [(ngModel)]="currentDisability.owner"><br><br>
+                <label><strong>Insured: </strong>{{currentDisability.insured}}</label><br>
+                <input type="text" name="insured" [(ngModel)]="currentDisability.insured"><br><br>
+                <label><strong>Premium: </strong>{{currentDisability.premium | number: '1.2-2'}}</label><br>
+                <input type="text" name="premium" [(ngModel)]="currentDisability.premium"><br><br> 
+                <label><strong>Cash value: </strong>{{currentDisability.cashValue | number: '1.2-2'}}</label><br>
+                <input type="text" name="cashValue" [(ngModel)]="currentDisability.cashValue"><br><br>  
+              </ion-col>
+              <ion-col>
+                <label><strong>MDB 1: </strong>{{currentDisability.monthlyDeathBenefitOne | number: '1.2-2'}}</label><br>
+                <input type="text" name="monthlyDeathBenefitOne" [(ngModel)]="currentDisability.monthlyDeathBenefitOne"><br><br> 
+                <label><strong>MDB 2: </strong>{{currentDisability.monthlyDeathBenefitTwo | number: '1.2-2'}}</label><br>
+                <input type="text" name="monthlyDeathBenefitTwo" [(ngModel)]="currentDisability.monthlyDeathBenefitTwo"><br><br> 
+                <label><strong>Riders: </strong>{{currentDisability.riders | number: '1.2-2'}}</label><br>
+                <input type="text" name="riders" [(ngModel)]="currentDisability.riders"><br><br> 
+                <label><strong>Riders benefit: </strong>{{currentDisability.ridersBenefit | number: '1.2-2'}}</label><br>
+                <input type="text" name="ridersBenefit" [(ngModel)]="currentDisability.ridersBenefit"><br><br> 
+                <label><strong>Elimination period: </strong>{{currentDisability.eliminationPeriod}}</label><br>
+                <input type="text" name="eliminationPeriod" [(ngModel)]="currentDisability.eliminationPeriod"><br><br> 
+                <label><strong>Benefit period: </strong>{{currentDisability.benefitPeriod}}</label><br>
+                <input type="text" name="benefitPeriod" [(ngModel)]="currentDisability.benefitPeriod"><br><br> 
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+          <ion-button type="submit" fill="clear" color="secondary" size="large">Edit</ion-button>
+          <ion-button routerLink="/home/disabilityins" fill="clear"
+            color="secondary" size="large">Cancel</ion-button>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

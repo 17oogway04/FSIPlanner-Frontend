@@ -24,10 +24,11 @@ export class NotesPage implements OnInit {
   isEditVisible = false;
   none = false;
   input = false;
-  newNote: Notes = new Notes(0,"", localStorage.getItem('ClientName')!, "", "")
+  newNote: Notes = new Notes("",0,"",localStorage.getItem('ClientName')!,"","" )
   userNotes: Notes[] = [];
   id?: number = this.newNote.notesId;
-
+  user: any;
+  Notes:any;
   constructor(private notesService: NotesService, private actRouter: ActivatedRoute, private http: HttpClient, private userService: UserService) { }
 
   ngOnInit() {
@@ -38,7 +39,8 @@ export class NotesPage implements OnInit {
   
   saveUsername(){
     this.userService.getCurrentUser().subscribe((response) => {
-      localStorage.setItem('ClientName', response.userName!)
+      this.Notes = response;
+      localStorage.setItem('ClientName', this.Notes.result.username)
     })
   }
   printNotes(){
@@ -46,7 +48,9 @@ export class NotesPage implements OnInit {
   }
   loadUserNotes(){
     this.userService.getCurrentUser().subscribe((response) => {
-      this.username = response.userName!;  
+      this.user = response;
+      this.username = this.user.result.userName;
+      localStorage.setItem('ClientName', this.username);
       this.notesService.GetNotesByUsername(this.username).subscribe(response => {
       let sortedArray = response.reverse();
       this.userNotes = sortedArray;
@@ -64,12 +68,16 @@ export class NotesPage implements OnInit {
       let mom = moment();
       this.newNote.createdAt = mom.toISOString();
     }
-    this.notesService.CreateNote(this.newNote).subscribe(() => {
+    this.notesService.CreateNote(this.newNote).subscribe((response) => {
+      if(response != null)
+      {
+        window.alert("Note added successfully")
+            window.location.reload();
 
-    }, error => {
-      console.log("Error: ", error)
+      }else{
+        window.alert("Error with adding note")
+      }
     })
-    window.location.reload();
   }
 
   openForm(){

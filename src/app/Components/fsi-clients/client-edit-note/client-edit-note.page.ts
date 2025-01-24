@@ -16,7 +16,7 @@ export class ClientEditNotePage implements OnInit {
     subject: '',
     description: '',
     createdAt: '',
-    username: this.actRouter.snapshot.paramMap.get("username") ?? ''
+    username: localStorage.getItem('ClientName')!
 
   }
   constructor(private actRouter: ActivatedRoute, private myNotesService: NotesService, private router: Router) { }
@@ -33,7 +33,7 @@ export class ClientEditNotePage implements OnInit {
   onSubmit(){
     this.myNotesService.UpdateNote(parseInt(this.id), this.currentNote).subscribe(() => {
       window.alert("Notes updated successfully")
-      this.router.navigate(['/fsi-profile', this.currentNote.username])
+      this.router.navigate(['/client-notes'])
     }, error => {
       console.log("Error: ", error)
       if(error.status == 401){

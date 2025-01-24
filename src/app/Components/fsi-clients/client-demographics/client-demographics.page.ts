@@ -42,8 +42,8 @@ export class ClientDemographicsPage implements OnInit {
   constructor(private demoService: DemographicsService, private actRouter: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    const name = this.actRouter.snapshot.paramMap.get("username") ??'';
-    if(name !== '')
+    const name = localStorage.getItem('FSIName');
+    if(name !== null)
     {
       this.userName = name;
     }

@@ -22,16 +22,14 @@ export class DemographicsPage implements OnInit {
   presentUser: User = {
     firstName: '',
     lastName: '',
-    userName: '',
-    password: '',
+    username: '',
     profilePicture: ''
   }
 
   loggedInUser: User = {
     firstName: '',
     lastName: '',
-    userName: '',
-    password: '',
+    username: '',
     profilePicture: ''
   }
 
@@ -58,7 +56,7 @@ export class DemographicsPage implements OnInit {
     birthday: '',
     username: this.actRouter.snapshot.paramMap.get("username") ?? ''
   }
-
+  user: any;
   userDemographics: Demographics[] = [];
   
 
@@ -67,7 +65,7 @@ export class DemographicsPage implements OnInit {
   ngOnInit() {
     this.myUserService.getCurrentUser().subscribe(response => {
       this.loggedInUser = this.presentUser = response;
-      this.userName = this.presentUser.userName ?? '';
+      this.userName = this.presentUser.username ?? '';
 
       // const name = this.actRouter.snapshot.paramMap.get("username") ?? '';
       // if(name!== ''){
@@ -89,7 +87,8 @@ export class DemographicsPage implements OnInit {
 
   loadUserDemographics(){
     this.myUserService.getCurrentUser().subscribe((response) => {
-      this.userName = response.userName!;
+      this.user = response;
+      this.userName = this.user.result.userName;
       this.myDemoSerivce.GetDemographicsByUsername(this.userName).subscribe(response => {
       this.userDemographics = response;
       if(response !==null){

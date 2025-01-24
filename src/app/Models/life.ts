@@ -1,5 +1,6 @@
 export class Life {
     lifeId?: number;
+    userId?: string;
     policyName?: string;
     policyType?: string;
     owner?: string;
@@ -13,9 +14,10 @@ export class Life {
     percentageToSavings?: string;
     username?: string;
 
-    constructor(lifeId: number, policyName: string, policyType: string, owner: string, insured: string, premium: string, cashValue: number, deathBenefitOne: string, deathBenefitTwo: string, riders: string, ridersBenefit: string, percentageToSavings: string, username: string )
+    constructor(lifeId: number, userId: string, policyName: string, policyType: string, owner: string, insured: string, premium: string, cashValue: number, deathBenefitOne: string, deathBenefitTwo: string, riders: string, ridersBenefit: string, percentageToSavings: string, username: string )
     {
         this.lifeId = lifeId;
+        this.userId = userId;
         this.policyName = policyName; 
         this.policyType = policyType;
         this.owner = owner;

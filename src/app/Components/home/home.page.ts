@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/Models/user';
 import { UserService } from 'src/app/Services/user.service';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -17,47 +18,55 @@ export class HomePage implements OnInit {
   userName: string = '';
   isAllowed: boolean = false;
   presentUser: User ={
-    userId: 0,
+    id: "0",
+    username: '',
     firstName: '',
     lastName: '',
-    userName: '',
-    password: '',
     profilePicture: ''
   }
+  
   loggedInUser?: User;
   file:any;
+  user: any;
+  userEmail: string = '';
 
-  constructor(private myUserservice: UserService, private actRouter: ActivatedRoute, private http: HttpClient) { }
+  constructor(private myUserservice: UserService, private actRouter: ActivatedRoute, private http: HttpClient,   private cdr: ChangeDetectorRef
+  ) { }
 
   ngOnInit() {      
     this.myUserservice.getCurrentUser().subscribe(response => {
-      this.loggedInUser = this.presentUser = response;
-      this.profilePic = this.presentUser.profilePicture ? `${this.basicUrl}${this.presentUser.profilePicture}` : '';
-      this.userName = this.presentUser.userName ?? '';
-      this.myUserservice.isLoggedInSubj.next(!response.userId)
-      const name = this.actRouter.snapshot.paramMap.get("username") ?? ''    
+      this.user = response;      
+      this.myUserservice.isLoggedInSubj.next(!this.user.result.id);
+      this.presentUser.firstName = this.user.result.firstName;
+      this.presentUser.lastName = this.user.result.lastName;
+      this.presentUser.username = this.user.result.userName; 
+      this.userEmail = this.user.result.email;
+      this.presentUser.profilePicture = this.user.result.profilePicture;    
+      this.profilePic = this.presentUser.profilePicture ? `${this.basicUrl}${this.presentUser.profilePicture}`: '';
+            this.cdr.detectChanges()
+    });
+      this.myUserservice.isLoggedInSubj.subscribe(isLoggedIN => {
+        this.isAuthenticated = isLoggedIN;
+      })
+
+      const name = this.actRouter.snapshot.paramMap.get("username") ?? '';
       if(name !== ''){
-        this.userName = name;        
         this.myUserservice.getUserByUsername(name).subscribe(response => {
           this.presentUser = response;
-        })       
-      }})
-      
-      this.myUserservice.isLoggedInSubj.subscribe(isLoggedIn => {
-        this.isAuthenticated = isLoggedIn;
-        this.isAuthenticated = isLoggedIn;
-        
-      })
+        })
+      }
     }
     logout(){
       this.myUserservice.logout()
     }
 
-    checkUsername(){
-      if(this.presentUser.userName == "isaacm@mutualmail.com" || "jenniferh@mutualmail.com"){
-        this.isAllowed = true;
-      }else{
-        this.isAllowed = false;
+    checkUsername() {
+      if (this.presentUser.username) {
+        if (this.presentUser.username === "isaacm@mutualmail.com" || this.presentUser.username === "jenniferh@mutualmail.com") {
+          this.isAllowed = true;
+        } else {
+          this.isAllowed = false;
+        }
       }
     }
 

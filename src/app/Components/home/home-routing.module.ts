@@ -35,6 +35,10 @@ const routes: Routes = [
         path: 'life',
         loadChildren: () => import('../User/life/life.module').then( m => m.LifePageModule)
       },
+      {
+        path: 'disabilityins',
+        loadChildren: () => import('../User/disabilityins/disabilityins.module').then( m => m.DisabilityinsPageModule)
+      }
     ]
   }
 ];

@@ -29,7 +29,7 @@ export class LifePage implements OnInit {
     username: this.actRouter.snapshot.paramMap.get("username") ?? ''
   };
   isFormVisible = false;
-
+  user:any;
   constructor(private myLifeService: LifeService, private actRouter: ActivatedRoute, private router: Router, private userService: UserService) { }
 
   ngOnInit() {
@@ -40,7 +40,8 @@ export class LifePage implements OnInit {
   }
   loadUserLife(){
     this.userService.getCurrentUser().subscribe((response) => {
-      this.username = response.userName!;
+      this.user = response;
+      this.username = this.user.result.userName;
       this.myLifeService.getLifeByUsername(this.username).subscribe((response) => {
       this.userLife = response;
     })

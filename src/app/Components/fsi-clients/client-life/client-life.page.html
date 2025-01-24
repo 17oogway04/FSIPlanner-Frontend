@@ -1,7 +1,6 @@
 <ion-header [translucent]="true" id="lifeHeader">
   <ion-toolbar>
-    <ion-title>Client's Life Policies</ion-title>
-    <ion-button [routerLink]="['/fsi-profile', username]" fill="clear" color="secondary" slot="end" size="large">Home</ion-button>
+    <ion-button [routerLink]="['/fsi-profile', username]" fill="clear" color="secondary" slot="start" size="large">Home</ion-button>
 
     <ion-button fill="clear" color="secondary" slot="end" size="large" (click)="openForm()" id="printerBtn">Add Life
       policy</ion-button>
@@ -115,6 +114,7 @@
 
         <input hidden="true" type="text" name="username" [(ngModel)]="newLife.username">
         <input hidden="true" type="text" name="notesId" [(ngModel)]="newLife.lifeId">
+        <input hidden="true" type="text" name="userId" [(ngModel)]="newLife.userId">
 
         <ion-button type="submit" fill="clear" color="secondary">
           Create account

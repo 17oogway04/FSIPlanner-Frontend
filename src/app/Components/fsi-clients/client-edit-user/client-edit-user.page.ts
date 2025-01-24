@@ -11,38 +11,43 @@ import { UserService } from 'src/app/Services/user.service';
 })
 export class ClientEditUserPage implements OnInit {
 
-  id: string = "0"
-  presentUser: User ={
-    userId: 0,
+  name: string = '';
+  presentUser: User = {
+    id: "0",
     firstName: '',
     lastName: '',
-    userName: '',
-    password: '',
+    username: localStorage.getItem('FSIName')!,
     profilePicture: ''
   }
+  user: any;
   constructor(private http: HttpClient, private userService: UserService, private actRouter: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    const userId = this.actRouter.snapshot.paramMap.get('id') ?? '';
-    if(userId != null){
-      this.id = userId;
+    const username = this.actRouter.snapshot.paramMap.get('username') ?? '';
+    if (username) {
+      this.name = username;
+      this.getUserInfo();
+    } else {
+      console.error("Username is missing in the route.");
+      this.router.navigate(['/fsi-profile']); // Redirect to a safe page
     }
-    this.getUserInfo()
   }
 
-  getUserInfo(){
-    this.userService.getUserByUserId(parseInt(this.id)).subscribe((response) => {
-      this.presentUser = response;
+  getUserInfo() {
+    this.userService.getUserByUsername(this.name).subscribe((response) => {
+      this.user = response;
+      this.presentUser.firstName = this.user.firstName;
+      this.presentUser.lastName = this.user.lastName;
     })
   }
 
-  onSubmit(){
+  onSubmit() {
     this.userService.updateUser(this.presentUser).subscribe(() => {
       window.alert("User profile update successfully");
       this.router.navigate(['home']);
     }, error => {
       console.log("Error: ", error)
-      if(error.status == 403){
+      if (error.status == 403) {
         window.alert("Contact FSI for any changes that need to be made to your profile")
       }
     })

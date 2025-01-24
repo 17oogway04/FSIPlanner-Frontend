@@ -33,7 +33,7 @@ export class EditNotePage implements OnInit {
   onSubmit(){
     this.myNotesService.UpdateNote(parseInt(this.id), this.currentNote).subscribe(() => {
       window.alert("Notes updated successfully")
-      this.router.navigate(['home/notes/', this.currentNote.username])
+      this.router.navigate(['home/notes/'])
     }, error => {
       console.log("Error: ", error)
       if(error.status == 401){

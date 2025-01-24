@@ -16,13 +16,13 @@ export class SearchUsersPage implements OnInit {
   id: string = "0";
   profilepic = '';
   allUsers: User[] = [{
-    userId: 0,
+    id: "0",
     firstName: '',
     lastName: '',
-    userName: '',
-    password: '',
+    username: '',
     profilePicture: ''
   }]
+  users: any;
   user: User[] = [];
   constructor(private myUserService: UserService, private actRouter: ActivatedRoute) { }
 
@@ -36,13 +36,15 @@ export class SearchUsersPage implements OnInit {
 
   async searchUserByName(username: string){
     this.myUserService.getUserByName(username).subscribe(response => {
-      this.user = response;
+      this.users = response;
     })
   }
 
   getUsers(){
     this.myUserService.getUsers().subscribe((response) => {
-      this.allUsers = response;
+      this.users = response;
+      // this.allUsers = response;
+      // console.log(response)
     })
   }
 

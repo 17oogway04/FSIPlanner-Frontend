@@ -48,7 +48,7 @@ export class ClientBalancePage implements OnInit {
   constructor(private myBalanceService: BalanceService, private actRouter: ActivatedRoute, private myAssetService: AssetService, private myLiabilityService: LiabilitiesService) { }
 
   ngOnInit() {
-    const name = this.actRouter.snapshot.paramMap.get("username") ?? '';
+    const name = localStorage.getItem('FSIName');
     if(name != null)
     {
       this.username = name;

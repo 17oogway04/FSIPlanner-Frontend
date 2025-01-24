@@ -61,7 +61,7 @@ export class BalancePage implements OnInit {
     percentageToSavings: ''
   }];
   combinedBalance: any[] = [];
-
+  user:any;
   checkingValue: string = '';
   constructor(private myBalanceService: BalanceService, private actRouter: ActivatedRoute, private myAssetService: AssetService, private myLiabilityService: LiabilitiesService, private myLifeService: LifeService, private userService: UserService) { }
 
@@ -71,7 +71,8 @@ export class BalancePage implements OnInit {
   }
   loadUserBalances() {
     this.userService.getCurrentUser().subscribe((response) => {
-      this.username = response.userName!;
+      this.user = response;
+      this.username = this.user.result.userName;
       this.myAssetService.getAssetsByUsername(this.username).subscribe((response) => {
         this.userAsset = response;
         this.myLiabilityService.getLiabilitiesByUsername(this.username).subscribe((response) => {

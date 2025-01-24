@@ -9,7 +9,7 @@ import { PCService } from 'src/app/Services/pc.service';
   styleUrls: ['./client-pc.page.scss'],
 })
 export class ClientPcPage implements OnInit {
-  newPC: PC = new PC(0, "","","","","","", this.actRouter.snapshot.paramMap.get("username") ?? '')
+  newPC: PC = new PC("",0, "","","","","","", localStorage.getItem('ClientName')!)
   username: string = '';
   isFormVisible = false;
   userPC: PC[] = [];
@@ -17,8 +17,8 @@ export class ClientPcPage implements OnInit {
   constructor(private myPCService: PCService, private actRouter: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    const name = this.actRouter.snapshot.paramMap.get("username") ?? '';
-    if(name !== ''){
+    const name = localStorage.getItem('FSIName');
+    if(name !== null){
       this.username = name;
     }
 

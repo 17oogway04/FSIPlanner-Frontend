@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Notes } from 'src/app/Models/notes';
 import { NotesService } from 'src/app/Services/notes.service';
 import { UserService } from 'src/app/Services/user.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-client-notes',
@@ -14,15 +15,15 @@ export class ClientNotesPage implements OnInit {
   username?: string = '';
   isFormVisible = false;
   userNotes: Notes[] = [];
-  newNote: Notes = new Notes(0,"",this.actRouter.snapshot.paramMap.get("username") ?? '',"", '')
+  newNote: Notes = new Notes("",0,"",localStorage.getItem('ClientName')!,"", '')
   userId: string = "0";
 
 
   constructor(private myNotesService: NotesService, private actRouter: ActivatedRoute, private http: HttpClient, private myUserService: UserService) { }
 
   ngOnInit() {
-    const name = this.actRouter.snapshot.paramMap.get("username") ?? '';
-    if(name !== ''){
+    const name = localStorage.getItem('FSIName');
+    if(name !== null){
       this.username = name;
     }
     
@@ -34,7 +35,7 @@ export class ClientNotesPage implements OnInit {
   }
   getUsername(){
     this.myUserService.getUserByUserId(parseInt(this.userId)).subscribe((response) => {
-      this.username = response.userName;
+      this.username = response.username;
     })
   }
 
@@ -50,14 +51,19 @@ export class ClientNotesPage implements OnInit {
   }
   createNote(): void{
     if (!this.newNote.createdAt) {
-      // this.newNote.createdAt = new Date();
+      let mom = moment();
+      this.newNote.createdAt = mom.toISOString();
     }
-    this.myNotesService.CreateNote(this.newNote).subscribe(() => {
+    this.myNotesService.CreateNote(this.newNote).subscribe((response) => {
+      if(response != null)
+      {
+        window.alert("Note added successfully")
+            window.location.reload();
 
-    }, error => {
-      console.log("Error: ", error)
+      }else{
+        window.alert("Error with adding note")
+      }
     })
-    window.location.reload();
   }
 
   openForm(){

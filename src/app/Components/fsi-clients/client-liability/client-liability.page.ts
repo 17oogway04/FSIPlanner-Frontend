@@ -13,13 +13,13 @@ export class ClientLiabilityPage implements OnInit {
   userLiabilities: Liabilities[] = [];
   isFormVisible = false;
 
-  newLiability: Liabilities = new Liabilities(0,"","",0, "", "", "", "", this.actRouter.snapshot.paramMap.get("username") ?? '');
+  newLiability: Liabilities = new Liabilities("",0,"","",0, "", "", "", "", localStorage.getItem('ClientName')!);
 
 
   constructor(private myLiabilityService: LiabilitiesService, private actRouter: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    const name = this.actRouter.snapshot.paramMap.get("username") ?? '';
+    const name = localStorage.getItem('FSIName');
     if(name != null){
       this.username = name;
     }

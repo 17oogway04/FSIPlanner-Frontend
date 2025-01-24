@@ -34,7 +34,7 @@ export class EditPcPage implements OnInit {
   onSubmit(){
     this.myPCService.updatePC(parseInt(this.id), this.currentPC).subscribe(() => {
       window.alert("Insurance policy updated successfully")
-      this.router.navigate(['home/pc/', this.currentPC.username])
+      this.router.navigate(['home/pc/'])
     }, error => {
       console.log("Error: ", error)
       if(error.status == 401){

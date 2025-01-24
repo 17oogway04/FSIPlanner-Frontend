@@ -1,0 +1,132 @@
+<ion-content [fullscreen]="true">
+  <ion-toolbar>
+    <ion-button fill="clear" color="secondary" slot="end" size="large" (click)="openForm()" id="printerBtn">Add
+      Disability Insurance
+      policy</ion-button>
+    <ion-button fill="clear" color="secondary" slot="end" size="large" routerLink="/request-update"
+      id="printerBtn">Request
+      update</ion-button>
+  </ion-toolbar>
+  <div id="printableSection">
+
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <h1>Policy Name</h1>
+        </ion-col>
+        <ion-col>
+          <h1>Policy Type</h1>
+        </ion-col>
+        <ion-col>
+          <h1>Owner</h1>
+        </ion-col>
+        <ion-col>
+          <h1>Insured</h1>
+        </ion-col>
+        <ion-col>
+          <h1>Elimination Period</h1>
+        </ion-col>
+        <ion-col>
+          <h1>Benefit Period</h1>
+        </ion-col>
+        <ion-col>
+          <h1>MDB 1</h1>
+        </ion-col>
+        <ion-col>
+          <h1>MDB 2</h1>
+        </ion-col>
+        <ion-col>
+          <h1>Riders</h1>
+        </ion-col>
+        <ion-col>
+          <h1>Premium</h1>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid *ngFor="let d of userDisability">
+     
+          <ion-row>
+
+            <ion-col>{{d.policyName}}</ion-col>
+            <ion-col>{{d.policyType}}</ion-col>
+            <ion-col>{{d.owner}}</ion-col>
+            <ion-col>{{d.insured}}</ion-col>
+            <ion-col>{{d.eliminationPeriod | number: '1.2-2'}}</ion-col>
+            <ion-col>{{d.benefitPeriod | number: '1.2-2'}}</ion-col>
+            <ion-col>{{d.monthlyDeathBenefitOne| number: '1.2-2'}}</ion-col>
+            <ion-col>{{d.monthlyDeathBenefitTwo | number: '1.2-2'}}</ion-col>
+            <ion-col>{{d.riders | number: '1.2-2'}}</ion-col>
+            <ion-col>{{d.premium | number: '1.2-2'}}</ion-col>
+
+
+          </ion-row>
+
+      <ion-button id="printerBtn" fill="clear" color="secondary" [routerLink]="['/edit-disability', d.disabilityInsId]"><strong>Edit
+        account</strong></ion-button>
+    <ion-button id="printerBtn" fill="clear" color="danger" (click)="deleteDisability(d.disabilityInsId!)"><strong>Delete
+        account</strong></ion-button>
+
+    </ion-grid>
+
+    <!--Adding account-->
+    <div *ngIf="isFormVisible" id="inputForm">
+      <form #form="ngForm" (ngSubmit)="createDisabilityIns()">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <label>Policy name</label><br>
+              <input type="text" name="policyName" [(ngModel)]="newDisabilityIns.policyName"><br>
+              <ion-select label="Policy type" placeholder="Pick a policy type" name="policyType"
+                [(ngModel)]="newDisabilityIns.policyType" id="policyType">
+                <ion-select-option value="Term" name="policyType">Term</ion-select-option>
+                <ion-select-option value="Universal">Universal</ion-select-option>
+                <ion-select-option value="Variable">Variable</ion-select-option>
+                <ion-select-option value="Whole life">Whole Life</ion-select-option>
+              </ion-select>
+              <!-- <label>Policy type</label><br>
+          <input type="text" name="policyType" [(ngModel)]="newLife.policyType"><br> -->
+              <label>Owner</label><br>
+              <input type="text" name="owner" [(ngModel)]="newDisabilityIns.owner"><br>
+            </ion-col>
+            <ion-col>
+              <label>Insured </label><br>
+              <input type="text" name="insured" [(ngModel)]="newDisabilityIns.insured"><br>
+              <label>Premium</label><br>
+              <input type="text" name="premium" [(ngModel)]="newDisabilityIns.premium"><br>
+              <label>Cash vale</label><br>
+              <input type="text" name="cashValue" [(ngModel)]="newDisabilityIns.cashValue"><br>
+            </ion-col>
+            <ion-col>
+              <label>DBC 1</label><br>
+              <input type="text" name="monthlyDeathBenefitOne"
+                [(ngModel)]="newDisabilityIns.monthlyDeathBenefitOne"><br>
+              <label>DBC 2</label><br>
+              <input type="text" name="monthlyDeathBenefitTwo"
+                [(ngModel)]="newDisabilityIns.monthlyDeathBenefitTwo"><br>
+              <label>Riders</label><br>
+              <input type="text" name="riders" [(ngModel)]="newDisabilityIns.riders"><br>
+              <label>Riders Benefit</label><br>
+              <input type="text" name="ridersBenefit" [(ngModel)]="newDisabilityIns.ridersBenefit"><br>
+              <label>Elimination Period</label><br>
+              <input type="text" name="eliminationPeriod" [(ngModel)]="newDisabilityIns.eliminationPeriod"><br>
+              <label>Benefit Period</label><br>
+              <input type="text" name="benefitPeriod" [(ngModel)]="newDisabilityIns.benefitPeriod"><br>
+
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+        <input hidden="true" type="text" name="username" [(ngModel)]="newDisabilityIns.username">
+        <input hidden="true" type="text" name="disabilityInsId" [(ngModel)]="newDisabilityIns.disabilityInsId">
+
+        <ion-button type="submit" fill="clear" color="secondary">
+          Create account
+        </ion-button>
+        <ion-button (click)="closeForm()" fill="clear" color="secondary">Cancel</ion-button>
+      </form>
+    </div>
+  </div>
+
+  <ion-button (click)="printDisability()" id="printerBtn" color="secondary" style="padding: 10px;">Print</ion-button>
+
+</ion-content>

@@ -26,7 +26,7 @@ export class ClientBucketsPage implements OnInit {
   constructor(private myBucketService: AssetService, private decimalPipe: DecimalPipe, private actRouter: ActivatedRoute) { }
 
   ngOnInit() {
-    let user = this.actRouter.snapshot.paramMap.get("username") ?? '';
+    let user = localStorage.getItem("FSIName")
     if(user !== null){
       this.username = user;
     }

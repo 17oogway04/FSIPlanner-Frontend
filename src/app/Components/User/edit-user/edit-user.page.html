@@ -10,13 +10,12 @@
     <input type="text" name="firstName" [(ngModel)]="presentUser.firstName"><br>
     <label>Last name: {{presentUser.lastName}}</label><br>
     <input type="text" name="lastName" [(ngModel)]="presentUser.lastName"><br>
-    <label>User name: {{presentUser.userName}}</label><br>
-    <textarea type="text" name="userName" [(ngModel)]="presentUser.userName"></textarea><br>
+    <label>User name: {{presentUser.username}}</label><br>
+    <textarea type="text" name="userName" [(ngModel)]="presentUser.username"></textarea><br>
     <!-- <label>Passowrd: {{presentUser.password}}</label><br> -->
 
-    <input type="text" name="password" [(ngModel)]="presentUser.password" hidden><br>
 
-    <input type="text" name="userId" [(ngModel)]="presentUser.userId" hidden><br>
+    <input type="text" name="userId" [(ngModel)]="presentUser.id" hidden><br>
 
     <ion-button type="submit" fill="clear" color="secondary">Edit</ion-button>
 

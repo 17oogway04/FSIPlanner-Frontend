@@ -14,6 +14,7 @@ export class SignupPage implements OnInit {
     firstName: '',
     lastName: '',
     username: '',
+    password:'',
     profilePicture: ''
 
   }

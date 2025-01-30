@@ -62,15 +62,16 @@ export class ClientDemographicsPage implements OnInit {
     })
   }
   createDemographic(){
-    this.demoService.CreateDemographic(this.demographic).subscribe(() => {
-
+    this.demoService.CreateDemographic(this.demographic).subscribe((response) => {
+      if(response != null){
+        window.alert("Demographics added successfully")
+      }
     }, error => {
       console.log('Error: ', error)
       if(error.status == 401){
         this.router.navigate(['/login'])
       }
     })
-    window.location.reload();
   }
   showElement(): void {
     this.isVisible = !this.isVisible;

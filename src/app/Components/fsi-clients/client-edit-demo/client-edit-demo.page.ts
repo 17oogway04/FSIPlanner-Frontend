@@ -33,14 +33,17 @@ export class ClientEditDemoPage implements OnInit {
     birthday: '',
     username: this.actRouter.snapshot.paramMap.get("username") ?? ''
   }
+  userDemo: any;
 
   constructor(private actRouter: ActivatedRoute, private myDemoService: DemographicsService, private router: Router) { }
 
   ngOnInit() {
     const routeId = this.actRouter.snapshot.paramMap.get("id") ?? "";
     this.id = routeId;
-    this.myDemoService.GetDemographicsById(parseInt(this.id)).subscribe(foundDemo => {
+    this.myDemoService.GetDemographicsById(parseInt(routeId)).subscribe(foundDemo => {
+  
       this.currentDemographics = foundDemo;
+
       console.log(foundDemo)
     })
   }
@@ -48,7 +51,7 @@ export class ClientEditDemoPage implements OnInit {
   onSubmit(){
     this.myDemoService.UpdateDemographic(parseInt(this.id), this.currentDemographics).subscribe(() => {
       window.alert("Demographics updated successfully")
-      this.router.navigate(['/client-demographics', this.currentDemographics.username])
+      this.router.navigate(['/client-demographics'])
     }, error => {
       console.log("Error: ", error)
       if(error.status == 401){

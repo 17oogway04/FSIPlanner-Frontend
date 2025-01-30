@@ -49,7 +49,7 @@ export class EditDemographicsPage implements OnInit {
   onSubmit(){
     this.myDemoService.UpdateDemographic(parseInt(this.id), this.currentDemographics).subscribe(() => {
       window.alert("Demographics updated successfully")
-      this.router.navigate(['/demographics'])
+      this.router.navigate(['/demographics', this.currentDemographics.username])
     }, error => {
       console.log("Error: ", error)
       if(error.status == 401){

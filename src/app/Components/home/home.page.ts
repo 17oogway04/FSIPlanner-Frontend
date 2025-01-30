@@ -40,6 +40,7 @@ export class HomePage implements OnInit {
       this.presentUser.firstName = this.user.result.firstName;
       this.presentUser.lastName = this.user.result.lastName;
       this.presentUser.username = this.user.result.userName; 
+      localStorage.setItem('ClientName', this.user.result.userName);
       this.userEmail = this.user.result.email;
       this.presentUser.profilePicture = this.user.result.profilePicture;    
       this.profilePic = this.presentUser.profilePicture ? `${this.basicUrl}${this.presentUser.profilePicture}`: '';

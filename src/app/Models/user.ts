@@ -4,6 +4,7 @@ export class User {
     firstName?: string;
     lastName?: string;
     profilePicture?: string;
+    password?: string;
     // Make sure this matches with the actual API response if needed
 
 
@@ -18,7 +19,6 @@ export class User {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-
         this.profilePicture = profilePicture;
     }
 }

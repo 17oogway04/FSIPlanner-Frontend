@@ -60,14 +60,16 @@
     <ion-item>
       <ion-label><strong> Personal email:</strong> {{d.email}}</ion-label>
     </ion-item>
-    <ion-button *ngIf="none" [routerLink]="['/edit-demographics', d.demographicsId]" fill="clear" color="secondary" >Edit demographics</ion-button>
+    <ion-button *ngIf="none" [routerLink]="['/edit-demographics', d.demographicsId]" fill="clear" color="secondary">Edit
+      demographics</ion-button>
   </ion-list>
   <!--Adding demographics-->
   <ion-button (click)="openForm()" *ngIf="!input" fill="clear" color="secondary">Enter in demographic</ion-button>
   <div *ngIf="isFormVisible" id="inputForm">
     <form #form="ngForm" (ngSubmit)="createDemographic()">
-      <input hidden="true" type="text" name="username" [(ngModel)]="demographic.username">
+      <input hidden="true" type="text" name="username" [(ngModel)]="presentUser.username">
       <input hidden="true" type="text" name="demographicsId" [(ngModel)]="demographic.demographicsId">
+      <input hidden="true" type="text" name="userId" [(ngModel)]="demographic.userId">
       <input name="spouse" placeholder="Enter spouse, if applicable" [(ngModel)]="demographic.spouse">
       <input name="spouse" placeholder="Enter spouse email, if applicable" [(ngModel)]="demographic.spouseEmail">
       <input name="c1" placeholder="Enter child, if applicable" [(ngModel)]="demographic.c1">
@@ -75,8 +77,7 @@
       <input name="c3" placeholder="Enter child, if applicable" [(ngModel)]="demographic.c3">
       <input name="c4" placeholder="Enter child, if applicable" [(ngModel)]="demographic.c4">
       <input name="socialSecurity" placeholder="Enter social" [(ngModel)]="demographic.socialSecurity">
-      <input name="driversLicense" placeholder="Enter drivers license"
-        [(ngModel)]="demographic.driversLicense">
+      <input name="driversLicense" placeholder="Enter drivers license" [(ngModel)]="demographic.driversLicense">
       <input name="issueDate" placeholder="Drivers license issue date" [(ngModel)]="demographic.issueDate">
       <input name="expirationDate" placeholder="Drivers license expiration date"
         [(ngModel)]="demographic.expirationDate">

@@ -20,7 +20,7 @@ const routes: Routes = [
     loadChildren: () => import('./Components/User/signup/signup.module').then( m => m.SignupPageModule)
   },
   {
-    path: 'demographics',
+    path: 'demographics/:username',
     loadChildren: () => import('./Components/User/demographics/demographics.module').then( m => m.DemographicsPageModule)
   },
   {
@@ -36,7 +36,7 @@ const routes: Routes = [
     loadChildren: () => import('./Components/fsi-clients/fsi-profile/fsi-profile.module').then( m => m.FSIProfilePageModule)
   },
   {
-    path: 'client-demographics',
+    path: 'client-demographics/:username',
     loadChildren: () => import('./Components/fsi-clients/client-demographics/client-demographics.module').then( m => m.ClientDemographicsPageModule)
   },
   {

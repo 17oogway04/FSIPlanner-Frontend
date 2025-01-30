@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar id="headerTool">
     <ion-title>FSI Client Profile</ion-title>
-    <ion-button [routerLink]="['/client-demographics']" fill="clear" slot="end">More about {{presentUser.firstName}}</ion-button>
+    <ion-button [routerLink]="['/client-demographics', presentUser.username]" fill="clear" slot="end">More about {{presentUser.firstName}}</ion-button>
     <ion-button routerLink="/search-users" fill="clear" slot="end">Back to search</ion-button>
   </ion-toolbar>
   <ion-grid>

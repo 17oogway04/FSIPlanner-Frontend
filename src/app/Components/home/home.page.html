@@ -15,7 +15,7 @@
         <a routerLink="/search-users">Search users</a>
       </div>
     </div>
-    <ion-button fill="clear" slot="end" routerLink="/demographics">
+    <ion-button fill="clear" slot="end"  [routerLink]="['/demographics', presentUser.username]">
       More about {{presentUser.firstName}}
     </ion-button>
     <ion-button *ngIf="isAuthenticated" [routerLink]="['/login']" fill="clear" slot="end">

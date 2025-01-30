@@ -35,6 +35,7 @@ export class DemographicsPage implements OnInit {
 
   demographic: Demographics = {
     demographicsId: 0,
+    userId: '',
     spouse: '',
     spouseEmail: '',
     c1: '',
@@ -54,7 +55,7 @@ export class DemographicsPage implements OnInit {
     phoneNumber: '',
     email: '',
     birthday: '',
-    username: this.actRouter.snapshot.paramMap.get("username") ?? ''
+    username: this.actRouter.snapshot.paramMap.get("username") ??''
   }
   user: any;
   userDemographics: Demographics[] = [];
@@ -63,9 +64,10 @@ export class DemographicsPage implements OnInit {
   constructor(private myUserService: UserService, private myDemoSerivce: DemographicsService, private actRouter: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    this.myUserService.getCurrentUser().subscribe(response => {
-      this.loggedInUser = this.presentUser = response;
-      this.userName = this.presentUser.username ?? '';
+    // this.myUserService.getCurrentUser().subscribe(response => {
+    //   this.loggedInUser = this.presentUser = response;
+    //   this.userName = this.presentUser.username ?? '';
+    //   console.log(this.userName)
 
       // const name = this.actRouter.snapshot.paramMap.get("username") ?? '';
       // if(name!== ''){
@@ -77,8 +79,8 @@ export class DemographicsPage implements OnInit {
 
       this.loadUserDemographics();
 
-    }
-  )
+    
+  
   }
 
   showElement(): void {
@@ -101,15 +103,17 @@ export class DemographicsPage implements OnInit {
   }
 
   createDemographic(){
-    this.myDemoSerivce.CreateDemographic(this.demographic).subscribe(() => {
-
+    this.myDemoSerivce.CreateDemographic(this.demographic).subscribe((response) => {
+      if(response != null){
+        window.alert("Demographics added successfully")
+      }
+      window.location.reload()
     }, error => {
       console.log('Error: ', error)
       if(error.status == 401){
         this.router.navigate(['/login'])
       }
     })
-    window.location.reload();
   }
 
   // updateDemographicOnSubmit(){

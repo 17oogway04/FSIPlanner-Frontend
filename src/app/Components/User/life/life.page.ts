@@ -15,6 +15,7 @@ export class LifePage implements OnInit {
   username: string = '';
   newLife: Life = {
     lifeId: 0,
+    userId: '0',
     policyName: '',
     policyType: '',
     owner: '',
@@ -26,7 +27,7 @@ export class LifePage implements OnInit {
     riders: '',
     ridersBenefit: '',
     percentageToSavings: '',
-    username: this.actRouter.snapshot.paramMap.get("username") ?? ''
+    username: localStorage.getItem('ClientName')!
   };
   isFormVisible = false;
   user:any;

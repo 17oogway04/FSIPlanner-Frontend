@@ -57,7 +57,7 @@
     <form #form="ngForm" (ngSubmit)="createLiability()">
       <ion-grid>
         <ion-row>
-          <ion-col size="2">
+          <ion-col size="3">
             <label>Type</label><br>
             <input type="text" name="type" [(ngModel)]="newLiability.type"><br>
             <label>Description</label><br>
@@ -65,19 +65,16 @@
             <label>Balance</label><br>
             <input type="text" name="balance" [(ngModel)]="newLiability.balance"><br>
           </ion-col>
-          <ion-col size="2">
+          <ion-col size="3">
             <label>Rate </label><br>
             <input type="text" name="rate" [(ngModel)]="newLiability.rate"><br>
             <label>Payment</label><br>
             <input type="text" name="payment" [(ngModel)]="newLiability.payment"><br>
-          </ion-col>
-          <ion-col size="2">
             <label>Term</label><br>
             <input type="text" name="term" [(ngModel)]="newLiability.term"><br>
-            <label>Value</label><br>
-            <input type="text" name="value" [(ngModel)]="newLiability.value"><br>
           </ion-col>
-          <ion-col size="2">
+        
+          <ion-col size="3">
             <h4>Types to categorize your accounts</h4>
             <ul>
               <li> Type: 1 | Category: Checking</li>
@@ -92,7 +89,7 @@
               <li> Type: 10 | Category: Roth IRA</li>
             </ul>
           </ion-col>
-          <ion-col size="2">
+          <ion-col size="3">
             <ul>
               <li> Type: 11 | Category: Employer Retirement Plans</li>
 
@@ -108,6 +105,13 @@
               <li> Type: 21 | Category: Student Loans</li>
               <li> Type: 22 | Category: Other</li>
             </ul>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col size="2">
+            
+            <label>Value</label><br>
+            <input type="text" name="value" [(ngModel)]="newLiability.value"><br>
           </ion-col>
         </ion-row>
       </ion-grid>

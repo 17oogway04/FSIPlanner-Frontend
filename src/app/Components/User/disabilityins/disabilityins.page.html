@@ -44,27 +44,29 @@
       </ion-row>
     </ion-grid>
     <ion-grid *ngFor="let d of userDisability">
-     
-          <ion-row>
 
-            <ion-col>{{d.policyName}}</ion-col>
-            <ion-col>{{d.policyType}}</ion-col>
-            <ion-col>{{d.owner}}</ion-col>
-            <ion-col>{{d.insured}}</ion-col>
-            <ion-col>{{d.eliminationPeriod | number: '1.2-2'}}</ion-col>
-            <ion-col>{{d.benefitPeriod | number: '1.2-2'}}</ion-col>
-            <ion-col>{{d.monthlyDeathBenefitOne| number: '1.2-2'}}</ion-col>
-            <ion-col>{{d.monthlyDeathBenefitTwo | number: '1.2-2'}}</ion-col>
-            <ion-col>{{d.riders | number: '1.2-2'}}</ion-col>
-            <ion-col>{{d.premium | number: '1.2-2'}}</ion-col>
+      <ion-row>
+
+        <ion-col>{{d.policyName}}</ion-col>
+        <ion-col>{{d.policyType}}</ion-col>
+        <ion-col>{{d.owner}}</ion-col>
+        <ion-col>{{d.insured}}</ion-col>
+        <ion-col>{{d.eliminationPeriod | number: '1.2-2'}}</ion-col>
+        <ion-col>{{d.benefitPeriod | number: '1.2-2'}}</ion-col>
+        <ion-col>{{d.monthlyDeathBenefitOne| number: '1.2-2'}}</ion-col>
+        <ion-col>{{d.monthlyDeathBenefitTwo | number: '1.2-2'}}</ion-col>
+        <ion-col>{{d.riders | number: '1.2-2'}}</ion-col>
+        <ion-col>{{d.premium | number: '1.2-2'}}</ion-col>
 
 
-          </ion-row>
+      </ion-row>
 
-      <ion-button id="printerBtn" fill="clear" color="secondary" [routerLink]="['/edit-disability', d.disabilityInsId]"><strong>Edit
-        account</strong></ion-button>
-    <ion-button id="printerBtn" fill="clear" color="danger" (click)="deleteDisability(d.disabilityInsId!)"><strong>Delete
-        account</strong></ion-button>
+      <ion-button id="printerBtn" fill="clear" color="secondary"
+        [routerLink]="['/edit-disability', d.disabilityInsId]"><strong>Edit
+          account</strong></ion-button>
+      <ion-button id="printerBtn" fill="clear" color="danger"
+        (click)="deleteDisability(d.disabilityInsId!)"><strong>Delete
+          account</strong></ion-button>
 
     </ion-grid>
 
@@ -73,7 +75,7 @@
       <form #form="ngForm" (ngSubmit)="createDisabilityIns()">
         <ion-grid>
           <ion-row>
-            <ion-col>
+            <ion-col size="3">
               <label>Policy name</label><br>
               <input type="text" name="policyName" [(ngModel)]="newDisabilityIns.policyName"><br>
               <ion-select label="Policy type" placeholder="Pick a policy type" name="policyType"
@@ -83,12 +85,10 @@
                 <ion-select-option value="Variable">Variable</ion-select-option>
                 <ion-select-option value="Whole life">Whole Life</ion-select-option>
               </ion-select>
-              <!-- <label>Policy type</label><br>
-          <input type="text" name="policyType" [(ngModel)]="newLife.policyType"><br> -->
               <label>Owner</label><br>
               <input type="text" name="owner" [(ngModel)]="newDisabilityIns.owner"><br>
             </ion-col>
-            <ion-col>
+            <ion-col size="3">
               <label>Insured </label><br>
               <input type="text" name="insured" [(ngModel)]="newDisabilityIns.insured"><br>
               <label>Premium</label><br>
@@ -96,7 +96,7 @@
               <label>Cash vale</label><br>
               <input type="text" name="cashValue" [(ngModel)]="newDisabilityIns.cashValue"><br>
             </ion-col>
-            <ion-col>
+            <ion-col size="3">
               <label>DBC 1</label><br>
               <input type="text" name="monthlyDeathBenefitOne"
                 [(ngModel)]="newDisabilityIns.monthlyDeathBenefitOne"><br>
@@ -105,13 +105,14 @@
                 [(ngModel)]="newDisabilityIns.monthlyDeathBenefitTwo"><br>
               <label>Riders</label><br>
               <input type="text" name="riders" [(ngModel)]="newDisabilityIns.riders"><br>
+            </ion-col>
+            <ion-col size="3">
               <label>Riders Benefit</label><br>
               <input type="text" name="ridersBenefit" [(ngModel)]="newDisabilityIns.ridersBenefit"><br>
               <label>Elimination Period</label><br>
               <input type="text" name="eliminationPeriod" [(ngModel)]="newDisabilityIns.eliminationPeriod"><br>
               <label>Benefit Period</label><br>
               <input type="text" name="benefitPeriod" [(ngModel)]="newDisabilityIns.benefitPeriod"><br>
-
             </ion-col>
           </ion-row>
         </ion-grid>

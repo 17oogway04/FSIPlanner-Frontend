@@ -41,6 +41,9 @@
         <ion-col>
           <h1>Premium</h1>
         </ion-col>
+        <ion-col>
+          <h1>Cash Value</h1>
+        </ion-col>
       </ion-row>
     </ion-grid>
     <ion-grid *ngFor="let d of userDisability">
@@ -57,6 +60,7 @@
         <ion-col>{{d.monthlyDeathBenefitTwo | number: '1.2-2'}}</ion-col>
         <ion-col>{{d.riders | number: '1.2-2'}}</ion-col>
         <ion-col>{{d.premium | number: '1.2-2'}}</ion-col>
+        <ion-col>{{d.cashValue | number: '1.2-2'}}</ion-col>
 
 
       </ion-row>
@@ -93,7 +97,7 @@
               <input type="text" name="insured" [(ngModel)]="newDisabilityIns.insured"><br>
               <label>Premium</label><br>
               <input type="text" name="premium" [(ngModel)]="newDisabilityIns.premium"><br>
-              <label>Cash vale</label><br>
+              <label>Cash value</label><br>
               <input type="text" name="cashValue" [(ngModel)]="newDisabilityIns.cashValue"><br>
             </ion-col>
             <ion-col size="3">

@@ -90,63 +90,82 @@
     <form #form="ngForm" (ngSubmit)="createAsset()">
       <ion-grid>
         <ion-row>
-          <ion-col size="2">
+          <ion-col size="3">
             <label>Custodian</label><br>
-            <input type="text" name="custodian" placeholder="Required" [(ngModel)]="newAsset.custodian" required="true"><br>
+            <input type="text" name="custodian" placeholder="Required" [(ngModel)]="newAsset.custodian"
+              required="true"><br>
             <label>Account number</label><br>
-            <input type="text" name="accountNumber" placeholder="Required" [(ngModel)]="newAsset.accountNumber" required="true"><br>
-            <label>With FSI</label><br>
-            <input type="text" name="assetName" placeholder="Required" [(ngModel)]="newAsset.assetName" required="true"><br>
+            <input type="text" name="accountNumber" placeholder="Required" [(ngModel)]="newAsset.accountNumber"
+              required="true"><br>
+            <label>With FSI(Yes or No)</label><br>
+            <input type="text" name="assetName" placeholder="Required" [(ngModel)]="newAsset.assetName"><br>
           </ion-col>
-          <ion-col size="2">
+          <ion-col size="3">
             <label>Rate of return </label><br>
             <input type="text" name="rateOfReturn" [(ngModel)]="newAsset.rateOfReturn"><br>
             <label>Tax Structure</label><br>
             <input type="text" name="taxStructure" [(ngModel)]="newAsset.taxStructure"><br>
+            <label>Balance</label><br>
+            <input type="text" name="balance" placeholder="Required" [(ngModel)]="newAsset.balance" required="true"><br>
           </ion-col>
-          <ion-col size="2">
+          <ion-col size="3">
+            <h4>Types to categorize your accounts</h4>
+            <ul>
+              <li> Type: 1 | Category: Checking</li>
+              <li> Type: 2 | Category: Currency</li>
+              <li> Type: 3 | Category: Savings</li>
+              <li> Type: 4 | Category: CDs</li>
+              <li> Type: 5 | Category: Health and Medical Savings</li>
+              <li> Type: 6 | Category: Life Insurance</li>
+              <li> Type: 7 | Category: Annuities</li>
+              <li> Type: 8 | Category: Investments</li>
+              <li> Type: 9 | Category: IRAs</li>
+              <li> Type: 10 | Category: Roth IRA</li>
+              <li> Type: 11 | Category: Employer Retirement Plans</li>
+            </ul>
+          </ion-col>
+          <ion-col size="3">
+            <ul>
+              <li> Type: 12 | Category: Bullion</li>
+              <li> Type: 13 | Category: Primary Residence</li>
+              <li> Type: 14 | Category: Secondary Residence</li>
+              <li> Type: 15 | Category: Real Estate</li>
+              <li> Type: 16 | Category: Business</li>
+              <li> Type: 17 | Category: Trust</li>
+              <li> Type: 18 | Category: Vehicles</li>
+              <li> Type: 19 | Category: Personal Property</li>
+              <li> Type: 20 | Category: Credit Cards</li>
+              <li> Type: 21 | Category: Student Loans</li>
+              <li> Type: 22 | Category: Other</li>
+            </ul>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="3">
             <label>Valuation Date</label><br>
             <input type="text" name="valuationDate" [(ngModel)]="newAsset.valuationDate"><br>
             <label>Maturity Date</label><br>
             <input type="text" name="maturityDate" [(ngModel)]="newAsset.maturityDate"><br>
           </ion-col>
-          <ion-col size="2">
-            <label>Balance</label><br>
-            <input type="text" name="balance" placeholder="Required" [(ngModel)]="newAsset.balance" required="true"><br>
+          <ion-col size="3">
+
             <label>Type</label><br>
-            <input type="text" name="type" placeholder="Required" [(ngModel)]="newAsset.type" required="true" (ngModelChange)="getTypeValue()"><br>
+            <input type="text" name="type" placeholder="Required" [(ngModel)]="newAsset.type" required="true"
+              (ngModelChange)="getTypeValue()"><br>
             <label>Bucket</label><br>
             <input type="text" name="bucket" placeholder="Required" [(ngModel)]="newAsset.bucket" required="true"><br>
           </ion-col>
-          <ion-col size="2">
-            <h4>Types to categorize your accounts</h4>
+          <ion-col size="3">
+            <h4>Buckets</h4>
             <ul>
-              <li> Type: 1 | Category: Residence</li>
-              <li> Type: 2 | Category: Checking</li>
-              <li> Type: 3 | Category: Savings</li>
-              <li> Type: 4 | Category: CDs</li>
-              <li> Type: 5 | Category: Investments</li>
-              <li> Type: 6 | Category: Annuities</li>
-              <li> Type: 7 | Category: Life Insurance</li>
+              <li>1: Insured Growth & Income</li>
+              <li>2: Liquid Cash</li>
+              <li>3: Uninsured Growth & Income</li>
             </ul>
-          </ion-col>
-          <ion-col size="2">
-            <ul>
-              <li> Type: 8 | Category: IRAs</li>
-              <li> Type: 9 | Category: 401(k)s</li>
-              <li> Type: 10 | Category: Real Estate</li>
-              <li> Type: 11 | Category: Vehicles</li>
-              <li> Type: 12 | Category: Other Property</li>
-              <li> Type: 13 | Category: Credit Cards</li>
-              <li> Type: 14 | Category: Student Loans</li>
-              <li> Type: 15 | Category: Other Unsecured</li>
-              <li> Type: 16 | Category: Roth IRA</li>
-              <li> Type: 17 | Category: H.S.A</li>
-            </ul>
-
           </ion-col>
         </ion-row>
       </ion-grid>
+
 
       <input hidden="true" type="text" name="username" [(ngModel)]="newAsset.username">
       <input hidden="true" type="text" name="notesId" [(ngModel)]="newAsset.assetId">

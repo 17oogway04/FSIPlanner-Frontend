@@ -16,7 +16,8 @@ export class FSIProfilePage implements OnInit {
     username: '',
     firstName: '',
     lastName: '',
-    profilePicture: ''
+    profilePicture: '',
+    role: ''
   }
   userName: string = "";
   file: any;
@@ -37,6 +38,7 @@ export class FSIProfilePage implements OnInit {
           this.presentUser.username = this.user.userName;
           this.presentUser.profilePicture = this.user.profilePicture;    
           this.profilePic = this.presentUser.profilePicture ? `${this.basicUrl}${this.presentUser.profilePicture}` : '';
+          this.presentUser.role = this.user.role;
         },
         error => {
           console.error('Error fetching user:', error);

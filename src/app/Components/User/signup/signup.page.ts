@@ -15,7 +15,8 @@ export class SignupPage implements OnInit {
     lastName: '',
     username: '',
     password:'',
-    profilePicture: ''
+    profilePicture: '',
+    role: ''
 
   }
   constructor(private myUserService: UserService, private router: Router) { }

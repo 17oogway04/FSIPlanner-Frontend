@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/Models/user';
 import { UserService } from 'src/app/Services/user.service';
 import { ChangeDetectorRef } from '@angular/core';
-
+import { AuthServiceService } from 'src/app/Services/auth-service.service';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -30,7 +30,7 @@ export class HomePage implements OnInit {
   user: any;
   userEmail: string = '';
 
-  constructor(private myUserservice: UserService, private actRouter: ActivatedRoute, private http: HttpClient,   private cdr: ChangeDetectorRef
+  constructor(public myAuthService: AuthServiceService, private myUserservice: UserService, private actRouter: ActivatedRoute, private http: HttpClient,   private cdr: ChangeDetectorRef
   ) { }
 
   ngOnInit() {      
@@ -81,6 +81,18 @@ export class HomePage implements OnInit {
           this.presentUser!.profilePicture = response.ProfilePictureUrl; // Update the user profile
         });
       }
+   }
+
+   getRole(){
+    this.myAuthService.getRole();
+   }
+
+   isAdmin(){
+    this.myAuthService.isAdmin();
+   }
+
+   isGeneralAdmin(){
+    this.myAuthService.isGeneralAdmin();
    }
   
 }

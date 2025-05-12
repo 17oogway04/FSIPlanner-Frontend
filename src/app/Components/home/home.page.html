@@ -1,11 +1,11 @@
 <ion-header id="globalHeader" [translucent]="true">
   <ion-toolbar id="headerTool">
     <ion-title slot="start">Financial Strategies Inc.</ion-title>
-    <div class="dropdown" slot="end" *ngIf="myAuthService.getRole() === 'GeneralAdmin'">
+    <div class="dropdown" slot="end" >
       <button class="dropbtn">FSI USERS</button>
       <div class="dropdown-options">
-        <a routerLink="/signup">New account</a>
-        <a routerLink="/search-users">Search users</a>
+        <a routerLink="/signup" *ngIf="myAuthService.getRole() === 'SuperUser'">New account</a>
+        <a routerLink="/search-users" *ngIf="myAuthService.getRole() === 'GeneralAdmin' || 'SuperUser'">Search users</a>
       </div>
     </div>
     <ion-button fill="clear" slot="end"  [routerLink]="['/demographics', presentUser.username]">
@@ -43,7 +43,7 @@
           
           <h1 id="header">{{presentUser.firstName}} {{presentUser.lastName}}</h1>
           <ion-toolbar>
-          <ion-button fill="clear" color="secondary" [routerLink]="['/edit-user', presentUser.username]" *ngIf="presentUser.username == 'isaacm'">Edit
+          <ion-button fill="clear" color="secondary" [routerLink]="['/edit-user', presentUser.username]" *ngIf="myAuthService.getRole() === 'GeneralAdmin' || 'SuperUser'">Edit
             {{presentUser.firstName}}'s profile</ion-button>
             <ion-button href="https://www.msa.bank/secure-file-upload/" fill="clear" color="secondary">Upload Document</ion-button>
             <!-- <div class="dropdown">

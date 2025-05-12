@@ -22,7 +22,9 @@ export class HomePage implements OnInit {
     username: '',
     firstName: '',
     lastName: '',
-    profilePicture: ''
+    profilePicture: '',
+    password: '',
+    role: ''
   }
   
   loggedInUser?: User;
@@ -40,6 +42,8 @@ export class HomePage implements OnInit {
       this.presentUser.firstName = this.user.result.firstName;
       this.presentUser.lastName = this.user.result.lastName;
       this.presentUser.username = this.user.result.userName; 
+      this.presentUser.role = this.user.result.role;
+      this.presentUser.password = this.user.result.passwordHash;
       localStorage.setItem('ClientName', this.user.result.userName);
       this.userEmail = this.user.result.email;
       this.presentUser.profilePicture = this.user.result.profilePicture;    
@@ -56,6 +60,7 @@ export class HomePage implements OnInit {
           this.presentUser = response;
         })
       }
+      console.log(localStorage.getItem('userRole'))
     }
     logout(){
       this.myUserservice.logout()

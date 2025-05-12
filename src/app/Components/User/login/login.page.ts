@@ -16,15 +16,19 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
-  onSubmit(){
-    this.myUserService.login(this.username, this.password).subscribe((response) => {
-      window.alert("Successfully logged in");
-      this.myUserService.isLoggedInSubj.next(!response.userId)
-      this.router.navigate(['/home']);
-    }, error => {
-      console.log('Error: ', error);
-      window.alert('Unsuccessful Login')
+  onSubmit() {
+    this.myUserService.login(this.username, this.password).subscribe({
+      next: (response) => {
+        window.alert("Successfully logged in");
+        localStorage.setItem('myFSIToken', response.token);
+        localStorage.setItem('userRole', response.role);
+        this.myUserService.isLoggedInSubj.next(true);
+        this.router.navigate(['/home']);
+      },
+      error: (error) => {
+        console.error('Error:', error);
+        window.alert('Unsuccessful Login');
+      }
     });
   }
-
 }

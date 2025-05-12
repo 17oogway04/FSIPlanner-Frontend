@@ -1,5 +1,8 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+   </ion-buttons>
     <ion-title>Create new user</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -41,4 +44,11 @@
       </div>
     </form>
   </ion-list>
+
+  <h3 style="padding-left: 10px;">Roles and permissions:</h3>
+  <ul>
+    <li>GeneralAdmin: allowed to <i>Search</i> for users and <i>Edit</i> their own profiles.</li>
+    <li>SuperUser: allowed to <i>Search</i>, <i>Create</i>, and <i>Edit</i> users.</li>
+    <li>User: none</li>
+  </ul>
 </ion-content>

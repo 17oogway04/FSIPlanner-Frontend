@@ -16,7 +16,9 @@ export class EditUserPage implements OnInit {
     firstName: '',
     lastName: '',
     username: '',
-    profilePicture: ''
+    profilePicture: '',
+    role: '',
+    password:''
   }
   user: any;
   constructor(private http: HttpClient, private userService: UserService, private actRouter: ActivatedRoute, private router: Router) { }
@@ -37,6 +39,8 @@ export class EditUserPage implements OnInit {
       this.presentUser.lastName = this.user.lastName; 
       this.presentUser.id = this.user.id;
       this.presentUser.profilePicture = this.user.profilePicture;
+      this.presentUser.role = this.user.role;
+      this.presentUser.password = this.user.passwordHash;
     })
   }
 

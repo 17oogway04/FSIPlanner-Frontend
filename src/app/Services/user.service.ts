@@ -43,15 +43,17 @@ export class UserService {
 
   login(username: string, password: string)
   {
-    let queryParams = new HttpParams();
-    queryParams = queryParams.append('username', username);
-    queryParams = queryParams.append('password', password);
+    const loginPayload = { username, password };
 
-    return this.http.get(`${this.baseUrl}/login`, {params: queryParams, responseType: 'text'})
-      .pipe(tap((response: any) => {
-        localStorage.setItem('myFSIToken', response);
-        this.isLoggedInSubj.next(true);
-      }));
+    
+
+    return this.http.post<{ token: string, role: string }>(`${this.baseUrl}/login`, loginPayload)
+    .pipe(tap((response) => {
+      const { token, role } = response;
+      localStorage.setItem('myFSIToken', token);
+      localStorage.setItem('userRole', role); // Optional: if you want quick access later
+      this.isLoggedInSubj.next(true);
+    }));
   }
 
   getCurrentUser(): Observable<User>{

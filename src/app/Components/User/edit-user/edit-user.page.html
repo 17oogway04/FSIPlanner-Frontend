@@ -12,10 +12,12 @@
     <input type="text" name="lastName" [(ngModel)]="presentUser.lastName"><br>
     <label>User name: {{presentUser.username}}</label><br>
     <textarea type="text" name="userName" [(ngModel)]="presentUser.username"></textarea><br>
-    <!-- <label>Passowrd: {{presentUser.password}}</label><br> -->
-
+    <label>Role: {{presentUser.role}}</label><br>
+    <textarea type="text" name="role" [(ngModel)]="presentUser.role"></textarea><br>
 
     <input type="text" name="userId" [(ngModel)]="presentUser.id" hidden><br>
+    <input type="text" name="password" [(ngModel)]="presentUser.password" hidden><br>
+
 
     <ion-button type="submit" fill="clear" color="secondary">Edit</ion-button>
 

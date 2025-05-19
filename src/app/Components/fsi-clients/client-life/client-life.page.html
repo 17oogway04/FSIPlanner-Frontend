@@ -57,17 +57,17 @@
     </ion-grid>
     <ion-grid *ngFor="let l of userLife">
       <ion-row>
-
+  
         <ion-col>{{l.policyName}}</ion-col>
         <ion-col>{{l.policyType}}</ion-col>
         <ion-col>{{l.owner}}</ion-col>
         <ion-col>{{l.insured}}</ion-col>
-        <ion-col>{{l.premium | number: '1.2-2'}}</ion-col>
-        <ion-col>{{l.cashValue | number: '1.2-2'}}</ion-col>
-        <ion-col>{{l.deathBenefitOne | number: '1.2-2'}}</ion-col>
-        <ion-col>{{l.deathBenefitTwo | number: '1.2-2'}}</ion-col>
+        <ion-col>${{l.premium | number: '1.2-2'}}</ion-col>
+        <ion-col>${{l.cashValue | number: '1.2-2'}}</ion-col>
+        <ion-col>${{l.deathBenefitOne | number: '1.2-2'}}</ion-col>
+        <ion-col>${{l.deathBenefitTwo | number: '1.2-2'}}</ion-col>
         <ion-col>{{l.riders | number: '1.2-2'}}</ion-col>
-        <ion-col>{{l.ridersBenefit | number: '1.2-2'}}</ion-col>
+        <ion-col>${{l.ridersBenefit | number: '1.2-2'}}</ion-col>
 
 
       </ion-row>

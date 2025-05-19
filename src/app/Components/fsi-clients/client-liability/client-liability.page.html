@@ -51,10 +51,10 @@
       <ion-col>{{l.description}}</ion-col>
       <ion-col> Category</ion-col>
       <ion-col>${{l.balance | number: '1.2-2'}}</ion-col>
-      <ion-col>{{l.rate}}</ion-col>
+      <ion-col>{{l.rate}}%</ion-col>
       <ion-col>${{l.payment | number: '1.2-2'}}</ion-col>
       <ion-col>{{l.term}}</ion-col>
-      <ion-col>{{l.value | number: '1.2-2'}}</ion-col>
+      <ion-col>${{l.value | number: '1.2-2'}}</ion-col>
      
     </ion-row> 
     <ion-button id="printerBtn" fill="clear" color="secondary" [routerLink]="['/client-edit-liability', l.liabilitiesId]"><strong>Edit

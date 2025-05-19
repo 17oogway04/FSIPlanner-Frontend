@@ -61,7 +61,7 @@ export class BalancePage implements OnInit {
     percentageToSavings: ''
   }];
   combinedBalance: any[] = [];
-  user:any;
+  user: any;
   checkingValue: string = '';
   constructor(private myBalanceService: BalanceService, private actRouter: ActivatedRoute, private myAssetService: AssetService, private myLiabilityService: LiabilitiesService, private myLifeService: LifeService, private userService: UserService) { }
 
@@ -102,14 +102,40 @@ export class BalancePage implements OnInit {
       assetSumByType[type] += a.balance!;
     });
 
+    // const liabilityValue = this.userLiabilities.reduce((total, value) => {
+    //   return total + (value.value || 0);
+    // }, 0);
+
+    // if (!assetSumByType['13']) {
+    //   assetSumByType['13'] = 0;
+    // }
+
+    // assetSumByType['13'] += liabilityValue;
+
+    const typesToInclude = ['13', '14'];
+
+    typesToInclude.forEach(type => {
+      const totalValue = this.userLiabilities
+        .filter(item => item.type === type)
+        .reduce((sum, item) => sum + (item.value || 0), 0);
+
+      if (!assetSumByType[type]) {
+        assetSumByType[type] = 0;
+      }
+
+      assetSumByType[type] += totalValue;
+    });
+
+
     const lifeInsuranceCashValueTotal = this.userLife.reduce((total, life) => {
       return total + (life.cashValue || 0);
     }, 0);
 
-    if (!assetSumByType['6']) { 
+    if (!assetSumByType['6']) {
       assetSumByType['6'] = 0;
     }
     assetSumByType['6'] += lifeInsuranceCashValueTotal;
+
     this.userLiabilities.forEach(l => {
       const type = l.type!;
       if (!liabilitySumByType[type]) {
@@ -126,7 +152,7 @@ export class BalancePage implements OnInit {
         type,
         assetBalance,
         liabilityBalance,
-        netWorth: assetBalance + liabilityBalance
+        netWorth: assetBalance - liabilityBalance
       });
     }
 

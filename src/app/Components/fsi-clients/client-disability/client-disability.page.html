@@ -71,11 +71,11 @@
         <ion-col>{{d.insured}}</ion-col>
         <ion-col>{{d.eliminationPeriod | number: '1.2-2'}}</ion-col>
         <ion-col>{{d.benefitPeriod | number: '1.2-2'}}</ion-col>
-        <ion-col>{{d.monthlyDeathBenefitOne| number: '1.2-2'}}</ion-col>
-        <ion-col>{{d.monthlyDeathBenefitTwo | number: '1.2-2'}}</ion-col>
+        <ion-col>${{d.monthlyDeathBenefitOne| number: '1.2-2'}}</ion-col>
+        <ion-col>${{d.monthlyDeathBenefitTwo | number: '1.2-2'}}</ion-col>
         <ion-col>{{d.riders | number: '1.2-2'}}</ion-col>
-        <ion-col>{{d.premium | number: '1.2-2'}}</ion-col>
-        <ion-col>{{d.cashValue | number: '1.2-2'}}</ion-col>
+        <ion-col>${{d.premium | number: '1.2-2'}}</ion-col>
+        <ion-col>${{d.cashValue | number: '1.2-2'}}</ion-col>
 
 
       </ion-row>

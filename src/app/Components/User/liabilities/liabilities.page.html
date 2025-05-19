@@ -40,10 +40,10 @@
       <ion-col id="text">{{l.description}}</ion-col>
       <ion-col id="text"> {{catergories[l.type!] || "invalid key"}}</ion-col>
       <ion-col id="text">${{l.balance | number: '1.2-2'}}</ion-col>
-      <ion-col id="text">{{l.rate}}</ion-col>
+      <ion-col id="text">{{l.rate}}%</ion-col>
       <ion-col id="text">${{l.payment | number: '1.2-2'}}</ion-col>
       <ion-col id="text">{{l.term}}</ion-col>
-      <ion-col id="text">{{l.value | number: '1.2-2'}}</ion-col>
+      <ion-col id="text">${{l.value | number: '1.2-2'}}</ion-col>
       
     </ion-row>
     <ion-button fill="clear" color="secondary" [routerLink]="['/edit-liability', l.liabilitiesId]" id="printerBtn"><strong>Edit

@@ -78,6 +78,20 @@ export class ClientBalancePage implements OnInit {
          }
          assetSumByType[type] += a.balance!;
        });
+
+       const typesToInclude = ['13', '14'];
+
+       typesToInclude.forEach(type => {
+         const totalValue = this.userLiabilities
+           .filter(item => item.type === type)
+           .reduce((sum, item) => sum + (item.value || 0), 0);
+   
+         if (!assetSumByType[type]) {
+           assetSumByType[type] = 0;
+         }
+   
+         assetSumByType[type] += totalValue;
+       });
    
        this.userLiabilities.forEach(l => {
          const type = l.type!;
@@ -96,7 +110,7 @@ export class ClientBalancePage implements OnInit {
            type,
            assetBalance,
            liabilityBalance,
-           netWorth: assetBalance + liabilityBalance
+           netWorth: assetBalance - liabilityBalance
          });
        }
    

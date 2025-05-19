@@ -5,7 +5,8 @@
       <button class="dropbtn">FSI USERS</button>
       <div class="dropdown-options">
         <a routerLink="/signup" *ngIf="myAuthService.getRole() === 'SuperUser'">New account</a>
-        <a routerLink="/search-users" *ngIf="myAuthService.getRole() === 'GeneralAdmin' || 'SuperUser'">Search users</a>
+        <a routerLink="/search-users" *ngIf="myAuthService.getRole() === 'SuperUser'">Search users</a>
+        <a routerLink="/search-users" *ngIf="myAuthService.getRole() === 'GeneralAdmin'">Search users</a>
       </div>
     </div>
     <ion-button fill="clear" slot="end"  [routerLink]="['/demographics', presentUser.username]">

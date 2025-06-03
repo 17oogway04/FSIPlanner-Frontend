@@ -15,8 +15,8 @@ export class ClientEditLiabilityPage implements OnInit {
     type: '',
     description: '',
     balance: 0,
-    rate: '',
-    payment: '',
+    rate: 0,
+    payment: 0,
     term: '',
     value: 0,
     username: this.actRouter.snapshot.paramMap.get("username") ?? ''

@@ -17,14 +17,14 @@ export class EditDisabilityPage implements OnInit {
     policyType: '',
     owner: '',
     insured: '',
-    premium: '',
-    cashValue: '',
-    monthlyDeathBenefitOne: '',
-    monthlyDeathBenefitTwo: '',
+    premium: 0,
+    cashValue: 0,
+    monthlyDeathBenefitOne: 0,
+    monthlyDeathBenefitTwo: 0,
     riders: '',
-    ridersBenefit: '',
-    eliminationPeriod: '',
-    benefitPeriod: '',
+    ridersBenefit: 0,
+    eliminationPeriod: 0,
+    benefitPeriod: 0,
     username: localStorage.getItem('ClientName')!
   }
   constructor(private actRouter: ActivatedRoute, private myDisabilityService: DisabilityInsService, private router: Router) { }

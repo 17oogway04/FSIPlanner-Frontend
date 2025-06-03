@@ -52,13 +52,13 @@ export class BalancePage implements OnInit {
     policyType: '',
     owner: '',
     insured: '',
-    premium: '',
+    premium: 0,
     cashValue: 0,
-    deathBenefitOne: '',
-    deathBenefitTwo: '',
+    deathBenefitOne: 0,
+    deathBenefitTwo: 0,
     riders: '',
-    ridersBenefit: '',
-    percentageToSavings: ''
+    ridersBenefit: 0,
+    percentageToSavings: 0
   }];
   combinedBalance: any[] = [];
   user: any;

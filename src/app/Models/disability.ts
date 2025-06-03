@@ -6,17 +6,17 @@ export class Disability {
     policyType?: string;
     owner?: string;
     insured?: string;
-    premium?: string;
-    cashValue?: string;
-    monthlyDeathBenefitOne?: string;
-    monthlyDeathBenefitTwo?: string;
+    premium?: number;
+    cashValue?: number;
+    monthlyDeathBenefitOne?: number;
+    monthlyDeathBenefitTwo?: number;
     riders?: string;
-    ridersBenefit?: string;
-    eliminationPeriod?: string;
-    benefitPeriod?: string;
+    ridersBenefit?: number;
+    eliminationPeriod?: number;
+    benefitPeriod?: number;
     username?: string;
 
-    constructor(userId: string, disabilityInsId: number, policyName: string, policyType: string, owner: string, insured: string, premium: string, cashValue: string, monthlyDeathBenefitOne: string, monthlyDeathBenefitTwo: string, riders: string, ridersBenfit: string, eliminationPeriod: string, benefitPeriod: string, username: string)
+    constructor(userId: string, disabilityInsId: number, policyName: string, policyType: string, owner: string, insured: string, premium: number, cashValue: number, monthlyDeathBenefitOne: number, monthlyDeathBenefitTwo: number, riders: string, ridersBenfit: number, eliminationPeriod: number, benefitPeriod: number, username: string)
     {
         this.userId = userId;
         this.disabilityInsId = disabilityInsId;

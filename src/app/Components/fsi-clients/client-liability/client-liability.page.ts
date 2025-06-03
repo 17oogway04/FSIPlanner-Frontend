@@ -13,7 +13,7 @@ export class ClientLiabilityPage implements OnInit {
   userLiabilities: Liabilities[] = [];
   isFormVisible = false;
 
-  newLiability: Liabilities = new Liabilities("",0,"","",0, "", "", "", 0, localStorage.getItem('ClientName')!);
+  newLiability: Liabilities = new Liabilities("",0,"","",0, 0, 0, "", 0, localStorage.getItem('ClientName')!);
 
 
   constructor(private myLiabilityService: LiabilitiesService, private actRouter: ActivatedRoute, private router: Router) { }

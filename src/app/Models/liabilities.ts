@@ -4,13 +4,13 @@ export class Liabilities {
     type?: string;
     description?: string;
     balance?: number;
-    rate?: string;
-    payment?: string;
+    rate?: number;
+    payment?: number;
     term?: string;
     value?: number;
     username?: string;
 
-    constructor(userId: string, liabilitiesId: number, type: string, description: string, balance: number, rate: string, payment: string, term: string, value: number, username: string)
+    constructor(userId: string, liabilitiesId: number, type: string, description: string, balance: number, rate: number, payment: number, term: string, value: number, username: string)
     {
         this.userId = userId;
         this.liabilitiesId = liabilitiesId;

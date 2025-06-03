@@ -16,12 +16,12 @@ export class EditLifePage implements OnInit {
     policyType: '',
     owner: '',
     insured: '',
-    premium: '',
+    premium: 0,
     cashValue: 0,
-    deathBenefitOne: '',
-    deathBenefitTwo: '',
+    deathBenefitOne: 0,
+    deathBenefitTwo: 0,
     riders: '',
-    ridersBenefit: '',
+    ridersBenefit: 0,
     username: this.actRouter.snapshot.paramMap.get("username") ??''
 
   }

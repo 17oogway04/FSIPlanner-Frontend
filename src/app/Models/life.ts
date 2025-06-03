@@ -5,16 +5,16 @@ export class Life {
     policyType?: string;
     owner?: string;
     insured?: string;
-    premium?: string;
+    premium?: number;
     cashValue?: number;
-    deathBenefitOne?: string;
-    deathBenefitTwo?: string;
+    deathBenefitOne?: number;
+    deathBenefitTwo?: number;
     riders?: string;
-    ridersBenefit?: string;
-    percentageToSavings?: string;
+    ridersBenefit?: number;
+    percentageToSavings?: number;
     username?: string;
 
-    constructor(lifeId: number, userId: string, policyName: string, policyType: string, owner: string, insured: string, premium: string, cashValue: number, deathBenefitOne: string, deathBenefitTwo: string, riders: string, ridersBenefit: string, percentageToSavings: string, username: string )
+    constructor(lifeId: number, userId: string, policyName: string, policyType: string, owner: string, insured: string, premium: number, cashValue: number, deathBenefitOne: number, deathBenefitTwo: number, riders: string, ridersBenefit: number, percentageToSavings: number, username: string )
     {
         this.lifeId = lifeId;
         this.userId = userId;

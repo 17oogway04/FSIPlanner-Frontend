@@ -31,6 +31,11 @@ export class LifePage implements OnInit {
   };
   isFormVisible = false;
   user:any;
+
+  tooltipDescriptions = {
+    EliminationPeriod: 'What year does the policy expire?',
+    RiderPeriod: 'How many months is the policy in effect for?'
+  }
   constructor(private myLifeService: LifeService, private actRouter: ActivatedRoute, private router: Router, private userService: UserService) { }
 
   ngOnInit() {

@@ -113,9 +113,19 @@
             <ion-col size="3">
               <label>Riders Benefit</label><br>
               <input type="text" name="ridersBenefit" [(ngModel)]="newDisabilityIns.ridersBenefit"><br>
-              <label>Elimination Period</label><br>
+              <label class="label-container">
+                Elimination Period
+                <div class="tooltip-box">
+                  {{tooltipDescriptions.EliminationPeriod}}
+                </div>
+              </label><br>
               <input type="text" name="eliminationPeriod" [(ngModel)]="newDisabilityIns.eliminationPeriod"><br>
-              <label>Benefit Period</label><br>
+              <label class="label-container">
+                Benefit Period
+                <div class="tooltip-box">
+                  {{tooltipDescriptions.BenefitPeriod}}
+                </div>
+              </label><br>
               <input type="text" name="benefitPeriod" [(ngModel)]="newDisabilityIns.benefitPeriod"><br>
             </ion-col>
           </ion-row>

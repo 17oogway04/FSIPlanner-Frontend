@@ -34,6 +34,11 @@ export class DisabilityinsPage implements OnInit {
     username: localStorage.getItem('ClientName')!
 
   }
+
+  tooltipDescriptions = {
+    EliminationPeriod: 'What year does the policy expire?',
+    BenefitPeriod: 'How many months is the policy in effect for?'
+  }
   constructor(private userService: UserService, private myDisabilityService: DisabilityInsService, private actRouter: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {

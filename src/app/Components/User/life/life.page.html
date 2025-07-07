@@ -100,7 +100,12 @@
               <input type="text" name="deathBenefitTwo" [(ngModel)]="newLife.deathBenefitTwo"><br>
               <label>Riders</label><br>
               <input type="text" name="riders" [(ngModel)]="newLife.riders"><br>
-              <label>Riders Benefit</label><br>
+              <label class="label-container">
+                Riders Benefit
+                <div class="tooltip-box">
+                  {{tooltipDescriptions.RiderPeriod}}
+                </div>
+              </label><br>
               <input type="text" name="ridersBenefit" [(ngModel)]="newLife.ridersBenefit"><br>
 
             </ion-col>

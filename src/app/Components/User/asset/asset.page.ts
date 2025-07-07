@@ -13,8 +13,8 @@ import { UserService } from 'src/app/Services/user.service';
 })
 export class AssetPage implements OnInit {
 
-  username: string = '';  
-  newAsset: Asset = new Asset("",0, "", "", "", "", "", "", 0, "", "", localStorage.getItem('ClientName')!, "")
+  username: string = '';
+  newAsset: Asset = new Asset("", 0, "", "", "", "", "", "", 0, "", "", localStorage.getItem('ClientName')!, "")
 
   types: { [key: string]: string } = {
     "1": "Checking",
@@ -47,18 +47,23 @@ export class AssetPage implements OnInit {
   userAsset: Asset[] = [];
   assetUser: any;
   user: any;
+  tooltipDescriptions = {
+    type: 'Please catorgize this account from the options on the right labeled "Types". Number expected.',
+    bucket: 'Please catorgize this account from the options on the right labeled "Buckets". Number expected.',
+  };
+
   constructor(private myAssetservice: AssetService, private actRouter: ActivatedRoute, private userService: UserService) { }
 
   ngOnInit() {
     this.saveUsername()
-    this.loadUserAsset()   
+    this.loadUserAsset()
     this.getTypeValue()
   }
 
-  printAssets(){
+  printAssets() {
     window.print()
   }
-  saveUsername(){
+  saveUsername() {
     this.userService.getCurrentUser().subscribe((response) => {
       this.user = response;
       localStorage.setItem('ClientName', this.user.result.userName)
@@ -89,17 +94,17 @@ export class AssetPage implements OnInit {
     // if (storedOrder == "") {
     //   this.userAsset = JSON.parse(storedOrder);
     // } else {
-      // this.myAssetservice.getAssetsByUsername(this.username).subscribe((response) => {
-      //   this.userAsset = response
-      // })
-      this.userService.getCurrentUser().subscribe((response) => {
-        this.assetUser = response;
-        this.username = this.assetUser.result.userName;
-        this.newAsset.userId = this.assetUser.result.id;
-        this.myAssetservice.getAssetsByUsername(this.username).subscribe((response) => {
-          this.userAsset = response;
-        })
+    // this.myAssetservice.getAssetsByUsername(this.username).subscribe((response) => {
+    //   this.userAsset = response
+    // })
+    this.userService.getCurrentUser().subscribe((response) => {
+      this.assetUser = response;
+      this.username = this.assetUser.result.userName;
+      this.newAsset.userId = this.assetUser.result.id;
+      this.myAssetservice.getAssetsByUsername(this.username).subscribe((response) => {
+        this.userAsset = response;
       })
+    })
   }
 
   createAsset(): void {

@@ -159,10 +159,16 @@
           </ion-col>
           <ion-col size="3">
 
-            <label>Type</label><br>
+            <label class="label-container">
+              Type
+              <div class="tooltip-box">{{tooltipDescriptions.type}}</div>
+            </label><br>
             <input type="text" name="type" placeholder="Required" [(ngModel)]="newAsset.type" required="true"
               (ngModelChange)="getTypeValue()"><br>
-            <label>Bucket</label><br>
+            <label class="label-container">
+              Bucket
+              <div class="tooltip-box">{{tooltipDescriptions.bucket}}</div>
+            </label><br>
             <input type="text" name="bucket" placeholder="Required" [(ngModel)]="newAsset.bucket" required="true"><br>
           </ion-col>
           <ion-col size="3">

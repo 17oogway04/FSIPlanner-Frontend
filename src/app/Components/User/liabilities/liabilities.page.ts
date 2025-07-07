@@ -36,11 +36,18 @@ export class LiabilitiesPage implements OnInit {
     "22": "Other"
   }
   selectedType: string = '';
-  user:any;
+  user: any;
   username: string = '';
+  tooltipDescriptions = {
+    type: 'Please catorgize this account from the options on the right. Number expected.',
+    balance: 'How much is left to pay off?',
+    value: 'What is the value of the liability?',
+    term: 'When is the end date of the loan?',
+
+  };
   isFormVisible = false;
   userLiabilities: Liabilities[] = [];
-  newLiability: Liabilities = new Liabilities("",0,"","",0, 0, 0, "", 0, localStorage.getItem('ClientName')!);
+  newLiability: Liabilities = new Liabilities("", 0, "", "", 0, 0, 0, "", 0, localStorage.getItem('ClientName')!);
   constructor(private myLiabilityService: LiabilitiesService, private actRouter: ActivatedRoute, private userService: UserService) { }
 
   ngOnInit() {
@@ -48,15 +55,15 @@ export class LiabilitiesPage implements OnInit {
     this.getTypeValue()
   }
 
-  loadUserLiabilities(){
+  loadUserLiabilities() {
     this.userService.getCurrentUser().subscribe((response) => {
       this.user = response;
       this.username = this.user.result.userName;
       this.myLiabilityService.getLiabilitiesByUsername(this.username).subscribe((response) => {
-      this.userLiabilities = response.sort((a,b) => parseInt(a.type!) - parseInt(b.type!));
+        this.userLiabilities = response.sort((a, b) => parseInt(a.type!) - parseInt(b.type!));
+      })
     })
-    })
-    
+
   }
 
   getTypeValue() {
@@ -67,15 +74,15 @@ export class LiabilitiesPage implements OnInit {
     }
   }
 
-  createLiability(){
+  createLiability() {
     this.myLiabilityService.createLiability(this.newLiability).subscribe((response) => {
-      if(response != null){
+      if (response != null) {
         window.alert("Liability added");
         window.location.reload();
       }
     })
   }
-  printLiabilities(){
+  printLiabilities() {
     window.print()
   }
   openForm() {
@@ -86,7 +93,7 @@ export class LiabilitiesPage implements OnInit {
     this.isFormVisible = false;
   }
 
-  deleteLiability(id: number){
+  deleteLiability(id: number) {
     this.myLiabilityService.deleteLiability(id).subscribe(() => {
       window.alert("Liability has been deleted");
       this.loadUserLiabilities()

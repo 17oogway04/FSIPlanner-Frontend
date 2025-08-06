@@ -1,141 +1,157 @@
 <ion-header [translucent]="true" id="printerBtn">
   <ion-toolbar>
-    <ion-title style="font-size: 1.6em;">Client Liabilities</ion-title>        
-    <ion-button [routerLink]="['/fsi-profile', username]" fill="clear" color="secondary" slot="end" size="large">Home</ion-button>
+    <ion-title style="font-size: 1.6em;">Client Liabilities</ion-title>
+    <ion-button [routerLink]="['/fsi-profile', username]" fill="clear" color="secondary" slot="end"
+      size="large">Home</ion-button>
 
     <div class="dropdown" slot="end">
       <ion-button class="dropbtn" color="secondary" size="large" fill="clear">More</ion-button>
       <div class="dropdown-options">
-        <ion-button (click)="openForm()" fill="clear" color="secondary" slot="end" size="large">Add liability</ion-button>
-        <ion-button fill="clear" color="secondary" slot="end" size="large" routerLink="/client-request-update" id="printerBtn">Request</ion-button>
+        <ion-button (click)="openForm()" fill="clear" color="secondary" slot="end" size="large">Add
+          liability</ion-button>
+        <ion-button fill="clear" color="secondary" slot="end" size="large" routerLink="/client-request-update"
+          id="printerBtn">Request</ion-button>
       </div>
-    </div>  
+    </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <div id="printableSection">
 
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <h1>Type</h1>
-      </ion-col>
-      <ion-col>
-        <h1>Description</h1>
-      </ion-col>
-      <ion-col>
-        <h1>Category</h1>
-      </ion-col>
-      <ion-col>
-        <h1>Balance</h1>
-      </ion-col>
-      <ion-col>
-        <h1>Rate</h1>
-      </ion-col>
-      <ion-col>
-        <h1>Payment</h1>
-      </ion-col>
-      <ion-col>
-        <h1>Term</h1>
-      </ion-col>
-      <ion-col>
-        <h1>Value</h1>
-      </ion-col>
-     
-    </ion-row>
-  </ion-grid>
-  <ion-grid *ngFor="let l of userLiabilities">
-    <ion-row >
-      <ion-col>{{l.type}}</ion-col>
-      <ion-col>{{l.description}}</ion-col>
-      <ion-col> Category</ion-col>
-      <ion-col>${{l.balance | number: '1.2-2'}}</ion-col>
-      <ion-col>{{l.rate}}%</ion-col>
-      <ion-col>${{l.payment | number: '1.2-2'}}</ion-col>
-      <ion-col>{{l.term}}</ion-col>
-      <ion-col>${{l.value | number: '1.2-2'}}</ion-col>
-     
-    </ion-row> 
-    <ion-button id="printerBtn" fill="clear" color="secondary" [routerLink]="['/client-edit-liability', l.liabilitiesId]"><strong>Edit
-        account</strong></ion-button>
-        <ion-button id="printerBtn" fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
-            account</strong></ion-button>
-  </ion-grid>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <h1>Type</h1>
+        </ion-col>
+        <ion-col>
+          <h1>Description</h1>
+        </ion-col>
+        <ion-col>
+          <h1>Category</h1>
+        </ion-col>
+        <ion-col>
+          <h1>Balance</h1>
+        </ion-col>
+        <ion-col>
+          <h1>Rate</h1>
+        </ion-col>
+        <ion-col>
+          <h1>Payment</h1>
+        </ion-col>
+        <ion-col>
+          <h1>Term</h1>
+        </ion-col>
+        <ion-col>
+          <h1>Value</h1>
+        </ion-col>
 
-  <!--Adding account-->
-  <div *ngIf="isFormVisible" id="inputForm">
-    <form #form="ngForm" (ngSubmit)="createLiability()">
-      <ion-grid>
-        <ion-row>
-          <ion-col size="3">
-            <label>Type</label><br>
-            <input type="text" name="type" [(ngModel)]="newLiability.type"><br>
-            <label>Description</label><br>
-            <input type="text" name="description" [(ngModel)]="newLiability.description"><br>
-            <label>Balance</label><br>
-            <input type="text" name="balance" [(ngModel)]="newLiability.balance"><br>
-          </ion-col>
-          <ion-col size="3">
-            <label>Rate </label><br>
-            <input type="text" name="rate" [(ngModel)]="newLiability.rate"><br>
-            <label>Payment</label><br>
-            <input type="text" name="payment" [(ngModel)]="newLiability.payment"><br>
-            <label>Term</label><br>
-            <input type="text" name="term" [(ngModel)]="newLiability.term"><br>
-          </ion-col>
-        
-          <ion-col size="3">
-            <h4>Types to categorize your accounts</h4>
-            <ul>
-              <li> Type: 1 | Category: Checking</li>
-              <li> Type: 2 | Category: Currency</li>
-              <li> Type: 3 | Category: Savings</li>
-              <li> Type: 4 | Category: CDs</li>
-              <li> Type: 5 | Category: Health and Medical Savings</li>
-              <li> Type: 6 | Category: Life Insurance</li>
-              <li> Type: 7 | Category: Annuities</li>
-              <li> Type: 8 | Category: Investments</li>
-              <li> Type: 9 | Category: IRAs</li>
-              <li> Type: 10 | Category: Roth IRA</li>
-            </ul>
-          </ion-col>
-          <ion-col size="3">
-            <ul>
-              <li> Type: 11 | Category: Employer Retirement Plans</li>
+      </ion-row>
+    </ion-grid>
+    <ion-grid *ngFor="let l of userLiabilities">
+      <ion-row>
+        <ion-col>{{l.type}}</ion-col>
+        <ion-col>{{l.description}}</ion-col>
+        <ion-col> Category</ion-col>
+        <ion-col>${{l.balance | number: '1.2-2'}}</ion-col>
+        <ion-col>{{l.rate}}%</ion-col>
+        <ion-col>${{l.payment | number: '1.2-2'}}</ion-col>
+        <ion-col>{{l.term}}</ion-col>
+        <ion-col>${{l.value | number: '1.2-2'}}</ion-col>
 
-              <li> Type: 12 | Category: Bullion</li>
-              <li> Type: 13 | Category: Primary Residence</li>
-              <li> Type: 14 | Category: Secondary Residence</li>
-              <li> Type: 15 | Category: Real Estate</li>
-              <li> Type: 16 | Category: Business</li>
-              <li> Type: 17 | Category: Trust</li>
-              <li> Type: 18 | Category: Vehicles</li>
-              <li> Type: 19 | Category: Personal Property</li>
-              <li> Type: 20 | Category: Credit Cards</li>
-              <li> Type: 21 | Category: Student Loans</li>
-              <li> Type: 22 | Category: Other</li>
-            </ul>
-          </ion-col>
-        </ion-row>
-        <ion-row>
+      </ion-row>
+      <ion-button id="printerBtn" fill="clear" color="secondary"
+        [routerLink]="['/client-edit-liability', l.liabilitiesId]"><strong>Edit
+          account</strong></ion-button>
+      <ion-button id="printerBtn" fill="clear" color="danger" (click)="deleteLiability(l.liabilitiesId!)"><strong>Delete
+          account</strong></ion-button>
+    </ion-grid>
+
+    <!--Adding account-->
+    <div *ngIf="isFormVisible" id="inputForm">
+      <form #form="ngForm" (ngSubmit)="createLiability()">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="3">
+              <label class="label-container">
+                Type
+                <div class="tooltip-box">
+                  {{tooltipDescriptions.type}}
+                </div>
+              </label><br> <input type="text" name="type" [(ngModel)]="newLiability.type"><br>
+              <label>Description</label><br>
+              <input type="text" name="description" [(ngModel)]="newLiability.description"><br>
+              <label class="label-container">
+                Balance
+                <div class="tooltip-box">
+                  {{tooltipDescriptions.balance}}
+                </div>
+              </label><br> <input type="text" name="balance" [(ngModel)]="newLiability.balance"><br>
+            </ion-col>
+            <ion-col size="3">
+              <label>Rate </label><br>
+              <input type="text" name="rate" [(ngModel)]="newLiability.rate"><br>
+              <label>Payment</label><br>
+              <input type="text" name="payment" [(ngModel)]="newLiability.payment"><br>
+              <label class="label-container">
+                Term
+                <div class="tooltip-box">{{tooltipDescriptions.term}}</div>
+              </label><br> <input type="text" name="term" [(ngModel)]="newLiability.term"><br>
+            </ion-col>
+
+            <ion-col size="3">
+              <h4>Types to categorize your accounts</h4>
+              <ul>
+                <li> Type: 1 | Category: Checking</li>
+                <li> Type: 2 | Category: Currency</li>
+                <li> Type: 3 | Category: Savings</li>
+                <li> Type: 4 | Category: CDs</li>
+                <li> Type: 5 | Category: Health and Medical Savings</li>
+                <li> Type: 6 | Category: Life Insurance</li>
+                <li> Type: 7 | Category: Annuities</li>
+                <li> Type: 8 | Category: Investments</li>
+                <li> Type: 9 | Category: IRAs</li>
+                <li> Type: 10 | Category: Roth IRA</li>
+              </ul>
+            </ion-col>
+            <ion-col size="3">
+              <ul>
+                <li> Type: 11 | Category: Employer Retirement Plans</li>
+
+                <li> Type: 12 | Category: Bullion</li>
+                <li> Type: 13 | Category: Primary Residence</li>
+                <li> Type: 14 | Category: Secondary Residence</li>
+                <li> Type: 15 | Category: Real Estate</li>
+                <li> Type: 16 | Category: Business</li>
+                <li> Type: 17 | Category: Trust</li>
+                <li> Type: 18 | Category: Vehicles</li>
+                <li> Type: 19 | Category: Personal Property</li>
+                <li> Type: 20 | Category: Credit Cards</li>
+                <li> Type: 21 | Category: Student Loans</li>
+                <li> Type: 22 | Category: Other</li>
+              </ul>
+            </ion-col>
+          </ion-row>
+          <ion-row>
             <ion-col size="2">
-            
-            <label>Value</label><br>
-            <input type="text" name="value" [(ngModel)]="newLiability.value"><br>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
 
-      <input hidden="true" type="text" name="username" [(ngModel)]="newLiability.username">
-      <input hidden="true" type="text" name="notesId" [(ngModel)]="newLiability.liabilitiesId">
+              <label class="label-container">
+                Value
+                <div class="tooltip-box">{{tooltipDescriptions.value}}</div>
+              </label><br> <input type="text" name="value" [(ngModel)]="newLiability.value"><br>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
 
-      <ion-button type="submit" fill="clear" color="secondary">
-        Create account
-      </ion-button>
-      <ion-button (click)="closeForm()" fill="clear" color="secondary">Cancel</ion-button>
-    </form>
-  </div>
+        <input hidden="true" type="text" name="username" [(ngModel)]="newLiability.username">
+        <input hidden="true" type="text" name="notesId" [(ngModel)]="newLiability.liabilitiesId">
+
+        <ion-button type="submit" fill="clear" color="secondary">
+          Create account
+        </ion-button>
+        <ion-button (click)="closeForm()" fill="clear" color="secondary">Cancel</ion-button>
+      </form>
+    </div>
   </div>
   <ion-button (click)="printLiabilities()" id="printerBtn" color="secondary" style="padding: 10px;">Print</ion-button>
 

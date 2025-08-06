@@ -13,41 +13,47 @@ export class ClientLiabilityPage implements OnInit {
   userLiabilities: Liabilities[] = [];
   isFormVisible = false;
 
-  newLiability: Liabilities = new Liabilities("",0,"","",0, 0, 0, "", 0, localStorage.getItem('ClientName')!);
+  newLiability: Liabilities = new Liabilities("", 0, "", "", 0, 0, 0, "", 0, localStorage.getItem('ClientName')!);
+  tooltipDescriptions = {
+    type: 'Please catorgize this account from the options on the right. Number expected.',
+    balance: 'How much is left to pay off?',
+    value: 'What is the value of the liability?',
+    term: 'When is the end date of the loan?',
 
+  };
 
   constructor(private myLiabilityService: LiabilitiesService, private actRouter: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     const name = localStorage.getItem('FSIName');
-    if(name != null){
+    if (name != null) {
       this.username = name;
     }
     this.loadUserLiabilities()
   }
 
-  loadUserLiabilities(){
+  loadUserLiabilities() {
     this.myLiabilityService.getLiabilitiesByUsername(this.username).subscribe((response) => {
-      this.userLiabilities = response.sort((a,b) => parseInt(a.type!) - parseInt(b.type!));
+      this.userLiabilities = response.sort((a, b) => parseInt(a.type!) - parseInt(b.type!));
     })
   }
 
-  deleteLiability(id: number){
+  deleteLiability(id: number) {
     this.myLiabilityService.deleteLiability(id).subscribe(() => {
       window.alert("Liability has been deleted");
       this.loadUserLiabilities()
     })
   }
 
-  createLiability(){
+  createLiability() {
     this.myLiabilityService.createLiability(this.newLiability).subscribe((response) => {
-      if(response != null){
+      if (response != null) {
         window.alert("Liability added");
         window.location.reload();
       }
     })
   }
-  printLiabilities(){
+  printLiabilities() {
     window.print()
   }
   openForm() {

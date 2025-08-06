@@ -35,11 +35,14 @@ export class ClientAssetPage implements OnInit {
     "21": "Student Loans",
     "22": "Other"
   }
-
+  tooltipDescriptions = {
+    type: 'Please catorgize this account from the options on the right labeled "Types". Number expected.',
+    bucket: 'Please catorgize this account from the options on the right labeled "Buckets". Number expected.',
+  };
   selectedType: string = '';
   isFormVisible = false;
   userAsset: Asset[] = [];
-  newAsset: Asset = new Asset("",0, "", "", "", "", "","", 0, "", "", localStorage.getItem('ClientName')!, "")
+  newAsset: Asset = new Asset("", 0, "", "", "", "", "", "", 0, "", "", localStorage.getItem('ClientName')!, "")
 
   constructor(private myAssetservice: AssetService, private actRouter: ActivatedRoute) { }
 
@@ -58,7 +61,7 @@ export class ClientAssetPage implements OnInit {
       this.selectedType = this.types[this.newAsset.type];
     } else {
       this.selectedType = 'Invalid key';
-    }  
+    }
   }
 
   loadUserAsset() {
@@ -67,7 +70,7 @@ export class ClientAssetPage implements OnInit {
     })
   }
 
-  createAsset(): void{
+  createAsset(): void {
     this.getTypeValue()
     this.myAssetservice.createAsset(this.newAsset).subscribe((response) => {
       if (response !== null) {
@@ -88,7 +91,7 @@ export class ClientAssetPage implements OnInit {
   closeForm() {
     this.isFormVisible = false;
   }
-  printAssets(){
+  printAssets() {
     window.print()
   }
 

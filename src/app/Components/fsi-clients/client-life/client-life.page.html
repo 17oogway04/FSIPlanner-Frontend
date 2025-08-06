@@ -1,7 +1,7 @@
 <ion-header [translucent]="true" id="lifeHeader">
 
-  <ion-toolbar>  
-    <ion-title style="font-size: 1.6em;">Client Life</ion-title>        
+  <ion-toolbar>
+    <ion-title style="font-size: 1.6em;">Client Life</ion-title>
     <ion-button [routerLink]="['/fsi-profile', username]" fill="clear" color="secondary" slot="end"
       size="large">Home</ion-button>
     <div class="dropdown" slot="end">
@@ -57,7 +57,7 @@
     </ion-grid>
     <ion-grid *ngFor="let l of userLife">
       <ion-row>
-  
+
         <ion-col>{{l.policyName}}</ion-col>
         <ion-col>{{l.policyType}}</ion-col>
         <ion-col>{{l.owner}}</ion-col>
@@ -66,7 +66,7 @@
         <ion-col>${{l.cashValue | number: '1.2-2'}}</ion-col>
         <ion-col>${{l.deathBenefitOne | number: '1.2-2'}}</ion-col>
         <ion-col>${{l.deathBenefitTwo | number: '1.2-2'}}</ion-col>
-        <ion-col>{{l.riders | number: '1.2-2'}}</ion-col>
+        <ion-col>{{l.riders}}</ion-col>
         <ion-col>${{l.ridersBenefit | number: '1.2-2'}}</ion-col>
 
 
@@ -115,8 +115,12 @@
               <input type="text" name="deathBenefitTwo" [(ngModel)]="newLife.deathBenefitTwo"><br>
               <label>Riders</label><br>
               <input type="text" name="riders" [(ngModel)]="newLife.riders"><br>
-              <label>Riders Benefit</label><br>
-              <input type="text" name="ridersBenefit" [(ngModel)]="newLife.ridersBenefit"><br>
+              <label class="label-container">
+                Riders Benefit
+                <div class="tooltip-box">
+                  {{tooltipDescriptions.RiderPeriod}}
+                </div>
+              </label><br> <input type="text" name="ridersBenefit" [(ngModel)]="newLife.ridersBenefit"><br>
 
             </ion-col>
           </ion-row>

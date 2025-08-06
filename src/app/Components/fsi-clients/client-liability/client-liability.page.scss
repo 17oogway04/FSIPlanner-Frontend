@@ -79,3 +79,30 @@ input {
   
   /* Change the background color of the dropdown button when the dropdown content is shown */
   .dropdown:hover .dropbtn {text-decoration: underline;}
+
+  .label-container {
+  position: relative;
+  display: inline-block;
+  cursor: help;
+}
+
+.tooltip-box {
+  visibility: hidden;
+  width: 220px;
+  background-color: #f0f0f0;
+  color: #333;
+  text-align: left;
+  border-radius: 6px;
+  padding: 8px;
+  position: absolute;
+  z-index: 1;
+  top: 100%; /* show below the label */
+  left: 0;
+  margin-top: 4px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  font-size: 13px;
+}
+
+.label-container:hover .tooltip-box {
+  visibility: visible;
+}

@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title style="font-size: 1.6em;">Client Disability</ion-title>    
+    <ion-title style="font-size: 1.6em;">Client Disability</ion-title>
 
     <ion-button routerLink="/fsi-profile/{{username}}" fill="clear" color="secondary" size="large"
       slot="end">Home</ion-button>
@@ -9,7 +9,7 @@
       <div class="dropdown-options">
         <ion-button fill="clear" color="secondary" slot="end" size="large" (click)="openForm()" id="printerBtn">Add
           Disability Insurance
-          policy</ion-button>        
+          policy</ion-button>
         <ion-button fill="clear" color="secondary" slot="end" size="large" routerLink="/client-request-update"
           id="printerBtn">Request
           update</ion-button>
@@ -69,11 +69,11 @@
         <ion-col>{{d.policyType}}</ion-col>
         <ion-col>{{d.owner}}</ion-col>
         <ion-col>{{d.insured}}</ion-col>
-        <ion-col>{{d.eliminationPeriod | number: '1.2-2'}}</ion-col>
+        <ion-col>{{d.eliminationPeriod}}</ion-col>
         <ion-col>{{d.benefitPeriod | number: '1.2-2'}}</ion-col>
         <ion-col>${{d.monthlyDeathBenefitOne| number: '1.2-2'}}</ion-col>
         <ion-col>${{d.monthlyDeathBenefitTwo | number: '1.2-2'}}</ion-col>
-        <ion-col>{{d.riders | number: '1.2-2'}}</ion-col>
+        <ion-col>{{d.riders}}</ion-col>
         <ion-col>${{d.premium | number: '1.2-2'}}</ion-col>
         <ion-col>${{d.cashValue | number: '1.2-2'}}</ion-col>
 
@@ -128,10 +128,19 @@
             <ion-col size="3">
               <label>Riders Benefit</label><br>
               <input type="text" name="ridersBenefit" [(ngModel)]="newDisabilityIns.ridersBenefit"><br>
-              <label>Elimination Period</label><br>
+              <label class="label-container">
+                Elimination Period
+                <div class="tooltip-box">
+                  {{tooltipDescriptions.EliminationPeriod}}
+                </div>
+              </label><br>
               <input type="text" name="eliminationPeriod" [(ngModel)]="newDisabilityIns.eliminationPeriod"><br>
-              <label>Benefit Period</label><br>
-              <input type="text" name="benefitPeriod" [(ngModel)]="newDisabilityIns.benefitPeriod"><br>
+              <label class="label-container">
+                Benefit Period
+                <div class="tooltip-box">
+                  {{tooltipDescriptions.BenefitPeriod}}
+                </div>
+              </label><br> <input type="text" name="benefitPeriod" [(ngModel)]="newDisabilityIns.benefitPeriod"><br>
             </ion-col>
           </ion-row>
         </ion-grid>

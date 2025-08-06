@@ -27,6 +27,10 @@ export class ClientLifePage implements OnInit {
     percentageToSavings: 0,
     username: localStorage.getItem('ClientName')!
   };
+  tooltipDescriptions = {
+    EliminationPeriod: 'What year does the policy expire?',
+    RiderPeriod: 'How many months is the policy in effect for?'
+  }
   isFormVisible = false;
   constructor(private myLifeService: LifeService, private actRouter: ActivatedRoute, private router: Router) { }
 

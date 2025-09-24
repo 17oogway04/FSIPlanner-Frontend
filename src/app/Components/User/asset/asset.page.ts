@@ -2,7 +2,10 @@ import { SelectorListContext } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ItemReorderEventDetail } from '@ionic/angular';
+import { MenuController } from '@ionic/angular';
+import { AcctMovement } from 'src/app/Models/acct-movement';
 import { Asset } from 'src/app/Models/asset';
+import { AcctMovementService } from 'src/app/Services/acct-movement.service';
 import { AssetService } from 'src/app/Services/asset.service';
 import { UserService } from 'src/app/Services/user.service';
 
@@ -14,8 +17,9 @@ import { UserService } from 'src/app/Services/user.service';
 export class AssetPage implements OnInit {
 
   username: string = '';
+  username2: string = '';
   newAsset: Asset = new Asset("", 0, "", "", "", "", "", "", 0, "", "", localStorage.getItem('ClientName')!, "")
-
+  newAcctMovement: AcctMovement = new AcctMovement(0, "", "", "", 0, "", localStorage.getItem('ClientName')!, "");
   types: { [key: string]: string } = {
     "1": "Checking",
     "2": "Currency",
@@ -45,19 +49,23 @@ export class AssetPage implements OnInit {
   isFormVisible = false;
   userAssetName: string = '';
   userAsset: Asset[] = [];
+  userAcctMovement: AcctMovement[] = [];
   assetUser: any;
+  acctMovementuser: any;
   user: any;
   tooltipDescriptions = {
     type: 'Please catorgize this account from the options on the right labeled "Types". Number expected.',
     bucket: 'Please catorgize this account from the options on the right labeled "Buckets". Number expected.',
   };
 
-  constructor(private myAssetservice: AssetService, private actRouter: ActivatedRoute, private userService: UserService) { }
+  constructor(private myAssetservice: AssetService, private actRouter: ActivatedRoute, private userService: UserService, private menu: MenuController, private acctMovementService: AcctMovementService) { }
 
   ngOnInit() {
     this.saveUsername()
     this.loadUserAsset()
     this.getTypeValue()
+    this.menu.enable(false, 'acctMovement');
+
   }
 
   printAssets() {
@@ -68,6 +76,16 @@ export class AssetPage implements OnInit {
       this.user = response;
       localStorage.setItem('ClientName', this.user.result.userName)
     })
+  }
+
+  openMenu() {
+    this.menu.enable(true, 'acctMovement'); // enable this menu
+    this.menu.open('acctMovement');
+  }
+
+  async closeMenu() {
+    await this.menu.close('acctMovement');
+    await this.menu.enable(false, 'acctMovement'); // disables it after closing
   }
   // handleReorder(event: CustomEvent<ItemReorderEventDetail>) {
   //   const { from, to } = event.detail;
@@ -87,6 +105,18 @@ export class AssetPage implements OnInit {
     } else {
       this.selectedType = 'Invalid key';
     }
+  }
+
+  loadUserAcctNotes(){
+    this.userService.getCurrentUser().subscribe((response) => {
+      this.acctMovementuser = response;
+      this.username2 = this.acctMovementuser.result.userName;
+      this.newAcctMovement.userId = this.acctMovementuser.result.id;
+      this.acctMovementService.getAcctMovementByUsername(this.username2).subscribe((response) => {
+        this.userAcctMovement = response;
+        console.log(this.userAcctMovement)
+      })
+    })
   }
 
   loadUserAsset() {
